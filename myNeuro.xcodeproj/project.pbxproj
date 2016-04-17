@@ -7,12 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA7B9BBD1CA370160095794F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9BBC1CA370160095794F /* AppDelegate.swift */; };
+		DA70C8801CA4AF9900A83969 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70C87C1CA4AF9900A83969 /* ImageTableViewCell.swift */; };
+		DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */; };
+		DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */; };
+		DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */; };
 		DA7B9BBF1CA370160095794F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9BBE1CA370160095794F /* ViewController.swift */; };
-		DA7B9BC21CA370160095794F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9BC01CA370160095794F /* Main.storyboard */; };
 		DA7B9BC41CA370160095794F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9BC31CA370160095794F /* Assets.xcassets */; };
 		DA7B9BC71CA370160095794F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */; };
 		DA7B9BD21CA370160095794F /* myNeuroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9BD11CA370160095794F /* myNeuroTests.swift */; };
+		DA7B9BF51CA379C40095794F /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B9BE31CA370300095794F /* ResearchKit.framework */; };
+		DA7B9BF61CA379C40095794F /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B9BE31CA370300095794F /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DA7B9BFF1CA37F430095794F /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9BFE1CA37F430095794F /* SurveyTask.swift */; };
+		DA7B9C021CA3803A0095794F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C011CA3803A0095794F /* Images.xcassets */; };
+		DA7B9C511CA3BA0F0095794F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */; };
+		DA7B9C541CA3BA190095794F /* Main_orig.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C521CA3BA190095794F /* Main_orig.storyboard */; };
+		DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C551CA3BB570095794F /* ActivityViewController.swift */; };
+		DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C561CA3BB570095794F /* AnimatableChart.swift */; };
+		DA7B9C6D1CA3BB570095794F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C571CA3BB570095794F /* AppDelegate.swift */; };
+		DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C581CA3BB570095794F /* ConsentDocument.swift */; };
+		DA7B9C6F1CA3BB570095794F /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C591CA3BB570095794F /* DashboardTableViewController.swift */; };
+		DA7B9C701CA3BB570095794F /* DiscreteGraphDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5A1CA3BB570095794F /* DiscreteGraphDataSource.swift */; };
+		DA7B9C711CA3BB570095794F /* HealthClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5B1CA3BB570095794F /* HealthClientType.swift */; };
+		DA7B9C721CA3BB570095794F /* HealthDataStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5C1CA3BB570095794F /* HealthDataStep.swift */; };
+		DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5D1CA3BB570095794F /* HealthDataStepViewController.swift */; };
+		DA7B9C741CA3BB570095794F /* HKHealthStore+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5E1CA3BB570095794F /* HKHealthStore+Queries.swift */; };
+		DA7B9C751CA3BB570095794F /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C5F1CA3BB570095794F /* IntroductionViewController.swift */; };
+		DA7B9C761CA3BB570095794F /* LineGraphDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C601CA3BB570095794F /* LineGraphDataSource.swift */; };
+		DA7B9C771CA3BB570095794F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C611CA3BB570095794F /* OnboardingViewController.swift */; };
+		DA7B9C791CA3BB570095794F /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C631CA3BB570095794F /* PieChartDataSource.swift */; };
+		DA7B9C7A1CA3BB570095794F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C641CA3BB570095794F /* ProfileHeaderView.swift */; };
+		DA7B9C7B1CA3BB570095794F /* ProfileStaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C651CA3BB570095794F /* ProfileStaticTableViewCell.swift */; };
+		DA7B9C7C1CA3BB570095794F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C661CA3BB570095794F /* ProfileViewController.swift */; };
+		DA7B9C7D1CA3BB570095794F /* ResearchContainerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C671CA3BB570095794F /* ResearchContainerSegue.swift */; };
+		DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */; };
+		DA7B9C7F1CA3BB570095794F /* StudyTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C691CA3BB570095794F /* StudyTasks.swift */; };
+		DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */; };
+		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
+		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
+		DABFD2101CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */; };
+		DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2111CB4F7580057BCF9 /* Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,19 +56,102 @@
 			remoteGlobalIDString = DA7B9BB81CA370160095794F;
 			remoteInfo = myNeuro;
 		};
+		DA7B9BE21CA370300095794F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		DA7B9BE41CA370300095794F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		DA7B9BF71CA379C40095794F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		DA7B9C191CA3B7CF0095794F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 161479C01BD6CE8F0099A068;
+			remoteInfo = ORKSample;
+		};
+		DA7B9C1F1CA3B7D50095794F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 869230BE1AAA890A00BFE11B;
+			remoteInfo = ORKCatalog;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DA7B9BF91CA379C40095794F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DA7B9BF61CA379C40095794F /* ResearchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		DA70C87C1CA4AF9900A83969 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewCell.swift; path = Results/ImageTableViewCell.swift; sourceTree = "<group>"; };
+		DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTableViewProviders.swift; path = Results/ResultTableViewProviders.swift; sourceTree = "<group>"; };
+		DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = Results/ResultViewController.swift; sourceTree = "<group>"; };
+		DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextImageTableViewCell.swift; path = Results/TextImageTableViewCell.swift; sourceTree = "<group>"; };
 		DA7B9BB91CA370160095794F /* myNeuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myNeuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA7B9BBC1CA370160095794F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA7B9BBE1CA370160095794F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA7B9BC11CA370160095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA7B9BC31CA370160095794F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7B9BC61CA370160095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA7B9BC81CA370160095794F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA7B9BCD1CA370160095794F /* myNeuroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myNeuroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7B9BD11CA370160095794F /* myNeuroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myNeuroTests.swift; sourceTree = "<group>"; };
 		DA7B9BD31CA370160095794F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
+		DA7B9BFE1CA37F430095794F /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
+		DA7B9C011CA3803A0095794F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORKSample.xcodeproj; path = "../ResearchKit-master/samples/ORKSample/ORKSample.xcodeproj"; sourceTree = "<group>"; };
+		DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORKCatalog.xcodeproj; path = "../ResearchKit-master/samples/ORKCatalog/ORKCatalog.xcodeproj"; sourceTree = "<group>"; };
+		DA7B9C501CA3BA0F0095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DA7B9C531CA3BA190095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_orig.storyboard; sourceTree = "<group>"; };
+		DA7B9C551CA3BB570095794F /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		DA7B9C561CA3BB570095794F /* AnimatableChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableChart.swift; sourceTree = "<group>"; };
+		DA7B9C571CA3BB570095794F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DA7B9C581CA3BB570095794F /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
+		DA7B9C591CA3BB570095794F /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
+		DA7B9C5A1CA3BB570095794F /* DiscreteGraphDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteGraphDataSource.swift; sourceTree = "<group>"; };
+		DA7B9C5B1CA3BB570095794F /* HealthClientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthClientType.swift; sourceTree = "<group>"; };
+		DA7B9C5C1CA3BB570095794F /* HealthDataStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataStep.swift; sourceTree = "<group>"; };
+		DA7B9C5D1CA3BB570095794F /* HealthDataStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataStepViewController.swift; sourceTree = "<group>"; };
+		DA7B9C5E1CA3BB570095794F /* HKHealthStore+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HKHealthStore+Queries.swift"; sourceTree = "<group>"; };
+		DA7B9C5F1CA3BB570095794F /* IntroductionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		DA7B9C601CA3BB570095794F /* LineGraphDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphDataSource.swift; sourceTree = "<group>"; };
+		DA7B9C611CA3BB570095794F /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DA7B9C631CA3BB570095794F /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
+		DA7B9C641CA3BB570095794F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		DA7B9C651CA3BB570095794F /* ProfileStaticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStaticTableViewCell.swift; sourceTree = "<group>"; };
+		DA7B9C661CA3BB570095794F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DA7B9C671CA3BB570095794F /* ResearchContainerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchContainerSegue.swift; sourceTree = "<group>"; };
+		DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchContainerViewController.swift; sourceTree = "<group>"; };
+		DA7B9C691CA3BB570095794F /* StudyTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTasks.swift; sourceTree = "<group>"; };
+		DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisTableViewProviders.swift; path = ../AnalysisTableViewProviders.swift; sourceTree = "<group>"; };
+		DABFD2111CB4F7580057BCF9 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7B9BF51CA379C40095794F /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +173,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA70C87B1CA4AF8D00A83969 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				DA70C87C1CA4AF9900A83969 /* ImageTableViewCell.swift */,
+				DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */,
+				DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */,
+				DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
 		DA7B9BB01CA370160095794F = {
 			isa = PBXGroup;
 			children = (
 				DA7B9BBB1CA370160095794F /* myNeuro */,
 				DA7B9BD01CA370160095794F /* myNeuroTests */,
 				DA7B9BBA1CA370160095794F /* Products */,
+				DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */,
+				DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */,
+				DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +208,28 @@
 		DA7B9BBB1CA370160095794F /* myNeuro */ = {
 			isa = PBXGroup;
 			children = (
-				DA7B9BBC1CA370160095794F /* AppDelegate.swift */,
-				DA7B9BBE1CA370160095794F /* ViewController.swift */,
-				DA7B9BC01CA370160095794F /* Main.storyboard */,
-				DA7B9BC31CA370160095794F /* Assets.xcassets */,
-				DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */,
+				DABFD2061CABD3530057BCF9 /* Analysis */,
+				DA70C87B1CA4AF8D00A83969 /* Results */,
 				DA7B9BC81CA370160095794F /* Info.plist */,
+				DA7B9C571CA3BB570095794F /* AppDelegate.swift */,
+				DA7B9C5E1CA3BB570095794F /* HKHealthStore+Queries.swift */,
+				DA7B9C671CA3BB570095794F /* ResearchContainerSegue.swift */,
+				DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */,
+				DA7B9BFE1CA37F430095794F /* SurveyTask.swift */,
+				DA7B9BBE1CA370160095794F /* ViewController.swift */,
+				DA7B9BC31CA370160095794F /* Assets.xcassets */,
+				DA7B9C011CA3803A0095794F /* Images.xcassets */,
+				DA7B9C841CA3BB9D0095794F /* Activities */,
+				DA7B9C831CA3BB880095794F /* Dashboard */,
+				DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */,
+				DA7B9C521CA3BA190095794F /* Main_orig.storyboard */,
+				DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */,
+				DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */,
+				DA7B9C821CA3BB720095794F /* Onboarding */,
+				DA7B9C851CA3BBB00095794F /* Profile */,
+				DA7B9C881CA3BBF10095794F /* Protocols */,
+				DA7B9C871CA3BBDC0095794F /* Steps */,
+				DA7B9C861CA3BBBA0095794F /* Withdrawal */,
 			);
 			path = myNeuro;
 			sourceTree = "<group>";
@@ -96,6 +243,107 @@
 			path = myNeuroTests;
 			sourceTree = "<group>";
 		};
+		DA7B9BDD1CA370300095794F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9BE31CA370300095794F /* ResearchKit.framework */,
+				DA7B9BE51CA370300095794F /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA7B9C161CA3B7CF0095794F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C1A1CA3B7CF0095794F /* ORKSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA7B9C1C1CA3B7D50095794F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C201CA3B7D50095794F /* ORKCatalog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA7B9C821CA3BB720095794F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C5F1CA3BB570095794F /* IntroductionViewController.swift */,
+				DA7B9C611CA3BB570095794F /* OnboardingViewController.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		DA7B9C831CA3BB880095794F /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C591CA3BB570095794F /* DashboardTableViewController.swift */,
+				DA7B9C5A1CA3BB570095794F /* DiscreteGraphDataSource.swift */,
+				DA7B9C601CA3BB570095794F /* LineGraphDataSource.swift */,
+				DA7B9C631CA3BB570095794F /* PieChartDataSource.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		DA7B9C841CA3BB9D0095794F /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C551CA3BB570095794F /* ActivityViewController.swift */,
+				DA7B9C691CA3BB570095794F /* StudyTasks.swift */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
+		DA7B9C851CA3BBB00095794F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C641CA3BB570095794F /* ProfileHeaderView.swift */,
+				DA7B9C651CA3BB570095794F /* ProfileStaticTableViewCell.swift */,
+				DA7B9C661CA3BB570095794F /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		DA7B9C861CA3BBBA0095794F /* Withdrawal */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */,
+			);
+			name = Withdrawal;
+			sourceTree = "<group>";
+		};
+		DA7B9C871CA3BBDC0095794F /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C581CA3BB570095794F /* ConsentDocument.swift */,
+				DA7B9C5C1CA3BB570095794F /* HealthDataStep.swift */,
+				DA7B9C5D1CA3BB570095794F /* HealthDataStepViewController.swift */,
+			);
+			name = Steps;
+			sourceTree = "<group>";
+		};
+		DA7B9C881CA3BBF10095794F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DA7B9C561CA3BB570095794F /* AnimatableChart.swift */,
+				DA7B9C5B1CA3BB570095794F /* HealthClientType.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		DABFD2061CABD3530057BCF9 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */,
+				DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */,
+				DABFD2111CB4F7580057BCF9 /* Math.swift */,
+			);
+			name = Analysis;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,10 +354,12 @@
 				DA7B9BB51CA370160095794F /* Sources */,
 				DA7B9BB61CA370160095794F /* Frameworks */,
 				DA7B9BB71CA370160095794F /* Resources */,
+				DA7B9BF91CA379C40095794F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA7B9BF81CA379C40095794F /* PBXTargetDependency */,
 			);
 			name = myNeuro;
 			productName = myNeuro;
@@ -146,6 +396,7 @@
 				TargetAttributes = {
 					DA7B9BB81CA370160095794F = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = P6G6N6X557;
 					};
 					DA7B9BCC1CA370160095794F = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -164,6 +415,20 @@
 			mainGroup = DA7B9BB01CA370160095794F;
 			productRefGroup = DA7B9BBA1CA370160095794F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DA7B9C1C1CA3B7D50095794F /* Products */;
+					ProjectRef = DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */;
+				},
+				{
+					ProductGroup = DA7B9C161CA3B7CF0095794F /* Products */;
+					ProjectRef = DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */;
+				},
+				{
+					ProductGroup = DA7B9BDD1CA370300095794F /* Products */;
+					ProjectRef = DA7B9BDC1CA370300095794F /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DA7B9BB81CA370160095794F /* myNeuro */,
@@ -172,14 +437,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		DA7B9BE31CA370300095794F /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = DA7B9BE21CA370300095794F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DA7B9BE51CA370300095794F /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = DA7B9BE41CA370300095794F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DA7B9C1A1CA3B7CF0095794F /* ORKSample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ORKSample.app;
+			remoteRef = DA7B9C191CA3B7CF0095794F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DA7B9C201CA3B7D50095794F /* ORKCatalog.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ORKCatalog.app;
+			remoteRef = DA7B9C1F1CA3B7D50095794F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		DA7B9BB71CA370160095794F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7B9C541CA3BA190095794F /* Main_orig.storyboard in Resources */,
 				DA7B9BC71CA370160095794F /* LaunchScreen.storyboard in Resources */,
+				DA7B9C511CA3BA0F0095794F /* Main.storyboard in Resources */,
+				DA7B9C021CA3803A0095794F /* Images.xcassets in Resources */,
 				DA7B9BC41CA370160095794F /* Assets.xcassets in Resources */,
-				DA7B9BC21CA370160095794F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +495,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7B9C7D1CA3BB570095794F /* ResearchContainerSegue.swift in Sources */,
+				DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */,
+				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
+				DABFD2101CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift in Sources */,
+				DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */,
+				DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */,
+				DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */,
 				DA7B9BBF1CA370160095794F /* ViewController.swift in Sources */,
-				DA7B9BBD1CA370160095794F /* AppDelegate.swift in Sources */,
+				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
+				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
+				DA7B9C7A1CA3BB570095794F /* ProfileHeaderView.swift in Sources */,
+				DA7B9C771CA3BB570095794F /* OnboardingViewController.swift in Sources */,
+				DA7B9C7B1CA3BB570095794F /* ProfileStaticTableViewCell.swift in Sources */,
+				DA7B9C741CA3BB570095794F /* HKHealthStore+Queries.swift in Sources */,
+				DA7B9C751CA3BB570095794F /* IntroductionViewController.swift in Sources */,
+				DA7B9C761CA3BB570095794F /* LineGraphDataSource.swift in Sources */,
+				DA7B9C6D1CA3BB570095794F /* AppDelegate.swift in Sources */,
+				DA7B9BFF1CA37F430095794F /* SurveyTask.swift in Sources */,
+				DA7B9C7F1CA3BB570095794F /* StudyTasks.swift in Sources */,
+				DA7B9C6F1CA3BB570095794F /* DashboardTableViewController.swift in Sources */,
+				DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */,
+				DA7B9C711CA3BB570095794F /* HealthClientType.swift in Sources */,
+				DA7B9C7C1CA3BB570095794F /* ProfileViewController.swift in Sources */,
+				DA7B9C721CA3BB570095794F /* HealthDataStep.swift in Sources */,
+				DA7B9C791CA3BB570095794F /* PieChartDataSource.swift in Sources */,
+				DA70C8801CA4AF9900A83969 /* ImageTableViewCell.swift in Sources */,
+				DA7B9C701CA3BB570095794F /* DiscreteGraphDataSource.swift in Sources */,
+				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
+				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
+				DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */,
+				DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,23 +545,36 @@
 			target = DA7B9BB81CA370160095794F /* myNeuro */;
 			targetProxy = DA7B9BCE1CA370160095794F /* PBXContainerItemProxy */;
 		};
+		DA7B9BF81CA379C40095794F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = DA7B9BF71CA379C40095794F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA7B9BC01CA370160095794F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA7B9BC11CA370160095794F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DA7B9BC61CA370160095794F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA7B9C501CA3BA0F0095794F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DA7B9C521CA3BA190095794F /* Main_orig.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA7B9C531CA3BA190095794F /* Base */,
+			);
+			name = Main_orig.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -325,10 +665,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myNeuro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -336,10 +680,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = myNeuro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -386,6 +734,7 @@
 				DA7B9BD81CA370160095794F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA7B9BD91CA370160095794F /* Build configuration list for PBXNativeTarget "myNeuroTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +743,7 @@
 				DA7B9BDB1CA370160095794F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
