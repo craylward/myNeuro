@@ -31,18 +31,32 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import ResearchKit
 import HealthKit
 
+
 class HealthDataStep: ORKInstructionStep {
+    
     // MARK: Properties
     
     let healthDataItemsToRead: Set<HKObjectType> = [
+        
+        HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!,
+        HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierAppleStandHour)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRespiratoryRate)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierAppleExerciseTime)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierFlightsClimbed)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
         HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
     ]
     
+    // MARK: HealthKit Write items
     let healthDataItemsToWrite: Set<HKSampleType> = [
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
-        HKObjectType.workoutType()
+//        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
+//        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
+//        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
+//        HKObjectType.workoutType()
     ]
     
     // MARK: Initialization
@@ -73,4 +87,35 @@ class HealthDataStep: ORKInstructionStep {
             completion(success:success, error:error)
         }
     }
+    // MARK: Mock Heart Rate Data for simulator
+    static var timer: NSTimer?
+    static func saveMockHeartData() {
+        
+        // 1. Create a heart rate BPM Sample
+        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+        let heartRateQuantity = HKQuantity(unit: HKUnit(fromString: "count/min"),
+            doubleValue: Double(arc4random_uniform(80) + 100))
+        let heartSample = HKQuantitySample(type: heartRateType,
+            quantity: heartRateQuantity, startDate: NSDate(), endDate: NSDate())
+        
+        // 2. Save the sample in the store
+        HKHealthStore().saveObject(heartSample, withCompletion: { (success, error) -> Void in
+            if let error = error {
+                print("Error saving heart sample: \(error.localizedDescription)")
+            }
+        })
+    }
+    static func startMockHeartData() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+            target: self,
+            selector: #selector(HealthDataStep.saveMockHeartData),
+            userInfo: nil,
+            repeats: true)
+    }
+    
+    static func stopMockHeartData() {
+        self.timer?.invalidate()
+    }
 }
+
+

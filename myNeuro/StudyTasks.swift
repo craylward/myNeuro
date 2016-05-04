@@ -61,6 +61,16 @@ struct StudyTasks {
         return ORKOrderedTask.reactionTimeTaskWithIdentifier("ReactionTask", intendedUseDescription: intendedUseDescription, maximumStimulusInterval: NSTimeInterval(10), minimumStimulusInterval: NSTimeInterval(2), thresholdAcceleration: 0.5, numberOfAttempts: 3, timeout: NSTimeInterval(1), successSound: 1054, timeoutSound: 1052, failureSound: 1053, options: ORKPredefinedTaskOption.None)
     }()
     
+    static let heartRateTask: ORKOrderedTask = {
+        return ORKOrderedTask.fitnessCheckTaskWithIdentifier("HeartRateTask",
+            intendedUseDescription: nil,
+            walkDuration: 15 as NSTimeInterval,
+            restDuration: 15 as NSTimeInterval,
+            options: .None)
+    }()
+    
+
+    
     static let surveyTask: ORKOrderedTask = {
         var steps = [ORKStep]()
         
@@ -139,4 +149,28 @@ struct StudyTasks {
         
         return ORKOrderedTask(identifier: "SurveyTask", steps: steps)
     }()
+    
+    static let watchTask: ORKOrderedTask = {
+        var steps = [ORKStep]()
+        
+        // Instruction step
+        let instructionStep = ORKInstructionStep(identifier: "IntroStep")
+        instructionStep.title = "Watch Accelerometer Test"
+        instructionStep.text = "Test to gather watch accelerometer data"
+        
+        steps += [instructionStep]
+
+        let countdownStep = ORKCountdownStep(identifier: "CountdownStep")
+        
+        steps += [countdownStep]
+        
+        let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
+        summaryStep.title = "Thank you."
+        summaryStep.text = "We appreciate your time."
+        
+        steps += [summaryStep]
+        
+        return ORKOrderedTask(identifier: "WatchTask", steps: steps)
+    }()
+    
 }

@@ -31,12 +31,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import ResearchKit
 
+// Used to simulate heart rate for simulator
+var simHeartRate = false;
+
 enum Activity: Int {
-    case Survey, Microphone, Tapping, Walking, Reaction
+    case Survey, Microphone, Tapping, Walking, Reaction, HeartRate, Watch, Questionnaire
     
     static var allValues: [Activity] {
         var idx = 0
-        return Array(anyGenerator{ return self.init(rawValue: idx++)})
+        let array = Array(AnyGenerator{ return self.init(rawValue: idx)})
+        idx += 1
+        return array
     }
     
 
@@ -53,6 +58,12 @@ enum Activity: Int {
                 return "Walking"
             case .Reaction:
                 return "Reaction"
+            case .HeartRate:
+                return "Heart Rate"
+            case .Watch:
+                return "Watch"
+            case .Questionnaire:
+                return "Questionnaire"
         }
     }
     
@@ -68,6 +79,13 @@ enum Activity: Int {
                 return "Test gait and balance"
             case .Reaction:
                 return "Reaction speed test"
+            // Developing
+            case .HeartRate:
+                return "Heart rate test"
+            case .Watch:
+                return "Watch data test"
+            case .Questionnaire:
+                return "Questionnaire"
         }
     }
 }
@@ -109,7 +127,7 @@ class ActivityViewController: UITableViewController {
         guard let activity = Activity(rawValue: indexPath.row) else { return }
         
         let taskViewController: ORKTaskViewController
-        
+
         switch activity {
             case .Survey:
                 taskViewController = ORKTaskViewController(task: StudyTasks.surveyTask, taskRunUUID: NSUUID())
@@ -121,6 +139,14 @@ class ActivityViewController: UITableViewController {
                 taskViewController = ORKTaskViewController(task: StudyTasks.walkingTask, taskRunUUID: NSUUID())
             case .Reaction:
                 taskViewController = ORKTaskViewController(task: StudyTasks.reactionTask, taskRunUUID: NSUUID())
+            case .HeartRate:
+                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
+                simHeartRate = true;
+            case .Watch:
+                taskViewController = ORKTaskViewController(task: StudyTasks.watchTask, taskRunUUID: NSUUID())
+                simHeartRate = true;
+            case .Questionnaire:
+                taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRunUUID: NSUUID())
         }
         
         do {
@@ -141,6 +167,9 @@ class ActivityViewController: UITableViewController {
         
         taskViewController.delegate = self
         navigationController?.presentViewController(taskViewController, animated: true, completion: nil)
+        if simHeartRate == true {
+            HealthDataStep.startMockHeartData()
+        }
     }
 }
 
@@ -151,6 +180,10 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         // Handle results using taskViewController.result
         if reason == .Failed {
             print(error!.localizedDescription)
+        }
+        if simHeartRate == true {
+            HealthDataStep.stopMockHeartData()
+            simHeartRate = false
         }
         let customTabBarController = self.tabBarController as! CustomTabBarController
         let model = customTabBarController.model
