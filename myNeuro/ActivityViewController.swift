@@ -39,9 +39,7 @@ enum Activity: Int {
     
     static var allValues: [Activity] {
         var idx = 0
-        let array = Array(AnyGenerator{ return self.init(rawValue: idx)})
-        idx += 1
-        return array
+        return Array(AnyGenerator{ return self.init(rawValue: idx++)})
     }
     
 
