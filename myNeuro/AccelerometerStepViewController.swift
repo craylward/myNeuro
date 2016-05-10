@@ -10,14 +10,26 @@ import Foundation
 import ResearchKit
 import CoreMotion
 
+
+
 class AccelerometerStepViewController: ORKActiveStepViewController
 {
+    
+    static func stepViewControllerClass() -> AccelerometerStepViewController.Type {
+        return AccelerometerStepViewController.self
+    }
+    
     override func start() {
         super.start()
     }
     
     override func stepDidFinish() {
         super.stepDidFinish()
+    }
+    
+    override func viewDidLoad() {
+        // let container = UIView(frame: [frame goes here])
+        //customView = container
     }
     
 }
