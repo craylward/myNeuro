@@ -35,23 +35,15 @@ import ResearchKit
 var simHeartRate = false;
 
 enum Activity: Int {
-    case Survey, Microphone, Tapping, Walking, Reaction, HeartRate, Watch, Questionnaire
+    case Tapping, Walking, Reaction, HeartRate, Questionnaire
     
     static var allValues: [Activity] {
         var idx = 0
-        let array = Array(AnyGenerator{ return self.init(rawValue: idx)})
-        idx += 1
-        return array
+        return Array(AnyGenerator{ return self.init(rawValue: idx++)})
     }
-    
-
     
     var title: String {
         switch self {
-            case .Survey:
-                return "Survey"
-            case .Microphone:
-                return "Microphone"
             case .Tapping:
                 return "Tapping"
             case .Walking:
@@ -60,8 +52,6 @@ enum Activity: Int {
                 return "Reaction"
             case .HeartRate:
                 return "Heart Rate"
-            case .Watch:
-                return "Watch"
             case .Questionnaire:
                 return "Questionnaire"
         }
@@ -69,10 +59,6 @@ enum Activity: Int {
     
     var subtitle: String {
         switch self {
-            case .Survey:
-                return "Answer 6 short questions"
-            case .Microphone:
-                return "Voice evaluation"
             case .Tapping:
                 return "Test tapping speed"
             case .Walking:
@@ -82,8 +68,6 @@ enum Activity: Int {
             // Developing
             case .HeartRate:
                 return "Heart rate test"
-            case .Watch:
-                return "Watch data test"
             case .Questionnaire:
                 return "Questionnaire"
         }
@@ -129,10 +113,6 @@ class ActivityViewController: UITableViewController {
         let taskViewController: ORKTaskViewController
 
         switch activity {
-            case .Survey:
-                taskViewController = ORKTaskViewController(task: StudyTasks.surveyTask, taskRunUUID: NSUUID())
-            case .Microphone:
-                taskViewController = ORKTaskViewController(task: StudyTasks.microphoneTask, taskRunUUID: NSUUID())
             case .Tapping:
                 taskViewController = ORKTaskViewController(task: StudyTasks.tappingTask, taskRunUUID: NSUUID())
             case .Walking:
@@ -141,9 +121,6 @@ class ActivityViewController: UITableViewController {
                 taskViewController = ORKTaskViewController(task: StudyTasks.reactionTask, taskRunUUID: NSUUID())
             case .HeartRate:
                 taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
-                simHeartRate = true;
-            case .Watch:
-                taskViewController = ORKTaskViewController(task: StudyTasks.watchTask, taskRunUUID: NSUUID())
                 simHeartRate = true;
             case .Questionnaire:
                 taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRunUUID: NSUUID())
