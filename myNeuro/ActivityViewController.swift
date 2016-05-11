@@ -136,6 +136,7 @@ class ActivityViewController: UITableViewController {
             let outputDirectory = documentsDirectory.URLByAppendingPathComponent(taskViewController.taskRunUUID.UUIDString)
             try defaultFileManager.createDirectoryAtURL(outputDirectory, withIntermediateDirectories: true, attributes: nil)
             
+            NSLog("url = %@",outputDirectory)
             taskViewController.outputDirectory = outputDirectory
         }
         catch let error as NSError {
