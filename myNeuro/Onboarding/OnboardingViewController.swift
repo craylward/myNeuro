@@ -35,31 +35,27 @@ class OnboardingViewController: UIViewController {
     // MARK: IB actions
     
     @IBAction func joinButtonTapped(sender: UIButton) {
-        let consentDocument = ConsentDocument()
-        let consentStep = ORKVisualConsentStep(identifier: "VisualConsentStep", document: consentDocument)
         
-        let healthDataStep = HealthDataStep(identifier: "Health")
+        performSegueWithIdentifier("toEligibility", sender: nil)
         
-        let signature = consentDocument.signatures!.first!
-        
-        let reviewConsentStep = ORKConsentReviewStep(identifier: "ConsentReviewStep", signature: signature, inDocument: consentDocument)
-        
-        reviewConsentStep.text = "Review the consent form."
-        reviewConsentStep.reasonForConsent = "Consent to join the Developer Health Research Study."
-        
-        let passcodeStep = ORKPasscodeStep(identifier: "Passcode")
-        passcodeStep.text = "Now you will create a passcode to identify yourself to the app and protect access to information you've entered."
-        
-        let completionStep = ORKCompletionStep(identifier: "CompletionStep")
-        completionStep.title = "Welcome aboard."
-        completionStep.text = "Thank you for joining this study."
-        
-        let orderedTask = ORKOrderedTask(identifier: "Join", steps: [consentStep, reviewConsentStep, healthDataStep, passcodeStep, completionStep]) //Removed "healthDataStep" from array (after reviewConsentStep)
-        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
-        taskViewController.delegate = self
-        
-        presentViewController(taskViewController, animated: true, completion: nil)
+//        let orderedTask = ConsentTask
+//        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
+//        taskViewController.delegate = self
+//        
+//        presentViewController(taskViewController, animated: true, completion: nil)
     }
+    
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = true
+    }
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBarHidden = false
+    }
+    
 }
 
 extension OnboardingViewController : ORKTaskViewControllerDelegate {
@@ -82,3 +78,5 @@ extension OnboardingViewController : ORKTaskViewControllerDelegate {
         return nil
     }
 }
+
+

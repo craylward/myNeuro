@@ -30,92 +30,62 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import ResearchKit
 
-class ConsentDocument: ORKConsentDocument {
-    // MARK: Properties
+public var ConsentDocument: ORKConsentDocument {
+    let consentDocument = ORKConsentDocument()
+    consentDocument.title = "Example Consent"
     
-    let ipsum = [
-        "This overview explains the research study. After you learn about the study, you can choose if you would like to participate. This may take about 20 minutes to complete. This simple walkthrough will help you understand the study, the impact it will have on your life, and will allow you to provide consent to participate.\n\nTALK ABOUT THE PURPOSE OF THE STUDY AND SOME BACKGROUND ON PARKINSON'S.",
-        "This study will gather location and sensor data from your phone and fitness devices with your permission. You can choose not to do this and still participate in the study.\n\nTALK ABOUT HOW/WHY THE APP WILL COLLECT LOCATION AND SENSOR DATA.",
-        "To protect you privacy, we will use a random code instead of your name on your study data.\n\nTALK ABOUT HOW PRIVACY WILL BE PROTECTED AND THE SLIGHT RISK OF BEING ABLE TO LINK NAME TO DATA.",
-        "We will not share you information with any third parties such as advertisers.\n\nTALK ABOUT HOW DATA WILL ONLY BE SHARED WITH US.",
-        "This study will take about 20 minutes per day. Monthly reviews may take an additional 5 minutes once a month.\n\nTALK MORE ABOUT THE TIME COMMITMENT INVOLVED WITH STUDY.",
-        "Surveys are an important part of this research study. We will ask you to complete weekly and monthly surveys about your health.\n\nTALK ABOUT SURVEY QUESTIONS",
-        "To understand changes in your health, we will ask you to complete surveys and simple activities daily and weekly. We will look for patterns over time.\n\nTALK MORE ABOUT THE STUDY TASKS THAT THE PARTICIAPNT WILL BE DOING.",
-        "There will be no penalty to you if you decide not to take part in this study. You can withdraw your consent and discontinue participation at any time.\n\nTALK MORE ABOUT WITHDRAWAL."
+    //TODO: consent sections
+    let consentSectionTypes: [ORKConsentSectionType] = [
+        .Overview,
+        .DataGathering,
+        .Privacy,
+        .DataUse,
+        .TimeCommitment,
+        .StudySurvey,
+        .StudyTasks,
+        .Withdrawing
     ]
     
-    // MARK: Initialization
+    let consentSections: [ORKConsentSection] = consentSectionTypes.map { contentSectionType in
+        let consentSection = ORKConsentSection(type: contentSectionType)
+        return consentSection
+    }
     
-    override init() {
-        super.init()
-        
-        title = NSLocalizedString("Research Health Study Consent Form", comment: "")
-        
-        let sectionTypes: [ORKConsentSectionType] = [
-            .Overview,
-            .DataGathering,
-            .Privacy,
-            .DataUse,
-            .TimeCommitment,
-            .StudySurvey,
-            .StudyTasks,
-            .Withdrawing
-        ]
-        
-        sections = zip(sectionTypes, ipsum).map { sectionType, ipsum in
-            let section = ORKConsentSection(type: sectionType)
-            
-            let localizedIpsum = NSLocalizedString(ipsum, comment: "")
-            let localizedSummary = localizedIpsum.componentsSeparatedByString(".")[0] + "."
-            
-            section.summary = localizedSummary
-            section.content = localizedIpsum
-            
-            return section
-        }
-
-        let signature = ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "ConsentDocumentParticipantSignature")
-        addSignature(signature)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension ORKConsentSectionType: CustomStringConvertible {
-
-    public var description: String {
-        switch self {
-            case .Overview:
-                return "Overview"
-                
-            case .DataGathering:
-                return "DataGathering"
-                
-            case .Privacy:
-                return "Privacy"
-                
-            case .DataUse:
-                return "DataUse"
-                
-            case .TimeCommitment:
-                return "TimeCommitment"
-                
-            case .StudySurvey:
-                return "StudySurvey"
-                
-            case .StudyTasks:
-                return "StudyTasks"
-                
-            case .Withdrawing:
-                return "Withdrawing"
-                
-            case .Custom:
-                return "Custom"
-                
-            case .OnlyInDocument:
-                return "OnlyInDocument"
+    for consentSection in consentSections {
+        switch consentSection.type {
+        case .Overview:
+            consentSection.content = "This overview explains the research study. After you learn about the study, you can choose if you would like to participate. This may take about 20 minutes to complete. This simple walkthrough will help you understand the study, the impact it will have on your life, and will allow you to provide consent to participate.\n\nTALK ABOUT THE PURPOSE OF THE STUDY AND SOME BACKGROUND ON PARKINSON'S."
+            consentSection.summary = "This overview explains the research study. After you learn about the study, you can choose if you would like to participate."
+        case .DataGathering:
+            consentSection.content = "This study will gather location and sensor data from your phone and fitness devices with your permission. You can choose not to do this and still participate in the study.\n\nTALK ABOUT HOW/WHY THE APP WILL COLLECT LOCATION AND SENSOR DATA."
+            consentSection.summary = "This study will gather location and sensor data from your phone and fitness devices with your permission."
+        case .Privacy:
+            consentSection.content = "To protect you privacy, we will use a random code instead of your name on your study data.\n\nTALK ABOUT HOW PRIVACY WILL BE PROTECTED AND THE SLIGHT RISK OF BEING ABLE TO LINK NAME TO DATA."
+            consentSection.summary = "To protect you privacy, we will use a random code instead of your name on your study data."
+        case .DataUse:
+            consentSection.content = "We will not share you information with any third parties such as advertisers.\n\nTALK ABOUT HOW DATA WILL ONLY BE SHARED WITH US."
+            consentSection.summary = "We will not share you information with any third parties such as advertisers."
+        case .TimeCommitment:
+            consentSection.content = "This study will take about 20 minutes per day. Monthly reviews may take an additional 5 minutes once a month.\n\nTALK MORE ABOUT THE TIME COMMITMENT INVOLVED WITH STUDY."
+            consentSection.summary = "This study will take about 20 minutes per day. Monthly reviews may take an additional 5 minutes once a month."
+        case .StudySurvey:
+            consentSection.content = "Surveys are an important part of this research study. We will ask you to complete weekly and monthly surveys about your health.\n\nTALK ABOUT SURVEY QUESTIONS"
+            consentSection.summary = "Surveys are an important part of this research study."
+        case .StudyTasks:
+            consentSection.content = "To understand changes in your health, we will ask you to complete surveys and simple activities daily and weekly. We will look for patterns over time.\n\nTALK MORE ABOUT THE STUDY TASKS THAT THE PARTICIAPNT WILL BE DOING."
+            consentSection.summary = "To understand changes in your health, we will ask you to complete surveys and simple activities daily and weekly."
+        case .Withdrawing:
+            consentSection.content = "There will be no penalty to you if you decide not to take part in this study. You can withdraw your consent and discontinue participation at any time.\n\nTALK MORE ABOUT WITHDRAWAL."
+            consentSection.summary = "There will be no penalty to you if you decide not to take part in this study."
+        default: break
         }
     }
+    
+    consentDocument.sections = consentSections
+    
+    //TODO: signature
+    consentDocument.addSignature(ORKConsentSignature(forPersonWithTitle: nil, dateFormatString: nil, identifier: "ConsentDocumentParticipantSignature"))
+    
+    return consentDocument
+
 }
