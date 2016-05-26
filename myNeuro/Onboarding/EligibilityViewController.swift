@@ -13,45 +13,75 @@ import ResearchKit
 class EligibilityViewController: UITableViewController {
     // MARK: IB actions
     @IBOutlet weak var question1Label: UILabel!
-    @IBOutlet weak var question1Yes: UIButton!
-    @IBOutlet weak var question1No: UIButton!
     @IBOutlet weak var question2Label: UILabel!
-    @IBOutlet weak var question2Yes: UIButton!
-    @IBOutlet weak var question2No: UIButton!
     @IBOutlet weak var question3Label: UILabel!
-    @IBOutlet weak var question3Yes: UIButton!
-    @IBOutlet weak var question3No: UIButton!
-
-    @IBAction func question1Yespressed(sender: UIButton) {
-        sender.selected = true
-        question1No.selected = false
-    }
-    @IBAction func question1NoPressed(sender: UIButton) {
-        sender.selected = true
-        question1Yes.selected = false
-    }
-    @IBAction func question2YesPressed(sender: UIButton) {
-        sender.selected = true
-        question2No.selected = false
-    }
-    @IBAction func question2NoPressed(sender: UIButton) {
-        sender.selected = true
-        question2Yes.selected = false
-    }
-    @IBAction func question3YesPressed(sender: UIButton) {
-        sender.selected = true
-        question3No.selected = false
-    }
-    @IBAction func question3NoPressed(sender: UIButton) {
-        sender.selected = true
-        question3Yes.selected = false
-    }
-    
-    func handleTap(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            // handling code
+    @IBOutlet weak var question1Answer: UISegmentedControl!
+    @IBOutlet weak var question2Answer: UISegmentedControl!
+    @IBOutlet weak var question3Answer: UISegmentedControl!
+    @IBAction func next(sender: UIBarButtonItem) {
+        if (question1Answer.selectedSegmentIndex==0 && question2Answer.selectedSegmentIndex==0 && question3Answer.selectedSegmentIndex==0)
+        {
+            NSLog("TEST")
+            performSegueWithIdentifier("toEligible", sender: nil)
+        }
+        else if question1Answer.selectedSegmentIndex==1 || question2Answer.selectedSegmentIndex==1 || question3Answer.selectedSegmentIndex==1
+        {
+            performSegueWithIdentifier("toIneligible", sender: nil)
+        }
+        else
+        {
+            //ERROR
+            NSLog("ERROR")
         }
     }
+    
+    var question1Answered = false
+    var question2Answered = false
+    var question3Answered = false
+    
+    @IBAction func answerChanged(sender: UISegmentedControl) {
+        
+        switch question1Answer.selectedSegmentIndex
+        {
+        case 0:
+            question1Answered = true
+        case 1:
+            question1Answered = true
+        default:
+            break
+        }
+        switch question2Answer.selectedSegmentIndex
+        {
+        case 0:
+            question2Answered = true
+        case 1:
+            question2Answered = true
+        default:
+            break
+        }
+        switch question3Answer.selectedSegmentIndex
+        {
+        case 0:
+            question3Answered = true
+        case 1:
+            question3Answered = true
+        default:
+            break
+        }
+        if (question1Answered && question2Answered && question3Answered)
+        {
+            self.navigationItem.rightBarButtonItem?.enabled = true
+        }
+    }
+    @IBAction func continuePressed(sender: UIButton) {
+        let orderedTask = ConsentTask
+        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
+        taskViewController.delegate = self
+        
+        presentViewController(taskViewController, animated: true, completion: nil)
+    }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
