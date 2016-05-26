@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		DA0870E01CE3448400A28302 /* AccelerometerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */; };
 		DA0870E21CE345B400A28302 /* AccelerometerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870E11CE345B400A28302 /* AccelerometerStep.swift */; };
-		DA0870E51CE348A200A28302 /* Custom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA0870E31CE348A200A28302 /* Custom.storyboard */; };
 		DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */; };
+		DA49F7D81CF56C3C00FDD1E1 /* EligibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */; };
+		DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */; };
 		DA5C4C8C1CD14DA6008CC643 /* QuestionnaireTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C4C8B1CD14DA6008CC643 /* QuestionnaireTask.swift */; };
 		DA6C514B1CC75DBA007A37C5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C514A1CC75DBA007A37C5 /* HealthKit.framework */; };
 		DA70C8801CA4AF9900A83969 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70C87C1CA4AF9900A83969 /* ImageTableViewCell.swift */; };
@@ -26,7 +27,6 @@
 		DA7B9BFF1CA37F430095794F /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9BFE1CA37F430095794F /* SurveyTask.swift */; };
 		DA7B9C021CA3803A0095794F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C011CA3803A0095794F /* Images.xcassets */; };
 		DA7B9C511CA3BA0F0095794F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */; };
-		DA7B9C541CA3BA190095794F /* Main_orig.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA7B9C521CA3BA190095794F /* Main_orig.storyboard */; };
 		DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C551CA3BB570095794F /* ActivityViewController.swift */; };
 		DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C561CA3BB570095794F /* AnimatableChart.swift */; };
 		DA7B9C6D1CA3BB570095794F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C571CA3BB570095794F /* AppDelegate.swift */; };
@@ -48,6 +48,7 @@
 		DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */; };
 		DA7B9C7F1CA3BB570095794F /* StudyTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C691CA3BB570095794F /* StudyTasks.swift */; };
 		DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */; };
+		DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D01CA1CF75E3700BE6CEB /* Skin.swift */; };
 		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2101CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */; };
@@ -124,8 +125,9 @@
 /* Begin PBXFileReference section */
 		DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerTask.swift; path = myNeuro/Developer/Accelerometer/AccelerometerTask.swift; sourceTree = "<group>"; };
 		DA0870E11CE345B400A28302 /* AccelerometerStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStep.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStep.swift; sourceTree = "<group>"; };
-		DA0870E41CE348A200A28302 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = myNeuro/Base.lproj/Custom.storyboard; sourceTree = "<group>"; };
 		DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStepViewController.swift; path = myNeuro/Developer/Watch/WatchStepViewController.swift; sourceTree = "<group>"; };
+		DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EligibilityViewController.swift; path = Onboarding/EligibilityViewController.swift; sourceTree = "<group>"; };
+		DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsentTask.swift; path = Onboarding/ConsentTask.swift; sourceTree = "<group>"; };
 		DA5C4C8B1CD14DA6008CC643 /* QuestionnaireTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionnaireTask.swift; path = TasksAndSteps/QuestionnaireTask/QuestionnaireTask.swift; sourceTree = "<group>"; };
 		DA6C51491CC75DBA007A37C5 /* myNeuro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myNeuro.entitlements; sourceTree = "<group>"; };
 		DA6C514A1CC75DBA007A37C5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -147,7 +149,6 @@
 		DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORKSample.xcodeproj; path = "../ResearchKit-master/samples/ORKSample/ORKSample.xcodeproj"; sourceTree = "<group>"; };
 		DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ORKCatalog.xcodeproj; path = "../ResearchKit-master/samples/ORKCatalog/ORKCatalog.xcodeproj"; sourceTree = "<group>"; };
 		DA7B9C501CA3BA0F0095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DA7B9C531CA3BA190095794F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_orig.storyboard; sourceTree = "<group>"; };
 		DA7B9C551CA3BB570095794F /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = TasksAndSteps/ActivityViewController.swift; sourceTree = "<group>"; };
 		DA7B9C561CA3BB570095794F /* AnimatableChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatableChart.swift; path = Dashboard/AnimatableChart.swift; sourceTree = "<group>"; };
 		DA7B9C571CA3BB570095794F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Startup/AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResearchContainerViewController.swift; path = Startup/ResearchContainerViewController.swift; sourceTree = "<group>"; };
 		DA7B9C691CA3BB570095794F /* StudyTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyTasks.swift; path = TasksAndSteps/StudyTasks.swift; sourceTree = "<group>"; };
 		DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawViewController.swift; path = Onboarding/WithdrawViewController.swift; sourceTree = "<group>"; };
+		DA7D01CA1CF75E3700BE6CEB /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Skin.swift; path = UI/Skin.swift; sourceTree = "<group>"; };
 		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = TabBarControllers/CustomTabBarController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisTableViewProviders.swift; path = Analysis/AnalysisTableViewProviders.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		DA7B9BBB1CA370160095794F /* myNeuro */ = {
 			isa = PBXGroup;
 			children = (
+				DA7D01C91CF75E1A00BE6CEB /* UI */,
 				DABFD2061CABD3530057BCF9 /* Analysis */,
 				DA7B9BC31CA370160095794F /* Assets.xcassets */,
 				DA7B9C831CA3BB880095794F /* Dashboard */,
@@ -320,6 +323,8 @@
 				DA7B9C5B1CA3BB570095794F /* HealthClientType.swift */,
 				DA7B9C5E1CA3BB570095794F /* HKHealthStore+Queries.swift */,
 				DA7B9C611CA3BB570095794F /* OnboardingViewController.swift */,
+				DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */,
+				DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -344,6 +349,14 @@
 				DA7B9C661CA3BB570095794F /* ProfileViewController.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		DA7D01C91CF75E1A00BE6CEB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DA7D01CA1CF75E3700BE6CEB /* Skin.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		DABFD2061CABD3530057BCF9 /* Analysis */ = {
@@ -388,11 +401,9 @@
 				DA7B9C5F1CA3BB570095794F /* IntroductionViewController.swift */,
 				DA7B9BBE1CA370160095794F /* ViewController.swift */,
 				DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */,
-				DA7B9C521CA3BA190095794F /* Main_orig.storyboard */,
 				DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */,
 				DA7B9C571CA3BB570095794F /* AppDelegate.swift */,
 				DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */,
-				DA0870E31CE348A200A28302 /* Custom.storyboard */,
 			);
 			name = Startup;
 			sourceTree = "<group>";
@@ -566,12 +577,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA7B9C541CA3BA190095794F /* Main_orig.storyboard in Resources */,
 				DA7B9BC71CA370160095794F /* LaunchScreen.storyboard in Resources */,
 				DA7B9C511CA3BA0F0095794F /* Main.storyboard in Resources */,
 				DA7B9C021CA3803A0095794F /* Images.xcassets in Resources */,
 				DA7B9BC41CA370160095794F /* Assets.xcassets in Resources */,
-				DA0870E51CE348A200A28302 /* Custom.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +610,8 @@
 				DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */,
 				DA7B9BBF1CA370160095794F /* ViewController.swift in Sources */,
 				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
+				DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */,
+				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
 				DAEE33EA1CEE5C7C008A270C /* PosturalTremorStep.swift in Sources */,
 				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
 				DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */,
@@ -627,6 +638,7 @@
 				DA70C8801CA4AF9900A83969 /* ImageTableViewCell.swift in Sources */,
 				DA0870E21CE345B400A28302 /* AccelerometerStep.swift in Sources */,
 				DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */,
+				DA49F7D81CF56C3C00FDD1E1 /* EligibilityViewController.swift in Sources */,
 				DA7B9C701CA3BB570095794F /* DiscreteGraphDataSource.swift in Sources */,
 				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
 				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
@@ -659,15 +671,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA0870E31CE348A200A28302 /* Custom.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA0870E41CE348A200A28302 /* Base */,
-			);
-			name = Custom.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -682,14 +685,6 @@
 				DA7B9C501CA3BA0F0095794F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DA7B9C521CA3BA190095794F /* Main_orig.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA7B9C531CA3BA190095794F /* Base */,
-			);
-			name = Main_orig.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
