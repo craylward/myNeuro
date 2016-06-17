@@ -24,6 +24,8 @@ class JoinStudyButton: UIButton {
     }
 }
 
+
+// UPDATE: NO LONGER NEEDED AS ELIGIBILITY USES SEGMENTED CONTROL
 class EligibilityButton: UIButton {
     required init(coder aDecoder: (NSCoder!)) {
         super.init(coder: aDecoder)!

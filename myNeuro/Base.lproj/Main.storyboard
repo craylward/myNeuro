@@ -70,7 +70,7 @@
         <!--Eligibility-->
         <scene sceneID="VdD-s4-CVZ">
             <objects>
-                <tableViewController id="0Sl-8v-arb" customClass="EligibilityViewController" customModule="myNeuro" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Eligibility" id="0Sl-8v-arb" customClass="EligibilityViewController" customModule="myNeuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="225" sectionHeaderHeight="22" sectionFooterHeight="22" id="42h-gn-XbT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,23 +106,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ro6-VO-5XM">
-                                                    <rect key="frame" x="188" y="68" width="1" height="130"/>
-                                                    <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="130" id="F25-ed-h4S"/>
-                                                        <constraint firstAttribute="width" constant="1" id="gxr-2U-DEI"/>
-                                                    </constraints>
-                                                </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgt-9L-jYT" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="68" width="160" height="123"/>
-                                                    <state key="normal" title="Yes">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="question1Yespressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="OPu-Zw-2E2"/>
-                                                    </connections>
-                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPr-Et-FJU">
                                                     <rect key="frame" x="0.0" y="214" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,39 +120,34 @@
                                                         <constraint firstAttribute="height" constant="10" id="HSo-Ah-q6j"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oq2-nD-ifu" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="203" y="68" width="157" height="123"/>
-                                                    <state key="normal" title="No">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-jU-UjV">
+                                                    <rect key="frame" x="21" y="68" width="334" height="124"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="123" id="LhL-st-PRj"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Yes"/>
+                                                        <segment title="No"/>
+                                                    </segments>
                                                     <connections>
-                                                        <action selector="question1NoPressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="slT-dI-xmQ"/>
+                                                        <action selector="answerChanged:" destination="0Sl-8v-arb" eventType="valueChanged" id="50j-5m-X3h"/>
                                                     </connections>
-                                                </button>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerX" secondItem="Ro6-VO-5XM" secondAttribute="centerX" constant="-0.5" id="0Yf-ZJ-yK1"/>
-                                                <constraint firstItem="Oq2-nD-ifu" firstAttribute="leading" secondItem="Ro6-VO-5XM" secondAttribute="trailing" constant="14" id="DIU-3z-SDE"/>
+                                                <constraint firstItem="Rzl-jU-UjV" firstAttribute="top" secondItem="VAG-Nj-khd" secondAttribute="bottom" constant="10" id="6mQ-fH-EF1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VAG-Nj-khd" secondAttribute="trailing" constant="7" id="Eip-ko-cac"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ohi-ax-VBX" secondAttribute="bottom" constant="-8" id="Kni-EN-LOy"/>
                                                 <constraint firstItem="4dw-UK-G9H" firstAttribute="top" secondItem="g0c-Ex-3iZ" secondAttribute="topMargin" constant="-8" id="LGu-Z0-CKM"/>
                                                 <constraint firstItem="aPr-Et-FJU" firstAttribute="leading" secondItem="g0c-Ex-3iZ" secondAttribute="leadingMargin" constant="-8" id="P9f-Jl-IlE"/>
                                                 <constraint firstItem="VAG-Nj-khd" firstAttribute="top" secondItem="g0c-Ex-3iZ" secondAttribute="topMargin" id="S4F-2n-eLL"/>
                                                 <constraint firstItem="4dw-UK-G9H" firstAttribute="leading" secondItem="g0c-Ex-3iZ" secondAttribute="leadingMargin" constant="-8" id="VOi-mx-jBz"/>
-                                                <constraint firstItem="Ro6-VO-5XM" firstAttribute="leading" secondItem="Sgt-9L-jYT" secondAttribute="trailing" constant="13" id="WKU-ls-LAr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4dw-UK-G9H" secondAttribute="trailing" constant="-8" id="WnN-mg-Xmz"/>
                                                 <constraint firstItem="VAG-Nj-khd" firstAttribute="leading" secondItem="g0c-Ex-3iZ" secondAttribute="leadingMargin" constant="7" id="Xgp-8e-kZ8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Sgt-9L-jYT" secondAttribute="bottom" constant="26" id="Xuf-x4-O8C"/>
-                                                <constraint firstItem="Sgt-9L-jYT" firstAttribute="leading" secondItem="g0c-Ex-3iZ" secondAttribute="leadingMargin" constant="7" id="ZZI-rS-lqx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Oq2-nD-ifu" secondAttribute="trailing" constant="7" id="akz-jJ-fS8"/>
-                                                <constraint firstItem="Sgt-9L-jYT" firstAttribute="top" secondItem="VAG-Nj-khd" secondAttribute="bottom" constant="10" id="eE9-QB-XMI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ohi-ax-VBX" secondAttribute="trailing" constant="-8" id="ekX-Ff-mPq"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aPr-Et-FJU" secondAttribute="trailing" constant="-8" id="hIL-Xz-lVH"/>
-                                                <constraint firstItem="Oq2-nD-ifu" firstAttribute="top" secondItem="VAG-Nj-khd" secondAttribute="bottom" constant="10" id="o6F-qX-dhC"/>
-                                                <constraint firstItem="Ro6-VO-5XM" firstAttribute="top" secondItem="VAG-Nj-khd" secondAttribute="bottom" constant="10" id="ocj-tt-aU4"/>
                                                 <constraint firstItem="ohi-ax-VBX" firstAttribute="leading" secondItem="g0c-Ex-3iZ" secondAttribute="leadingMargin" constant="-8" id="qJn-TB-EhS"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="aPr-Et-FJU" secondAttribute="bottom" constant="2" id="svr-Oj-x3X"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Oq2-nD-ifu" secondAttribute="bottom" constant="26" id="y6N-k0-tmB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -196,32 +174,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPL-aT-LeP">
-                                                    <rect key="frame" x="188" y="68" width="1" height="130"/>
-                                                    <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="130" id="H7f-0F-ALJ"/>
-                                                        <constraint firstAttribute="width" constant="1" id="au7-my-yRk"/>
-                                                    </constraints>
-                                                </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gK6-r4-Brg" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="68" width="160" height="123"/>
-                                                    <state key="normal" title="Yes">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="question2YesPressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="9bt-VS-etx"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odM-eM-77O" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="203" y="68" width="157" height="123"/>
-                                                    <state key="normal" title="No">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="question2NoPressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="GQn-52-M6W"/>
-                                                    </connections>
-                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH1-cR-iOz">
                                                     <rect key="frame" x="0.0" y="214" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,29 +188,33 @@
                                                         <constraint firstAttribute="height" constant="10" id="aaf-pM-vFJ"/>
                                                     </constraints>
                                                 </view>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="J7n-j7-qdY">
+                                                    <rect key="frame" x="20" y="68" width="334" height="124"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="123" id="Hqv-Un-lpJ"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Yes"/>
+                                                        <segment title="No"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="answerChanged:" destination="0Sl-8v-arb" eventType="valueChanged" id="xGN-4f-xs1"/>
+                                                    </connections>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HcZ-Ej-6OG" firstAttribute="top" secondItem="oSo-Fu-cIU" secondAttribute="topMargin" id="2Vb-ar-2dg"/>
-                                                <constraint firstItem="iPL-aT-LeP" firstAttribute="top" secondItem="HcZ-Ej-6OG" secondAttribute="bottom" constant="10" id="B7q-Iz-3fu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HcZ-Ej-6OG" secondAttribute="trailing" constant="7" id="BTa-2c-09J"/>
-                                                <constraint firstAttribute="centerX" secondItem="iPL-aT-LeP" secondAttribute="centerX" constant="-0.5" id="Bek-Zv-Up5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="EH1-cR-iOz" secondAttribute="bottom" constant="2" id="C84-sf-Ssq"/>
-                                                <constraint firstItem="odM-eM-77O" firstAttribute="top" secondItem="HcZ-Ej-6OG" secondAttribute="bottom" constant="10" id="FGu-gL-8Ee"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="gK6-r4-Brg" secondAttribute="bottom" constant="26" id="LXw-hM-HNF"/>
                                                 <constraint firstItem="2We-75-rJ4" firstAttribute="leading" secondItem="oSo-Fu-cIU" secondAttribute="leadingMargin" constant="-8" id="LeU-eu-ITT"/>
                                                 <constraint firstItem="EH1-cR-iOz" firstAttribute="leading" secondItem="oSo-Fu-cIU" secondAttribute="leadingMargin" constant="-8" id="YLE-Tl-lLN"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="odM-eM-77O" secondAttribute="bottom" constant="26" id="YlU-vJ-yQa"/>
                                                 <constraint firstItem="2We-75-rJ4" firstAttribute="top" secondItem="oSo-Fu-cIU" secondAttribute="topMargin" constant="-8" id="bvb-DP-27t"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="EH1-cR-iOz" secondAttribute="trailing" constant="-8" id="fQT-dq-7XY"/>
                                                 <constraint firstItem="HcZ-Ej-6OG" firstAttribute="leading" secondItem="oSo-Fu-cIU" secondAttribute="leadingMargin" constant="7" id="fog-vT-bKQ"/>
-                                                <constraint firstItem="gK6-r4-Brg" firstAttribute="top" secondItem="HcZ-Ej-6OG" secondAttribute="bottom" constant="10" id="gRL-fX-VkS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="odM-eM-77O" secondAttribute="trailing" constant="7" id="gYs-ES-JML"/>
-                                                <constraint firstItem="gK6-r4-Brg" firstAttribute="leading" secondItem="oSo-Fu-cIU" secondAttribute="leadingMargin" constant="7" id="k2u-no-W8o"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="F1v-mY-l3s" secondAttribute="bottom" constant="-8" id="kcG-X0-DUm"/>
-                                                <constraint firstItem="odM-eM-77O" firstAttribute="leading" secondItem="iPL-aT-LeP" secondAttribute="trailing" constant="14" id="rZy-Di-bBR"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2We-75-rJ4" secondAttribute="trailing" constant="-8" id="sj7-Ub-pRa"/>
-                                                <constraint firstItem="iPL-aT-LeP" firstAttribute="leading" secondItem="gK6-r4-Brg" secondAttribute="trailing" constant="13" id="u5h-Cb-Jgz"/>
                                                 <constraint firstItem="F1v-mY-l3s" firstAttribute="leading" secondItem="oSo-Fu-cIU" secondAttribute="leadingMargin" constant="-8" id="wpU-Xl-kxD"/>
+                                                <constraint firstItem="J7n-j7-qdY" firstAttribute="top" secondItem="HcZ-Ej-6OG" secondAttribute="bottom" constant="10" id="yJ5-Le-TvK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="F1v-mY-l3s" secondAttribute="trailing" constant="-8" id="zWl-5E-7wg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -286,23 +242,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhD-Lt-c4N">
-                                                    <rect key="frame" x="188" y="93" width="1" height="130"/>
-                                                    <color key="backgroundColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="130" id="1kH-5h-6mD"/>
-                                                        <constraint firstAttribute="width" constant="1" id="hbz-rY-6jM"/>
-                                                    </constraints>
-                                                </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pA-fF-jnY" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="93" width="160" height="118"/>
-                                                    <state key="normal" title="Yes">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="question3YesPressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="QS6-2P-HQW"/>
-                                                    </connections>
-                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-1g-fgt">
                                                     <rect key="frame" x="0.0" y="234" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -317,37 +256,32 @@
                                                         <constraint firstAttribute="height" constant="10" id="bge-bh-g5J"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdK-x5-arF" customClass="EligibilityButton" customModule="myNeuro" customModuleProvider="target">
-                                                    <rect key="frame" x="203" y="93" width="157" height="118"/>
-                                                    <state key="normal" title="No">
-                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="QGK-Q6-g4O">
+                                                    <rect key="frame" x="20" y="93" width="334" height="124"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="123" id="Hqi-eN-7Qw"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Yes"/>
+                                                        <segment title="No"/>
+                                                    </segments>
                                                     <connections>
-                                                        <action selector="question3NoPressed:" destination="0Sl-8v-arb" eventType="touchUpInside" id="xpQ-s6-fer"/>
+                                                        <action selector="answerChanged:" destination="0Sl-8v-arb" eventType="valueChanged" id="Omd-sQ-4J9"/>
                                                     </connections>
-                                                </button>
+                                                </segmentedControl>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1iT-1g-fgt" firstAttribute="leading" secondItem="kDD-Za-dGJ" secondAttribute="leadingMargin" constant="-8" id="3Ua-2f-5tE"/>
                                                 <constraint firstItem="dSD-mB-n65" firstAttribute="leading" secondItem="kDD-Za-dGJ" secondAttribute="leadingMargin" constant="7" id="3eY-th-J6F"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dSD-mB-n65" secondAttribute="trailing" constant="7" id="B14-6T-fC2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="v1c-01-NxK" secondAttribute="bottom" constant="-8" id="CIz-7J-VF7"/>
-                                                <constraint firstItem="bdK-x5-arF" firstAttribute="top" secondItem="dSD-mB-n65" secondAttribute="bottom" constant="10" id="Hat-yY-THD"/>
-                                                <constraint firstItem="uhD-Lt-c4N" firstAttribute="leading" secondItem="3pA-fF-jnY" secondAttribute="trailing" constant="13" id="HsE-Qz-7Hx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bdK-x5-arF" secondAttribute="trailing" constant="7" id="Kb8-eq-ZpX"/>
                                                 <constraint firstItem="dSD-mB-n65" firstAttribute="top" secondItem="kDD-Za-dGJ" secondAttribute="topMargin" id="KdJ-6h-UjQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qbw-LZ-gOe" secondAttribute="trailing" constant="-8" id="MRa-kp-SYw"/>
                                                 <constraint firstItem="v1c-01-NxK" firstAttribute="leading" secondItem="kDD-Za-dGJ" secondAttribute="leadingMargin" constant="-8" id="RYk-jc-Oy3"/>
-                                                <constraint firstItem="uhD-Lt-c4N" firstAttribute="top" secondItem="dSD-mB-n65" secondAttribute="bottom" constant="10" id="XUB-Hg-QnV"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="3pA-fF-jnY" secondAttribute="bottom" constant="26" id="Xdn-gC-4uD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1iT-1g-fgt" secondAttribute="trailing" constant="-8" id="bpp-qT-AfY"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="bdK-x5-arF" secondAttribute="bottom" constant="26" id="c2B-tK-K5t"/>
-                                                <constraint firstAttribute="centerX" secondItem="uhD-Lt-c4N" secondAttribute="centerX" constant="-0.5" id="cJW-6p-LXv"/>
-                                                <constraint firstItem="bdK-x5-arF" firstAttribute="leading" secondItem="uhD-Lt-c4N" secondAttribute="trailing" constant="14" id="e2O-HP-lzW"/>
                                                 <constraint firstItem="qbw-LZ-gOe" firstAttribute="top" secondItem="kDD-Za-dGJ" secondAttribute="topMargin" constant="-8" id="hgH-nf-AqH"/>
+                                                <constraint firstItem="QGK-Q6-g4O" firstAttribute="top" secondItem="dSD-mB-n65" secondAttribute="bottom" constant="10" id="jmO-UT-cNd"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="v1c-01-NxK" secondAttribute="trailing" constant="-8" id="kOa-gF-tgl"/>
-                                                <constraint firstItem="3pA-fF-jnY" firstAttribute="top" secondItem="dSD-mB-n65" secondAttribute="bottom" constant="10" id="meL-IQ-Kzm"/>
-                                                <constraint firstItem="3pA-fF-jnY" firstAttribute="leading" secondItem="kDD-Za-dGJ" secondAttribute="leadingMargin" constant="7" id="pbR-fg-v0y"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1iT-1g-fgt" secondAttribute="bottom" constant="2" id="rfW-AE-DG4"/>
                                                 <constraint firstItem="qbw-LZ-gOe" firstAttribute="leading" secondItem="kDD-Za-dGJ" secondAttribute="leadingMargin" constant="-8" id="tFv-yh-aFN"/>
                                             </constraints>
@@ -363,25 +297,68 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Eligibility" id="sYa-Xg-OgN">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="TWm-Cs-jHF"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="xpd-Gs-AhA"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="TWm-Cs-jHF">
+                            <connections>
+                                <action selector="next:" destination="0Sl-8v-arb" id="9c7-D8-DZJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="question1Answer" destination="Rzl-jU-UjV" id="XyM-h0-X8F"/>
                         <outlet property="question1Label" destination="VAG-Nj-khd" id="ucK-Fd-Tez"/>
-                        <outlet property="question1No" destination="Oq2-nD-ifu" id="Gg4-FZ-6zz"/>
-                        <outlet property="question1Yes" destination="Sgt-9L-jYT" id="WVC-wo-dTF"/>
+                        <outlet property="question2Answer" destination="J7n-j7-qdY" id="DjH-ou-2Kl"/>
                         <outlet property="question2Label" destination="HcZ-Ej-6OG" id="JZp-Fp-tqz"/>
-                        <outlet property="question2No" destination="odM-eM-77O" id="zTl-sU-eCA"/>
-                        <outlet property="question2Yes" destination="gK6-r4-Brg" id="3g3-pr-6nd"/>
+                        <outlet property="question3Answer" destination="QGK-Q6-g4O" id="3Jn-Bt-mcW"/>
                         <outlet property="question3Label" destination="dSD-mB-n65" id="VmO-06-6fi"/>
-                        <outlet property="question3No" destination="bdK-x5-arF" id="iQj-lC-wc9"/>
-                        <outlet property="question3Yes" destination="3pA-fF-jnY" id="Kue-Ki-3IR"/>
+                        <segue destination="Q49-A8-UAz" kind="show" identifier="toEligible" id="LXZ-Na-Euk"/>
+                        <segue destination="0eD-Ob-f0t" kind="show" identifier="toIneligible" id="4ul-DQ-hta"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Slm-gr-Z6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459.5" y="-1430.5"/>
+            <point key="canvasLocation" x="1636.5" y="-1941.5"/>
+        </scene>
+        <!--Eligible-->
+        <scene sceneID="M93-jZ-9Xy">
+            <objects>
+                <viewController title="Eligible" id="Q49-A8-UAz" customClass="EligibleViewController" customModule="myNeuro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="71f-U9-C7V"/>
+                        <viewControllerLayoutGuide type="bottom" id="kHF-Ki-J9U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Fp-LS-S50">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yia-2u-gpf" customClass="JoinStudyButton" customModule="myNeuro" customModuleProvider="target">
+                                <rect key="frame" x="128" y="294" width="118" height="32"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continuePressed:" destination="Q49-A8-UAz" eventType="touchUpInside" id="i2N-Ih-xft"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are eligible for this study" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hB8-FM-uaD">
+                                <rect key="frame" x="77" y="72" width="221" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JzN-HD-4FO">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="aZM-tc-ezs"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i31-lM-cgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2196.5" y="-2210.5"/>
         </scene>
         <!--Intro2-->
         <scene sceneID="Due-o6-LAc">
@@ -1236,6 +1213,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kax-ax-kBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1691.5" y="1337.5"/>
+        </scene>
+        <!--Ineligible-->
+        <scene sceneID="35d-Vy-y2v">
+            <objects>
+                <viewController title="Ineligible" id="0eD-Ob-f0t" customClass="EligibleViewController" customModule="myNeuro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bWQ-CB-A1X"/>
+                        <viewControllerLayoutGuide type="bottom" id="tXf-Ak-TrQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="K9s-fV-mTn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are not eligible for this study" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-QC-hwK">
+                                <rect key="frame" x="62" y="72" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8AN-rl-2nd">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="79m-6P-H84"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ute-3r-FBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2196.5" y="-1466.5"/>
         </scene>
     </scenes>
     <resources>

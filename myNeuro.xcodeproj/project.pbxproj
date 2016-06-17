@@ -61,6 +61,7 @@
 		DAEE33EA1CEE5C7C008A270C /* PosturalTremorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE33E91CEE5C7C008A270C /* PosturalTremorStep.swift */; };
 		DAEE33EE1CEE62F9008A270C /* KineticTremorStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE33ED1CEE62F9008A270C /* KineticTremorStepViewController.swift */; };
 		DAEE33F01CEE6306008A270C /* KineticTremorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE33EF1CEE6306008A270C /* KineticTremorStep.swift */; };
+		DAF0C3891D11ECD600B8D8D8 /* EligibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		DAEE33E91CEE5C7C008A270C /* PosturalTremorStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PosturalTremorStep.swift; path = myNeuro/TasksAndSteps/TremorTask/PosturalTremorStep.swift; sourceTree = "<group>"; };
 		DAEE33ED1CEE62F9008A270C /* KineticTremorStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KineticTremorStepViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/KineticTremorStepViewController.swift; sourceTree = "<group>"; };
 		DAEE33EF1CEE6306008A270C /* KineticTremorStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KineticTremorStep.swift; path = myNeuro/TasksAndSteps/TremorTask/KineticTremorStep.swift; sourceTree = "<group>"; };
+		DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EligibleViewController.swift; path = Onboarding/EligibleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 				DA7B9C5E1CA3BB570095794F /* HKHealthStore+Queries.swift */,
 				DA7B9C611CA3BB570095794F /* OnboardingViewController.swift */,
 				DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */,
+				DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */,
 				DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */,
 			);
 			name = Onboarding;
@@ -640,6 +643,7 @@
 				DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */,
 				DA49F7D81CF56C3C00FDD1E1 /* EligibilityViewController.swift in Sources */,
 				DA7B9C701CA3BB570095794F /* DiscreteGraphDataSource.swift in Sources */,
+				DAF0C3891D11ECD600B8D8D8 /* EligibleViewController.swift in Sources */,
 				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
 				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
 				DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */,
