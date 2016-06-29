@@ -22,6 +22,7 @@ class EligibleViewController: UIViewController {
     // add comment
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.navigationItem.backBarButtonItem?.title = "Back"
     }
 }
@@ -36,6 +37,14 @@ extension EligibleViewController : ORKTaskViewControllerDelegate {
         case .Discarded, .Failed, .Saved:
             dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    func taskViewController(taskViewController: ORKTaskViewController, viewControllerForStep step: ORKStep) -> ORKStepViewController? {
+        if step is HealthDataStep {
+            let healthStepViewController = HealthDataStepViewController(step: step)
+            return healthStepViewController
+        }
+        return nil
     }
     
 }

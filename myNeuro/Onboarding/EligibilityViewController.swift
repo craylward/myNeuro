@@ -21,7 +21,6 @@ class EligibilityViewController: UITableViewController {
     @IBAction func next(sender: UIBarButtonItem) {
         if (question1Answer.selectedSegmentIndex==0 && question2Answer.selectedSegmentIndex==0 && question3Answer.selectedSegmentIndex==0)
         {
-            NSLog("TEST")
             performSegueWithIdentifier("toEligible", sender: nil)
         }
         else if question1Answer.selectedSegmentIndex==1 || question2Answer.selectedSegmentIndex==1 || question3Answer.selectedSegmentIndex==1
@@ -30,7 +29,6 @@ class EligibilityViewController: UITableViewController {
         }
         else
         {
-            //ERROR
             NSLog("ERROR")
         }
     }
@@ -73,13 +71,6 @@ class EligibilityViewController: UITableViewController {
             self.navigationItem.rightBarButtonItem?.enabled = true
         }
     }
-    @IBAction func continuePressed(sender: UIButton) {
-        let orderedTask = ConsentTask
-        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
-        taskViewController.delegate = self
-        
-        presentViewController(taskViewController, animated: true, completion: nil)
-    }
 
     
     
@@ -88,18 +79,4 @@ class EligibilityViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem?.enabled = false
         
     }
-}
-
-extension EligibilityViewController : ORKTaskViewControllerDelegate {
-    
-    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
-        switch reason {
-        case .Completed:
-            performSegueWithIdentifier("unwindToStudy", sender: nil)
-            
-        case .Discarded, .Failed, .Saved:
-            dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-
 }
