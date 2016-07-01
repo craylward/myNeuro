@@ -35,7 +35,7 @@ import ResearchKit
 var simHeartRate = false;
 
 enum Activity: Int {
-    case Tapping, Walking, Reaction, HeartRate, Questionnaire, Accelerometer, Tremor
+    case Questionnaire, Tremor, Bradykinesia, Gait  //, HeartRate
     
     static var allValues: [Activity] {
         var idx = 0
@@ -44,40 +44,33 @@ enum Activity: Int {
     
     var title: String {
         switch self {
-            case .Tapping:
-                return "Tapping"
-            case .Walking:
-                return "Walking"
-            case .Reaction:
-                return "Reaction"
-            case .HeartRate:
-                return "Heart Rate"
             case .Questionnaire:
                 return "Questionnaire"
-            case .Accelerometer:
-                return "Accelerometer"
             case .Tremor:
                 return "Tremor"
+            case .Bradykinesia:
+                return "Bradykinesia"
+            case .Gait:
+                return "Gait"
+//            case .HeartRate:
+//                return "Heart Rate"
+
         }
     }
     
     var subtitle: String {
         switch self {
-            case .Tapping:
-                return "Test tapping speed"
-            case .Walking:
-                return "Test gait and balance"
-            case .Reaction:
-                return "Reaction speed test"
-            // Developing
-            case .HeartRate:
-                return "Heart rate test"
             case .Questionnaire:
                 return "Questionnaire"
-            case .Accelerometer:
-                return "Accelerometer test"
             case .Tremor:
                 return "Test Tremor"
+            case .Bradykinesia:
+                return "Test Bradykinesia"
+            case .Gait:
+                return "Test gait and balance"
+            // Developing
+//            case .HeartRate:
+//                return "Heart rate test"
         }
     }
 }
@@ -121,21 +114,19 @@ class ActivityViewController: UITableViewController {
         let taskViewController: ORKTaskViewController
 
         switch activity {
-            case .Tapping:
-                taskViewController = ORKTaskViewController(task: StudyTasks.tappingTask, taskRunUUID: NSUUID())
-            case .Walking:
-                taskViewController = ORKTaskViewController(task: StudyTasks.walkingTask, taskRunUUID: NSUUID())
-            case .Reaction:
-                taskViewController = ORKTaskViewController(task: StudyTasks.reactionTask, taskRunUUID: NSUUID())
-            case .HeartRate:
-                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
-                simHeartRate = true;
             case .Questionnaire:
                 taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRunUUID: NSUUID())
-            case .Accelerometer:
-                taskViewController = ORKTaskViewController(task: AccelerometerTask, taskRunUUID: NSUUID())
+            case .Bradykinesia:
+                taskViewController = ORKTaskViewController(task: BradykinesiaTask, taskRunUUID: NSUUID())
             case .Tremor:
                 taskViewController = ORKTaskViewController(task: TremorTask, taskRunUUID: NSUUID())
+            case .Gait:
+                taskViewController = ORKTaskViewController(task: GaitTask, taskRunUUID: NSUUID())
+//            case .HeartRate:
+//                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
+//                simHeartRate = true;
+
+
         }
         
         do {
@@ -171,10 +162,13 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         if reason == .Failed {
             print(error!.localizedDescription)
         }
-        if simHeartRate == true {
-            HealthDataStep.stopMockHeartData()
-            simHeartRate = false
-        }
+        // Developing: used to simulate a heart beat
+//        if simHeartRate == true {
+//            HealthDataStep.stopMockHeartData()
+//            simHeartRate = false
+//        }
+        
+        // MARK: Update results and analysis tabs
         let customTabBarController = self.tabBarController as! CustomTabBarController
         let model = customTabBarController.model
         model.result = taskViewController.result
@@ -185,6 +179,9 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         print("Updating results/analysis tabs...")
         resultViewController.result = model.result
         analysisViewController.result = model.result
+        
+        // MARK: Save results
+        // taskViewController.result ...
         
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         

@@ -40,7 +40,7 @@ func analysisTableViewProviderForResult(result: ORKResult?) -> protocol<UITableV
     
     switch result {
         case is ORKTappingIntervalResult:
-            providerType = TappingIntervalAnalysisTableViewProvider.self
+            providerType = BradykinesiaAnalysisTableViewProvider.self
         
         // All
         case is ORKTaskResult:
@@ -217,13 +217,11 @@ class AnalysisTableViewProvider: NSObject, UITableViewDataSource, UITableViewDel
 
 
 /// Table view provider specific to an `ORKTappingIntervalResult` instance.
-class TappingIntervalAnalysisTableViewProvider: AnalysisTableViewProvider {
+class BradykinesiaAnalysisTableViewProvider: AnalysisTableViewProvider {
     // MARK: UITableViewDataSource
     
-    // MARK: ResultTableViewProvider
-    
+    // MARK: AnalysisTableViewProvider
     override func analysisRowsForSection(section: Int) -> [AnalysisRow] {
-        print("test")
         let questionResult = result as! ORKTappingIntervalResult
         let rows = super.analysisRowsForSection(section)
         let timeStamps = questionResult.samples!.map { tappingSample in
@@ -266,7 +264,19 @@ class TappingIntervalAnalysisTableViewProvider: AnalysisTableViewProvider {
                 // The max time interval between taps
                 AnalysisRow(text: "Max", detail: String(format: "%.3f", timeIntervals.maxElement()!))
             ]
+    }
+}
 
+/// Table view provider specific to an `ORKResult` for Tremor Task instance.
+class TremorAnalysisTableViewProvider: AnalysisTableViewProvider {
+    // MARK: UITableViewDataSource
+    
+    // MARK: ResultTableViewProvider
+    
+    override func analysisRowsForSection(section: Int) -> [AnalysisRow] {
+        let rows = super.analysisRowsForSection(section)
+        
+        return rows
     }
 }
 

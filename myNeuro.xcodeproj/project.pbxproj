@@ -46,13 +46,17 @@
 		DA7B9C7C1CA3BB570095794F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C661CA3BB570095794F /* ProfileViewController.swift */; };
 		DA7B9C7D1CA3BB570095794F /* ResearchContainerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C671CA3BB570095794F /* ResearchContainerSegue.swift */; };
 		DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */; };
-		DA7B9C7F1CA3BB570095794F /* StudyTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C691CA3BB570095794F /* StudyTasks.swift */; };
 		DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */; };
 		DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D01CA1CF75E3700BE6CEB /* Skin.swift */; };
 		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2101CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */; };
 		DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2111CB4F7580057BCF9 /* Math.swift */; };
+		DADBDFBC1D243E9400A707D6 /* RestingTremorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFBB1D243E9400A707D6 /* RestingTremorStep.swift */; };
+		DADBDFC21D243EAA00A707D6 /* RestingTremorStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC11D243EAA00A707D6 /* RestingTremorStepViewController.swift */; };
+		DADBDFC41D243F3000A707D6 /* MotionStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */; };
+		DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */; };
+		DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC91D26122200A707D6 /* GaitTask.swift */; };
 		DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C511CD9FB4A000C164D /* WatchStep.swift */; };
 		DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C571CD9FB9D000C164D /* WatchTask.swift */; };
 		DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */; };
@@ -169,13 +173,17 @@
 		DA7B9C661CA3BB570095794F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		DA7B9C671CA3BB570095794F /* ResearchContainerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResearchContainerSegue.swift; path = Startup/ResearchContainerSegue.swift; sourceTree = "<group>"; };
 		DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResearchContainerViewController.swift; path = Startup/ResearchContainerViewController.swift; sourceTree = "<group>"; };
-		DA7B9C691CA3BB570095794F /* StudyTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudyTasks.swift; path = TasksAndSteps/StudyTasks.swift; sourceTree = "<group>"; };
 		DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawViewController.swift; path = Onboarding/WithdrawViewController.swift; sourceTree = "<group>"; };
 		DA7D01CA1CF75E3700BE6CEB /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Skin.swift; path = UI/Skin.swift; sourceTree = "<group>"; };
 		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = TabBarControllers/CustomTabBarController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisTableViewProviders.swift; path = Analysis/AnalysisTableViewProviders.swift; sourceTree = "<group>"; };
 		DABFD2111CB4F7580057BCF9 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Analysis/Math.swift; sourceTree = "<group>"; };
+		DADBDFBB1D243E9400A707D6 /* RestingTremorStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestingTremorStep.swift; path = myNeuro/TasksAndSteps/TremorTask/RestingTremorStep.swift; sourceTree = "<group>"; };
+		DADBDFC11D243EAA00A707D6 /* RestingTremorStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestingTremorStepViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/RestingTremorStepViewController.swift; sourceTree = "<group>"; };
+		DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionStepViewController.swift; path = TasksAndSteps/MotionStepViewController.swift; sourceTree = "<group>"; };
+		DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradykinesiaTask.swift; path = TasksAndSteps/BradykinesiaTask/BradykinesiaTask.swift; sourceTree = "<group>"; };
+		DADBDFC91D26122200A707D6 /* GaitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaitTask.swift; path = TasksAndSteps/GaitTask/GaitTask.swift; sourceTree = "<group>"; };
 		DAEB9C511CD9FB4A000C164D /* WatchStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStep.swift; path = myNeuro/Developer/Watch/WatchStep.swift; sourceTree = "<group>"; };
 		DAEB9C571CD9FB9D000C164D /* WatchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchTask.swift; path = myNeuro/Developer/Watch/WatchTask.swift; sourceTree = "<group>"; };
 		DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStepViewController.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStepViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +380,22 @@
 			name = Analysis;
 			sourceTree = "<group>";
 		};
+		DADBDFC51D2445C400A707D6 /* BradykinesiaTask */ = {
+			isa = PBXGroup;
+			children = (
+				DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */,
+			);
+			name = BradykinesiaTask;
+			sourceTree = "<group>";
+		};
+		DADBDFC81D2611F800A707D6 /* GaitTask */ = {
+			isa = PBXGroup;
+			children = (
+				DADBDFC91D26122200A707D6 /* GaitTask.swift */,
+			);
+			name = GaitTask;
+			sourceTree = "<group>";
+		};
 		DAEB9C591CD9FC94000C164D /* Accelerometer */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,10 +411,12 @@
 			isa = PBXGroup;
 			children = (
 				DAEE33E51CEE5BBA008A270C /* TremorTask.swift */,
-				DAEE33E71CEE5C27008A270C /* PosturalTremorStepViewController.swift */,
+				DADBDFBB1D243E9400A707D6 /* RestingTremorStep.swift */,
+				DADBDFC11D243EAA00A707D6 /* RestingTremorStepViewController.swift */,
 				DAEE33E91CEE5C7C008A270C /* PosturalTremorStep.swift */,
-				DAEE33ED1CEE62F9008A270C /* KineticTremorStepViewController.swift */,
+				DAEE33E71CEE5C27008A270C /* PosturalTremorStepViewController.swift */,
 				DAEE33EF1CEE6306008A270C /* KineticTremorStep.swift */,
+				DAEE33ED1CEE62F9008A270C /* KineticTremorStepViewController.swift */,
 			);
 			name = TremorTask;
 			path = ..;
@@ -404,7 +430,6 @@
 				DA7B9C5F1CA3BB570095794F /* IntroductionViewController.swift */,
 				DA7B9BBE1CA370160095794F /* ViewController.swift */,
 				DA7B9BC51CA370160095794F /* LaunchScreen.storyboard */,
-				DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */,
 				DA7B9C571CA3BB570095794F /* AppDelegate.swift */,
 				DA7B9C4F1CA3BA0F0095794F /* Main.storyboard */,
 			);
@@ -415,9 +440,11 @@
 			isa = PBXGroup;
 			children = (
 				DA7B9C551CA3BB570095794F /* ActivityViewController.swift */,
-				DA7B9C691CA3BB570095794F /* StudyTasks.swift */,
+				DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */,
 				DA5C4C861CD14D8C008CC643 /* QuestionnaireTask */,
+				DADBDFC51D2445C400A707D6 /* BradykinesiaTask */,
 				DAEE33E01CEE5B2A008A270C /* TremorTask */,
+				DADBDFC81D2611F800A707D6 /* GaitTask */,
 			);
 			name = TasksAndSteps;
 			sourceTree = "<group>";
@@ -442,6 +469,7 @@
 		DAEE34021CEED140008A270C /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */,
 			);
 			name = TabBarControllers;
 			sourceTree = "<group>";
@@ -604,6 +632,9 @@
 				DA7B9C7D1CA3BB570095794F /* ResearchContainerSegue.swift in Sources */,
 				DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */,
 				DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */,
+				DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */,
+				DADBDFC21D243EAA00A707D6 /* RestingTremorStepViewController.swift in Sources */,
+				DADBDFBC1D243E9400A707D6 /* RestingTremorStep.swift in Sources */,
 				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
 				DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */,
 				DAEE33F01CEE6306008A270C /* KineticTremorStep.swift in Sources */,
@@ -617,6 +648,7 @@
 				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
 				DAEE33EA1CEE5C7C008A270C /* PosturalTremorStep.swift in Sources */,
 				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
+				DADBDFC41D243F3000A707D6 /* MotionStepViewController.swift in Sources */,
 				DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */,
 				DA7B9C7A1CA3BB570095794F /* ProfileHeaderView.swift in Sources */,
 				DA7B9C771CA3BB570095794F /* OnboardingViewController.swift in Sources */,
@@ -629,7 +661,6 @@
 				DA7B9BFF1CA37F430095794F /* SurveyTask.swift in Sources */,
 				DAEE33E81CEE5C27008A270C /* PosturalTremorStepViewController.swift in Sources */,
 				DA0870E01CE3448400A28302 /* AccelerometerTask.swift in Sources */,
-				DA7B9C7F1CA3BB570095794F /* StudyTasks.swift in Sources */,
 				DA7B9C6F1CA3BB570095794F /* DashboardTableViewController.swift in Sources */,
 				DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */,
 				DA7B9C711CA3BB570095794F /* HealthClientType.swift in Sources */,
@@ -646,6 +677,7 @@
 				DAF0C3891D11ECD600B8D8D8 /* EligibleViewController.swift in Sources */,
 				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
 				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
+				DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */,
 				DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */,
 				DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */,
 			);

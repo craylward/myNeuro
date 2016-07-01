@@ -49,11 +49,7 @@ struct StudyTasks {
         return ORKOrderedTask.twoFingerTappingIntervalTaskWithIdentifier("TappingTask", intendedUseDescription: intendedUseDescription, duration: tappingDuration, options: ORKPredefinedTaskOption.None) // CHANGED: Duration: 10
     }()
     
-    static let walkingTask: ORKOrderedTask = {
-        let intendedUseDescription = "Short walking task to evaluate gait and balance."
-        
-        return ORKOrderedTask.shortWalkTaskWithIdentifier("WalkingTask", intendedUseDescription: intendedUseDescription, numberOfStepsPerLeg: 10, restDuration: NSTimeInterval(5), options: ORKPredefinedTaskOption.None)
-    }()
+
     
     static let reactionTask: ORKOrderedTask = {
         let intendedUseDescription = "Test to evaluate reaction time."

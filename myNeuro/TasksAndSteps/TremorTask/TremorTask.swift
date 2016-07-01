@@ -14,21 +14,43 @@ public var TremorTask: ORKOrderedTask {
     
     let instructionStep = ORKInstructionStep(identifier: "instruction")
     instructionStep.title = "Tremor Task"
-    instructionStep.text = "For this activity, you will be instructed to perform 2 tasks to observe tremor."
+    instructionStep.text = "For this activity, you will be instructed to perform 3 tasks to observe tremor."
     
     steps += [instructionStep]
     
+    let restingInstructionStep = ORKInstructionStep(identifier: "restingInstruction")
+    restingInstructionStep.title = "Resting Tremor"
+    restingInstructionStep.text = "Place your arm on a flat surface at a comfortable height. Relax your arm."
+    
+    steps += [restingInstructionStep]
+    
+    let countdownStep_r = ORKCountdownStep(identifier: "countdown_r")
+    countdownStep_r.stepDuration = 5
+    countdownStep_r.shouldSpeakCountDown = true
+    
+    steps += [countdownStep_r]
+    
+    let restingTremorStep = RestingTremorStep(identifier: "restingTremorStep")
+    
+    restingTremorStep.stepDuration = 10
+    restingTremorStep.shouldStartTimerAutomatically = true
+    restingTremorStep.shouldVibrateOnStart = true
+    restingTremorStep.shouldVibrateOnFinish = true
+    restingTremorStep.shouldContinueOnFinish = true
+    
+    steps += [restingTremorStep]
+    
     let posturalInstructionStep = ORKInstructionStep(identifier: "posturalInstruction")
     posturalInstructionStep.title = "Postural Tremor"
-    posturalInstructionStep.text = "Stretch your dominant arm out in front of your body with your palm facing down. Your wrist should be straight and your fingers comfortably separated so that they do not touch each other"
+    posturalInstructionStep.text = "Stretch your dominant arm out in front of your body parallel to the ground with your palm facing down. Your wrist should be straight and your fingers comfortably separated so that they do not touch each other"
     
     steps += [posturalInstructionStep]
-    
-    let countdownStep = ORKCountdownStep(identifier: "countdown")
-    countdownStep.stepDuration = 5
-    countdownStep.shouldSpeakCountDown = true
 
-    steps += [countdownStep]
+    let countdownStep_p = ORKCountdownStep(identifier: "countdown_p") // NOTE: Used for every tremor step task
+    countdownStep_p.stepDuration = 5
+    countdownStep_p.shouldSpeakCountDown = true
+    
+    steps += [countdownStep_p]
     
     let posturalTremorStep = PosturalTremorStep(identifier: "posturalTremorStep")
     
@@ -45,6 +67,12 @@ public var TremorTask: ORKOrderedTask {
     kineticInstructionStep.text = "With the arm starting from the outstretched position, slowly perform three finger-to-nose maneuvers reaching as far as possible while outstretching the arm."
     
     steps += [kineticInstructionStep]
+    
+    let countdownStep_k = ORKCountdownStep(identifier: "countdown_k") // NOTE: Used for every tremor step task
+    countdownStep_k.stepDuration = 5
+    countdownStep_k.shouldSpeakCountDown = true
+    
+    steps += [countdownStep_k]
     
     let kineticTremorStep = KineticTremorStep(identifier: "kineticTremorStep")
     
