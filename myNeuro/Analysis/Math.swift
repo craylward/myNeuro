@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 func standardDeviation(arr : [Double]) -> Double
 {
     let length = Double(arr.count)
@@ -30,3 +31,4 @@ func average(arr : [Double]) -> Double
     let avg = sum/count
     return avg
 }
+

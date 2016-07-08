@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import CoreMotion
+import WatchConnectivity
 
 class RestingTremorStep: ORKActiveStep {
     

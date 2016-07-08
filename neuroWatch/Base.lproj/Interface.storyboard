@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <table alignment="left" id="QaK-9F-bZs">
+                            <items>
+                                <tableRow identifier="Cell" id="nz9-iG-WAG" customClass="RowController" customModule="neuroWatch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="K2Z-Z8-mn1">
+                                        <items>
+                                            <label alignment="left" text="Label" minimumScaleFactor="0.80000000000000004" id="dhg-La-shM" userLabel="Text Label">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="Cgy-zq-Nao" userLabel="Detail Label">
+                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="detailLabel" destination="Cgy-zq-Nao" id="iuB-RO-LHl"/>
+                                        <outlet property="textLabel" destination="dhg-La-shM" id="w2J-Rz-vL9"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="QaK-9F-bZs" id="df8-LU-qmL"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="neuroWatch_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--HeartRate-->
+        <scene sceneID="rt4-UT-M1j">
+            <objects>
+                <controller identifier="HeartRate" hidesWhenLoading="NO" id="Kvv-16-xeh" customClass="HeartRateInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="VUY-F2-pEk">
+                            <items>
+                                <imageView alignment="left" image="heart" id="rYy-sP-EjO"/>
+                                <group width="1" alignment="left" id="zDt-CV-TNe">
+                                    <items>
+                                        <label alignment="left" text="---" textAlignment="left" minimumScaleFactor="0.29999999999999999" id="6SA-Um-8SR">
+                                            <fontDescription key="font" type="system" pointSize="40"/>
+                                        </label>
+                                        <label alignment="left" text="BPM" id="zEH-bY-awj">
+                                            <color key="textColor" red="0.8980392814" green="0.15686275059999999" blue="0.14509804549999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Start" id="h0p-43-L11">
+                            <connections>
+                                <action selector="fetchBtnTapped" destination="Kvv-16-xeh" id="xV6-x7-h31"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="6SA-Um-8SR" id="B8P-sc-akT"/>
+                        <outlet property="startBtn" destination="h0p-43-L11" id="Q6e-qD-bVV"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="709" y="345"/>
+        </scene>
+        <!--Accelerometer-->
+        <scene sceneID="9Qb-OT-7Km">
+            <objects>
+                <controller identifier="Accelerometer" title="Accelerometer" hidesWhenLoading="NO" id="BiM-4y-yci" customClass="AccelerometerInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="aPr-e1-0vu">
+                            <items>
+                                <label alignment="left" text="x" id="lB5-GJ-mxD">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="MCX-0D-Sgz"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="3ei-5c-bD1">
+                            <items>
+                                <label alignment="left" text="y" id="eTK-fv-4EU">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="cce-zu-hRi"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="Dth-NH-Va1">
+                            <items>
+                                <label alignment="left" text="z" id="hAr-HT-4sS">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="H8a-Ha-8wO"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="labelX" destination="MCX-0D-Sgz" id="7v0-Ri-G7Q"/>
+                        <outlet property="labelY" destination="cce-zu-hRi" id="trx-Nh-rFJ"/>
+                        <outlet property="labelZ" destination="H8a-Ha-8wO" id="O6f-v8-DvG"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="921" y="345"/>
+        </scene>
+        <!--Gyroscope-->
+        <scene sceneID="qlG-QA-aZi">
+            <objects>
+                <controller identifier="Gyroscope" hidesWhenLoading="NO" id="rX0-ZU-uHG" customClass="GyroscopeInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="LTD-eo-ohC">
+                            <items>
+                                <label alignment="left" text="x" id="a2Q-Zc-Zm9">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="4eD-7P-97e"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="05N-8Q-QeB">
+                            <items>
+                                <label alignment="left" text="y" id="XW3-bu-H5v">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="6D3-of-aOD"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="2SA-vO-zZt">
+                            <items>
+                                <label alignment="left" text="z" id="d11-Ah-tAE">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="As6-ga-Hhx"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="labelX" destination="4eD-7P-97e" id="WQr-z4-xDP"/>
+                        <outlet property="labelY" destination="6D3-of-aOD" id="44M-xm-Cae"/>
+                        <outlet property="labelZ" destination="As6-ga-Hhx" id="EeJ-Pl-aTa"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1134" y="345"/>
+        </scene>
+        <!--Pedometer-->
+        <scene sceneID="LD5-oi-ET9">
+            <objects>
+                <controller identifier="Pedometer" hidesWhenLoading="NO" id="A1K-Cj-R3l" customClass="PedometerInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="JoS-wd-7TF">
+                            <items>
+                                <label alignment="left" text="Steps" id="X60-nE-K7l">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="0" textAlignment="right" id="rI5-fY-obX"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="n8Y-UU-aa4">
+                            <items>
+                                <label alignment="left" text="Distance" id="Hoq-4T-h7Y">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="0" textAlignment="right" id="pm1-kt-hVd"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="JO1-xN-z9K">
+                            <items>
+                                <label alignment="left" text="Ascended" id="bb4-zI-Nzf">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="0" textAlignment="right" id="heW-ks-hsd"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="YgD-MK-ymz">
+                            <items>
+                                <label alignment="left" text="Descended" id="uzr-a1-Sfr">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="0" textAlignment="right" id="Kp3-vP-PAm"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="labelAscended" destination="heW-ks-hsd" id="1eV-Ba-Vc1"/>
+                        <outlet property="labelDescended" destination="Kp3-vP-PAm" id="znD-El-qTh"/>
+                        <outlet property="labelDistance" destination="pm1-kt-hVd" id="E3Q-m1-dYc"/>
+                        <outlet property="labelSteps" destination="rI5-fY-obX" id="ERL-fH-nhU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1349" y="345"/>
+        </scene>
+        <!--DeviceMotion-->
+        <scene sceneID="kgg-wL-8D8">
+            <objects>
+                <controller identifier="DeviceMotion" hidesWhenLoading="NO" id="ezZ-AZ-cYI" customClass="DeviceMotionInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="4g8-YB-EVp">
+                            <items>
+                                <label alignment="left" text="x" id="Vue-c8-9Q0">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="BZ8-x1-bD3"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="VbY-dH-S6k">
+                            <items>
+                                <label alignment="left" text="y" id="GTJ-n6-Wgl">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="D2H-ek-qxN"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="f0L-zG-xoB">
+                            <items>
+                                <label alignment="left" text="z" id="PAr-5M-p6q">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="sMf-4C-AKY"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="labelX" destination="BZ8-x1-bD3" id="Kly-ub-aBT"/>
+                        <outlet property="labelY" destination="D2H-ek-qxN" id="cjf-NE-ZOE"/>
+                        <outlet property="labelZ" destination="sMf-4C-AKY" id="u9Y-ry-df8"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1567" y="345"/>
+        </scene>
+    </scenes>
+</document>

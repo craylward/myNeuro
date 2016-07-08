@@ -30,12 +30,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 import ResearchKit
+import WatchConnectivity
 
 // Used to simulate heart rate for simulator
 var simHeartRate = false;
+let tappingDuration = NSTimeInterval(5)
 
 enum Activity: Int {
-    case Questionnaire, Tremor, Bradykinesia, Gait  //, HeartRate
+    case Questionnaire, Tremor, Bradykinesia, Gait, TremorWatch, BradykinesiaWatch  //, HeartRate
     
     static var allValues: [Activity] {
         var idx = 0
@@ -52,6 +54,10 @@ enum Activity: Int {
                 return "Bradykinesia"
             case .Gait:
                 return "Gait"
+            case .TremorWatch:
+                return "Tremor (Watch)"
+            case .BradykinesiaWatch:
+                return "Bradykinesia (Watch)"
 //            case .HeartRate:
 //                return "Heart Rate"
 
@@ -68,6 +74,10 @@ enum Activity: Int {
                 return "Test Bradykinesia"
             case .Gait:
                 return "Test gait and balance"
+            case .TremorWatch:
+                return "Test Tremor (Apple Watch)"
+            case .BradykinesiaWatch:
+                return "Test Bradykinesia (Apple Watch)"
             // Developing
 //            case .HeartRate:
 //                return "Heart rate test"
@@ -75,11 +85,21 @@ enum Activity: Int {
     }
 }
 
-class ActivityViewController: UITableViewController {
+class ActivityViewController: UITableViewController, WCSessionDelegate {
     
     // MARK: Properties
     
     var result: ORKResult?
+    
+    //Watch Connectivity
+    var session: WCSession? {
+        didSet {
+            if let session = session {
+                session.delegate = self
+                session.activateSession()
+            }
+        }
+    }
     
     /**
      When a task is completed, the `TaskListViewController` calls this closure
@@ -112,6 +132,11 @@ class ActivityViewController: UITableViewController {
         guard let activity = Activity(rawValue: indexPath.row) else { return }
         
         let taskViewController: ORKTaskViewController
+        
+        // WatchConnectivity
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+        }
 
         switch activity {
             case .Questionnaire:
@@ -122,6 +147,10 @@ class ActivityViewController: UITableViewController {
                 taskViewController = ORKTaskViewController(task: TremorTask, taskRunUUID: NSUUID())
             case .Gait:
                 taskViewController = ORKTaskViewController(task: GaitTask, taskRunUUID: NSUUID())
+            case .BradykinesiaWatch:
+                taskViewController = ORKTaskViewController(task: BradykinesiaTask, taskRunUUID: NSUUID())
+            case .TremorWatch:
+                taskViewController = ORKTaskViewController(task: TremorTaskWatch, taskRunUUID: NSUUID())
 //            case .HeartRate:
 //                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
 //                simHeartRate = true;
@@ -169,19 +198,28 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
 //        }
         
         // MARK: Update results and analysis tabs
-        let customTabBarController = self.tabBarController as! CustomTabBarController
-        let model = customTabBarController.model
-        model.result = taskViewController.result
-        let navResult = customTabBarController.viewControllers![2] as! UINavigationController
-        let resultViewController = navResult.topViewController as! ResultViewController
-        let navAnalysis = customTabBarController.viewControllers![4] as! UINavigationController
-        let analysisViewController = navAnalysis.topViewController as! AnalysisViewController
-        print("Updating results/analysis tabs...")
-        resultViewController.result = model.result
-        analysisViewController.result = model.result
-        
+        else if reason == .Completed {
+            if taskViewController.task?.identifier == "TremorTask" {
+                processTremorFiles(ResultParser.findFiles(taskViewController.result))
+            }
+            else if taskViewController.task?.identifier == "BradykinesiaTask" {
+                processBradykinesia(taskViewController.result)
+            }
+            
+            let customTabBarController = self.tabBarController as! CustomTabBarController
+            let model = customTabBarController.model
+            model.result = taskViewController.result
+            let navResult = customTabBarController.viewControllers![2] as! UINavigationController
+            let resultViewController = navResult.topViewController as! ResultViewController
+            let navAnalysis = customTabBarController.viewControllers![4] as! UINavigationController
+            let analysisViewController = navAnalysis.topViewController as! AnalysisViewController
+            print("Updating results/analysis tabs...")
+            resultViewController.result = model.result
+            analysisViewController.result = model.result
+        }
         // MARK: Save results
-        // taskViewController.result ...
+        
+
         
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         

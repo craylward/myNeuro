@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 import CoreMotion
 
-class PosturalTremorStepViewController: MotionStepViewController
+class PosturalTremorStepViewController: ORKActiveStepViewController
 {
     static func stepViewControllerClass() -> PosturalTremorStepViewController.Type {
         return PosturalTremorStepViewController.self

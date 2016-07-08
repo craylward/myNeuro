@@ -239,6 +239,9 @@ class BradykinesiaAnalysisTableViewProvider: AnalysisTableViewProvider {
         timeIntervalsRev.removeFirst() // remove 0 element (first tap) for finding minimum tap interval time
         let count = questionResult.samples!.count
         let freq = frequency(timeIntervals, duration: tappingDuration)
+        for element in timeIntervals {
+            print(element)
+        }
         let sd = standardDeviation(timeIntervals)
         let avg = average(timeIntervals)
         

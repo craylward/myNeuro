@@ -10,7 +10,7 @@ import Foundation
 import ResearchKit
 import CoreMotion
 
-class KineticTremorStepViewController: MotionStepViewController
+class KineticTremorStepViewController: ORKActiveStepViewController
 {
     // ORKActiveStepViewController Functions
     static func stepViewControllerClass() -> KineticTremorStepViewController.Type {

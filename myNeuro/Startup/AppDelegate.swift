@@ -30,6 +30,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 import ResearchKit
+import WatchConnectivity
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,6 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let healthStore = HKHealthStore()
     
     var window: UIWindow?
+    
+    // Watch Connectivity
+    var session: WCSession? {
+        didSet {
+            if let session = session {
+                session.delegate = self
+                session.activateSession()
+            }
+        }
+    }
     
     var containerViewController: ResearchContainerViewController? {
         return window?.rootViewController as? ResearchContainerViewController
@@ -60,7 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+        }
         lockApp()
         return true
     }
@@ -88,6 +102,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to ResearchKit Sample App", delegate: self) as! ORKPasscodeViewController
         containerViewController?.presentViewController(passcodeViewController, animated: false, completion: nil)
     }
+    
+    func applicationShouldRequestHealthAuthorization(application: UIApplication) {
+        let healthStore = HKHealthStore()
+        guard HKHealthStore.isHealthDataAvailable() else {
+            return
+        }
+        
+        let dataTypes = Set([HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!])
+        healthStore.requestAuthorizationToShareTypes(nil, readTypes: dataTypes, completion: { (result, error) -> Void in
+        })
+    }
+    
+
 }
 
 extension AppDelegate: ORKPasscodeDelegate {
@@ -98,5 +125,33 @@ extension AppDelegate: ORKPasscodeDelegate {
     
     func passcodeViewControllerDidFailAuthentication(viewController: UIViewController) {
     }
+    
+    
+
+}
+
+extension AppDelegate: WCSessionDelegate {
+    
+    // =========================================================================
+    // MARK: - WCSessionDelegate
+    
+    func sessionWatchStateDidChange(session: WCSession) {
+        print(#function)
+        print(session)
+        print("reachable:\(session.reachable)")
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        print(#function)
+        guard message["request"] as? String == "fireLocalNotification" else {return}
+        
+        let localNotification = UILocalNotification()
+        localNotification.alertBody = "Message Received!"
+        localNotification.fireDate = NSDate()
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
 }
 

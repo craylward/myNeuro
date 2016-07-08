@@ -48,6 +48,22 @@
 		DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */; };
 		DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */; };
 		DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D01CA1CF75E3700BE6CEB /* Skin.swift */; };
+		DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */; };
+		DAA5CE6C1D2F595100CF86C8 /* myNeuro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */; };
+		DAA5CE731D2F689400CF86C8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA5CE711D2F689400CF86C8 /* Interface.storyboard */; };
+		DAA5CE751D2F689400CF86C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA5CE741D2F689400CF86C8 /* Assets.xcassets */; };
+		DAA5CE7C1D2F689400CF86C8 /* neuroWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DAA5CE7B1D2F689400CF86C8 /* neuroWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DAA5CE831D2F689500CF86C8 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE821D2F689500CF86C8 /* InterfaceController.swift */; };
+		DAA5CE851D2F689500CF86C8 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE841D2F689500CF86C8 /* ExtensionDelegate.swift */; };
+		DAA5CE871D2F689500CF86C8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE861D2F689500CF86C8 /* NotificationController.swift */; };
+		DAA5CE891D2F689500CF86C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA5CE881D2F689500CF86C8 /* Assets.xcassets */; };
+		DAA5CE8D1D2F689500CF86C8 /* neuroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DAA5CE6F1D2F689400CF86C8 /* neuroWatch.app */; };
+		DAA5CEBE1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEBD1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift */; };
+		DAA5CEC01D2F6F3100CF86C8 /* RowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEBF1D2F6F3100CF86C8 /* RowController.swift */; };
+		DAA5CEC21D2F707500CF86C8 /* GyroscopeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC11D2F707500CF86C8 /* GyroscopeInterfaceController.swift */; };
+		DAA5CEC41D2F709400CF86C8 /* DeviceMotionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC31D2F709400CF86C8 /* DeviceMotionInterfaceController.swift */; };
+		DAA5CEC61D2F70B100CF86C8 /* PedometerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */; };
+		DAA5CEC81D2F70C200CF86C8 /* HeartRateInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */; };
 		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2101CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */; };
@@ -57,6 +73,8 @@
 		DADBDFC41D243F3000A707D6 /* MotionStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */; };
 		DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */; };
 		DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC91D26122200A707D6 /* GaitTask.swift */; };
+		DADBDFD21D26E81F00A707D6 /* ResultsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFD11D26E81F00A707D6 /* ResultsParser.swift */; };
+		DADBDFD81D26FAA900A707D6 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFD71D26FAA900A707D6 /* Analysis.swift */; };
 		DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C511CD9FB4A000C164D /* WatchStep.swift */; };
 		DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C571CD9FB9D000C164D /* WatchTask.swift */; };
 		DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */; };
@@ -111,6 +129,20 @@
 			remoteGlobalIDString = 869230BE1AAA890A00BFE11B;
 			remoteInfo = ORKCatalog;
 		};
+		DAA5CE7D1D2F689400CF86C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9BB11CA370160095794F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAA5CE7A1D2F689400CF86C8;
+			remoteInfo = "neuroWatch Extension";
+		};
+		DAA5CE8B1D2F689500CF86C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7B9BB11CA370160095794F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAA5CE6E1D2F689400CF86C8;
+			remoteInfo = neuroWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,6 +155,28 @@
 				DA7B9BF61CA379C40095794F /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAA5CE911D2F689500CF86C8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DAA5CE7C1D2F689400CF86C8 /* neuroWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAA5CE951D2F689500CF86C8 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DAA5CE8D1D2F689500CF86C8 /* neuroWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -175,6 +229,25 @@
 		DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResearchContainerViewController.swift; path = Startup/ResearchContainerViewController.swift; sourceTree = "<group>"; };
 		DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawViewController.swift; path = Onboarding/WithdrawViewController.swift; sourceTree = "<group>"; };
 		DA7D01CA1CF75E3700BE6CEB /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Skin.swift; path = UI/Skin.swift; sourceTree = "<group>"; };
+		DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Resources/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myNeuro.xcdatamodel; sourceTree = "<group>"; };
+		DAA5CE6F1D2F689400CF86C8 /* neuroWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neuroWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA5CE721D2F689400CF86C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DAA5CE741D2F689400CF86C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAA5CE761D2F689400CF86C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAA5CE7B1D2F689400CF86C8 /* neuroWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "neuroWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA5CE811D2F689500CF86C8 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		DAA5CE821D2F689500CF86C8 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DAA5CE841D2F689500CF86C8 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DAA5CE861D2F689500CF86C8 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DAA5CE881D2F689500CF86C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAA5CE8A1D2F689500CF86C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAA5CEBD1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerInterfaceController.swift; sourceTree = "<group>"; };
+		DAA5CEBF1D2F6F3100CF86C8 /* RowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowController.swift; sourceTree = "<group>"; };
+		DAA5CEC11D2F707500CF86C8 /* GyroscopeInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroscopeInterfaceController.swift; sourceTree = "<group>"; };
+		DAA5CEC31D2F709400CF86C8 /* DeviceMotionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMotionInterfaceController.swift; sourceTree = "<group>"; };
+		DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerInterfaceController.swift; sourceTree = "<group>"; };
+		DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateInterfaceController.swift; sourceTree = "<group>"; };
 		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = TabBarControllers/CustomTabBarController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisTableViewProviders.swift; path = Analysis/AnalysisTableViewProviders.swift; sourceTree = "<group>"; };
@@ -184,6 +257,8 @@
 		DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionStepViewController.swift; path = TasksAndSteps/MotionStepViewController.swift; sourceTree = "<group>"; };
 		DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradykinesiaTask.swift; path = TasksAndSteps/BradykinesiaTask/BradykinesiaTask.swift; sourceTree = "<group>"; };
 		DADBDFC91D26122200A707D6 /* GaitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaitTask.swift; path = TasksAndSteps/GaitTask/GaitTask.swift; sourceTree = "<group>"; };
+		DADBDFD11D26E81F00A707D6 /* ResultsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsParser.swift; path = Results/ResultsParser.swift; sourceTree = "<group>"; };
+		DADBDFD71D26FAA900A707D6 /* Analysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Analysis.swift; path = Analysis/Analysis.swift; sourceTree = "<group>"; };
 		DAEB9C511CD9FB4A000C164D /* WatchStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStep.swift; path = myNeuro/Developer/Watch/WatchStep.swift; sourceTree = "<group>"; };
 		DAEB9C571CD9FB9D000C164D /* WatchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchTask.swift; path = myNeuro/Developer/Watch/WatchTask.swift; sourceTree = "<group>"; };
 		DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStepViewController.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStepViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +281,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DA7B9BCA1CA370160095794F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAA5CE781D2F689400CF86C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,6 +323,7 @@
 				DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */,
 				DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */,
 				DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */,
+				DADBDFD11D26E81F00A707D6 /* ResultsParser.swift */,
 			);
 			name = Results;
 			sourceTree = "<group>";
@@ -248,9 +331,12 @@
 		DA7B9BB01CA370160095794F = {
 			isa = PBXGroup;
 			children = (
+				DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */,
 				DA6C514A1CC75DBA007A37C5 /* HealthKit.framework */,
 				DA7B9BBB1CA370160095794F /* myNeuro */,
 				DA7B9BD01CA370160095794F /* myNeuroTests */,
+				DAA5CE701D2F689400CF86C8 /* neuroWatch */,
+				DAA5CE7F1D2F689400CF86C8 /* neuroWatch Extension */,
 				DA7B9BBA1CA370160095794F /* Products */,
 				DA7B9C1B1CA3B7D50095794F /* ORKCatalog.xcodeproj */,
 				DA7B9C151CA3B7CF0095794F /* ORKSample.xcodeproj */,
@@ -263,6 +349,8 @@
 			children = (
 				DA7B9BB91CA370160095794F /* myNeuro.app */,
 				DA7B9BCD1CA370160095794F /* myNeuroTests.xctest */,
+				DAA5CE6F1D2F689400CF86C8 /* neuroWatch.app */,
+				DAA5CE7B1D2F689400CF86C8 /* neuroWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,12 +458,50 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		DAA5CE701D2F689400CF86C8 /* neuroWatch */ = {
+			isa = PBXGroup;
+			children = (
+				DAA5CE711D2F689400CF86C8 /* Interface.storyboard */,
+				DAA5CE741D2F689400CF86C8 /* Assets.xcassets */,
+				DAA5CE761D2F689400CF86C8 /* Info.plist */,
+			);
+			path = neuroWatch;
+			sourceTree = "<group>";
+		};
+		DAA5CE7F1D2F689400CF86C8 /* neuroWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DAA5CE821D2F689500CF86C8 /* InterfaceController.swift */,
+				DAA5CEBF1D2F6F3100CF86C8 /* RowController.swift */,
+				DAA5CE841D2F689500CF86C8 /* ExtensionDelegate.swift */,
+				DAA5CE861D2F689500CF86C8 /* NotificationController.swift */,
+				DAA5CE881D2F689500CF86C8 /* Assets.xcassets */,
+				DAA5CE8A1D2F689500CF86C8 /* Info.plist */,
+				DAA5CE801D2F689500CF86C8 /* Supporting Files */,
+				DAA5CEBD1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift */,
+				DAA5CEC31D2F709400CF86C8 /* DeviceMotionInterfaceController.swift */,
+				DAA5CEC11D2F707500CF86C8 /* GyroscopeInterfaceController.swift */,
+				DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */,
+				DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */,
+			);
+			path = "neuroWatch Extension";
+			sourceTree = "<group>";
+		};
+		DAA5CE801D2F689500CF86C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DAA5CE811D2F689500CF86C8 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		DABFD2061CABD3530057BCF9 /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
 				DABFD20F1CAC64EE0057BCF9 /* AnalysisTableViewProviders.swift */,
 				DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */,
 				DABFD2111CB4F7580057BCF9 /* Math.swift */,
+				DADBDFD71D26FAA900A707D6 /* Analysis.swift */,
 			);
 			name = Analysis;
 			sourceTree = "<group>";
@@ -462,6 +588,7 @@
 		DAEE34011CEED128008A270C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -485,11 +612,13 @@
 				DA7B9BB61CA370160095794F /* Frameworks */,
 				DA7B9BB71CA370160095794F /* Resources */,
 				DA7B9BF91CA379C40095794F /* Embed Frameworks */,
+				DAA5CE951D2F689500CF86C8 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DA7B9BF81CA379C40095794F /* PBXTargetDependency */,
+				DAA5CE8C1D2F689500CF86C8 /* PBXTargetDependency */,
 			);
 			name = myNeuro;
 			productName = myNeuro;
@@ -514,13 +643,47 @@
 			productReference = DA7B9BCD1CA370160095794F /* myNeuroTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DAA5CE6E1D2F689400CF86C8 /* neuroWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAA5CE921D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch" */;
+			buildPhases = (
+				DAA5CE6D1D2F689400CF86C8 /* Resources */,
+				DAA5CE911D2F689500CF86C8 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAA5CE7E1D2F689400CF86C8 /* PBXTargetDependency */,
+			);
+			name = neuroWatch;
+			productName = neuroWatch;
+			productReference = DAA5CE6F1D2F689400CF86C8 /* neuroWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DAA5CE7A1D2F689400CF86C8 /* neuroWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAA5CE8E1D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch Extension" */;
+			buildPhases = (
+				DAA5CE771D2F689400CF86C8 /* Sources */,
+				DAA5CE781D2F689400CF86C8 /* Frameworks */,
+				DAA5CE791D2F689400CF86C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "neuroWatch Extension";
+			productName = "neuroWatch Extension";
+			productReference = DAA5CE7B1D2F689400CF86C8 /* neuroWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DA7B9BB11CA370160095794F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = SJM;
 				TargetAttributes = {
@@ -536,6 +699,14 @@
 					DA7B9BCC1CA370160095794F = {
 						CreatedOnToolsVersion = 7.2.1;
 						TestTargetID = DA7B9BB81CA370160095794F;
+					};
+					DAA5CE6E1D2F689400CF86C8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P6G6N6X557;
+					};
+					DAA5CE7A1D2F689400CF86C8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P6G6N6X557;
 					};
 				};
 			};
@@ -568,6 +739,8 @@
 			targets = (
 				DA7B9BB81CA370160095794F /* myNeuro */,
 				DA7B9BCC1CA370160095794F /* myNeuroTests */,
+				DAA5CE6E1D2F689400CF86C8 /* neuroWatch */,
+				DAA5CE7A1D2F689400CF86C8 /* neuroWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -622,6 +795,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAA5CE6D1D2F689400CF86C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAA5CE751D2F689400CF86C8 /* Assets.xcassets in Resources */,
+				DAA5CE731D2F689400CF86C8 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAA5CE791D2F689400CF86C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAA5CE891D2F689500CF86C8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -634,6 +824,7 @@
 				DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */,
 				DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */,
 				DADBDFC21D243EAA00A707D6 /* RestingTremorStepViewController.swift in Sources */,
+				DADBDFD21D26E81F00A707D6 /* ResultsParser.swift in Sources */,
 				DADBDFBC1D243E9400A707D6 /* RestingTremorStep.swift in Sources */,
 				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
 				DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */,
@@ -643,6 +834,8 @@
 				DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */,
 				DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */,
 				DA7B9BBF1CA370160095794F /* ViewController.swift in Sources */,
+				DAA5CE6C1D2F595100CF86C8 /* myNeuro.xcdatamodeld in Sources */,
+				DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */,
 				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
 				DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */,
 				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
@@ -678,6 +871,7 @@
 				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
 				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
 				DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */,
+				DADBDFD81D26FAA900A707D6 /* Analysis.swift in Sources */,
 				DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */,
 				DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */,
 			);
@@ -688,6 +882,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7B9BD21CA370160095794F /* myNeuroTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAA5CE771D2F689400CF86C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAA5CEC01D2F6F3100CF86C8 /* RowController.swift in Sources */,
+				DAA5CEC21D2F707500CF86C8 /* GyroscopeInterfaceController.swift in Sources */,
+				DAA5CEC41D2F709400CF86C8 /* DeviceMotionInterfaceController.swift in Sources */,
+				DAA5CEC61D2F70B100CF86C8 /* PedometerInterfaceController.swift in Sources */,
+				DAA5CE871D2F689500CF86C8 /* NotificationController.swift in Sources */,
+				DAA5CEBE1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift in Sources */,
+				DAA5CE851D2F689500CF86C8 /* ExtensionDelegate.swift in Sources */,
+				DAA5CE831D2F689500CF86C8 /* InterfaceController.swift in Sources */,
+				DAA5CEC81D2F70C200CF86C8 /* HeartRateInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +913,16 @@
 			isa = PBXTargetDependency;
 			name = ResearchKit;
 			targetProxy = DA7B9BF71CA379C40095794F /* PBXContainerItemProxy */;
+		};
+		DAA5CE7E1D2F689400CF86C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAA5CE7A1D2F689400CF86C8 /* neuroWatch Extension */;
+			targetProxy = DAA5CE7D1D2F689400CF86C8 /* PBXContainerItemProxy */;
+		};
+		DAA5CE8C1D2F689500CF86C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAA5CE6E1D2F689400CF86C8 /* neuroWatch */;
+			targetProxy = DAA5CE8B1D2F689500CF86C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -721,6 +941,14 @@
 				DA7B9C501CA3BA0F0095794F /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DAA5CE711D2F689400CF86C8 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAA5CE721D2F689400CF86C8 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -865,6 +1093,80 @@
 			};
 			name = Release;
 		};
+		DAA5CE8F1D2F689500CF86C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "neuroWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		DAA5CE901D2F689500CF86C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "neuroWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		DAA5CE931D2F689500CF86C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = neuroWatch_Extension;
+				INFOPLIST_FILE = neuroWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		DAA5CE941D2F689500CF86C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = neuroWatch_Extension;
+				INFOPLIST_FILE = neuroWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -895,7 +1197,39 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		DAA5CE8E1D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAA5CE8F1D2F689500CF86C8 /* Debug */,
+				DAA5CE901D2F689500CF86C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAA5CE921D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAA5CE931D2F689500CF86C8 /* Debug */,
+				DAA5CE941D2F689500CF86C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */,
+			);
+			currentVersion = DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */;
+			name = myNeuro.xcdatamodeld;
+			path = myNeuro/myNeuro.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DA7B9BB11CA370160095794F /* Project object */;
 }
