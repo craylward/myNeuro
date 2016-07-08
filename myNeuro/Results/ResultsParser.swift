@@ -15,12 +15,19 @@ struct ResultParser {
         
         var urls = [NSURL]()
         
-        if let results = result.results where results.count > 3, let restingTremorResult = results[2] as? ORKStepResult {
-            for item in restingTremorResult.results! {
-                if let fileresult = item as? ORKFileResult,
-                    let fileUrl = fileresult.fileURL {
+        if let resting = result.resultForIdentifier("restingTremorStep") as? ORKStepResult {
+            if let recorder = resting.resultForIdentifier("recorder") as? ORKFileResult, let fileUrl = recorder.fileURL {
                     urls.append(fileUrl)
-                }
+            }
+        }
+        if let postural = result.resultForIdentifier("posturalTremorStep") as? ORKStepResult {
+            if let recorder = postural.resultForIdentifier("recorder") as? ORKFileResult, let fileUrl = recorder.fileURL {
+                urls.append(fileUrl)
+            }
+        }
+        if let kinetic = result.resultForIdentifier("kineticTremorStep") as? ORKStepResult {
+            if let recorder = kinetic.resultForIdentifier("recorder") as? ORKFileResult, let fileUrl = recorder.fileURL {
+                urls.append(fileUrl)
             }
         }
         

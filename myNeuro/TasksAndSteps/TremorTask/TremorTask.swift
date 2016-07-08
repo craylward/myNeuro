@@ -58,11 +58,12 @@ public var TremorTask: ORKOrderedTask {
     
     let posturalTremorStep = PosturalTremorStep(identifier: "posturalTremorStep")
     
-    posturalTremorStep.stepDuration = 10
+    posturalTremorStep.stepDuration = 5
     posturalTremorStep.shouldStartTimerAutomatically = true
     posturalTremorStep.shouldVibrateOnStart = true
     posturalTremorStep.shouldVibrateOnFinish = true
     posturalTremorStep.shouldContinueOnFinish = true
+    posturalTremorStep.recorderConfigurations = [recorder]
     
     steps += [posturalTremorStep]
     
@@ -80,11 +81,12 @@ public var TremorTask: ORKOrderedTask {
     
     let kineticTremorStep = KineticTremorStep(identifier: "kineticTremorStep")
     
-    kineticTremorStep.stepDuration = 10
+    kineticTremorStep.stepDuration = 5
     kineticTremorStep.shouldStartTimerAutomatically = true
     kineticTremorStep.shouldVibrateOnStart = true
     kineticTremorStep.shouldVibrateOnFinish = true
     kineticTremorStep.shouldContinueOnFinish = true
+    kineticTremorStep.recorderConfigurations = [recorder]
     
     steps += [kineticTremorStep]
     
@@ -145,11 +147,12 @@ public var TremorTaskWatch: ORKOrderedTask {
     
     let posturalTremorStep = PosturalTremorStep(identifier: "posturalTremorStep")
     
-    posturalTremorStep.stepDuration = 10
+    posturalTremorStep.stepDuration = 5
     posturalTremorStep.shouldStartTimerAutomatically = true
     posturalTremorStep.shouldVibrateOnStart = true
     posturalTremorStep.shouldVibrateOnFinish = true
     posturalTremorStep.shouldContinueOnFinish = true
+    posturalTremorStep.recorderConfigurations = [recorder]
     
     steps += [posturalTremorStep]
     
@@ -167,11 +170,12 @@ public var TremorTaskWatch: ORKOrderedTask {
     
     let kineticTremorStep = KineticTremorStep(identifier: "kineticTremorStep")
     
-    kineticTremorStep.stepDuration = 10
+    kineticTremorStep.stepDuration = 5
     kineticTremorStep.shouldStartTimerAutomatically = true
     kineticTremorStep.shouldVibrateOnStart = true
     kineticTremorStep.shouldVibrateOnFinish = true
     kineticTremorStep.shouldContinueOnFinish = true
+    kineticTremorStep.recorderConfigurations = [recorder]
     
     steps += [kineticTremorStep]
     
