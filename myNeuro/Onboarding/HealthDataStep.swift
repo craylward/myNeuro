@@ -37,7 +37,11 @@ class HealthDataStep: ORKInstructionStep {
     // MARK: Properties
     
     let healthDataItemsToRead: Set<HKObjectType> = [
-        
+        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
+        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
+        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
         HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!,
         HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierAppleStandHour)!,
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRespiratoryRate)!,
@@ -45,10 +49,7 @@ class HealthDataStep: ORKInstructionStep {
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierFlightsClimbed)!,
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
         HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
-        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
     ]
     
     // MARK: HealthKit Write items
@@ -73,7 +74,6 @@ class HealthDataStep: ORKInstructionStep {
     }
     
     // MARK: Convenience
-    
     func getHealthAuthorization(completion: (success: Bool, error: NSError?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
             let error = NSError(domain: "com.example.apple-samplecode.ORKSample", code: 2, userInfo: [NSLocalizedDescriptionKey: "Health data is not available on this device."])
@@ -87,17 +87,17 @@ class HealthDataStep: ORKInstructionStep {
             completion(success:success, error:error)
         }
     }
+    
+    
     // MARK: Mock Heart Rate Data for simulator
     static var timer: NSTimer?
     static func saveMockHeartData() {
-        
         // 1. Create a heart rate BPM Sample
         let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
         let heartRateQuantity = HKQuantity(unit: HKUnit(fromString: "count/min"),
             doubleValue: Double(arc4random_uniform(80) + 100))
         let heartSample = HKQuantitySample(type: heartRateType,
             quantity: heartRateQuantity, startDate: NSDate(), endDate: NSDate())
-        
         // 2. Save the sample in the store
         HKHealthStore().saveObject(heartSample, withCompletion: { (success, error) -> Void in
             if let error = error {
@@ -112,7 +112,6 @@ class HealthDataStep: ORKInstructionStep {
             userInfo: nil,
             repeats: true)
     }
-    
     static func stopMockHeartData() {
         self.timer?.invalidate()
     }

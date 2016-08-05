@@ -1,9 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
-    <entity name="BradykinesiaResult" syncable="YES">
-        <attribute name="timeIntervals" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+    <entity name="BradyAnalysis" representedClassName=".BradyAnalysis" syncable="YES">
+        <attribute name="brady_cvDuration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="brady_intervalAvg" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updrs" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="GaitAnalysis" representedClassName=".GaitAnalysis" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gait_cycleTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gait_stepIntReg" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gait_strideLength" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gait_walkingSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="updrs" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="MotionSample" representedClassName=".MotionSample" syncable="YES">
+        <attribute name="aX" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="aY" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="aZ" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rX" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rY" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rZ" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="taskResult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskResult" inverseName="motionSamples" inverseEntity="TaskResult" syncable="YES"/>
+    </entity>
+    <entity name="Participant" representedClassName=".Participant" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dbsParam" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="ethnicity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="medsLast24h" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pdDiagnosis" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="taskResult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskResult" inverseName="participant" inverseEntity="TaskResult" syncable="YES"/>
+    </entity>
+    <entity name="QuestionnaireSample" representedClassName=".QuestionnaireSample" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q2" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q3" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q4" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q5" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="taskResult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskResult" inverseName="questionnaireSamples" inverseEntity="TaskResult" syncable="YES"/>
+    </entity>
+    <entity name="TappingSample" representedClassName=".TappingSample" syncable="YES">
+        <attribute name="button_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="loc_x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="loc_y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="taskResult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskResult" inverseName="tappingSamples" inverseEntity="TaskResult" syncable="YES"/>
+    </entity>
+    <entity name="TaskResult" representedClassName=".TaskResult" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="motionSamples" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MotionSample" inverseName="taskResult" inverseEntity="MotionSample" syncable="YES"/>
+        <relationship name="participant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" inverseName="taskResult" inverseEntity="Participant" syncable="YES"/>
+        <relationship name="questionnaireSamples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionnaireSample" inverseName="taskResult" inverseEntity="QuestionnaireSample" syncable="YES"/>
+        <relationship name="tappingSamples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TappingSample" inverseName="taskResult" inverseEntity="TappingSample" syncable="YES"/>
+        <relationship name="walkingSamples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WalkingSample" inverseName="taskResult" inverseEntity="WalkingSample" syncable="YES"/>
+    </entity>
+    <entity name="TremorAnalysis" representedClassName=".TremorAnalysis" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="tremor_k_K" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tremor_k_RMS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tremor_p_K" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tremor_p_RMS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tremor_r_K" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tremor_r_RMS" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="updrs" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="WalkingSample" representedClassName=".WalkingSample" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfSteps" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="taskResult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskResult" inverseName="walkingSamples" inverseEntity="TaskResult" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BradykinesiaResult" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="BradyAnalysis" positionX="-369" positionY="-441" width="128" height="105"/>
+        <element name="GaitAnalysis" positionX="-506" positionY="-441" width="128" height="135"/>
+        <element name="MotionSample" positionX="-398" positionY="-186" width="128" height="195"/>
+        <element name="Participant" positionX="-162" positionY="-441" width="128" height="180"/>
+        <element name="QuestionnaireSample" positionX="-236" positionY="45" width="128" height="163"/>
+        <element name="TappingSample" positionX="-81" positionY="45" width="128" height="148"/>
+        <element name="TaskResult" positionX="-164" positionY="-216" width="128" height="148"/>
+        <element name="TremorAnalysis" positionX="-639" positionY="-441" width="128" height="165"/>
+        <element name="WalkingSample" positionX="70" positionY="-162" width="128" height="150"/>
     </elements>
 </model>

@@ -33,6 +33,7 @@ import ResearchKit
 import CoreData
 
 class ResearchContainerViewController: UIViewController, HealthClientType {
+
     // MARK: HealthClientType
     
     var healthStore: HKHealthStore?

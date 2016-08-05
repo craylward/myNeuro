@@ -38,6 +38,16 @@
                ReferencedContainer = "container:myNeuro.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "86CC8E991AC09332001CCD89"
+               BuildableName = "ResearchKitTests.xctest"
+               BlueprintName = "ResearchKitTests"
+               ReferencedContainer = "container:../ResearchKit/ResearchKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

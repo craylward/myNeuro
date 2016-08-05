@@ -48,5 +48,6 @@ class ResearchContainerSegue: UIStoryboardSegue {
         
         destinationViewController.didMoveToParentViewController(sourceViewController)
         controllerToReplace?.removeFromParentViewController()
+    
     }
 }

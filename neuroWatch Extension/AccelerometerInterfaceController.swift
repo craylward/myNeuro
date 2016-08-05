@@ -75,6 +75,7 @@ class AccelerometerInterfaceController: WKInterfaceController {
     }
     
     override func didDeactivate() {
+        
         super.didDeactivate()
         
         motionManager.stopAccelerometerUpdates()

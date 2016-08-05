@@ -261,5 +261,54 @@
             </objects>
             <point key="canvasLocation" x="1567" y="345"/>
         </scene>
+        <!--Tremor-->
+        <scene sceneID="Mdn-Ae-qgN">
+            <objects>
+                <controller identifier="Tremor" id="fjq-rd-lkS" customClass="TremorInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="ebS-eN-0eB">
+                            <items>
+                                <label alignment="left" text="x" id="8LQ-UI-DF2">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="gdw-MU-lyn"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="D5i-0c-Buf">
+                            <items>
+                                <label alignment="left" text="y" id="mUF-WQ-hyS">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="EdG-GV-an9"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="UQD-H6-qCZ">
+                            <items>
+                                <label alignment="left" text="z" id="3eh-qt-EmH">
+                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                </label>
+                                <label alignment="right" text="Label" textAlignment="right" id="6ap-uQ-7jU"/>
+                            </items>
+                        </group>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Record" id="4ba-9J-saN">
+                            <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                            <connections>
+                                <action selector="onRecord" destination="fjq-rd-lkS" id="0QE-2a-C93"/>
+                            </connections>
+                        </button>
+                        <label alignment="center" verticalAlignment="bottom" text="statusLabel" numberOfLines="0" id="RDd-47-Q3H"/>
+                    </items>
+                    <connections>
+                        <outlet property="labelX" destination="gdw-MU-lyn" id="jnP-bg-vqs"/>
+                        <outlet property="labelY" destination="EdG-GV-an9" id="yw9-t8-Snq"/>
+                        <outlet property="labelZ" destination="6ap-uQ-7jU" id="xQ0-Em-L3U"/>
+                        <outlet property="recordButton" destination="4ba-9J-saN" id="x2M-O2-rDT"/>
+                        <outlet property="statusLabel" destination="RDd-47-Q3H" id="g2C-ML-Szs"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="709" y="77"/>
+        </scene>
     </scenes>
 </document>

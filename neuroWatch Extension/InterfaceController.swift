@@ -19,14 +19,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var table: WKInterfaceTable!
     var items: [Dictionary<String, String>]!
     
-    var session: WCSession? {
-        didSet {
-            if let session = session {
-                session.delegate = self
-                session.activateSession()
-            }
-        }
-    }
+
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -34,6 +27,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         // Configure interface objects here.
         items = [
+            [
+                kItemKeyTitle: "Tremor",
+                kItemKeyDetail: "Records sensor data related to tremor.",
+                kItemKeyClassPrefix: "Tremor",
+            ],
             [
                 kItemKeyTitle: "Heart Rate",
                 kItemKeyDetail: "Access to Heart Rate data using HealthKit.",
@@ -102,4 +100,5 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         pushControllerWithName(title!, context: nil)
     }
+
 }

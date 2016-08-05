@@ -8,6 +8,7 @@
 
 import UIKit
 import ResearchKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -33,4 +34,3 @@ extension ViewController : ORKTaskViewControllerDelegate {
     }
     
 }
-

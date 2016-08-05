@@ -32,11 +32,14 @@ import UIKit
 import ResearchKit
 import WatchConnectivity
 import HealthKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let healthStore = HKHealthStore()
+    
+    var coreData: CoreDataStack!
     
     var window: UIWindow?
     
@@ -53,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var containerViewController: ResearchContainerViewController? {
         return window?.rootViewController as? ResearchContainerViewController
     }
+
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         let standardDefaults = NSUserDefaults.standardUserDefaults()
@@ -72,9 +76,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
         }
+        
+        //Core Data
+        coreData = CoreDataStack.sharedInstance()
+
         lockApp()
         return true
     }
@@ -113,7 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         healthStore.requestAuthorizationToShareTypes(nil, readTypes: dataTypes, completion: { (result, error) -> Void in
         })
     }
-    
 
 }
 
@@ -125,16 +133,9 @@ extension AppDelegate: ORKPasscodeDelegate {
     
     func passcodeViewControllerDidFailAuthentication(viewController: UIViewController) {
     }
-    
-    
-
 }
 
 extension AppDelegate: WCSessionDelegate {
-    
-    // =========================================================================
-    // MARK: - WCSessionDelegate
-    
     func sessionWatchStateDidChange(session: WCSession) {
         print(#function)
         print(session)
@@ -152,6 +153,5 @@ extension AppDelegate: WCSessionDelegate {
         
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
-    
 }
 

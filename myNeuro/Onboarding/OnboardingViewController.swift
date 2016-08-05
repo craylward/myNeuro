@@ -35,17 +35,9 @@ class OnboardingViewController: UIViewController {
     // MARK: IB actions
     
     @IBAction func joinButtonTapped(sender: UIButton) {
-        
         performSegueWithIdentifier("toEligibility", sender: nil)
-        
-//        let orderedTask = ConsentTask
-//        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
-//        taskViewController.delegate = self
-//        
-//        presentViewController(taskViewController, animated: true, completion: nil)
     }
     
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
@@ -57,26 +49,4 @@ class OnboardingViewController: UIViewController {
     }
     
 }
-
-extension OnboardingViewController : ORKTaskViewControllerDelegate {
-    
-    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
-        switch reason {
-            case .Completed:
-                performSegueWithIdentifier("unwindToStudy", sender: nil)
-            
-            case .Discarded, .Failed, .Saved:
-                dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
-    func taskViewController(taskViewController: ORKTaskViewController, viewControllerForStep step: ORKStep) -> ORKStepViewController? {
-        if step is HealthDataStep {
-            let healthStepViewController = HealthDataStepViewController(step: step)
-            return healthStepViewController
-        }
-        return nil
-    }
-}
-
 

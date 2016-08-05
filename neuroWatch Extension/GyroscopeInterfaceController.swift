@@ -10,6 +10,7 @@ import WatchKit
 import Foundation
 import CoreMotion
 
+// ONLY COMPATIBLE WITH WATCHOS 3!!
 
 class GyroscopeInterfaceController: WKInterfaceController {
     

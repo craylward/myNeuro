@@ -10,17 +10,7 @@ import Foundation
 import UIKit
 import ResearchKit
 
-// This class holds the data for my model.
-class ModelData {
-    var result: ORKResult?
-}
-
 class CustomTabBarController: UITabBarController {
-    
-    // Instantiate the one copy of the model data that will be accessed
-    // by all of the tabs.
-    var model = ModelData()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

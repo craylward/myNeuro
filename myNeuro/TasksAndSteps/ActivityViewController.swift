@@ -31,6 +31,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import UIKit
 import ResearchKit
 import WatchConnectivity
+import CoreData
 
 // Used to simulate heart rate for simulator
 var simHeartRate = false;
@@ -91,6 +92,10 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
     
     var result: ORKResult?
     
+    var coreData = {
+        return CoreDataStack.sharedInstance()
+    }()
+
     //Watch Connectivity
     var session: WCSession? {
         didSet {
@@ -106,6 +111,10 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
      with the created task.
      */
     var taskResultFinishedCompletionHandler: (ORKResult -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     // MARK: UITableViewDataSource
 
@@ -148,9 +157,9 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
             case .Gait:
                 taskViewController = ORKTaskViewController(task: GaitTask, taskRunUUID: NSUUID())
             case .BradykinesiaWatch:
-                taskViewController = ORKTaskViewController(task: BradykinesiaTask, taskRunUUID: NSUUID())
+                taskViewController = ORKTaskViewController(task: ConsentTask, taskRunUUID: NSUUID())
             case .TremorWatch:
-                taskViewController = ORKTaskViewController(task: TremorTaskWatch, taskRunUUID: NSUUID())
+                taskViewController = ORKTaskViewController(task: TremorTaskW, taskRunUUID: NSUUID())
 //            case .HeartRate:
 //                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
 //                simHeartRate = true;
@@ -174,7 +183,6 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         catch let error as NSError {
             fatalError("The output directory for the task with UUID: \(taskViewController.taskRunUUID.UUIDString) could not be created. Error: \(error.localizedDescription)")
         }
-        
         taskViewController.delegate = self
         navigationController?.presentViewController(taskViewController, animated: true, completion: nil)
         if simHeartRate == true {
@@ -196,31 +204,22 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
 //            HealthDataStep.stopMockHeartData()
 //            simHeartRate = false
 //        }
-        
+
         // MARK: Update results and analysis tabs
         else if reason == .Completed {
-            if taskViewController.task?.identifier == "TremorTask" {
-                processTremorFiles(ResultParser.findFiles(taskViewController.result))
-            }
-            else if taskViewController.task?.identifier == "BradykinesiaTask" {
-                processBradykinesia(taskViewController.result)
-            }
-            
             let customTabBarController = self.tabBarController as! CustomTabBarController
-            let model = customTabBarController.model
-            model.result = taskViewController.result
+            let resultProcessor = ResultProcessor(context: coreData.privateObjectContext)
+            coreData.privateObjectContext.performBlock { () -> Void in
+                resultProcessor.processResult(taskViewController.result)
+            }
             let navResult = customTabBarController.viewControllers![2] as! UINavigationController
             let resultViewController = navResult.topViewController as! ResultViewController
-            let navAnalysis = customTabBarController.viewControllers![4] as! UINavigationController
-            let analysisViewController = navAnalysis.topViewController as! AnalysisViewController
-            print("Updating results/analysis tabs...")
-            resultViewController.result = model.result
-            analysisViewController.result = model.result
-        }
-        // MARK: Save results
-        
 
-        
+            print("Updating results/analysis tabs...")
+            resultViewController.result = taskViewController.result
+            
+            
+        }
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         
     }
