@@ -117,8 +117,8 @@ func gaitAnalysis (resultId: Int){
     let gaitWalkingOutboundRequest = NSFetchRequest(entityName: "WalkingSample")
     let gaitWalkingReturnRequest = NSFetchRequest(entityName: "WalkingSample")
     let idPredicate = NSPredicate(format: "id == \(resultId)")
-    let outboundPredicate = NSPredicate(format: "type == walking.outbound.pedometer")
-    let returnPredicate = NSPredicate(format: "type == walking.return.pedometer")
+    let outboundPredicate = NSPredicate(format: "type == %@", "walking.outbound.pedometer")  //// PROBLEMMMMMM
+    let returnPredicate = NSPredicate(format: "type == %@", "walking.return.pedometer")
     let outboundPredicates = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [idPredicate, outboundPredicate])
     let returnPredicates = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [idPredicate, returnPredicate])
     gaitWalkingOutboundRequest.sortDescriptors = [NSSortDescriptor(key: "duration", ascending: false)]
@@ -132,7 +132,7 @@ func gaitAnalysis (resultId: Int){
     do {
         gaitMotionSamples = try coreData.privateObjectContext.executeFetchRequest(gaitMotionSamplesRequest) as? [MotionSample]
         gaitWalkingOutboundSamples = try coreData.privateObjectContext.executeFetchRequest(gaitWalkingOutboundRequest) as? [WalkingSample]
-        gaitWalkingReturnSamples = try coreData.privateObjectContext.executeFetchRequest(gaitWalkingOutboundRequest) as? [WalkingSample]
+        gaitWalkingReturnSamples = try coreData.privateObjectContext.executeFetchRequest(gaitWalkingReturnRequest) as? [WalkingSample]
     } catch {
         let fetchError = error as NSError
         print(fetchError)

@@ -38,7 +38,7 @@ extension EligibleViewController : ORKTaskViewControllerDelegate {
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         switch reason {
         case .Completed:
-            let resultProcessor = ResultProcessor(context: privateContext)
+            let resultProcessor = ResultProcessor()
             privateContext.performBlock { () -> Void in
                 resultProcessor.processResult(taskViewController.result)
             }            

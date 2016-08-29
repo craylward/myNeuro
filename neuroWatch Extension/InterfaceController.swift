@@ -28,35 +28,45 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         // Configure interface objects here.
         items = [
             [
-                kItemKeyTitle: "Tremor",
+                kItemKeyTitle: "TremorTask",
                 kItemKeyDetail: "Records sensor data related to tremor.",
-                kItemKeyClassPrefix: "Tremor",
+                kItemKeyClassPrefix: "TremorTask",
             ],
+            [
+                kItemKeyTitle: "FingerTapping",
+                kItemKeyDetail: "Finger tapping test for Bradykinesia assessment.",
+                kItemKeyClassPrefix: "BradyKinesiaTask",
+            ],
+//            [
+//                kItemKeyTitle: "Tremor",
+//                kItemKeyDetail: "Records sensor data related to tremor.",
+//                kItemKeyClassPrefix: "Tremor",
+//            ],
             [
                 kItemKeyTitle: "Heart Rate",
                 kItemKeyDetail: "Access to Heart Rate data using HealthKit.",
                 kItemKeyClassPrefix: "HeartRate",
             ],
-            [
-                kItemKeyTitle: "Accelerometer",
-                kItemKeyDetail: "Access to Accelerometer data using CoreMotion.",
-                kItemKeyClassPrefix: "Accelerometer"
-            ],
-            [
-                kItemKeyTitle: "Gyroscope",
-                kItemKeyDetail: "Access to Gyroscope data using CoreMotion.",
-                kItemKeyClassPrefix: "Gyroscope",
-            ],
-            [
-                kItemKeyTitle: "Device Motion",
-                kItemKeyDetail: "Access to DevicemMotion data using CoreMotion.",
-                kItemKeyClassPrefix: "DeviceMotion",
-            ],
-            [
-                kItemKeyTitle: "Pedometer",
-                kItemKeyDetail: "Counting steps demo using CMPedometer.",
-                kItemKeyClassPrefix: "Pedometer",
-            ]
+//            [
+//                kItemKeyTitle: "Accelerometer",
+//                kItemKeyDetail: "Access to Accelerometer data using CoreMotion.",
+//                kItemKeyClassPrefix: "Accelerometer"
+//            ],
+//            [
+//                kItemKeyTitle: "Gyroscope",
+//                kItemKeyDetail: "Access to Gyroscope data using CoreMotion.",
+//                kItemKeyClassPrefix: "Gyroscope",
+//            ],
+//            [
+//                kItemKeyTitle: "Device Motion",
+//                kItemKeyDetail: "Access to DevicemMotion data using CoreMotion.",
+//                kItemKeyClassPrefix: "DeviceMotion",
+//            ],
+//            [
+//                kItemKeyTitle: "Pedometer",
+//                kItemKeyDetail: "Counting steps demo using CMPedometer.",
+//                kItemKeyClassPrefix: "Pedometer",
+//            ]
         ]
     }
 

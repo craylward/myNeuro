@@ -59,6 +59,7 @@
     <entity name="TaskResult" representedClassName=".TaskResult" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="motionSamples" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MotionSample" inverseName="taskResult" inverseEntity="MotionSample" syncable="YES"/>
         <relationship name="participant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" inverseName="taskResult" inverseEntity="Participant" syncable="YES"/>
         <relationship name="questionnaireSamples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionnaireSample" inverseName="taskResult" inverseEntity="QuestionnaireSample" syncable="YES"/>
@@ -91,7 +92,7 @@
         <element name="Participant" positionX="-162" positionY="-441" width="128" height="180"/>
         <element name="QuestionnaireSample" positionX="-236" positionY="45" width="128" height="163"/>
         <element name="TappingSample" positionX="-81" positionY="45" width="128" height="148"/>
-        <element name="TaskResult" positionX="-164" positionY="-216" width="128" height="148"/>
+        <element name="TaskResult" positionX="-164" positionY="-216" width="128" height="163"/>
         <element name="TremorAnalysis" positionX="-639" positionY="-441" width="128" height="165"/>
         <element name="WalkingSample" positionX="70" positionY="-162" width="128" height="150"/>
     </elements>

@@ -33,6 +33,7 @@ import ResearchKit
 import WatchConnectivity
 import HealthKit
 import CoreData
+import AWSCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -84,6 +85,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Core Data
         coreData = CoreDataStack.sharedInstance()
 
+        // AWS - "per the Amazon setting up AWS with Swift instructions"
+//        let credentialsProvider = AWSCognitoCredentialsProvider(
+//            regionType: CognitoRegionType,
+//            identityPoolId: CognitoIdentityPoolId)
+//        let configuration = AWSServiceConfiguration(
+//            region: DefaultServiceRegionType,
+//            credentialsProvider: credentialsProvider)
+//        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+        
         lockApp()
         return true
     }
@@ -108,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to ResearchKit Sample App", delegate: self) as! ORKPasscodeViewController
+        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to the myNeuro ResearchKit App", delegate: self) as! ORKPasscodeViewController
         containerViewController?.presentViewController(passcodeViewController, animated: false, completion: nil)
     }
     

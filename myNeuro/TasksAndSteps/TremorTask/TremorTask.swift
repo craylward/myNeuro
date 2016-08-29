@@ -12,12 +12,12 @@ import WatchConnectivity
 
 
 public var TremorTask: ORKOrderedTask = {
-    let intendedUseDescription = "Finger tapping is a useful method for evaluting Bradykinesia symptoms."
     let tremorDuration = NSTimeInterval(5)
     
     let excludeTasks: ORKTremorActiveTaskOption = [.ExcludeHandToNose, .ExcludeQueenWave, .ExcludeHandAtShoulderHeight, .ExcludeHandAtShoulderHeightElbowBent]
+    
     return ORKOrderedTask.tremorTestTaskWithIdentifier("TremorTask",
-                                                   intendedUseDescription: intendedUseDescription,
+                                                   intendedUseDescription: nil,
                                                    activeStepDuration: tremorDuration,
                                                    activeTaskOptions: excludeTasks,
                                                    handOptions: ORKPredefinedTaskHandOption.Left,

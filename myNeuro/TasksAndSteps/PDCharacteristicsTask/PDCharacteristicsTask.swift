@@ -22,7 +22,8 @@ public var PDCharacteristicsStep: ORKFormStep {
     let anticholinergics = ORKTextChoice(text: "Anticholinergics", value: "Anticholinergics")
     let maob = ORKTextChoice(text: "MAO-B Inhibitors", value: "MAO-B Inhibitors")
     let comt = ORKTextChoice(text: "COMT Inhibitors", value: "COMT Inhibitors")
-    let medicationPicker = ORKTextChoiceAnswerFormat(style: ORKChoiceAnswerStyle.MultipleChoice, textChoices: [levodopa, dopamine, anticholinergics, maob, comt])
+    let none = ORKTextChoice(text: "None", value: "None")
+    let medicationPicker = ORKTextChoiceAnswerFormat(style: ORKChoiceAnswerStyle.MultipleChoice, textChoices: [levodopa, dopamine, anticholinergics, maob, comt, none])
     let medicationItem = ORKFormItem(identifier: "medsLast24h", text: "Medications taken in the last 24 hours", answerFormat: medicationPicker)
     
     let dbsPicker = ORKNumericAnswerFormat(style: ORKNumericAnswerStyle.Integer, unit: "Hz", minimum: 1, maximum: 1000)

@@ -81,6 +81,7 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
             let tremorResult = try coreData.mainObjectContext.executeFetchRequest(tremorRequest)
             let gaitResult = try coreData.mainObjectContext.executeFetchRequest(gaitRequest)
             if (bradyResult.count > 0) {
+                
                 bradyFetchedResults = bradyResult[0] as? BradyAnalysis
                 bradyUpdrs.text = String(format: "%d", bradyFetchedResults!.updrs as Int)
                 brady_cvDuration.text = String(format: "%.4f", bradyFetchedResults!.brady_cvDuration as Double)

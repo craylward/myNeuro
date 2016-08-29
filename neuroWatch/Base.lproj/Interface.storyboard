@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
@@ -13,7 +13,7 @@
                         <table alignment="left" id="QaK-9F-bZs">
                             <items>
                                 <tableRow identifier="Cell" id="nz9-iG-WAG" customClass="RowController" customModule="neuroWatch_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="K2Z-Z8-mn1">
+                                    <group key="rootItem" width="1" height="45" alignment="left" layout="vertical" id="K2Z-Z8-mn1">
                                         <items>
                                             <label alignment="left" text="Label" minimumScaleFactor="0.80000000000000004" id="dhg-La-shM" userLabel="Text Label">
                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -308,7 +308,64 @@
                     </connections>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="1134" y="77"/>
+        </scene>
+        <!--TremorTask-->
+        <scene sceneID="aN7-hw-eyQ">
+            <objects>
+                <controller identifier="TremorTask" id="nTZ-7E-oEk" customClass="TremorTaskInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Record" id="97Y-Ko-MWB">
+                            <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" pointSize="30"/>
+                            <connections>
+                                <action selector="recordPressed" destination="nTZ-7E-oEk" id="bNa-YT-NwS"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="recordButton" destination="97Y-Ko-MWB" id="PfP-91-9Qd"/>
+                    </connections>
+                </controller>
+            </objects>
             <point key="canvasLocation" x="709" y="77"/>
+        </scene>
+        <!--BradyKinesiaTask-->
+        <scene sceneID="TSI-5u-uZQ">
+            <objects>
+                <controller identifier="BradyKinesiaTask" id="jMK-a0-elL" customClass="FingerTappingInterfaceController" customModule="neuroWatch_Extension">
+                    <items>
+                        <label width="1" height="25.5" alignment="left" text="Tap to begin" textAlignment="center" id="pAL-ht-Ork">
+                            <accessibilityTraits key="accessibilityTraits" button="YES" staticText="YES"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <timer width="1" alignment="left" textAlignment="center" previewedSeconds="10" id="7uC-U9-Phy">
+                            <calendarUnit key="units" second="YES"/>
+                        </timer>
+                        <group width="1" alignment="left" id="LZJ-LF-NZk">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="Left" id="5IB-bZ-afY">
+                                    <connections>
+                                        <action selector="leftButton" destination="jMK-a0-elL" id="Zag-7Q-CWR"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="Right" id="IrK-rB-0gv">
+                                    <connections>
+                                        <action selector="rightButton" destination="jMK-a0-elL" id="Ftw-SN-Yp8"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="pAL-ht-Ork" id="8F8-J3-ALC"/>
+                        <outlet property="leftButtonOutlet" destination="5IB-bZ-afY" id="MM2-3b-9yI"/>
+                        <outlet property="rightButtonOutlet" destination="IrK-rB-0gv" id="7gY-PZ-L3R"/>
+                        <outlet property="timer" destination="7uC-U9-Phy" id="eza-gI-GBj"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="921" y="77"/>
         </scene>
     </scenes>
 </document>

@@ -157,7 +157,7 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
             case .Gait:
                 taskViewController = ORKTaskViewController(task: GaitTask, taskRunUUID: NSUUID())
             case .BradykinesiaWatch:
-                taskViewController = ORKTaskViewController(task: ConsentTask, taskRunUUID: NSUUID())
+                taskViewController = ORKTaskViewController(task: BradyTaskW, taskRunUUID: NSUUID())
             case .TremorWatch:
                 taskViewController = ORKTaskViewController(task: TremorTaskW, taskRunUUID: NSUUID())
 //            case .HeartRate:
@@ -208,7 +208,7 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         // MARK: Update results and analysis tabs
         else if reason == .Completed {
             let customTabBarController = self.tabBarController as! CustomTabBarController
-            let resultProcessor = ResultProcessor(context: coreData.privateObjectContext)
+            let resultProcessor = ResultProcessor()
             coreData.privateObjectContext.performBlock { () -> Void in
                 resultProcessor.processResult(taskViewController.result)
             }

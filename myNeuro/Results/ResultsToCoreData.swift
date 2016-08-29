@@ -13,20 +13,14 @@ import HealthKit
 
 class ResultProcessor {
     
-    var privateContext: NSManagedObjectContext
-    var taskResult: TaskResult
-    
-    init(context: NSManagedObjectContext) {
-        privateContext = context
-        taskResult = NSEntityDescription.insertNewObjectForEntityForName("TaskResult", inManagedObjectContext: privateContext) as! TaskResult
-    }
+    let coreData = CoreDataStack.sharedInstance()
+    let taskResult = NSEntityDescription.insertNewObjectForEntityForName("TaskResult", inManagedObjectContext: CoreDataStack.sharedInstance().privateObjectContext) as! TaskResult
     
     func processResult(result: ORKTaskResult) {
         
         guard result.results != nil else {
             return
         }
-        
         taskResult.id = fetchTaskId()
         taskResult.date = result.startDate
         // Process Questionnaire Results
@@ -71,28 +65,34 @@ class ResultProcessor {
                 }
             }            
         }
-        
-        if result.identifier.containsString("Bradykinesia Task") {
+        if result.identifier.containsString("BradykinesiaTask") {
+            taskResult.type = "Bradykinesia"
             bradyAnalysis(Int(taskResult.id))
         }
-        else if result.identifier.containsString("Tremor Task") {
+        else if result.identifier.containsString("TremorTask") {
+            taskResult.type = "Tremor"
             tremorAnalysis(Int(taskResult.id))
         }
-        else if result.identifier.containsString("Gait Task") {
+        else if result.identifier.containsString("GaitTask") {
+            taskResult.type = "Gait"
             gaitAnalysis(Int(taskResult.id))
         }
+        else {
+            print("ResultsToCoreData: NO ANALYSIS PERFORMED")
+        }
     }
+    
     
     func processConsentResult(consentResults: [ORKResult]) {
         var sample: Participant?
         let request = NSFetchRequest(entityName: "Participant")
         do {
-            let result = try privateContext.executeFetchRequest(request)
+            let result = try coreData.privateObjectContext.executeFetchRequest(request)
             if (result.count > 0) {
                 sample = result[0] as? Participant
             }
             else {
-                sample = NSEntityDescription.insertNewObjectForEntityForName("Participant", inManagedObjectContext: privateContext) as? Participant
+                sample = NSEntityDescription.insertNewObjectForEntityForName("Participant", inManagedObjectContext: coreData.privateObjectContext) as? Participant
             }
             
         } catch {
@@ -167,7 +167,7 @@ class ResultProcessor {
         
         // Mark: Save Data
         do {
-            try privateContext.save()
+            try coreData.privateObjectContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }
@@ -175,7 +175,7 @@ class ResultProcessor {
     
     func processQuestionResult(questionResults: [ORKResult]){
         
-        let sample = NSEntityDescription.insertNewObjectForEntityForName("QuestionnaireSample", inManagedObjectContext: privateContext) as! QuestionnaireSample
+        let sample = NSEntityDescription.insertNewObjectForEntityForName("QuestionnaireSample", inManagedObjectContext: coreData.privateObjectContext) as! QuestionnaireSample
         sample.id = taskResult.id
         // Process Questionnaire Results
         for stepResult in questionResults as! [ORKStepResult] {
@@ -201,7 +201,7 @@ class ResultProcessor {
         }
         // Mark: Save Data
         do {
-            try privateContext.save()
+            try coreData.privateObjectContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }
@@ -212,15 +212,17 @@ class ResultProcessor {
         
         // Debugging
         print(type)
-        //print(privateContext.persistentStoreCoordinator?.persistentStores[0].URL)
+        //print(coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].URL)
         //let string = try? NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
         //print(string) ///   DEV: Prints entire JSON file contents
+        
+        
         
         if let data = try? NSData(contentsOfURL: url, options: []) {
             let json = JSON(data: data)
             for item in json["items"].arrayValue {
                 if type.containsString("pedometer") {
-                    let sample = NSEntityDescription.insertNewObjectForEntityForName("WalkingSample", inManagedObjectContext: privateContext) as! WalkingSample
+                    let sample = NSEntityDescription.insertNewObjectForEntityForName("WalkingSample", inManagedObjectContext: coreData.privateObjectContext) as! WalkingSample
                     sample.distance = Double(item["distance"].stringValue)!
                     sample.numberOfSteps = Int(item["numberOfSteps"].stringValue)!
                     let dateFormatter = NSDateFormatter()
@@ -232,7 +234,7 @@ class ResultProcessor {
                     sample.id = taskResult.id
                 }
                 else {
-                    let sample = NSEntityDescription.insertNewObjectForEntityForName("MotionSample", inManagedObjectContext: privateContext) as! MotionSample
+                    let sample = NSEntityDescription.insertNewObjectForEntityForName("MotionSample", inManagedObjectContext: coreData.privateObjectContext) as! MotionSample
                     sample.id = taskResult.id
                     sample.timeStamp = Double(item["timestamp"].stringValue)!
                     sample.type = type
@@ -253,7 +255,7 @@ class ResultProcessor {
                 
                 // Mark: Save Data
                 do {
-                    try privateContext.save()
+                    try coreData.privateObjectContext.save()
                 } catch {
                     fatalError("Failure to save context: \(error)")
                 }
@@ -277,7 +279,7 @@ class ResultProcessor {
     func processTappingResult(tapResult: ORKTappingIntervalResult) {
         
         for tappingSample in tapResult.samples! {
-            let sample = NSEntityDescription.insertNewObjectForEntityForName("TappingSample", inManagedObjectContext: privateContext) as! TappingSample
+            let sample = NSEntityDescription.insertNewObjectForEntityForName("TappingSample", inManagedObjectContext: coreData.privateObjectContext) as! TappingSample
             sample.id = taskResult.id
             sample.timeStamp = tappingSample.timestamp
             sample.loc_x = Double(tappingSample.location.x)
@@ -295,7 +297,7 @@ class ResultProcessor {
             
             // MARK: Save data
             do {
-                try privateContext.save()
+                try coreData.privateObjectContext.save()
             } catch {
                 fatalError("Failure to save context: \(error)")
             }
@@ -308,7 +310,7 @@ class ResultProcessor {
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         request.fetchLimit = 1
         do {
-            let result = try privateContext.executeFetchRequest(request)
+            let result = try coreData.privateObjectContext.executeFetchRequest(request)
             if (result.count > 0) {
                 let latest_task = result[0] as! TaskResult
                 return latest_task.id.integerValue + 1 // 1 after the latest task id

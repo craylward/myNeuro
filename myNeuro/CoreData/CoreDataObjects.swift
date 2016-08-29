@@ -29,7 +29,6 @@ class TaskResult: NSManagedObject {
     @NSManaged var date: NSDate
     @NSManaged var id: NSNumber
     @NSManaged var type: NSString
-    @NSManaged var samples: NSSet
 }
 
 class TappingSample: NSManagedObject {
