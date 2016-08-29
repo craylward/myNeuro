@@ -126,6 +126,8 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
     // Use if replyHandler from sender is nil
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         let command = message["command"] as? Int
+        
+        print(command)
         if command == 1 {
             print("First message sent with no reply handler")
         }
@@ -133,11 +135,7 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
             if command == 2 {
                 type = message["type"] as? String
             }
-            print(command)
             toggleCollecting()
-        }
-        else {
-            print(command)
         }
     }
     

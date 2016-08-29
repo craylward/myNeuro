@@ -34,7 +34,7 @@ class ResultProcessor {
         
         for stepResult in result.results as! [ORKStepResult] { // Iterate through TaskResult child results (Cast as step results)
             // Process Tremor Results
-            if stepResult.identifier.containsString("tremor") { // pick out the tremor steps
+            if stepResult.identifier.lowercaseString.containsString("tremor") { // pick out the tremor steps
                 for fileResult in stepResult.results as! [ORKFileResult] { // Iterate through the child results of the tremor steps (file results)
                     let typeResult = stepResult.identifier + "." + fileResult.identifier  // i.e "tremor.handInLap.right" + "." + "ac1_acc"
                     processFileResult(fileResult.fileURL!, type: typeResult)
@@ -215,8 +215,6 @@ class ResultProcessor {
         //print(coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].URL)
         //let string = try? NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
         //print(string) ///   DEV: Prints entire JSON file contents
-        
-        
         
         if let data = try? NSData(contentsOfURL: url, options: []) {
             let json = JSON(data: data)

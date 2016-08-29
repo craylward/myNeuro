@@ -462,6 +462,7 @@
 				DAD02C911D63AC8E006DF283 /* Frameworks */,
 				DA7B9BBB1CA370160095794F /* myNeuro */,
 				DA7B9BD01CA370160095794F /* myNeuroTests */,
+				DAA5CE701D2F689400CF86C8 /* neuroWatch */,
 				DAA5CE7F1D2F689400CF86C8 /* neuroWatch Extension */,
 				DA7B9BBA1CA370160095794F /* Products */,
 				DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */,
@@ -505,7 +506,6 @@
 		DA7B9BD01CA370160095794F /* myNeuroTests */ = {
 			isa = PBXGroup;
 			children = (
-				DAA5CE701D2F689400CF86C8 /* neuroWatch */,
 				DA7B9BD11CA370160095794F /* myNeuroTests.swift */,
 				DA7B9BD31CA370160095794F /* Info.plist */,
 			);
@@ -567,8 +567,7 @@
 				DAA5CE741D2F689400CF86C8 /* Assets.xcassets */,
 				DAA5CE761D2F689400CF86C8 /* Info.plist */,
 			);
-			name = neuroWatch;
-			path = ../neuroWatch;
+			path = neuroWatch;
 			sourceTree = "<group>";
 		};
 		DAA5CE7F1D2F689400CF86C8 /* neuroWatch Extension */ = {

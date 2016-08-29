@@ -29,7 +29,7 @@ public var BradyTaskW: ORKOrderedTask {
     let watchStep = WatchConnectStep(identifier: "watchConnectStep")
     steps += [watchStep]
     
-    let bradyStepW = BradyWStep(identifier: "bradyStepW")
+    let bradyStepW = BradyWStep(identifier: "tappingStepW")
     steps += [bradyStepW]
     
     let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
@@ -37,5 +37,5 @@ public var BradyTaskW: ORKOrderedTask {
     summaryStep.text = "Your measurements have been recorded"
     steps += [summaryStep]
     
-    return ORKOrderedTask(identifier: "TremorTaskWatch", steps: steps)
+    return ORKOrderedTask(identifier: "BradykinesiaTaskWatch", steps: steps)
 }
