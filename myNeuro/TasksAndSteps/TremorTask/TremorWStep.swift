@@ -14,7 +14,7 @@ import CoreLocation
 import CoreMotion
 import WatchConnectivity
 
-class TremorStepW: ORKActiveStep {
+class TremorStepW: ORKWaitStep {//ORKActiveStep {
     
     static func stepViewControllerClass() -> TremorStepWViewController.Type {
         return TremorStepWViewController.self
@@ -23,11 +23,12 @@ class TremorStepW: ORKActiveStep {
     
     override init(identifier: String) {
         super.init(identifier: identifier)
-        self.stepDuration = 5
-        self.shouldStartTimerAutomatically = true
-        self.shouldVibrateOnStart = true
-        self.shouldVibrateOnFinish = true
-        self.shouldContinueOnFinish = false
+//        self.stepDuration = 10
+//        self.shouldStartTimerAutomatically = false
+//        self.shouldVibrateOnStart = true
+//        self.shouldVibrateOnFinish = true
+//        self.shouldContinueOnFinish = false
+//        self.shouldShowDefaultTimer = false
     }
     
     required init(coder aDecoder: NSCoder) {

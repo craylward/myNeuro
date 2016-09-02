@@ -21,13 +21,13 @@ public var BradyTaskW: ORKOrderedTask {
     steps += [instructionStep1]
     
     let instructionStep2 = ORKInstructionStep(identifier: "instruction2")
-    instructionStep2.title = "Tremor Task"
+    instructionStep2.title = "Bradykinesia Task"
     instructionStep2.text = "You will perform a tapping task on the watch. Place the Apple Watch on the wrist of your more affected hand and start the Finger Tapping activity on the watch app."
     instructionStep2.image = UIImage(named: "tremor2_w")
     steps += [instructionStep2]
     
-    let watchStep = WatchConnectStep(identifier: "watchConnectStep")
-    steps += [watchStep]
+    let connectStep = BradyWConnectStep(identifier: "bradyWConnectStep")
+    steps += [connectStep]
     
     let bradyStepW = BradyWStep(identifier: "tappingStepW")
     steps += [bradyStepW]

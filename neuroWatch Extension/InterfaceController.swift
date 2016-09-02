@@ -28,12 +28,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         // Configure interface objects here.
         items = [
             [
-                kItemKeyTitle: "TremorTask",
+                kItemKeyTitle: "Tremor Task",
                 kItemKeyDetail: "Records sensor data related to tremor.",
                 kItemKeyClassPrefix: "TremorTask",
             ],
             [
-                kItemKeyTitle: "FingerTapping",
+                kItemKeyTitle: "Brady Task",
                 kItemKeyDetail: "Finger tapping test for Bradykinesia assessment.",
                 kItemKeyClassPrefix: "BradyKinesiaTask",
             ],
@@ -73,7 +73,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        print("willActivate")
+        //print("willActivate")
         
         loadTableData()
     }
@@ -103,7 +103,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         
-        print("didSelectRowAtIndex: \(rowIndex)")
+        //print("didSelectRowAtIndex: \(rowIndex)")
         
         let item = items[rowIndex]
         let title = item[kItemKeyClassPrefix]

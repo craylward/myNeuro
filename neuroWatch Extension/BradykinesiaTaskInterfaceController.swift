@@ -7,19 +7,11 @@
 //
 
 import Foundation
-//
-//  InterfaceController.swift
-//  Park_App_v6 WatchKit Extension
-//
-//  Created by Classroom Tech User on 2/28/16.
-//  Copyright © 2016 CalPolyCPE461. All rights reserved.
-//
-
 import WatchKit
 import Foundation
 import WatchConnectivity
 
-class FingerTappingInterfaceController: WKInterfaceController {
+class BradykinesiaTaskInterfaceController: WKInterfaceController {
     
 
     @IBOutlet var label: WKInterfaceLabel!
@@ -40,7 +32,10 @@ class FingerTappingInterfaceController: WKInterfaceController {
     var samples: [NSDictionary] = []
     
     override func didAppear() {
+        label.setText("Waiting...")
         super.didAppear()
+        leftButtonOutlet.setEnabled(false)
+        rightButtonOutlet.setEnabled(false)
         setupConnectivity()
     }
     
@@ -62,25 +57,23 @@ class FingerTappingInterfaceController: WKInterfaceController {
 
     @IBAction func leftButton() {
         if isPaused {
+            label.setText("")
             initTimer()
             rightFirst = true
         }
         
         let timestamp = calculateTimeDifference()
-        rightButtonOutlet.setEnabled(true)
-        leftButtonOutlet.setEnabled(false)
         samples.append(["timestamp": timestamp, "button_id": "left"])
     }
     
     @IBAction func rightButton() {
         if isPaused {
+            label.setText("")
             initTimer()
             leftFirst = true
         }
         
         let timestamp = calculateTimeDifference()
-        rightButtonOutlet.setEnabled(false)
-        leftButtonOutlet.setEnabled(true)
         samples.append(["timestamp": timestamp, "button_id": "right"])
     }
     
@@ -89,53 +82,51 @@ class FingerTappingInterfaceController: WKInterfaceController {
         timer.setDate(NSDate(timeIntervalSinceNow: duration ))
         timer.start()
         isPaused = false
-        label.setText("Begin!")
         startTime = NSDate.timeIntervalSinceReferenceDate()
     }
     
     func calculateTimeDifference() -> Double {
-        if (count++ != 0) {
+        if (count != 0) {
             let currentTime = NSDate.timeIntervalSinceReferenceDate()
             let elapsedTime: NSTimeInterval = currentTime - startTime
             
             totalSeconds += Double(elapsedTime)
             startTime = NSDate.timeIntervalSinceReferenceDate()
-            
         }
+        count += 1
         return totalSeconds
     }
     
     func finish() {
+        label.setText("Done!")
         rightButtonOutlet.setEnabled(false)
         leftButtonOutlet.setEnabled(false)
         session!.transferUserInfo(["samples": samples])
-        session!.sendMessage(["command":2], replyHandler: nil, errorHandler: { error in print(error)})
     }
 }
 
-extension FingerTappingInterfaceController: WCSessionDelegate {
+extension BradykinesiaTaskInterfaceController: WCSessionDelegate {
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         let command = message["command"] as? Int
-        if command == 1 {
-            replyHandler(["response": 1])
+        if command == 11 {
+            replyHandler(["response": 11])
         }
-        else if command == 2 {
-            print("Second message sent with a reply handler")
+        else {
+            print("Message received with replyHandler")
         }
     }
     
     // Use if replyHandler from sender is nil
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         let command = message["command"] as? Int
-        if command == 1 {
-            print("First message sent with no reply handler")
-        }
-        else if command == 2  || command == 3 {
-            print(command)
+        if command == 12 {
+            label.setText("Begin!")
+            rightButtonOutlet.setEnabled(true)
+            leftButtonOutlet.setEnabled(true)
         }
         else {
-            print(command)
+            print("Message received with no replyHandler")
         }
     }
     

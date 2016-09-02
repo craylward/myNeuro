@@ -13,20 +13,43 @@ import CoreMotion
 import HealthKit
 
 class TremorTaskInterfaceController: WKInterfaceController {
-    @IBOutlet var recordButton: WKInterfaceButton!
 
+    @IBOutlet var timer: WKInterfaceTimer!
+    @IBOutlet var label: WKInterfaceLabel!
     let accelManager = CMSensorRecorder()
     let motionManager = CMMotionManager()
     var arrayOfDicts:[NSDictionary] = []
     var type: String?
     let healthStore = HKHealthStore()
+    var myTimer : NSTimer?  //internal timer to keep track
+    var startTime = NSDate()
+    var duration : NSTimeInterval = 10.0 //arbitrary number. 5 seconds
+    var dataSent = false
+    var started = false
+    var connected = false
     
     // Need workout session object to keep recording while watch display is off
     var workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.Other, locationType: HKWorkoutSessionLocationType.Unknown)
-
+    
     override func didAppear() {
         super.didAppear()
+        label.setText("Connecting...")
+        timer.setDate(NSDate(timeIntervalSinceNow: duration))
         setupConnectivity()
+    }
+    
+    override func willActivate() {
+        super.willActivate()
+        if started == true && dataSent == true {
+            label.setText("Done!")
+        }
+        else if started == true && dataSent == false {
+            label.setText("Recording...")
+        }
+        else if started == false && dataSent == false && connected == true {
+            label.setText("Connected!")
+        }
+        
     }
     
     // Watch Connectivity
@@ -38,6 +61,7 @@ class TremorTaskInterfaceController: WKInterfaceController {
             }
         }
     }
+    
     private func setupConnectivity() {
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
@@ -45,9 +69,21 @@ class TremorTaskInterfaceController: WKInterfaceController {
         }
     }
     
-//    @IBAction func recordPressed() {
-//        toggleCollecting()
-//    }
+    func initTimer() {
+        label.setText("Recording...")
+        started = true
+        dataSent = false
+        myTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)
+        timer.setDate(NSDate(timeIntervalSinceNow: duration))
+        timer.start()
+        toggleCollecting() // ON
+        
+    }
+    
+    func finish() {
+        toggleCollecting() // OFF
+        label.setText("Done!")
+    }
     
     func toggleCollecting() {
         workoutSession.delegate = self
@@ -58,11 +94,13 @@ class TremorTaskInterfaceController: WKInterfaceController {
             healthStore.endWorkoutSession(workoutSession)
         case .Ended:
             workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.Other, locationType: HKWorkoutSessionLocationType.Unknown)
+            workoutSession.delegate = self
             healthStore.startWorkoutSession(workoutSession)
         }
     }
     
     func startMotionManager() {
+        WKInterfaceDevice.currentDevice().playHaptic(.Start)
         self.arrayOfDicts = []
         if motionManager.accelerometerAvailable {
             motionManager.accelerometerUpdateInterval = 0.01
@@ -80,12 +118,12 @@ class TremorTaskInterfaceController: WKInterfaceController {
     }
     
     func stopMotionManager() {
+        WKInterfaceDevice.currentDevice().playHaptic(.Stop)
         motionManager.stopAccelerometerUpdates()
         if session != nil {
             session!.transferUserInfo(["items" : arrayOfDicts])
         }
-    }
-    
+    }    
 }
 
 extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDelegate {
@@ -110,41 +148,46 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         let command = message["command"] as? Int
-        if command == 1 {
+        if command == 1 { // If command == 1, watch is connected
             if type == nil {
                 replyHandler(["response": 1])
-            }
-            else {
-                replyHandler(["response": 4])
+                label.setText("Connected!")
+                connected = true
             }
         }
         else if command == 2 {
             print("Second message sent with a reply handler")
+        }
+        else {
+            print("Message received. Unknown command")
         }
     }
     
     // Use if replyHandler from sender is nil
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         let command = message["command"] as? Int
-        
-        print(command)
         if command == 1 {
             print("First message sent with no reply handler")
         }
-        else if command == 2  || command == 3 {
-            if command == 2 {
-                type = message["type"] as? String
+        else if command == 2 { // If command == 2, start timer
+            type = message["type"] as? String
+            dispatch_async(dispatch_get_main_queue()) {
+                self.initTimer()
             }
-            toggleCollecting()
+        }
+        else {
+            print("Message received. Unknown command")
         }
     }
     
     func session(session: WCSession, didFinishUserInfoTransfer userInfoTransfer: WCSessionUserInfoTransfer, error: NSError?) {
-        //print(userInfoTransfer.userInfo)
         if error != nil {
             print("error: ", error)
         }
-        
+        else {
+            print("Data sent!")
+            dataSent = true
+        }
     }
     
     func session(session: WCSession, didFinishFileTransfer fileTransfer: WCSessionFileTransfer, error: NSError?) {

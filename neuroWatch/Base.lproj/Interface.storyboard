@@ -315,16 +315,14 @@
             <objects>
                 <controller identifier="TremorTask" id="nTZ-7E-oEk" customClass="TremorTaskInterfaceController" customModule="neuroWatch_Extension">
                     <items>
-                        <button width="1" alignment="center" verticalAlignment="center" title="Record" id="97Y-Ko-MWB">
-                            <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="font" type="system" pointSize="30"/>
-                            <connections>
-                                <action selector="recordPressed" destination="nTZ-7E-oEk" id="bNa-YT-NwS"/>
-                            </connections>
-                        </button>
+                        <label alignment="center" verticalAlignment="center" text="Connecting..." id="n98-tA-F2r"/>
+                        <timer width="44" alignment="center" verticalAlignment="center" textAlignment="center" previewedSeconds="5" id="E56-mk-o4Y">
+                            <calendarUnit key="units" second="YES"/>
+                        </timer>
                     </items>
                     <connections>
-                        <outlet property="recordButton" destination="97Y-Ko-MWB" id="PfP-91-9Qd"/>
+                        <outlet property="label" destination="n98-tA-F2r" id="tJq-IY-ycY"/>
+                        <outlet property="timer" destination="E56-mk-o4Y" id="fof-Om-ENk"/>
                     </connections>
                 </controller>
             </objects>
@@ -333,13 +331,13 @@
         <!--BradyKinesiaTask-->
         <scene sceneID="TSI-5u-uZQ">
             <objects>
-                <controller identifier="BradyKinesiaTask" id="jMK-a0-elL" customClass="FingerTappingInterfaceController" customModule="neuroWatch_Extension">
+                <controller identifier="BradyKinesiaTask" id="jMK-a0-elL" customClass="BradykinesiaTaskInterfaceController" customModule="neuroWatch_Extension">
                     <items>
-                        <label width="1" height="25.5" alignment="left" text="Tap to begin" textAlignment="center" id="pAL-ht-Ork">
+                        <label width="1" height="25.5" alignment="left" text="Waiting..." textAlignment="center" id="pAL-ht-Ork">
                             <accessibilityTraits key="accessibilityTraits" button="YES" staticText="YES"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
-                        <timer width="1" alignment="left" textAlignment="center" previewedSeconds="10" id="7uC-U9-Phy">
+                        <timer alignment="center" textAlignment="center" previewedSeconds="10" id="7uC-U9-Phy">
                             <calendarUnit key="units" second="YES"/>
                         </timer>
                         <group width="1" alignment="left" id="LZJ-LF-NZk">

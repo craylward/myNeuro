@@ -27,8 +27,8 @@ public var TremorTaskW: ORKOrderedTask {
     instructionStep2.image = UIImage(named: "tremor2_w")
     steps += [instructionStep2]
     
-    let watchStep = WatchConnectStep(identifier: "watchConnectStep")
-    steps += [watchStep]
+    let connectStep = TremorWConnectStep(identifier: "tremorWConnectStep")
+    steps += [connectStep]
     
     let restingInstructionStep = ORKInstructionStep(identifier: "restingInstruction")
     restingInstructionStep.title = "Resting Tremor"

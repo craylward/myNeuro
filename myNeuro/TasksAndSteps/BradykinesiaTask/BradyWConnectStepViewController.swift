@@ -11,13 +11,13 @@ import ResearchKit
 import CoreMotion
 import WatchConnectivity
 
-class WatchConnectStepWViewController: ORKWaitStepViewController, WCSessionDelegate
+class BradyWConnectStepViewController: ORKWaitStepViewController, WCSessionDelegate
 {
     var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
     
     // ORKWaitStepViewController Functions
-    static func stepViewControllerClass() -> WatchConnectStepWViewController.Type {
-        return WatchConnectStepWViewController.self
+    static func stepViewControllerClass() -> BradyWConnectStepViewController.Type {
+        return BradyWConnectStepViewController.self
     }
 
     override func viewDidLoad() {
@@ -64,8 +64,8 @@ class WatchConnectStepWViewController: ORKWaitStepViewController, WCSessionDeleg
     func firstMessage() {
         guard session != nil else { print("Can't send message! No session!"); return }
         if session!.reachable {
-            session!.sendMessage(["command": 1], replyHandler: {reply in
-                if reply["response"] as? Int == 1 {
+            session!.sendMessage(["command": 11], replyHandler: {reply in
+                if reply["response"] as? Int == 11 {
                     self.goForward()
                 }
                 else {

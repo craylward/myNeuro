@@ -11,7 +11,7 @@ import ResearchKit
 import CoreMotion
 import WatchConnectivity
 
-class TremorStepWViewController: ORKActiveStepViewController, WCSessionDelegate
+class TremorStepWViewController: ORKWaitStepViewController, WCSessionDelegate //ORKActiveStepViewController
 {    
     // ORKActiveStepViewController Functions
     static func stepViewControllerClass() -> TremorStepWViewController.Type {
@@ -47,8 +47,8 @@ class TremorStepWViewController: ORKActiveStepViewController, WCSessionDelegate
         startTime = NSDate()
         print(self.step!.identifier)
         session!.sendMessage(["command": 2, "type": self.step!.identifier], replyHandler: nil, errorHandler: { error in print(error) })
+        //start()
     }
-    
     
     var session: WCSession? {
         didSet {
@@ -63,38 +63,28 @@ class TremorStepWViewController: ORKActiveStepViewController, WCSessionDelegate
             session = WCSession.defaultSession()
         }
     }
-    override func stepDidFinish() {
-        session!.sendMessage(["command": 3], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
-        
-        endTime = NSDate()
-        let fileResult = ORKFileResult(identifier:"acc")
-        fileResult.fileURL = outputDir!.URLByAppendingPathComponent(self.step!.identifier + "_accel.json")
-        fileResult.contentType = "application/json"
-        fileResult.startDate = startTime!
-        fileResult.endDate = endTime!
-        
-        let stepResult = super.result
-        stepResult?.results?.append(fileResult)
-        result = stepResult
-        
-
-        super.stepDidFinish()
-
-    }
     
     func session(session: WCSession, didReceiveFile file: WCSessionFile) {
         print("Received file. No follow up code.")
     }
     
     func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
-        do {
-            session.sendMessage(["command": 9], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
+        do {            
             let filePath = outputDir!.URLByAppendingPathComponent(self.step!.identifier + "_accel.json")
             let jsonData = try NSJSONSerialization.dataWithJSONObject(userInfo, options: NSJSONWritingOptions.PrettyPrinted)
             try jsonData.writeToURL(filePath, options: .DataWritingFileProtectionNone)
+            endTime = NSDate()
+            let fileResult = ORKFileResult(identifier:"acc")
+            fileResult.fileURL = outputDir!.URLByAppendingPathComponent(self.step!.identifier + "_accel.json")
+            fileResult.contentType = "application/json"
+            fileResult.startDate = startTime!
+            fileResult.endDate = endTime!
             
-            session.sendMessage(["command": 10], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
+            let stepResult = super.result
+            stepResult?.results?.append(fileResult)
+            result = stepResult
             
+            goForward()
         }
         catch let error as NSError {
             fatalError("Error: \(error.localizedDescription)")

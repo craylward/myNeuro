@@ -13,10 +13,10 @@ import CoreLocation
 import CoreMotion
 import WatchConnectivity
 
-class WatchConnectStep: ORKWaitStep {
+class BradyWConnectStep: ORKWaitStep {
 
-    static func stepViewControllerClass() -> WatchConnectStepWViewController.Type {
-        return WatchConnectStepWViewController.self
+    static func stepViewControllerClass() -> BradyWConnectStepViewController.Type {
+        return BradyWConnectStepViewController.self
     }
     
     override init(identifier: String) {

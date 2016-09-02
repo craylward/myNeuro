@@ -43,6 +43,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
         if session == nil {
             setupConnectivity()
         }
+        session!.sendMessage(["command": 12], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
     }
     
     // Watch Connectivity
@@ -71,8 +72,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
     
     func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
         do {
-            session.sendMessage(["command": 9], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
-            let filePath = outputDir!.URLByAppendingPathComponent(self.step!.identifier + "_fingertapping.json")
+            let filePath = outputDir!.URLByAppendingPathComponent("tapping.json")
             let jsonData = try NSJSONSerialization.dataWithJSONObject(userInfo, options: NSJSONWritingOptions.PrettyPrinted)
             try jsonData.writeToURL(filePath, options: .DataWritingFileProtectionNone)
             let json = JSON(data: jsonData)
@@ -97,9 +97,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
             stepResult?.results?.append(tappingResult)
             result = stepResult
             
-            
-            session.sendMessage(["command": 10], replyHandler: nil, errorHandler: { error in print("Session error after recording: \(error)")})
-            
+            goForward()
         }
         catch let error as NSError {
             fatalError("Error: \(error.localizedDescription)")
@@ -107,9 +105,6 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
     }
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        let command = message["command"] as? Int
-        if command == 2 {
-            goForward()
-        }
+        print("Message received but no follow up action")
     }
 }
