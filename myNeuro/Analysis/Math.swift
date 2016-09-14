@@ -70,6 +70,7 @@ func bradyAnalysis (resultId: Int){
     analysis.brady_cvDuration = standardDeviation(tapDurations)/average(tapDurations)
     analysis.brady_intervalAvg = average(tapIntervals)
     analysis.date = NSDate()
+    analysis.user_id = tappingSamples!.first!.user_id
     
     // Optional: Code to sort the timestamps from earliest to latest. For unknown reason, if buttons are tapped in rapid succession, the timestamp order may be off.
     // data.timestamps.sortInPlace(<)
@@ -96,11 +97,17 @@ func tremorAnalysis (resultId: Int){
         print(fetchError)
     }
     
+    guard tremorSamples!.count > 0 else { print("No results found"); return }
     
     let analysis = NSEntityDescription.insertNewObjectForEntityForName("TremorAnalysis", inManagedObjectContext: coreData.privateObjectContext) as! TremorAnalysis
-     analysis.date = NSDate()
-    //analysis.tremor_r_K
-    //analysis.tremor_r_RMS
+    analysis.date = NSDate()
+    analysis.user_id = tremorSamples!.first!.user_id
+    //analysis.tremor_r_K =
+    //analysis.tremor_r_RMS =
+    //analysis.tremor_p_K =
+    //analysis.tremor_p_RMS =
+    //analysis.tremor_k_K =
+    //analysis.tremor_k_RMS =
     
     do {
         try coreData.privateObjectContext.save()
@@ -117,7 +124,7 @@ func gaitAnalysis (resultId: Int){
     let gaitWalkingOutboundRequest = NSFetchRequest(entityName: "WalkingSample")
     let gaitWalkingReturnRequest = NSFetchRequest(entityName: "WalkingSample")
     let idPredicate = NSPredicate(format: "id == \(resultId)")
-    let outboundPredicate = NSPredicate(format: "type == %@", "walking.outbound.pedometer")  //// PROBLEMMMMMM
+    let outboundPredicate = NSPredicate(format: "type == %@", "walking.outbound.pedometer")
     let returnPredicate = NSPredicate(format: "type == %@", "walking.return.pedometer")
     let outboundPredicates = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [idPredicate, outboundPredicate])
     let returnPredicates = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [idPredicate, returnPredicate])
@@ -152,6 +159,7 @@ func gaitAnalysis (resultId: Int){
     analysis.gait_cycleTime = numberOfStepsTotal/durationTotal
     analysis.gait_strideLength = numberOfStepsTotal/distanceTotal
     analysis.gait_walkingSpeed = distanceTotal/durationTotal
+    analysis.user_id = gaitWalkingOutboundSamples!.first!.user_id
     
     analysis.updrs = 0
     do {
@@ -159,4 +167,21 @@ func gaitAnalysis (resultId: Int){
     } catch {
         fatalError("Failure to save context: \(error)")
     }
+}
+
+// NSDate Comparisons
+func <=(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 <= rhs.timeIntervalSince1970
+}
+func >=(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 >= rhs.timeIntervalSince1970
+}
+func >(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 > rhs.timeIntervalSince1970
+}
+func <(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 < rhs.timeIntervalSince1970
+}
+func ==(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 == rhs.timeIntervalSince1970
 }

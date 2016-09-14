@@ -26,10 +26,10 @@ public var BradyTaskW: ORKOrderedTask {
     instructionStep2.image = UIImage(named: "tremor2_w")
     steps += [instructionStep2]
     
-    let connectStep = BradyWConnectStep(identifier: "bradyWConnectStep")
+    let connectStep = BradyConnectStepW(identifier: "bradyConnectStepW")
     steps += [connectStep]
     
-    let bradyStepW = BradyWStep(identifier: "tappingStepW")
+    let bradyStepW = BradyStepW(identifier: "tappingStepW")
     steps += [bradyStepW]
     
     let summaryStep = ORKCompletionStep(identifier: "SummaryStep")

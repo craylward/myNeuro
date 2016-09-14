@@ -1,5 +1,5 @@
 //
-//  TremorWConnectStepViewController.swift
+//  TremorConnectStepWViewController.swift
 //  myNeuro
 //
 //  Created by Charlie Aylward on 8/12/16.
@@ -11,13 +11,13 @@ import ResearchKit
 import CoreMotion
 import WatchConnectivity
 
-class TremorWConnectStepViewController: ORKWaitStepViewController, WCSessionDelegate
+class TremorConnectStepWViewController: ORKWaitStepViewController, WCSessionDelegate
 {
     var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
     
     // ORKWaitStepViewController Functions
-    static func stepViewControllerClass() -> TremorWConnectStepViewController.Type {
-        return TremorWConnectStepViewController.self
+    static func stepViewControllerClass() -> TremorConnectStepWViewController.Type {
+        return TremorConnectStepWViewController.self
     }
 
     override func viewDidLoad() {
@@ -58,6 +58,9 @@ class TremorWConnectStepViewController: ORKWaitStepViewController, WCSessionDele
             }
         } else {
             print("Apple Watch connectivity is not supported on this device")
+            let alert = UIAlertController(title: "Error", message: "Apple Watch connectivity is not supported on this device", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+            self.presentViewController(alert, animated: true){}
         }
     }
     

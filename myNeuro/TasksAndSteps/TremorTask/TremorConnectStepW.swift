@@ -1,11 +1,10 @@
 //
-//  BradyWStep.swift
+//  TremorConnectStepW.swift
 //  myNeuro
 //
-//  Created by Charlie Aylward on 8/16/16.
+//  Created by Charlie Aylward on 8/12/16.
 //  Copyright © 2016 SJM. All rights reserved.
 //
-
 import Foundation
 import ResearchKit
 import UIKit
@@ -14,14 +13,15 @@ import CoreLocation
 import CoreMotion
 import WatchConnectivity
 
-class BradyWStep: ORKWaitStep {
-    
-    static func stepViewControllerClass() -> BradyStepWViewController.Type {
-        return BradyStepWViewController.self
+class TremorConnectStepW: ORKWaitStep {
+
+    static func stepViewControllerClass() -> TremorConnectStepWViewController.Type {
+        return TremorConnectStepWViewController.self
     }
     
     override init(identifier: String) {
         super.init(identifier: identifier)
+        
         //self.indicatorType = ORKProgressIndicatorType.ProgressBar
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import ResearchKit
 
+// Button skin for joining the study
 class JoinStudyButton: UIButton {
     required init(coder aDecoder: (NSCoder!)) {
         super.init(coder: aDecoder)!
@@ -22,8 +23,20 @@ class JoinStudyButton: UIButton {
         self.clipsToBounds = true
         
     }
+    
+    override var enabled: Bool {
+        didSet {
+            switch enabled {
+            case true:
+                self.layer.borderColor = self.tintColor.CGColor
+                self.setTitleColor(self.tintColor, forState: .Normal)
+            case false:
+                layer.borderColor = UIColor.lightGrayColor().CGColor
+                self.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+            }
+        }
+    }
 }
-
 
 // UPDATE: NO LONGER NEEDED AS ELIGIBILITY USES SEGMENTED CONTROL
 class EligibilityButton: UIButton {

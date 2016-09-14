@@ -38,10 +38,10 @@ extension EligibleViewController : ORKTaskViewControllerDelegate {
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         switch reason {
         case .Completed:
-            let resultProcessor = ResultProcessor()
+            reachable = Reachability.isConnectedToNetwork()
             privateContext.performBlock { () -> Void in
-                resultProcessor.processResult(taskViewController.result)
-            }            
+                ResultProcessor().processResult(taskViewController.result)
+            }
             performSegueWithIdentifier("unwindToStudy", sender: nil)
             
         case .Discarded, .Failed, .Saved:

@@ -11,9 +11,17 @@ import ResearchKit
 import CoreData
 import HealthKit
 
+var filesToUpload:[fileToUpload] = []
+
+struct fileToUpload {
+    var fileURL: NSURL
+    var id: NSNumber
+    var user_id: NSNumber
+    var type: String
+}
+
 class ResultProcessor {
     
-    let coreData = CoreDataStack.sharedInstance()
     let taskResult = NSEntityDescription.insertNewObjectForEntityForName("TaskResult", inManagedObjectContext: CoreDataStack.sharedInstance().privateObjectContext) as! TaskResult
     
     func processResult(result: ORKTaskResult) {
@@ -23,20 +31,16 @@ class ResultProcessor {
         }
         taskResult.id = fetchTaskId()
         taskResult.date = result.startDate
-        // Process Questionnaire Results
-        if result.identifier.containsString("QuestionnaireTask") {
-            processQuestionResult(result.results!)
-        }
-        // Process Consent Results
-        else if result.identifier.containsString("ConsentTask") {
-            processConsentResult(result.results!)
-        }
+        taskResult.user_id = fetchLatestUserID(coreData.privateObjectContext)
         
+
+
         for stepResult in result.results as! [ORKStepResult] { // Iterate through TaskResult child results (Cast as step results)
             // Process Tremor Results
             if stepResult.identifier.lowercaseString.containsString("tremor") { // pick out the tremor steps
                 for fileResult in stepResult.results as! [ORKFileResult] { // Iterate through the child results of the tremor steps (file results)
                     let typeResult = stepResult.identifier + "." + fileResult.identifier  // i.e "tremor.handInLap.right" + "." + "ac1_acc"
+                    filesToUpload.append(fileToUpload(fileURL: fileResult.fileURL!, id: taskResult.id, user_id: taskResult.user_id, type: typeResult))
                     processFileResult(fileResult.fileURL!, type: typeResult)
                 }
             }
@@ -48,10 +52,14 @@ class ResultProcessor {
                     }
                     else if let grandChildResult = childResult as? ORKFileResult {
                         if grandChildResult.identifier.containsString("accelerometer"){
-                            processFileResult(grandChildResult.fileURL!, type: "bradykinesia.acc")
+                            let typeResult = "bradykinesia.acc"
+                            filesToUpload.append(fileToUpload(fileURL: grandChildResult.fileURL!, id: taskResult.id, user_id: taskResult.user_id, type: typeResult))
+                            processFileResult(grandChildResult.fileURL!, type: typeResult)
                         }
                         else {
-                            processFileResult(grandChildResult.fileURL!, type: "bradykinesia.touch")
+                            let typeResult = "bradykinesia.touch"
+                            filesToUpload.append(fileToUpload(fileURL: grandChildResult.fileURL!, id: taskResult.id, user_id: taskResult.user_id, type: typeResult))
+                            processFileResult(grandChildResult.fileURL!, type: typeResult)
                         }
                         
                     }
@@ -61,11 +69,24 @@ class ResultProcessor {
             else if stepResult.identifier.containsString("walking") { // pick out the gait steps
                 for fileResult in stepResult.results as! [ORKFileResult] { // Iterate through the child results of the gait steps (file results)
                     let typeResult = stepResult.identifier + "." + fileResult.identifier  // i.e "walking.outbound" + "." + "pedometer"
+                    filesToUpload.append(fileToUpload(fileURL: fileResult.fileURL!, id: taskResult.id, user_id: taskResult.user_id, type: typeResult))
                     processFileResult(fileResult.fileURL!, type: typeResult)
                 }
-            }            
+            }
         }
-        if result.identifier.containsString("BradykinesiaTask") {
+        
+        // Follow up after saving to Core Data
+        // Consent Task (includes save to CoreData)
+        if result.identifier.containsString("ConsentTask") {
+            processConsentResult(result.results!)
+            taskResult.type = "Consent"
+        }
+        // Questionnaire Task (includes save to CoreData)
+        else if result.identifier.containsString("QuestionnaireTask") {
+            processQuestionResult(result.results!)
+            taskResult.type = "Questionnaire"
+        }
+        else if result.identifier.containsString("BradykinesiaTask") {
             taskResult.type = "Bradykinesia"
             bradyAnalysis(Int(taskResult.id))
         }
@@ -80,103 +101,57 @@ class ResultProcessor {
         else {
             print("ResultsToCoreData: NO ANALYSIS PERFORMED")
         }
+        
     }
     
     
     func processConsentResult(consentResults: [ORKResult]) {
-        var sample: Participant?
-        let request = NSFetchRequest(entityName: "Participant")
-        do {
-            let result = try coreData.privateObjectContext.executeFetchRequest(request)
-            if (result.count > 0) {
-                sample = result[0] as? Participant
-            }
-            else {
-                sample = NSEntityDescription.insertNewObjectForEntityForName("Participant", inManagedObjectContext: coreData.privateObjectContext) as? Participant
-            }
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-
         
+        let sample = NSEntityDescription.insertNewObjectForEntityForName("Participant", inManagedObjectContext: coreData.privateObjectContext) as! Participant
+        sample.joinDate = taskResult.date
         for stepResult in consentResults as! [ORKStepResult] {
             if stepResult.identifier.containsString("ConsentReviewStep") {
                 if let signatureResult = stepResult.resultForIdentifier("ConsentDocumentParticipantSignature") as! ORKConsentSignatureResult? {
-                    sample!.firstName = signatureResult.signature!.givenName!
-                    sample!.lastName = signatureResult.signature!.familyName!
+                    sample.firstName = signatureResult.signature!.givenName!
+                    sample.lastName = signatureResult.signature!.familyName!
                 }
             }
             else if stepResult.identifier.containsString("DemographicStep") {
                 if let ageResult = stepResult.resultForIdentifier("age") as! ORKNumericQuestionResult? {
-                    sample!.age = ageResult.numericAnswer
+                    sample.age = ageResult.numericAnswer
                 }
                 if let genderResult = stepResult.resultForIdentifier("gender") as! ORKChoiceQuestionResult? {
-                    sample!.gender = genderResult.choiceAnswers?.first as? String
+                    sample.gender = genderResult.choiceAnswers?.first as? String
                 }
                 if let ethnicityResult = stepResult.resultForIdentifier("ethnicity") as! ORKChoiceQuestionResult? {
-                    sample!.ethnicity = ethnicityResult.choiceAnswers?.first as? String
+                    sample.ethnicity = ethnicityResult.choiceAnswers?.first as? String
                 }
             }
             else if stepResult.identifier.containsString("PDCharacteristicsStep") {
                 if let pddiagnosisResult = stepResult.resultForIdentifier("pdDiagnosis") as! ORKDateQuestionResult? {
-                    sample!.pdDiagnosis = pddiagnosisResult.dateAnswer
+                    sample.pdDiagnosis = pddiagnosisResult.dateAnswer
                 }
                 if let medicationResult = stepResult.resultForIdentifier("medsLast24h") as! ORKChoiceQuestionResult? {
                     let meds = medicationResult.choiceAnswers as! [String]
-                    sample!.medsLast24h = meds.joinWithSeparator(", ")
+                    sample.medsLast24h = meds.joinWithSeparator(", ")
                 }
                 if let dbsResult = stepResult.resultForIdentifier("dbsParam") as! ORKNumericQuestionResult? {
-                    sample!.dbsParam = dbsResult.numericAnswer
+                    sample.dbsParam = dbsResult.numericAnswer
                 }
             }
         }
         
-                
-                /* Attempt to obtain Demographics Data through HealthKit First */
-//                let healthCharacteristicTypes = [
-//                    HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
-//                    HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
-//                    HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,
-//                ]
-//                let typesToRequest = Set<HKCharacteristicType>(healthCharacteristicTypes)
-//                HKHealthStore().requestAuthorizationToShareTypes(nil, readTypes: typesToRequest) { authorized, error in
-//                    guard authorized else { return }
-//                }
-//                do {
-//                    let dateOfBirth = try HKHealthStore().dateOfBirth()
-//                    let now = NSDate()
-//                    let ageComponents = NSCalendar.currentCalendar().components(.Year, fromDate: dateOfBirth, toDate: now, options: .WrapComponents)
-//                    let age = ageComponents.year
-//                    sample.age = age
-//                    
-//                    let gender = try HKHealthStore().biologicalSex().biologicalSex
-//                    switch gender{
-//                    case HKBiologicalSex.Female:
-//                        sample.gender = "Female"
-//                    case HKBiologicalSex.Male:
-//                        sample.gender = "Male"
-//                    default:
-//                        break
-//                    }
-//                }
-//                catch {
-//                    
-//                }
+        sample.user_id = fetchLatestUserID(coreData.privateObjectContext) + 1
+        taskResult.user_id = sample.user_id
         
-        // Mark: Save Data
-        do {
-            try coreData.privateObjectContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
+        coreData.savePrivateContext()
     }
     
     func processQuestionResult(questionResults: [ORKResult]){
-        
         let sample = NSEntityDescription.insertNewObjectForEntityForName("QuestionnaireSample", inManagedObjectContext: coreData.privateObjectContext) as! QuestionnaireSample
         sample.id = taskResult.id
+        sample.user_id = taskResult.user_id
+        sample.date = taskResult.date
         // Process Questionnaire Results
         for stepResult in questionResults as! [ORKStepResult] {
             if stepResult.identifier.containsString("questionnaire") {
@@ -199,15 +174,9 @@ class ResultProcessor {
                 }
             }
         }
-        // Mark: Save Data
-        do {
-            try coreData.privateObjectContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
+        coreData.savePrivateContext()
     }
-
+    
     func processFileResult(url: NSURL, type: String) {
         
         // Debugging
@@ -230,33 +199,35 @@ class ResultProcessor {
                     sample.duration = Double(endDate!.timeIntervalSinceDate(startDate!))
                     sample.type = type
                     sample.id = taskResult.id
+                    sample.user_id = taskResult.user_id
+                    sample.isBacked = 0
                 }
-                else {
+                else if type.containsString("otion"){
                     let sample = NSEntityDescription.insertNewObjectForEntityForName("MotionSample", inManagedObjectContext: coreData.privateObjectContext) as! MotionSample
                     sample.id = taskResult.id
+                    sample.user_id = taskResult.user_id
                     sample.timeStamp = Double(item["timestamp"].stringValue)!
                     sample.type = type
-                    if type.containsString("otion"){
-                        sample.rX = Double(item["rotationRate"]["x"].stringValue)!
-                        sample.rY = Double(item["rotationRate"]["y"].stringValue)!
-                        sample.rZ = Double(item["rotationRate"]["z"].stringValue)!
-                        sample.aX = Double(item["userAcceleration"]["x"].stringValue)!
-                        sample.aY = Double(item["userAcceleration"]["y"].stringValue)!
-                        sample.aZ = Double(item["userAcceleration"]["z"].stringValue)!
-                    }
-                    else if type.containsString("acc") {
-                        sample.aX = (Double(item["x"].stringValue)!)
-                        sample.aY = (Double(item["y"].stringValue)!)
-                        sample.aZ = (Double(item["z"].stringValue)!)
-                    }
+                    sample.rX = Double(item["rotationRate"]["x"].stringValue)!
+                    sample.rY = Double(item["rotationRate"]["y"].stringValue)!
+                    sample.rZ = Double(item["rotationRate"]["z"].stringValue)!
+                    sample.aX = Double(item["userAcceleration"]["x"].stringValue)!
+                    sample.aY = Double(item["userAcceleration"]["y"].stringValue)!
+                    sample.aZ = Double(item["userAcceleration"]["z"].stringValue)!
+                    sample.isBacked = 0
                 }
-                
-                // Mark: Save Data
-                do {
-                    try coreData.privateObjectContext.save()
-                } catch {
-                    fatalError("Failure to save context: \(error)")
+                else if type.containsString("acc") {
+                    let sample = NSEntityDescription.insertNewObjectForEntityForName("AccelSample", inManagedObjectContext: coreData.privateObjectContext) as! AccelSample
+                    sample.id = taskResult.id
+                    sample.user_id = taskResult.user_id
+                    sample.timeStamp = Double(item["timestamp"].stringValue)!
+                    sample.type = type
+                    sample.aX = (Double(item["x"].stringValue)!)
+                    sample.aY = (Double(item["y"].stringValue)!)
+                    sample.aZ = (Double(item["z"].stringValue)!)
+                    sample.isBacked = 0
                 }
+                coreData.savePrivateContext()
                 
                 /* More Device Motion Attributes */
                 // Double(item["attitude"]["x"].stringValue)!)
@@ -275,10 +246,11 @@ class ResultProcessor {
     }
     
     func processTappingResult(tapResult: ORKTappingIntervalResult) {
-        
         for tappingSample in tapResult.samples! {
             let sample = NSEntityDescription.insertNewObjectForEntityForName("TappingSample", inManagedObjectContext: coreData.privateObjectContext) as! TappingSample
             sample.id = taskResult.id
+            sample.user_id = taskResult.user_id
+            sample.isBacked = 0
             sample.timeStamp = tappingSample.timestamp
             sample.loc_x = Double(tappingSample.location.x)
             sample.loc_y = Double(tappingSample.location.y)
@@ -292,32 +264,49 @@ class ResultProcessor {
             else {
                 sample.button_id = "none"
             }
-            
-            // MARK: Save data
-            do {
-                try coreData.privateObjectContext.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
+            coreData.savePrivateContext()
+        }
+    }
+}
+
+func fetchTaskId() -> Int {
+    let request = NSFetchRequest(entityName: "TaskResult")
+    request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+    request.fetchLimit = 1
+    do {
+        let result = try coreData.privateObjectContext.executeFetchRequest(request)
+        if (result.count > 0) {
+            let latest_task = result[0] as! TaskResult
+            return latest_task.id.integerValue + 1 // 1 after the latest task id
         }
         
+    } catch {
+        let fetchError = error as NSError
+        print(fetchError)
     }
-    
-    func fetchTaskId() -> Int {
-        let request = NSFetchRequest(entityName: "TaskResult")
-        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        request.fetchLimit = 1
-        do {
-            let result = try coreData.privateObjectContext.executeFetchRequest(request)
-            if (result.count > 0) {
-                let latest_task = result[0] as! TaskResult
-                return latest_task.id.integerValue + 1 // 1 after the latest task id
-            }
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        return 1
+    return 1
+}
+
+func updateTaskResultUserIDs(oldID: Int, newID: Int) {
+    // Motion Data
+    let motionSamples = fetchData("MotionSample", predicate: "user_id == \(oldID)", context: coreData.privateObjectContext) as! [MotionSample]
+    for sample in motionSamples {
+        sample.user_id = newID
     }
+    // Accel Data
+    let accelSamples = fetchData("AccelSample", predicate: "user_id == \(oldID)", context: coreData.privateObjectContext) as! [AccelSample]
+    for sample in accelSamples {
+        sample.user_id = newID
+    }
+    // Tapping Data
+    let tappingSamples = fetchData("TappingSample", predicate: "user_id == \(oldID)", context: coreData.privateObjectContext) as! [TappingSample]
+    for sample in tappingSamples {
+        sample.user_id = newID
+    }
+    // Walking Data
+    let walkingSamples = fetchData("WalkingSample", predicate: "user_id == \(oldID)", context: coreData.privateObjectContext) as! [WalkingSample]
+    for sample in walkingSamples {
+        sample.user_id = newID
+    }
+    coreData.savePrivateContext()
 }

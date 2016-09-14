@@ -34,13 +34,12 @@ import WatchConnectivity
 import HealthKit
 import CoreData
 import AWSCore
+import AWSCognito
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let healthStore = HKHealthStore()
-    
-    var coreData: CoreDataStack!
     
     var window: UIWindow?
     
@@ -81,18 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if WCSession.isSupported() {
             session = WCSession.defaultSession()
         }
-        
-        //Core Data
-        coreData = CoreDataStack.sharedInstance()
-
-        // AWS - "per the Amazon setting up AWS with Swift instructions"
-//        let credentialsProvider = AWSCognitoCredentialsProvider(
-//            regionType: CognitoRegionType,
-//            identityPoolId: CognitoIdentityPoolId)
-//        let configuration = AWSServiceConfiguration(
-//            region: DefaultServiceRegionType,
-//            credentialsProvider: credentialsProvider)
-//        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
         
         lockApp()
         return true

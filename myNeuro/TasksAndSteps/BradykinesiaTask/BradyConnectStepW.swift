@@ -1,5 +1,5 @@
 //
-//  TremorWConnectStep.swift
+//  WatchConnectStep.swift
 //  myNeuro
 //
 //  Created by Charlie Aylward on 8/12/16.
@@ -13,10 +13,10 @@ import CoreLocation
 import CoreMotion
 import WatchConnectivity
 
-class TremorWConnectStep: ORKWaitStep {
+class BradyConnectStepW: ORKWaitStep {
 
-    static func stepViewControllerClass() -> TremorWConnectStepViewController.Type {
-        return TremorWConnectStepViewController.self
+    static func stepViewControllerClass() -> BradyConnectWStepViewController.Type {
+        return BradyConnectWStepViewController.self
     }
     
     override init(identifier: String) {

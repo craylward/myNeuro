@@ -13,8 +13,8 @@
 		DA49F7D81CF56C3C00FDD1E1 /* EligibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */; };
 		DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */; };
 		DA5C4C8C1CD14DA6008CC643 /* QuestionnaireTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C4C8B1CD14DA6008CC643 /* QuestionnaireTask.swift */; };
-		DA6BE8681D7924A500D5674B /* BradyWConnectStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE8661D7924A500D5674B /* BradyWConnectStep.swift */; };
-		DA6BE8691D7924A500D5674B /* BradyWConnectStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE8671D7924A500D5674B /* BradyWConnectStepViewController.swift */; };
+		DA6BE8681D7924A500D5674B /* BradyConnectStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE8661D7924A500D5674B /* BradyConnectStepW.swift */; };
+		DA6BE8691D7924A500D5674B /* BradyConnectStepWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE8671D7924A500D5674B /* BradyConnectStepWViewController.swift */; };
 		DA6D096A1D4978C300A16C2A /* DemographicTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6D09691D4978C300A16C2A /* DemographicTask.swift */; };
 		DA6D096D1D4A02C700A16C2A /* PDCharacteristicsTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6D096C1D4A02C700A16C2A /* PDCharacteristicsTask.swift */; };
 		DA6D096F1D4B1B7100A16C2A /* AnalysisTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6D096E1D4B1B7100A16C2A /* AnalysisTableCell.swift */; };
@@ -50,8 +50,10 @@
 		DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */; };
 		DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */; };
 		DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D01CA1CF75E3700BE6CEB /* Skin.swift */; };
+		DA9DBD101D80015300573BCE /* myNeuro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA9DBD0E1D80015300573BCE /* myNeuro.xcdatamodeld */; };
+		DA9DBD121D87503700573BCE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9DBD111D87503700573BCE /* Reachability.swift */; };
+		DA9DBD151D888FC700573BCE /* S3TransferUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9DBD141D888FC700573BCE /* S3TransferUtility.swift */; };
 		DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */; };
-		DAA5CE6C1D2F595100CF86C8 /* myNeuro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */; };
 		DAA5CE731D2F689400CF86C8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA5CE711D2F689400CF86C8 /* Interface.storyboard */; };
 		DAA5CE751D2F689400CF86C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA5CE741D2F689400CF86C8 /* Assets.xcassets */; };
 		DAA5CE7C1D2F689400CF86C8 /* neuroWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DAA5CE7B1D2F689400CF86C8 /* neuroWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,16 +69,18 @@
 		DAA5CEC61D2F70B100CF86C8 /* PedometerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */; };
 		DAA5CEC81D2F70C200CF86C8 /* HeartRateInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */; };
 		DAA6E0631D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */; };
+		DAB5C72E1D79626C00AA3BEB /* DynamoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */; };
+		DAB5C7321D79F88900AA3BEB /* DynamoDBObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */; };
 		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2111CB4F7580057BCF9 /* Math.swift */; };
-		DAD02C471D5E4D19006DF283 /* TremorWConnectStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C461D5E4D19006DF283 /* TremorWConnectStep.swift */; };
-		DAD02C4B1D5E4D5A006DF283 /* TremorWConnectStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C4A1D5E4D5A006DF283 /* TremorWConnectStepViewController.swift */; };
+		DAD02C471D5E4D19006DF283 /* TremorConnectStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */; };
+		DAD02C4B1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C4A1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift */; };
 		DAD02C4C1D5E836F006DF283 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */; };
 		DAD02C4F1D62B7BE006DF283 /* BradykinesiaTaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C4E1D62B7BE006DF283 /* BradykinesiaTaskInterfaceController.swift */; };
-		DAD02C531D63002A006DF283 /* BradyWStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C521D63002A006DF283 /* BradyWStep.swift */; };
-		DAD02C551D630047006DF283 /* BradyWStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C541D630047006DF283 /* BradyWStepViewController.swift */; };
-		DAD02C571D6305E8006DF283 /* BradyWTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C561D6305E8006DF283 /* BradyWTask.swift */; };
+		DAD02C531D63002A006DF283 /* BradyStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C521D63002A006DF283 /* BradyStepW.swift */; };
+		DAD02C551D630047006DF283 /* BradyStepWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C541D630047006DF283 /* BradyStepWViewController.swift */; };
+		DAD02C571D6305E8006DF283 /* BradyTaskW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C561D6305E8006DF283 /* BradyTaskW.swift */; };
 		DAD02C6B1D63AC75006DF283 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C581D63AC74006DF283 /* AWSAPIGateway.framework */; };
 		DAD02C6C1D63AC75006DF283 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C581D63AC74006DF283 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAD02C6D1D63AC75006DF283 /* AWSAutoScaling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C591D63AC74006DF283 /* AWSAutoScaling.framework */; };
@@ -119,7 +123,6 @@
 		DAD5276D1D40715A00B5C08B /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAD527691D404E4700B5C08B /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAD527721D41146000B5C08B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD527711D41146000B5C08B /* CoreDataStack.swift */; };
 		DAD527741D412B5600B5C08B /* CoreDataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD527731D412B5600B5C08B /* CoreDataObjects.swift */; };
-		DADBDFC41D243F3000A707D6 /* MotionStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */; };
 		DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */; };
 		DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC91D26122200A707D6 /* GaitTask.swift */; };
 		DADBDFD21D26E81F00A707D6 /* ResultsToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */; };
@@ -128,11 +131,9 @@
 		DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C511CD9FB4A000C164D /* WatchStep.swift */; };
 		DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C571CD9FB9D000C164D /* WatchTask.swift */; };
 		DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */; };
-		DAEC01541D345BCB00202C91 /* WatchSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01531D345BCB00202C91 /* WatchSample.swift */; };
-		DAEC01551D345C1400202C91 /* WatchSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01531D345BCB00202C91 /* WatchSample.swift */; };
-		DAEC01571D34627700202C91 /* TremorWTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01561D34627700202C91 /* TremorWTask.swift */; };
-		DAEC01591D34651500202C91 /* TremorWStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01581D34651500202C91 /* TremorWStep.swift */; };
-		DAEC015B1D34652E00202C91 /* TremorWStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC015A1D34652E00202C91 /* TremorWStepViewController.swift */; };
+		DAEC01571D34627700202C91 /* TremorTaskW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01561D34627700202C91 /* TremorTaskW.swift */; };
+		DAEC01591D34651500202C91 /* TremorStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC01581D34651500202C91 /* TremorStepW.swift */; };
+		DAEC015B1D34652E00202C91 /* TremorStepWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEC015A1D34652E00202C91 /* TremorStepWViewController.swift */; };
 		DAEE33E61CEE5BBA008A270C /* TremorTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE33E51CEE5BBA008A270C /* TremorTask.swift */; };
 		DAF0C3891D11ECD600B8D8D8 /* EligibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */; };
 /* End PBXBuildFile section */
@@ -254,8 +255,8 @@
 		DA49F7D71CF56C3C00FDD1E1 /* EligibilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EligibilityViewController.swift; path = Onboarding/EligibilityViewController.swift; sourceTree = "<group>"; };
 		DA49F7D91CF5922600FDD1E1 /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsentTask.swift; path = Onboarding/ConsentTask.swift; sourceTree = "<group>"; };
 		DA5C4C8B1CD14DA6008CC643 /* QuestionnaireTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionnaireTask.swift; path = TasksAndSteps/QuestionnaireTask/QuestionnaireTask.swift; sourceTree = "<group>"; };
-		DA6BE8661D7924A500D5674B /* BradyWConnectStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyWConnectStep.swift; path = TasksAndSteps/BradykinesiaTask/BradyWConnectStep.swift; sourceTree = "<group>"; };
-		DA6BE8671D7924A500D5674B /* BradyWConnectStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyWConnectStepViewController.swift; path = TasksAndSteps/BradykinesiaTask/BradyWConnectStepViewController.swift; sourceTree = "<group>"; };
+		DA6BE8661D7924A500D5674B /* BradyConnectStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyConnectStepW.swift; path = TasksAndSteps/BradykinesiaTask/BradyConnectStepW.swift; sourceTree = "<group>"; };
+		DA6BE8671D7924A500D5674B /* BradyConnectStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyConnectStepWViewController.swift; path = TasksAndSteps/BradykinesiaTask/BradyConnectStepWViewController.swift; sourceTree = "<group>"; };
 		DA6C51491CC75DBA007A37C5 /* myNeuro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = myNeuro.entitlements; sourceTree = "<group>"; };
 		DA6D09691D4978C300A16C2A /* DemographicTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemographicTask.swift; path = TasksAndSteps/DemographicTask/DemographicTask.swift; sourceTree = "<group>"; };
 		DA6D096C1D4A02C700A16C2A /* PDCharacteristicsTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PDCharacteristicsTask.swift; path = TasksAndSteps/PDCharacteristicsTask/PDCharacteristicsTask.swift; sourceTree = "<group>"; };
@@ -296,8 +297,10 @@
 		DA7B9C681CA3BB570095794F /* ResearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResearchContainerViewController.swift; path = Startup/ResearchContainerViewController.swift; sourceTree = "<group>"; };
 		DA7B9C6A1CA3BB570095794F /* WithdrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawViewController.swift; path = Onboarding/WithdrawViewController.swift; sourceTree = "<group>"; };
 		DA7D01CA1CF75E3700BE6CEB /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Skin.swift; path = UI/Skin.swift; sourceTree = "<group>"; };
+		DA9DBD0F1D80015300573BCE /* myNeuro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myNeuro.xcdatamodel; sourceTree = "<group>"; };
+		DA9DBD111D87503700573BCE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = CoreData/Reachability.swift; sourceTree = "<group>"; };
+		DA9DBD141D888FC700573BCE /* S3TransferUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = S3TransferUtility.swift; path = CoreData/S3TransferUtility.swift; sourceTree = "<group>"; };
 		DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Resources/SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myNeuro.xcdatamodel; sourceTree = "<group>"; };
 		DAA5CE6F1D2F689400CF86C8 /* neuroWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = neuroWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA5CE721D2F689400CF86C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		DAA5CE741D2F689400CF86C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -316,15 +319,17 @@
 		DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerInterfaceController.swift; sourceTree = "<group>"; };
 		DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateInterfaceController.swift; sourceTree = "<group>"; };
 		DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TremorTaskInterfaceController.swift; sourceTree = "<group>"; };
+		DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamoDBManager.swift; path = CoreData/DynamoDBManager.swift; sourceTree = "<group>"; };
+		DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamoDBObjects.swift; path = CoreData/DynamoDBObjects.swift; sourceTree = "<group>"; };
 		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = TabBarControllers/CustomTabBarController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD2111CB4F7580057BCF9 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Analysis/Math.swift; sourceTree = "<group>"; };
-		DAD02C461D5E4D19006DF283 /* TremorWConnectStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorWConnectStep.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorWConnectStep.swift; sourceTree = "<group>"; };
-		DAD02C4A1D5E4D5A006DF283 /* TremorWConnectStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorWConnectStepViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorWConnectStepViewController.swift; sourceTree = "<group>"; };
+		DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorConnectStepW.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorConnectStepW.swift; sourceTree = "<group>"; };
+		DAD02C4A1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorConnectStepWViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorConnectStepWViewController.swift; sourceTree = "<group>"; };
 		DAD02C4E1D62B7BE006DF283 /* BradykinesiaTaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BradykinesiaTaskInterfaceController.swift; sourceTree = "<group>"; };
-		DAD02C521D63002A006DF283 /* BradyWStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyWStep.swift; path = TasksAndSteps/BradykinesiaTask/BradyWStep.swift; sourceTree = "<group>"; };
-		DAD02C541D630047006DF283 /* BradyWStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyWStepViewController.swift; path = TasksAndSteps/BradykinesiaTask/BradyWStepViewController.swift; sourceTree = "<group>"; };
-		DAD02C561D6305E8006DF283 /* BradyWTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyWTask.swift; path = TasksAndSteps/BradykinesiaTask/BradyWTask.swift; sourceTree = "<group>"; };
+		DAD02C521D63002A006DF283 /* BradyStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyStepW.swift; path = TasksAndSteps/BradykinesiaTask/BradyStepW.swift; sourceTree = "<group>"; };
+		DAD02C541D630047006DF283 /* BradyStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyStepWViewController.swift; path = TasksAndSteps/BradykinesiaTask/BradyStepWViewController.swift; sourceTree = "<group>"; };
+		DAD02C561D6305E8006DF283 /* BradyTaskW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradyTaskW.swift; path = TasksAndSteps/BradykinesiaTask/BradyTaskW.swift; sourceTree = "<group>"; };
 		DAD02C581D63AC74006DF283 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = "myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks/AWSAPIGateway.framework"; sourceTree = "<group>"; };
 		DAD02C591D63AC74006DF283 /* AWSAutoScaling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAutoScaling.framework; path = "myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks/AWSAutoScaling.framework"; sourceTree = "<group>"; };
 		DAD02C5A1D63AC74006DF283 /* AWSCloudWatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCloudWatch.framework; path = "myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks/AWSCloudWatch.framework"; sourceTree = "<group>"; };
@@ -348,7 +353,6 @@
 		DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		DAD527711D41146000B5C08B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreDataSeed/CoreDataStack.swift; sourceTree = "<group>"; };
 		DAD527731D412B5600B5C08B /* CoreDataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataObjects.swift; path = CoreData/CoreDataObjects.swift; sourceTree = "<group>"; };
-		DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MotionStepViewController.swift; path = TasksAndSteps/MotionStepViewController.swift; sourceTree = "<group>"; };
 		DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradykinesiaTask.swift; path = TasksAndSteps/BradykinesiaTask/BradykinesiaTask.swift; sourceTree = "<group>"; };
 		DADBDFC91D26122200A707D6 /* GaitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaitTask.swift; path = TasksAndSteps/GaitTask/GaitTask.swift; sourceTree = "<group>"; };
 		DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsToCoreData.swift; path = Results/ResultsToCoreData.swift; sourceTree = "<group>"; };
@@ -358,10 +362,9 @@
 		DAEB9C511CD9FB4A000C164D /* WatchStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStep.swift; path = myNeuro/Developer/Watch/WatchStep.swift; sourceTree = "<group>"; };
 		DAEB9C571CD9FB9D000C164D /* WatchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchTask.swift; path = myNeuro/Developer/Watch/WatchTask.swift; sourceTree = "<group>"; };
 		DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStepViewController.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStepViewController.swift; sourceTree = "<group>"; };
-		DAEC01531D345BCB00202C91 /* WatchSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchSample.swift; path = TasksAndSteps/WatchSample.swift; sourceTree = "<group>"; };
-		DAEC01561D34627700202C91 /* TremorWTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorWTask.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorWTask.swift; sourceTree = "<group>"; };
-		DAEC01581D34651500202C91 /* TremorWStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorWStep.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorWStep.swift; sourceTree = "<group>"; };
-		DAEC015A1D34652E00202C91 /* TremorWStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorWStepViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorWStepViewController.swift; sourceTree = "<group>"; };
+		DAEC01561D34627700202C91 /* TremorTaskW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorTaskW.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorTaskW.swift; sourceTree = "<group>"; };
+		DAEC01581D34651500202C91 /* TremorStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorStepW.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorStepW.swift; sourceTree = "<group>"; };
+		DAEC015A1D34652E00202C91 /* TremorStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorStepWViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorStepWViewController.swift; sourceTree = "<group>"; };
 		DAEE33E51CEE5BBA008A270C /* TremorTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorTask.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorTask.swift; sourceTree = "<group>"; };
 		DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EligibleViewController.swift; path = Onboarding/EligibleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -453,8 +456,8 @@
 			children = (
 				DA70C87C1CA4AF9900A83969 /* ImageTableViewCell.swift */,
 				DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */,
-				DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */,
 				DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */,
+				DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */,
 				DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */,
 			);
 			name = Results;
@@ -653,9 +656,13 @@
 		DAD527701D41144100B5C08B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */,
+				DA9DBD0E1D80015300573BCE /* myNeuro.xcdatamodeld */,
 				DAD527711D41146000B5C08B /* CoreDataStack.swift */,
 				DAD527731D412B5600B5C08B /* CoreDataObjects.swift */,
+				DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */,
+				DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */,
+				DA9DBD111D87503700573BCE /* Reachability.swift */,
+				DA9DBD141D888FC700573BCE /* S3TransferUtility.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -664,11 +671,11 @@
 			isa = PBXGroup;
 			children = (
 				DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */,
-				DAD02C561D6305E8006DF283 /* BradyWTask.swift */,
-				DAD02C521D63002A006DF283 /* BradyWStep.swift */,
-				DAD02C541D630047006DF283 /* BradyWStepViewController.swift */,
-				DA6BE8661D7924A500D5674B /* BradyWConnectStep.swift */,
-				DA6BE8671D7924A500D5674B /* BradyWConnectStepViewController.swift */,
+				DAD02C561D6305E8006DF283 /* BradyTaskW.swift */,
+				DAD02C521D63002A006DF283 /* BradyStepW.swift */,
+				DAD02C541D630047006DF283 /* BradyStepWViewController.swift */,
+				DA6BE8661D7924A500D5674B /* BradyConnectStepW.swift */,
+				DA6BE8671D7924A500D5674B /* BradyConnectStepWViewController.swift */,
 			);
 			name = BradykinesiaTask;
 			sourceTree = "<group>";
@@ -696,11 +703,11 @@
 			isa = PBXGroup;
 			children = (
 				DAEE33E51CEE5BBA008A270C /* TremorTask.swift */,
-				DAEC01561D34627700202C91 /* TremorWTask.swift */,
-				DAEC01581D34651500202C91 /* TremorWStep.swift */,
-				DAEC015A1D34652E00202C91 /* TremorWStepViewController.swift */,
-				DAD02C461D5E4D19006DF283 /* TremorWConnectStep.swift */,
-				DAD02C4A1D5E4D5A006DF283 /* TremorWConnectStepViewController.swift */,
+				DAEC01561D34627700202C91 /* TremorTaskW.swift */,
+				DAEC01581D34651500202C91 /* TremorStepW.swift */,
+				DAEC015A1D34652E00202C91 /* TremorStepWViewController.swift */,
+				DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */,
+				DAD02C4A1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift */,
 			);
 			name = TremorTask;
 			path = ..;
@@ -723,15 +730,13 @@
 		DAEE33FE1CEED0AA008A270C /* TasksAndSteps */ = {
 			isa = PBXGroup;
 			children = (
+				DA7B9C551CA3BB570095794F /* ActivityViewController.swift */,
 				DA6D096B1D4A02A200A16C2A /* PDCharacteristicsTask */,
 				DA6D09661D49789D00A16C2A /* DemographicTask */,
-				DA7B9C551CA3BB570095794F /* ActivityViewController.swift */,
-				DADBDFC31D243F3000A707D6 /* MotionStepViewController.swift */,
 				DA5C4C861CD14D8C008CC643 /* QuestionnaireTask */,
 				DADBDFC51D2445C400A707D6 /* BradykinesiaTask */,
-				DAEE33E01CEE5B2A008A270C /* TremorTask */,
 				DADBDFC81D2611F800A707D6 /* GaitTask */,
-				DAEC01531D345BCB00202C91 /* WatchSample.swift */,
+				DAEE33E01CEE5B2A008A270C /* TremorTask */,
 			);
 			name = TasksAndSteps;
 			sourceTree = "<group>";
@@ -990,7 +995,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAD02C571D6305E8006DF283 /* BradyWTask.swift in Sources */,
+				DAD02C571D6305E8006DF283 /* BradyTaskW.swift in Sources */,
 				DA7B9C7D1CA3BB570095794F /* ResearchContainerSegue.swift in Sources */,
 				DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */,
 				DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */,
@@ -999,21 +1004,23 @@
 				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
 				DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */,
 				DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */,
-				DAEC01591D34651500202C91 /* TremorWStep.swift in Sources */,
+				DA9DBD151D888FC700573BCE /* S3TransferUtility.swift in Sources */,
+				DAEC01591D34651500202C91 /* TremorStepW.swift in Sources */,
 				DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */,
-				DAEC01571D34627700202C91 /* TremorWTask.swift in Sources */,
+				DAEC01571D34627700202C91 /* TremorTaskW.swift in Sources */,
 				DA6D096F1D4B1B7100A16C2A /* AnalysisTableCell.swift in Sources */,
 				DA7B9C6C1CA3BB570095794F /* AnimatableChart.swift in Sources */,
 				DA7B9BBF1CA370160095794F /* ViewController.swift in Sources */,
-				DAA5CE6C1D2F595100CF86C8 /* myNeuro.xcdatamodeld in Sources */,
-				DAD02C4B1D5E4D5A006DF283 /* TremorWConnectStepViewController.swift in Sources */,
+				DA9DBD101D80015300573BCE /* myNeuro.xcdatamodeld in Sources */,
+				DAD02C4B1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift in Sources */,
 				DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */,
-				DA6BE8691D7924A500D5674B /* BradyWConnectStepViewController.swift in Sources */,
+				DA6BE8691D7924A500D5674B /* BradyConnectStepWViewController.swift in Sources */,
+				DAB5C7321D79F88900AA3BEB /* DynamoDBObjects.swift in Sources */,
 				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
+				DAB5C72E1D79626C00AA3BEB /* DynamoDBManager.swift in Sources */,
 				DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */,
 				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
 				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
-				DADBDFC41D243F3000A707D6 /* MotionStepViewController.swift in Sources */,
 				DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */,
 				DA7B9C7A1CA3BB570095794F /* ProfileHeaderView.swift in Sources */,
 				DA6D096D1D4A02C700A16C2A /* PDCharacteristicsTask.swift in Sources */,
@@ -1022,11 +1029,10 @@
 				DA7B9C741CA3BB570095794F /* HKHealthStore+Queries.swift in Sources */,
 				DA7B9C751CA3BB570095794F /* IntroductionViewController.swift in Sources */,
 				DAD527741D412B5600B5C08B /* CoreDataObjects.swift in Sources */,
-				DAEC01541D345BCB00202C91 /* WatchSample.swift in Sources */,
 				DA7B9C761CA3BB570095794F /* LineGraphDataSource.swift in Sources */,
 				DA7B9C6D1CA3BB570095794F /* AppDelegate.swift in Sources */,
 				DA7B9BFF1CA37F430095794F /* SurveyTask.swift in Sources */,
-				DAD02C531D63002A006DF283 /* BradyWStep.swift in Sources */,
+				DAD02C531D63002A006DF283 /* BradyStepW.swift in Sources */,
 				DA0870E01CE3448400A28302 /* AccelerometerTask.swift in Sources */,
 				DA7B9C6F1CA3BB570095794F /* DashboardTableViewController.swift in Sources */,
 				DA7B9C801CA3BB570095794F /* WithdrawViewController.swift in Sources */,
@@ -1038,19 +1044,20 @@
 				DA7B9C791CA3BB570095794F /* PieChartDataSource.swift in Sources */,
 				DA5C4C8C1CD14DA6008CC643 /* QuestionnaireTask.swift in Sources */,
 				DA70C8801CA4AF9900A83969 /* ImageTableViewCell.swift in Sources */,
-				DA6BE8681D7924A500D5674B /* BradyWConnectStep.swift in Sources */,
+				DA6BE8681D7924A500D5674B /* BradyConnectStepW.swift in Sources */,
 				DA0870E21CE345B400A28302 /* AccelerometerStep.swift in Sources */,
 				DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */,
 				DA49F7D81CF56C3C00FDD1E1 /* EligibilityViewController.swift in Sources */,
-				DAD02C471D5E4D19006DF283 /* TremorWConnectStep.swift in Sources */,
-				DAEC015B1D34652E00202C91 /* TremorWStepViewController.swift in Sources */,
+				DAD02C471D5E4D19006DF283 /* TremorConnectStepW.swift in Sources */,
+				DAEC015B1D34652E00202C91 /* TremorStepWViewController.swift in Sources */,
 				DAD527721D41146000B5C08B /* CoreDataStack.swift in Sources */,
 				DA7B9C701CA3BB570095794F /* DiscreteGraphDataSource.swift in Sources */,
 				DAF0C3891D11ECD600B8D8D8 /* EligibleViewController.swift in Sources */,
 				DA7B9C731CA3BB570095794F /* HealthDataStepViewController.swift in Sources */,
 				DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */,
 				DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */,
-				DAD02C551D630047006DF283 /* BradyWStepViewController.swift in Sources */,
+				DA9DBD121D87503700573BCE /* Reachability.swift in Sources */,
+				DAD02C551D630047006DF283 /* BradyStepWViewController.swift in Sources */,
 				DA7B9C6B1CA3BB570095794F /* ActivityViewController.swift in Sources */,
 				DA7B9C7E1CA3BB570095794F /* ResearchContainerViewController.swift in Sources */,
 			);
@@ -1077,7 +1084,6 @@
 				DAA5CE871D2F689500CF86C8 /* NotificationController.swift in Sources */,
 				DAA5CEBE1D2F6C5300CF86C8 /* AccelerometerInterfaceController.swift in Sources */,
 				DAA5CE851D2F689500CF86C8 /* ExtensionDelegate.swift in Sources */,
-				DAEC01551D345C1400202C91 /* WatchSample.swift in Sources */,
 				DAA5CE831D2F689500CF86C8 /* InterfaceController.swift in Sources */,
 				DAD02C4C1D5E836F006DF283 /* SwiftyJSON.swift in Sources */,
 				DAA5CEC81D2F70C200CF86C8 /* HeartRateInterfaceController.swift in Sources */,
@@ -1222,6 +1228,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1237,6 +1244,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1244,6 +1252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1417,12 +1426,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		DAA5CE6A1D2F595100CF86C8 /* myNeuro.xcdatamodeld */ = {
+		DA9DBD0E1D80015300573BCE /* myNeuro.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */,
+				DA9DBD0F1D80015300573BCE /* myNeuro.xcdatamodel */,
 			);
-			currentVersion = DAA5CE6B1D2F595100CF86C8 /* myNeuro.xcdatamodel */;
+			currentVersion = DA9DBD0F1D80015300573BCE /* myNeuro.xcdatamodel */;
 			path = myNeuro.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

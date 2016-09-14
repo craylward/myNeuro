@@ -27,7 +27,7 @@ public var TremorTaskW: ORKOrderedTask {
     instructionStep2.image = UIImage(named: "tremor2_w")
     steps += [instructionStep2]
     
-    let connectStep = TremorWConnectStep(identifier: "tremorWConnectStep")
+    let connectStep = TremorConnectStepW(identifier: "tremorConnectStepW")
     steps += [connectStep]
     
     let restingInstructionStep = ORKInstructionStep(identifier: "restingInstruction")

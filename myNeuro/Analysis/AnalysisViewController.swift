@@ -50,29 +50,34 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        
+        let alert = UIAlertController(title: "Notice", message: "Analysis does not currently include accelerometer/device motion calculations.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+        self.presentViewController(alert, animated: true){}
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchResults()
+        let currentID = fetchLatestUserID(coreData.mainObjectContext)
+        fetchResults(currentID)
     }
     
 
     
-    func fetchResults (){
+    func fetchResults (currentID: Int){
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
-        
         // Brady
         let bradyRequest = NSFetchRequest(entityName: "BradyAnalysis")
+        bradyRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         bradyRequest.sortDescriptors = [dateSort]
         bradyRequest.fetchLimit = 1
         // Tremor
         let tremorRequest = NSFetchRequest(entityName: "TremorAnalysis")
+        tremorRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         tremorRequest.sortDescriptors = [dateSort]
         tremorRequest.fetchLimit = 1
         // Gait
         let gaitRequest = NSFetchRequest(entityName: "GaitAnalysis")
+        gaitRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         gaitRequest.sortDescriptors = [dateSort]
         gaitRequest.fetchLimit = 1
         
@@ -90,12 +95,12 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
             if (tremorResult.count > 0) {
                 tremorFetchedResults = tremorResult[0] as? TremorAnalysis
                 tremorUpdrs.text = String(format: "%d", tremorFetchedResults!.updrs as Int)
-                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as Double)
-                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as Double)
-                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as Double)
-                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as Double)
-                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as Double)
-                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as Double)
+                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_RMS as Double)
+                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_K as Double)
+                tremor_p_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_RMS as Double)
+                tremor_p_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_K as Double)
+                tremor_k_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as Double)
+                tremor_k_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as Double)
             }
             if (gaitResult.count > 0) {
                 gaitFetchedResults = gaitResult[0] as? GaitAnalysis

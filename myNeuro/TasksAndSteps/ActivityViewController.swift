@@ -36,13 +36,18 @@ import CoreData
 // Used to simulate heart rate for simulator
 var simHeartRate = false;
 let tappingDuration = NSTimeInterval(5)
+var reachable = false
+var tryInternet = true
+var ddbEnabled = false
+var jsonBackupEnabled = false
+var uploadDataEnabled = true
 
 enum Activity: Int {
     case Questionnaire, Tremor, Bradykinesia, Gait, TremorWatch, BradykinesiaWatch  //, HeartRate
     
     static var allValues: [Activity] {
         var idx = 0
-        return Array(AnyGenerator{ return self.init(rawValue: idx++)})
+        return Array(AnyGenerator{ let temp = self.init(rawValue: idx); idx += 1; return temp})
     }
     
     var title: String {
@@ -89,12 +94,8 @@ enum Activity: Int {
 class ActivityViewController: UITableViewController, WCSessionDelegate {
     
     // MARK: Properties
-    
     var result: ORKResult?
-    
-    var coreData = {
-        return CoreDataStack.sharedInstance()
-    }()
+    let defaultFileManager = NSFileManager.defaultManager()
 
     //Watch Connectivity
     var session: WCSession? {
@@ -116,11 +117,25 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        if tryInternet == true {
+//            reachable = Reachability.isConnectedToNetwork()
+//            if reachable == true {
+//                print("Internet connection OK")
+//            } else {
+//                print("Internet connection FAILED")
+//                let alert = UIAlertController(title: "No Internet Connection", message: "Data will not be uploaded to database unless connected to the internet.", preferredStyle: .Alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+//                alert.addAction(UIAlertAction(title: "Don't Backup", style: .Default) { _ in tryInternet = false })
+//                self.presentViewController(alert, animated: true){}
+//            }
+//        }
+    }
+    
     // MARK: UITableViewDataSource
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section == 0 else { return 0 }
-        
         return Activity.allValues.count
     }
 
@@ -141,11 +156,6 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         guard let activity = Activity(rawValue: indexPath.row) else { return }
         
         let taskViewController: ORKTaskViewController
-        
-        // WatchConnectivity
-        if WCSession.isSupported() {
-            session = WCSession.defaultSession()
-        }
 
         switch activity {
             case .Questionnaire:
@@ -160,16 +170,14 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
                 taskViewController = ORKTaskViewController(task: BradyTaskW, taskRunUUID: NSUUID())
             case .TremorWatch:
                 taskViewController = ORKTaskViewController(task: TremorTaskW, taskRunUUID: NSUUID())
+            
 //            case .HeartRate:
 //                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
 //                simHeartRate = true;
 
-
         }
         
         do {
-            let defaultFileManager = NSFileManager.defaultManager()
-            
             // Identify the documents directory.
             let documentsDirectory = try defaultFileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
             
@@ -199,25 +207,24 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         if reason == .Failed {
             print(error!.localizedDescription)
         }
-        // Developing: used to simulate a heart beat
-//        if simHeartRate == true {
-//            HealthDataStep.stopMockHeartData()
-//            simHeartRate = false
-//        }
-
-        // MARK: Update results and analysis tabs
-        else if reason == .Completed {
-            let customTabBarController = self.tabBarController as! CustomTabBarController
-            let resultProcessor = ResultProcessor()
-            coreData.privateObjectContext.performBlock { () -> Void in
-                resultProcessor.processResult(taskViewController.result)
-            }
-            let navResult = customTabBarController.viewControllers![2] as! UINavigationController
-            let resultViewController = navResult.topViewController as! ResultViewController
-
-            print("Updating results/analysis tabs...")
-            resultViewController.result = taskViewController.result
+            // Developing: used to simulate a heart beat
+            //        if simHeartRate == true {
+            //            HealthDataStep.stopMockHeartData()
+            //            simHeartRate = false
+            //        }
             
+            // MARK: Update results and analysis tabs
+        else if reason == .Completed {
+            coreData.privateObjectContext.performBlock { () -> Void in
+                uploadDataEnabled = false
+                ResultProcessor().processResult(taskViewController.result)
+                uploadDataEnabled = true
+            }
+            //print("Updating results tabs...")
+            //let customTabBarController = self.tabBarController as! CustomTabBarController
+            //let navResult = customTabBarController.viewControllers![2] as! UINavigationController
+            //let resultViewController = navResult.topViewController as! ResultViewController
+            //resultViewController.result = taskViewController.result
             
         }
         taskViewController.dismissViewControllerAnimated(true, completion: nil)

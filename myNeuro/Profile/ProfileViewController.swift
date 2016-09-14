@@ -32,41 +32,161 @@ import UIKit
 import ResearchKit
 import HealthKit
 import CoreData
+import AWSS3
+import AWSCore
 
 class ProfileViewController: UITableViewController, HealthClientType {
     // MARK: Properties
-
+    var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
+    var progressBlock: AWSS3TransferUtilityProgressBlock?
+    
     let healthObjectTypes = [
         HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+        //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+        //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
     ]
     
-    let otherTypes = ["Date of Birth", "Age", "Gender", "Ethnicity", "PD Diagnosis Date", "Medications", "DBS Parameter"]
+    let otherTypes = ["Age", "Gender", "Ethnicity", "PD Diagnosis Date", "Medications", "DBS Parameter"] // "Date of Birth"
     
     var healthStore: HKHealthStore?
     
+    // @IBOutlets
     @IBOutlet weak var participantNameLabel: UILabel!
     @IBOutlet var applicationNameLabel: UILabel!
+    @IBOutlet weak var ddbSwitch: UISwitch!
+    @IBOutlet weak var uploadDataButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var jsonBackupSwitch: UISwitch!
+    @IBOutlet weak var fileLabel: UILabel!
     
-    lazy var mainContext: NSManagedObjectContext = {
-        var coreDataStack = CoreDataStack()
-        let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        context.persistentStoreCoordinator = coreDataStack.persistentStoreCoordinator
-        return context
-    }()
+    @IBAction func jsonBackupPressed(sender: AnyObject) {
+        if jsonBackupSwitch.on == true {
+            jsonBackupEnabled = true
+        }
+        else {
+            jsonBackupEnabled = false
+        }
+    }
+    // @IBActions
+    @IBAction func pressedDDBSwitch(sender: AnyObject) {
+        if ddbSwitch.on == true {
+            ddbEnabled = true
+        }
+        else {
+            ddbEnabled = false
+        }
+    }
+    @IBAction func pressUploadData(sender: AnyObject) {
+        reachable = Reachability.isConnectedToNetwork()
+        if reachable == true {
+            var tasks: [AWSTask] = []
+            if jsonBackupEnabled == true {
+                print("files: \(filesToUpload.count)")
+                for file in filesToUpload {
+                    print("S3: Uploading file: \(file.fileURL.path!)")
+                    tasks.append(
+                        S3TransferUtility.uploadFile(file.fileURL, fileName: "\(file.user_id)/\(file.id)/\(file.type)", progressBlock: { (task, progress) in
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.progressView.progress = Float(progress.fractionCompleted)
+                                self.fileLabel.text = file.type
+                            })}, completionBlock: {(task, error) -> Void in })
+                    )
+                }
+                filesToUpload = []
+            }
+            AWSTask(forCompletionOfAllTasks: tasks) .continueWithSuccessBlock { (task) -> AnyObject! in
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MM-dd-yyyy_h-mma"
+                let dateString = dateFormatter.stringFromDate(NSDate())
+                if let dbFile = coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].URL {
+                    self.uploadDataButton.enabled = false
+                    return S3TransferUtility.uploadFile(dbFile, fileName: "\(dateString)/\(dbFile.lastPathComponent!)", progressBlock: {(task, progress) in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.progressView.progress = Float(progress.fractionCompleted)
+                            self.fileLabel.text = dbFile.lastPathComponent!
+                        })}, completionBlock: self.completionHandler)
+                }
+                else {
+                    print("Error: Could not locate the persisitent store db file.")
+                    let alert = UIAlertController(title: "Error", message: "Could not locate the persistent store db file.", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                    self.presentViewController(alert, animated: true){}
+                    return nil
+                }
+            }
+            if ddbEnabled == true{
+                DynamoDBManager.uploadSamples("Participant", ddbHashKey: "userID", ddbRangeKey: "LastName", ddbAttrS: [], ddbAttrN: [])
+                DynamoDBManager.uploadSamples("MotionSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+                DynamoDBManager.uploadSamples("AccelSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+                DynamoDBManager.uploadSamples("WalkingSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+                DynamoDBManager.uploadSamples("QuestionnaireSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+                DynamoDBManager.uploadSamples("TappingSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+            }
+        }
+        else {
+            print("Internet connection FAILED")
+            let alert = UIAlertController(title: "No Internet Connection", message: "Data cannot be uploaded to database unless connected to the internet.", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+            self.presentViewController(alert, animated: true){}
+        }
+    }
     
     var participant: Participant?
     
     // MARK: UIViewController
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        uploadDataButton.enabled = uploadDataEnabled
+        self.fileLabel.text = uploadDataEnabled ? "" : "Waiting for results to finish processing..."
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressView.progress = 0.0;
+        
+        self.progressBlock = {(task, progress) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.progressView.progress = Float(progress.fractionCompleted)
+            })
+        }
+        self.completionHandler = { (task, error) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.uploadDataButton.enabled = true
+                self.fileLabel.text = ""                
+                if ((error) != nil){
+                    print("Failed with error")
+                    print("Error: %@",error!);
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let alert = UIAlertController(title: "Upload Failed", message: "Data could not be uploaded: \(error!)", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                        self.presentViewController(alert, animated: true){}
+                    }
+                }
+                else if(self.progressView.progress != 1.0) {
+                    print("Error: Failed - Likely due to invalid region / filename")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let alert = UIAlertController(title: "Upload Failed", message: "Error: Failed - Likely due to invalid region / filename", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                        self.presentViewController(alert, animated: true){}
+                    }
+                }
+                else{
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let alert = UIAlertController(title: "Upload Successful", message: "Data has been uploaded to a secure cloud storage", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                        self.presentViewController(alert, animated: true){}
+                    }
+                }
+                self.progressView.progress = 0.0;
+            })
+        }
         
         guard let healthStore = healthStore else { fatalError("healthStore not set") }
         let request = NSFetchRequest(entityName: "Participant")
         do {
-            participant = try mainContext.executeFetchRequest(request).first as? Participant
+            // Show the most recently joined user in the profile page
+            var participants = try coreData.mainObjectContext.executeFetchRequest(request) as! [Participant]
+            participants = participants.sort({ $0.joinDate > $1.joinDate})
+            participant = participants.first
             participantNameLabel.text = participant!.firstName + " " + participant!.lastName
         } catch {
             let fetchError = error as NSError
@@ -78,7 +198,7 @@ class ProfileViewController: UITableViewController, HealthClientType {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         // Request authorization to query the health objects that need to be shown.
-        let typesToRequest = Set<HKObjectType>(healthObjectTypes)
+        let typesToRequest = Set<HKCharacteristicType>(healthObjectTypes) // UseSet<HKObjectType> if healthObjectTypes contains ANY object types
         healthStore.requestAuthorizationToShareTypes(nil, readTypes: typesToRequest) { authorized, error in
             guard authorized else { return }
             
@@ -117,7 +237,7 @@ class ProfileViewController: UITableViewController, HealthClientType {
             dateFormatter.timeStyle = .NoStyle
             cell.valueLabel.text = dateFormatter.stringFromDate((participant?.pdDiagnosis)!)
         case "Medications":
-            cell.valueLabel.text = participant?.medsLast24h as? String
+            cell.valueLabel.text = participant?.medsLast24h
         case "DBS Parameter":
             if participant?.dbsParam != nil {
                 cell.valueLabel.text = (participant?.dbsParam?.stringValue)! + " Hz"

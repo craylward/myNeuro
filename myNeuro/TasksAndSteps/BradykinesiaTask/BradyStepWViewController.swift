@@ -38,6 +38,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.continueButtonTitle = nil
         outputDir = taskViewController!.outputDirectory
         updateText("Waiting for task to finish")
         if session == nil {

@@ -11,13 +11,13 @@ import ResearchKit
 import CoreMotion
 import WatchConnectivity
 
-class BradyWConnectStepViewController: ORKWaitStepViewController, WCSessionDelegate
+class BradyConnectWStepViewController: ORKWaitStepViewController, WCSessionDelegate
 {
     var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
     
     // ORKWaitStepViewController Functions
-    static func stepViewControllerClass() -> BradyWConnectStepViewController.Type {
-        return BradyWConnectStepViewController.self
+    static func stepViewControllerClass() -> BradyConnectWStepViewController.Type {
+        return BradyConnectWStepViewController.self
     }
 
     override func viewDidLoad() {
@@ -58,6 +58,9 @@ class BradyWConnectStepViewController: ORKWaitStepViewController, WCSessionDeleg
             }
         } else {
             print("Apple Watch connectivity is not supported on this device")
+            let alert = UIAlertController(title: "Error", message: "Apple Watch connectivity is not supported on this device", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+            self.presentViewController(alert, animated: true){}
         }
     }
     

@@ -42,11 +42,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 //                kItemKeyDetail: "Records sensor data related to tremor.",
 //                kItemKeyClassPrefix: "Tremor",
 //            ],
-            [
-                kItemKeyTitle: "Heart Rate",
-                kItemKeyDetail: "Access to Heart Rate data using HealthKit.",
-                kItemKeyClassPrefix: "HeartRate",
-            ],
+//            [
+//                kItemKeyTitle: "Heart Rate",
+//                kItemKeyDetail: "Access to Heart Rate data using HealthKit.",
+//                kItemKeyClassPrefix: "HeartRate",
+//            ],
 //            [
 //                kItemKeyTitle: "Accelerometer",
 //                kItemKeyDetail: "Access to Accelerometer data using CoreMotion.",
