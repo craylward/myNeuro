@@ -120,7 +120,7 @@ func gaitAnalysis (resultId: Int){
     let coreData = CoreDataStack.sharedInstance()
     
     //fetch bradykinesia results
-    let gaitMotionSamplesRequest = NSFetchRequest(entityName: "MotionSample")
+    //let gaitMotionSamplesRequest = NSFetchRequest(entityName: "MotionSample")
     let gaitWalkingOutboundRequest = NSFetchRequest(entityName: "WalkingSample")
     let gaitWalkingReturnRequest = NSFetchRequest(entityName: "WalkingSample")
     let idPredicate = NSPredicate(format: "id == \(resultId)")
@@ -133,11 +133,11 @@ func gaitAnalysis (resultId: Int){
     gaitWalkingOutboundRequest.predicate = outboundPredicates
     gaitWalkingReturnRequest.predicate = returnPredicates
 
-    var gaitMotionSamples: [MotionSample]?
+//    var gaitMotionSamples: [MotionSample]?
     var gaitWalkingOutboundSamples: [WalkingSample]?
     var gaitWalkingReturnSamples: [WalkingSample]?
     do {
-        gaitMotionSamples = try coreData.privateObjectContext.executeFetchRequest(gaitMotionSamplesRequest) as? [MotionSample]
+        //gaitMotionSamples = try coreData.privateObjectContext.executeFetchRequest(gaitMotionSamplesRequest) as? [MotionSample]
         gaitWalkingOutboundSamples = try coreData.privateObjectContext.executeFetchRequest(gaitWalkingOutboundRequest) as? [WalkingSample]
         gaitWalkingReturnSamples = try coreData.privateObjectContext.executeFetchRequest(gaitWalkingReturnRequest) as? [WalkingSample]
     } catch {
