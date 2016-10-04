@@ -26,13 +26,12 @@ public var PDCharacteristicsStep: ORKFormStep {
     let medicationPicker = ORKTextChoiceAnswerFormat(style: ORKChoiceAnswerStyle.MultipleChoice, textChoices: [levodopa, dopamine, anticholinergics, maob, comt, none])
     let medicationItem = ORKFormItem(identifier: "medsLast24h", text: "Medications taken in the last 24 hours", answerFormat: medicationPicker)
     
-    let dbsPicker = ORKNumericAnswerFormat(style: ORKNumericAnswerStyle.Integer, unit: "Hz", minimum: 1, maximum: 1000)
-    let dbsItem = ORKFormItem(identifier: "dbsParam", text: "DBS Parameter", answerFormat: dbsPicker)
-    dbsItem.placeholder = "(Optional)"
+    let dbsPicker = ORKBooleanAnswerFormat()
+    let dbsItem = ORKFormItem(identifier: "dbsImplant", text: "Do you have a deep brain stimulation (DBS) system implanted?", answerFormat: dbsPicker)
     
     diagnosisItem.optional = false
     medicationItem.optional = false
-    dbsItem.optional = true
+    dbsItem.optional = false
     
     pdcharacteristicsStep.formItems = [diagnosisItem, medicationItem, dbsItem]
     pdcharacteristicsStep.optional = false
@@ -41,4 +40,26 @@ public var PDCharacteristicsStep: ORKFormStep {
 
 public var PDCharacteristicsTask: ORKOrderedTask {
     return ORKOrderedTask(identifier: "PDCharacteristicsTask", steps: [PDCharacteristicsStep])
+}
+
+public var DBSStep: ORKFormStep {
+    let dbsStep = ORKFormStep(identifier: "dbsConfiguration", title: "DBS Configuration", text: "Enter the lead configurations below. For example, if using leads 1, 3, 5, and 8, enter '1358'")
+    
+    let leadAnswer = ORKNumericAnswerFormat(style: .Integer, unit: nil, minimum: 1, maximum: 1234568)
+    
+    let left = ORKFormItem(sectionTitle: "Left DBS Lead Configuration")
+    let leftAnodes = ORKFormItem(identifier: "leftAnodes", text: "Anodes(+)", answerFormat: leadAnswer, optional: false)
+    let leftCathodes = ORKFormItem(identifier: "leftCathodes", text: "Cathodes(-)", answerFormat: leadAnswer, optional: false)
+    let right = ORKFormItem(sectionTitle: "Right DBS Lead Configuration")
+    let rightAnodes = ORKFormItem(identifier: "rightAnodes", text: "Anodes(+)", answerFormat: leadAnswer, optional: false)
+    let rightCathodes = ORKFormItem(identifier: "rightCathodes", text: "Cathodes(-)", answerFormat: leadAnswer, optional: false)
+
+    leftAnodes.placeholder = "i.e. 1358"
+    leftCathodes.placeholder = "i.e. 1358"
+    rightAnodes.placeholder = "i.e. 1358"
+    rightCathodes.placeholder = "i.e. 1358"
+    
+    dbsStep.formItems = [left, leftAnodes, leftCathodes, right, rightAnodes, rightCathodes]
+    dbsStep.optional = false
+    return dbsStep
 }

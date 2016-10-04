@@ -37,7 +37,7 @@ public var ConsentTask: ORKNavigableOrderedTask {
     completionStep.title = "Welcome aboard."
     completionStep.text = "Thank you for joining this study."
     
-    steps += [visualConsentStep, reviewConsentStep, consentFailedStep, DemographicStep, PDCharacteristicsStep, healthDataStep, passcodeStep, completionStep]
+    steps += [visualConsentStep, reviewConsentStep, consentFailedStep, DemographicStep, PDCharacteristicsStep, DBSStep, healthDataStep, passcodeStep, completionStep]
     
     let task = ORKNavigableOrderedTask(identifier: "ConsentTask", steps: steps)
     
@@ -45,6 +45,11 @@ public var ConsentTask: ORKNavigableOrderedTask {
     let reviewPredicate = ORKResultPredicate.predicateForConsentWithResultSelector(reviewSelector, didConsent: true)
     let reviewConsent = ORKPredicateStepNavigationRule(resultPredicates: [reviewPredicate], destinationStepIdentifiers: ["DemographicStep"], defaultStepIdentifier: nil, validateArrays: true)
     task.setNavigationRule(reviewConsent, forTriggerStepIdentifier: "ConsentReviewStep")
+    
+    let dbsSelector = ORKResultSelector(stepIdentifier: "PDCharacteristicsStep", resultIdentifier: "dbsImplant")
+    let dbsPredicate = ORKResultPredicate.predicateForBooleanQuestionResultWithResultSelector(dbsSelector, expectedAnswer: false)
+    let dbsImplant = ORKPredicateStepNavigationRule(resultPredicates: [dbsPredicate], destinationStepIdentifiers: ["Health"], defaultStepIdentifier: nil, validateArrays: true)
+    task.setNavigationRule(dbsImplant, forTriggerStepIdentifier: "PDCharacteristicsStep")
     
     return task
 }
