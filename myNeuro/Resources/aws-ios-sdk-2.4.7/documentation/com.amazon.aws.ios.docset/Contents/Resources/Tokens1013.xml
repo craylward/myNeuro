@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AWSElasticLoadBalancingModifyProvisionedCapacityOutput.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AWSElasticLoadBalancingModifyProvisionedCapacityOutput</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1013"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingModifyProvisionedCapacityOutput/setProvisionedCapacity:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;Information about the provisioned capacity for the load balancer.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AWSElasticLoadBalancingProvisionedCapacity *provisionedCapacity</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedCapacity</Anchor>
+            <NodeRef refid="1013"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingModifyProvisionedCapacityOutput/provisionedCapacity</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;Information about the provisioned capacity for the load balancer.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AWSElasticLoadBalancingProvisionedCapacity *provisionedCapacity</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedCapacity</Anchor>
+            <NodeRef refid="1013"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSElasticLoadBalancingModifyProvisionedCapacityOutput/provisionedCapacity</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;Information about the provisioned capacity for the load balancer.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AWSElasticLoadBalancingProvisionedCapacity *provisionedCapacity</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedCapacity</Anchor>
+            <NodeRef refid="1013"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

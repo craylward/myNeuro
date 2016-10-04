@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AWSSESGetIdentityDkimAttributesRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AWSSESGetIdentityDkimAttributesRequest</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1495"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSSESGetIdentityDkimAttributesRequest/setIdentities:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;A list of one or more verified identities - email addresses, domains, or both.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray&lt;NSString*&gt; *identities</Declaration>
+			
+			
+			<Anchor>//api/name/identities</Anchor>
+            <NodeRef refid="1495"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSSESGetIdentityDkimAttributesRequest/identities</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;A list of one or more verified identities - email addresses, domains, or both.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray&lt;NSString*&gt; *identities</Declaration>
+			
+			
+			<Anchor>//api/name/identities</Anchor>
+            <NodeRef refid="1495"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSSESGetIdentityDkimAttributesRequest/identities</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;A list of one or more verified identities - email addresses, domains, or both.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSArray&lt;NSString*&gt; *identities</Declaration>
+			
+			
+			<Anchor>//api/name/identities</Anchor>
+            <NodeRef refid="1495"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

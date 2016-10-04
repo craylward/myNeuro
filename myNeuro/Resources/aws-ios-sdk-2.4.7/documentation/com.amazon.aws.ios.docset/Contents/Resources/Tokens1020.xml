@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AWSElasticLoadBalancingProvisionedCapacity.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AWSElasticLoadBalancingProvisionedCapacity</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;Information about the provisioned capacity of a load balancer.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1020"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/setDecreasesRemaining:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The remaining number of times that you can decrease the provisioned capacity of the load balancer during the current calendar day (in UTC).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *decreasesRemaining</Declaration>
+			
+			
+			<Anchor>//api/name/decreasesRemaining</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/decreasesRemaining</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The remaining number of times that you can decrease the provisioned capacity of the load balancer during the current calendar day (in UTC).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *decreasesRemaining</Declaration>
+			
+			
+			<Anchor>//api/name/decreasesRemaining</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSElasticLoadBalancingProvisionedCapacity/decreasesRemaining</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The remaining number of times that you can decrease the provisioned capacity of the load balancer during the current calendar day (in UTC).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *decreasesRemaining</Declaration>
+			
+			
+			<Anchor>//api/name/decreasesRemaining</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/setLastModifiedTime:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The date and time the provisioned capacity of the load balancer was modified.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDate *lastModifiedTime</Declaration>
+			
+			
+			<Anchor>//api/name/lastModifiedTime</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/lastModifiedTime</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The date and time the provisioned capacity of the load balancer was modified.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDate *lastModifiedTime</Declaration>
+			
+			
+			<Anchor>//api/name/lastModifiedTime</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSElasticLoadBalancingProvisionedCapacity/lastModifiedTime</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The date and time the provisioned capacity of the load balancer was modified.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSDate *lastModifiedTime</Declaration>
+			
+			
+			<Anchor>//api/name/lastModifiedTime</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/setMinimumLBCapacityUnits:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The minimum requested capacity, in load balancer capacity units (LCU).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *minimumLBCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/minimumLBCapacityUnits</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/minimumLBCapacityUnits</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The minimum requested capacity, in load balancer capacity units (LCU).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *minimumLBCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/minimumLBCapacityUnits</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSElasticLoadBalancingProvisionedCapacity/minimumLBCapacityUnits</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The minimum requested capacity, in load balancer capacity units (LCU).&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *minimumLBCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/minimumLBCapacityUnits</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/setStatus:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The status of the request for provisioned capacity.&lt;/p&gt;&lt;p&gt;If you contacted AWS support to pre-warm your load balancer and the pre-warming has not expired, the status is &lt;code&gt;pre-warmed&lt;/code&gt;. If the load balancer currently uses pre-warming, calling &lt;a&gt;ModifyProvisionedCapacity&lt;/a&gt; converts it to use provisioned capacity.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AWSElasticLoadBalancingProvisionedCapacityStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSElasticLoadBalancingProvisionedCapacity/status</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The status of the request for provisioned capacity.&lt;/p&gt;&lt;p&gt;If you contacted AWS support to pre-warm your load balancer and the pre-warming has not expired, the status is &lt;code&gt;pre-warmed&lt;/code&gt;. If the load balancer currently uses pre-warming, calling &lt;a&gt;ModifyProvisionedCapacity&lt;/a&gt; converts it to use provisioned capacity.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AWSElasticLoadBalancingProvisionedCapacityStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSElasticLoadBalancingProvisionedCapacity/status</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The status of the request for provisioned capacity.&lt;/p&gt;&lt;p&gt;If you contacted AWS support to pre-warm your load balancer and the pre-warming has not expired, the status is &lt;code&gt;pre-warmed&lt;/code&gt;. If the load balancer currently uses pre-warming, calling &lt;a&gt;ModifyProvisionedCapacity&lt;/a&gt; converts it to use provisioned capacity.&lt;/p&gt;</Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AWSElasticLoadBalancingProvisionedCapacityStatus status</Declaration>
+			
+			
+			<Anchor>//api/name/status</Anchor>
+            <NodeRef refid="1020"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

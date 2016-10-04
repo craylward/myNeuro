@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AWSSESCreateReceiptRuleSetRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AWSSESCreateReceiptRuleSetRequest</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1474"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSSESCreateReceiptRuleSetRequest/setRuleSetName:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The name of the rule set to create. The name must:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/li&gt;&lt;li&gt;Start and end with a letter or number.&lt;/li&gt;&lt;li&gt;Contain less than 64 characters.&lt;/li&gt;&lt;/ul&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ruleSetName</Declaration>
+			
+			
+			<Anchor>//api/name/ruleSetName</Anchor>
+            <NodeRef refid="1474"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSSESCreateReceiptRuleSetRequest/ruleSetName</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The name of the rule set to create. The name must:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/li&gt;&lt;li&gt;Start and end with a letter or number.&lt;/li&gt;&lt;li&gt;Contain less than 64 characters.&lt;/li&gt;&lt;/ul&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ruleSetName</Declaration>
+			
+			
+			<Anchor>//api/name/ruleSetName</Anchor>
+            <NodeRef refid="1474"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSSESCreateReceiptRuleSetRequest/ruleSetName</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;The name of the rule set to create. The name must:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/li&gt;&lt;li&gt;Start and end with a letter or number.&lt;/li&gt;&lt;li&gt;Contain less than 64 characters.&lt;/li&gt;&lt;/ul&gt;</Abstract>
+			<DeclaredIn>AWSSESModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSString *ruleSetName</Declaration>
+			
+			
+			<Anchor>//api/name/ruleSetName</Anchor>
+            <NodeRef refid="1474"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/AWSElasticLoadBalancingProvisionedCapacityStatus.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/AWSElasticLoadBalancingProvisionedCapacityStatus</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1859"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/AWSElasticLoadBalancingProvisionedCapacityStatusUnknown</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>AWSElasticLoadBalancingProvisionedCapacityStatusUnknown</Declaration>
+            
+            <DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+            <NodeRef refid="1859"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/AWSElasticLoadBalancingProvisionedCapacityStatusDisabled</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>AWSElasticLoadBalancingProvisionedCapacityStatusDisabled</Declaration>
+            
+            <DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+            <NodeRef refid="1859"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/AWSElasticLoadBalancingProvisionedCapacityStatusPending</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>AWSElasticLoadBalancingProvisionedCapacityStatusPending</Declaration>
+            
+            <DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+            <NodeRef refid="1859"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/AWSElasticLoadBalancingProvisionedCapacityStatusProvisioned</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>AWSElasticLoadBalancingProvisionedCapacityStatusProvisioned</Declaration>
+            
+            <DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+            <NodeRef refid="1859"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/AWSElasticLoadBalancingProvisionedCapacityStatusPreWarmed</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>AWSElasticLoadBalancingProvisionedCapacityStatusPreWarmed</Declaration>
+            
+            <DeclaredIn>AWSElasticLoadBalancingModel.h</DeclaredIn>
+            
+            <NodeRef refid="1859"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

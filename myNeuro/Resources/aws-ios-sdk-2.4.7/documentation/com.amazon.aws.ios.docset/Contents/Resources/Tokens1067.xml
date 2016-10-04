@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AWSFirehoseRedshiftRetryOptions.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AWSFirehoseRedshiftRetryOptions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSFirehoseModel.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1067"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSFirehoseRedshiftRetryOptions/setDurationInSeconds:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSFirehoseModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *durationInSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/durationInSeconds</Anchor>
+            <NodeRef refid="1067"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AWSFirehoseRedshiftRetryOptions/durationInSeconds</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSFirehoseModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *durationInSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/durationInSeconds</Anchor>
+            <NodeRef refid="1067"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AWSFirehoseRedshiftRetryOptions/durationInSeconds</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AWSFirehoseModel.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) NSNumber *durationInSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/durationInSeconds</Anchor>
+            <NodeRef refid="1067"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
