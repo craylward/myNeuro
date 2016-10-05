@@ -42,8 +42,8 @@ public var PDCharacteristicsTask: ORKOrderedTask {
     return ORKOrderedTask(identifier: "PDCharacteristicsTask", steps: [PDCharacteristicsStep])
 }
 
-public var DBSStep: ORKFormStep {
-    let dbsStep = ORKFormStep(identifier: "dbsConfiguration", title: "DBS Configuration", text: "Enter the lead configurations below. For example, if using leads 1, 3, 5, and 8, enter '1358'")
+public var DBSConfigurationStep: ORKFormStep {
+    let dbsStep = ORKFormStep(identifier: "dbsConfigurationStep", title: "DBS Configuration", text: "Enter the lead configurations below. For example, if using leads 1, 3, 5, and 8, enter '1358'")
     
     let leadAnswer = ORKNumericAnswerFormat(style: .Integer, unit: nil, minimum: 1, maximum: 1234568)
     

@@ -47,7 +47,11 @@
     </entity>
     <entity name="Participant" representedClassName=".Participant" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="dbsParam" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dbsImplant" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dbsLeftAnodes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dbsLeftCathodes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dbsRightAnodes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dbsRightCathodes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="ethnicity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
@@ -119,7 +123,7 @@
         <element name="BradyAnalysis" positionX="-216" positionY="126" width="128" height="148"/>
         <element name="GaitAnalysis" positionX="-90" positionY="126" width="128" height="178"/>
         <element name="MotionSample" positionX="-468" positionY="-54" width="128" height="225"/>
-        <element name="Participant" positionX="-344" positionY="-414" width="128" height="225"/>
+        <element name="Participant" positionX="-344" positionY="-414" width="128" height="285"/>
         <element name="QuestionnaireSample" positionX="-342" positionY="-54" width="128" height="195"/>
         <element name="TappingSample" positionX="-216" positionY="-54" width="128" height="180"/>
         <element name="TaskResult" positionX="-344" positionY="-189" width="128" height="135"/>

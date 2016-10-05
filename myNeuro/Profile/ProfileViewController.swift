@@ -46,7 +46,7 @@ class ProfileViewController: UITableViewController, HealthClientType {
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
     ]
     
-    let otherTypes = ["Age", "Gender", "Ethnicity", "PD Diagnosis Date", "Medications", "DBS Parameter"] // "Date of Birth"
+    let otherTypes = ["Age", "Gender", "Ethnicity", "PD Diagnosis Date", "Medications", "DBS Implant"] // "Date of Birth"
     
     var healthStore: HKHealthStore?
     
@@ -238,10 +238,8 @@ class ProfileViewController: UITableViewController, HealthClientType {
             cell.valueLabel.text = dateFormatter.stringFromDate((participant?.pdDiagnosis)!)
         case "Medications":
             cell.valueLabel.text = participant?.medsLast24h
-        case "DBS Parameter":
-            if participant?.dbsParam != nil {
-                cell.valueLabel.text = (participant?.dbsParam?.stringValue)! + " Hz"
-            }
+        case "DBS Implant":
+            cell.valueLabel.text = (participant!.dbsImplant!.boolValue ? "Yes" : "No")
         default:
             fatalError("Unexpected type for profile cell")
         }

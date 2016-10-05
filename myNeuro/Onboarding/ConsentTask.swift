@@ -37,7 +37,7 @@ public var ConsentTask: ORKNavigableOrderedTask {
     completionStep.title = "Welcome aboard."
     completionStep.text = "Thank you for joining this study."
     
-    steps += [visualConsentStep, reviewConsentStep, consentFailedStep, DemographicStep, PDCharacteristicsStep, DBSStep, healthDataStep, passcodeStep, completionStep]
+    steps += [visualConsentStep, reviewConsentStep, consentFailedStep, DemographicStep, PDCharacteristicsStep, DBSConfigurationStep, healthDataStep, passcodeStep, completionStep]
     
     let task = ORKNavigableOrderedTask(identifier: "ConsentTask", steps: steps)
     

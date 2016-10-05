@@ -22,7 +22,11 @@ class Participant: NSManagedObject {
     @NSManaged var gender: String?
     
     //PD Characteristics
-    @NSManaged var dbsParam: NSNumber?
+    @NSManaged var dbsImplant: NSNumber?
+    @NSManaged var dbsLeftAnodes: NSNumber?
+    @NSManaged var dbsLeftCathodes: NSNumber?
+    @NSManaged var dbsRightAnodes: NSNumber?
+    @NSManaged var dbsRightCathodes: NSNumber?
     @NSManaged var medsLast24h: String?
     @NSManaged var pdDiagnosis: NSDate?
     @NSManaged var isBacked: NSNumber

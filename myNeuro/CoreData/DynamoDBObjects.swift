@@ -51,7 +51,11 @@ class ParticipantTableRow :AWSDynamoDBObjectModel ,AWSDynamoDBModeling  {
     
     //set the default values of scores, wins and losses to 0
     var Age:NSNumber?
-    var DBSParam:NSNumber? = 0
+    var DBSImplant:NSNumber?
+    var DBSLeftAnodes: NSNumber? = 0
+    var DBSLeftCathodes: NSNumber? = 0
+    var DBSRightAnodes: NSNumber? = 0
+    var DBSRightCathodes: NSNumber? = 0
     
     var FirstName:String?
     var LastName:String?

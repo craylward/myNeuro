@@ -332,8 +332,12 @@ class DynamoDBManager : NSObject {
                 
                 tableRow.userID = participant.user_id
                 tableRow.Age = participant.age
-                if participant.dbsParam != nil {
-                    tableRow.DBSParam = participant.dbsParam
+                tableRow.DBSImplant = participant.dbsImplant
+                if participant.dbsImplant == 1 {
+                    tableRow.DBSLeftAnodes = participant.dbsLeftAnodes
+                    tableRow.DBSLeftCathodes = participant.dbsLeftCathodes
+                    tableRow.DBSRightAnodes = participant.dbsRightAnodes
+                    tableRow.DBSRightCathodes = participant.dbsRightCathodes
                 }
                 tableRow.Ethnicity = participant.ethnicity
                 tableRow.FirstName = participant.firstName

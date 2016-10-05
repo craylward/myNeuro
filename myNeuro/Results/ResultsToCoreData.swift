@@ -101,6 +101,7 @@ class ResultProcessor {
         else {
             print("ResultsToCoreData: NO ANALYSIS PERFORMED")
         }
+        coreData.savePrivateContext()
         
     }
     
@@ -135,8 +136,22 @@ class ResultProcessor {
                     let meds = medicationResult.choiceAnswers as! [String]
                     sample.medsLast24h = meds.joinWithSeparator(", ")
                 }
-                if let dbsResult = stepResult.resultForIdentifier("dbsParam") as! ORKNumericQuestionResult? {
-                    sample.dbsParam = dbsResult.numericAnswer
+                if let dbsResult = stepResult.resultForIdentifier("dbsImplant") as! ORKBooleanQuestionResult? {
+                    sample.dbsImplant = dbsResult.booleanAnswer
+                }
+            }
+            else if stepResult.identifier.containsString("dbsConfigurationStep") {
+                if let leftAnodesResult = stepResult.resultForIdentifier("leftAnodes") as! ORKNumericQuestionResult? {
+                    sample.dbsLeftAnodes = leftAnodesResult.numericAnswer
+                }
+                if let leftCathodesResult = stepResult.resultForIdentifier("leftCathodes") as! ORKNumericQuestionResult? {
+                    sample.dbsLeftCathodes = leftCathodesResult.numericAnswer
+                }
+                if let rightAnodesResult = stepResult.resultForIdentifier("rightAnodes") as! ORKNumericQuestionResult? {
+                    sample.dbsRightAnodes = rightAnodesResult.numericAnswer
+                }
+                if let rightCathodesResult = stepResult.resultForIdentifier("rightCathodes") as! ORKNumericQuestionResult? {
+                    sample.dbsRightCathodes = rightCathodesResult.numericAnswer
                 }
             }
         }
