@@ -43,7 +43,7 @@ public var PDCharacteristicsTask: ORKOrderedTask {
 }
 
 public var DBSConfigurationStep: ORKFormStep {
-    let dbsStep = ORKFormStep(identifier: "dbsConfigurationStep", title: "DBS Configuration", text: "Enter the lead configurations below. For example, if using leads 1, 3, 5, and 8, enter '1358'")
+    let dbsStep = ORKFormStep(identifier: "dbsConfigurationStep", title: "DBS Configuration", text: "Enter the lead configurations below. For example, if using electrodes 1, 5, and 8, enter '158'. Enter 'C' if using the IPG case as a return electrode (i.e., ‘158C').")
     
     let leadAnswer = ORKNumericAnswerFormat(style: .Integer, unit: nil, minimum: 1, maximum: 1234568)
     
