@@ -36,9 +36,8 @@ class IntroductionViewController: UIPageViewController, UIPageViewControllerData
     let pageViewControllers: [UIViewController] = {
         let introOne = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("introOneViewController")
         let introTwo = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("introTwoViewController")
-        let introThree = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("introThreeViewController")
         
-        return [introOne, introTwo, introThree]
+        return [introOne, introTwo]
     }()
     
     // MARK: UIViewController

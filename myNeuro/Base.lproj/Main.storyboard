@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to the myNuero Research Study" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZh-Ut-kv4">
-                                <rect key="frame" x="31" y="221" width="312" height="126"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to the myNeuro Research Study" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZh-Ut-kv4">
+                                <rect key="frame" x="-75" y="221" width="524" height="126"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="312" id="B6D-aX-kah"/>
                                 </constraints>
@@ -645,39 +645,9 @@
             <point key="canvasLocation" x="2016.5" y="-1206.5"/>
         </scene>
         <!--Intro2-->
-        <scene sceneID="Due-o6-LAc">
-            <objects>
-                <viewController storyboardIdentifier="introTwoViewController" title="Intro2" id="ohD-eG-fKd" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bH7-yI-iWN"/>
-                        <viewControllerLayoutGuide type="bottom" id="N5G-qz-0p9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ret-9n-78o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="About This Study" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3u-Wx-GgY">
-                                <rect key="frame" x="92" y="102" width="191" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="v3u-Wx-GgY" firstAttribute="centerX" secondItem="ret-9n-78o" secondAttribute="centerX" id="ILu-aQ-uSn"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1X8-6F-Qoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2024.5" y="-2730.5"/>
-        </scene>
-        <!--Intro3-->
         <scene sceneID="OIL-py-O2u">
             <objects>
-                <viewController storyboardIdentifier="introThreeViewController" title="Intro3" id="v6t-Kr-Jjr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="introTwoViewController" title="Intro2" id="v6t-Kr-Jjr" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Mq-IV-hQJ"/>
                         <viewControllerLayoutGuide type="bottom" id="hyt-iq-Wpm"/>
@@ -710,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5L-Ot-TV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2400.5" y="-2730.5"/>
+            <point key="canvasLocation" x="2024.5" y="-2730.5"/>
         </scene>
         <!--Onboarding-->
         <scene sceneID="tne-QT-ifu">
