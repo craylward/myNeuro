@@ -1,0 +1,9 @@
+Package: com.myNeuro.app
+Name: myNeuro
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: This is a demo for building applications in Xcode and deploying through Cydia
+Maintainer: Charles Aylward
+Author: Charles Aylward
+Section: Apps
