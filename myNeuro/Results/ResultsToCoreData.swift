@@ -140,7 +140,7 @@ class ResultProcessor {
         sample.user_id = NSNumber(value: fetchLatestUserID(coreData.privateObjectContext) + 1)
         taskResult.user_id = sample.user_id
         
-        // coreData.savePrivateContext()
+        coreData.savePrivateContext()
     }
     
     func processQuestionResult(_ questionResults: [ORKResult]){

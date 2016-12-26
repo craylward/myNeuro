@@ -58,6 +58,7 @@ extension EligibleViewController : ORKTaskViewControllerDelegate {
         case .completed:
             privateContext.perform { () -> Void in
                 ResultProcessor().processResult(taskViewController.result)
+                coreData.savePrivateContext()
             }
             performSegue(withIdentifier: "unwindToStudy", sender: nil)
             
