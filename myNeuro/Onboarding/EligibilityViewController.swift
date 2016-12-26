@@ -23,7 +23,9 @@ class EligibilityViewController: UITableViewController {
     @IBOutlet weak var question6Answer: UISegmentedControl!
     @IBOutlet weak var question7Answer: UISegmentedControl!
     @IBAction func next(_ sender: UIBarButtonItem) {
-        if (question1Answer.selectedSegmentIndex==0 && question2Answer.selectedSegmentIndex==0 && question3Answer.selectedSegmentIndex==1 &&
+        if (question1Answer.selectedSegmentIndex==0 &&
+            question2Answer.selectedSegmentIndex==0 &&
+            question3Answer.selectedSegmentIndex==1 &&
             question4Answer.selectedSegmentIndex==0 &&
             question5Answer.selectedSegmentIndex==1 &&
             question6Answer.selectedSegmentIndex==0 &&
