@@ -21,20 +21,20 @@ class TremorTaskInterfaceController: WKInterfaceController {
     var arrayOfDicts:[NSDictionary] = []
     var type: String?
     let healthStore = HKHealthStore()
-    var myTimer : NSTimer?  //internal timer to keep track
-    var startTime = NSDate()
-    var duration : NSTimeInterval = 10.0 //arbitrary number. 5 seconds
+    var myTimer : Timer?  //internal timer to keep track
+    var startTime = Date()
+    var duration : TimeInterval = 10.0 //arbitrary number. 5 seconds
     var dataSent = false
     var started = false
     var connected = false
     
     // Need workout session object to keep recording while watch display is off
-    var workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.Other, locationType: HKWorkoutSessionLocationType.Unknown)
+    var workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.other, locationType: HKWorkoutSessionLocationType.unknown)
     
     override func didAppear() {
         super.didAppear()
         label.setText("Connecting...")
-        timer.setDate(NSDate(timeIntervalSinceNow: duration))
+        timer.setDate(Date(timeIntervalSinceNow: duration))
         setupConnectivity()
     }
     
@@ -57,14 +57,15 @@ class TremorTaskInterfaceController: WKInterfaceController {
         didSet {
             if let session = session {
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
     }
     
     private func setupConnectivity() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
+            session!.activate()
             session!.sendMessage(["command": 1], replyHandler: nil, errorHandler: { error in print(error) })
         }
     }
@@ -73,8 +74,8 @@ class TremorTaskInterfaceController: WKInterfaceController {
         label.setText("Recording...")
         started = true
         dataSent = false
-        myTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)
-        timer.setDate(NSDate(timeIntervalSinceNow: duration))
+        myTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)
+        timer.setDate(Date(timeIntervalSinceNow: duration))
         timer.start()
         toggleCollecting() // ON
         
@@ -88,23 +89,25 @@ class TremorTaskInterfaceController: WKInterfaceController {
     func toggleCollecting() {
         workoutSession.delegate = self
         switch workoutSession.state {
-        case .NotStarted:
-            healthStore.startWorkoutSession(workoutSession)
-        case .Running:
-            healthStore.endWorkoutSession(workoutSession)
-        case .Ended:
-            workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.Other, locationType: HKWorkoutSessionLocationType.Unknown)
+        case .notStarted:
+            healthStore.start(workoutSession)
+        case .running:
+            healthStore.end(workoutSession)
+        case .ended:
+            workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.other, locationType: HKWorkoutSessionLocationType.unknown)
             workoutSession.delegate = self
-            healthStore.startWorkoutSession(workoutSession)
+            healthStore.start(workoutSession)
+        default:
+            break
         }
     }
     
     func startMotionManager() {
-        WKInterfaceDevice.currentDevice().playHaptic(.Start)
+        WKInterfaceDevice.current().play(.start)
         self.arrayOfDicts = []
-        if motionManager.accelerometerAvailable {
+        if motionManager.isAccelerometerAvailable {
             motionManager.accelerometerUpdateInterval = 0.01
-            let handler:CMAccelerometerHandler = {(data: CMAccelerometerData?, error: NSError?) -> Void in
+            let handler:CMAccelerometerHandler = {(data: CMAccelerometerData?, error: Error?) -> Void in
                 self.arrayOfDicts.append([
                     "timestamp":data!.timestamp,
                     "x":data!.acceleration.x,
@@ -113,12 +116,12 @@ class TremorTaskInterfaceController: WKInterfaceController {
                     ])
                 //print("timestamp: ", data!.timestamp, ", x: ", data!.acceleration.x, ", y: ", data!.acceleration.y, ", z: ", data!.acceleration.z)
             }
-            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue(), withHandler: handler)
+            motionManager.startAccelerometerUpdates(to: OperationQueue(), withHandler: handler)
         }
     }
     
     func stopMotionManager() {
-        WKInterfaceDevice.currentDevice().playHaptic(.Stop)
+        WKInterfaceDevice.current().play(.stop)
         motionManager.stopAccelerometerUpdates()
         if session != nil {
             session!.transferUserInfo(["items" : arrayOfDicts])
@@ -127,13 +130,18 @@ class TremorTaskInterfaceController: WKInterfaceController {
 }
 
 extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDelegate {
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+
     
     // Workout session changed state
-    func workoutSession(workoutSession: HKWorkoutSession, didChangeToState toState: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: NSDate) {
+    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         switch toState {
-        case .Running:
+        case .running:
             startMotionManager()
-        case .Ended:
+        case .ended:
             stopMotionManager()
         default:
             print("Unexpected state \(toState)")
@@ -141,12 +149,12 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
     }
     
     // Error workoutSession
-    func workoutSession(workoutSession: HKWorkoutSession, didFailWithError error: NSError) {
+    func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         // Do nothing for now
-        NSLog("Workout error: \(error.userInfo)")
+        NSLog("Workout error: \(error._userInfo)")
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         let command = message["command"] as? Int
         if command == 1 { // If command == 1, watch is connected
             if type == nil {
@@ -164,14 +172,14 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
     }
     
     // Use if replyHandler from sender is nil
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         let command = message["command"] as? Int
         if command == 1 {
             print("First message sent with no reply handler")
         }
         else if command == 2 { // If command == 2, start timer
             type = message["type"] as? String
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.initTimer()
             }
         }
@@ -180,9 +188,9 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
         }
     }
     
-    func session(session: WCSession, didFinishUserInfoTransfer userInfoTransfer: WCSessionUserInfoTransfer, error: NSError?) {
+    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
         if error != nil {
-            print("error: ", error)
+            print("error: ", error!)
         }
         else {
             print("Data sent!")
@@ -190,7 +198,7 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
         }
     }
     
-    func session(session: WCSession, didFinishFileTransfer fileTransfer: WCSessionFileTransfer, error: NSError?) {
-        print("error: ", error)
+    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+        print("error: ", error!)
     }
 }

@@ -1825,7 +1825,7 @@ void ORKStepArrayAddStep(NSMutableArray *array, ORKStep *step) {
             
             NSString *detailFormat = doingBoth ? ORKLocalizedString(@"TREMOR_TEST_INTRO_2_DETAIL_BOTH_HANDS_%@", nil) : ORKLocalizedString(@"TREMOR_TEST_INTRO_2_DETAIL_DEFAULT_%@", nil);
             step.detailText = [NSString stringWithFormat:detailFormat, detailStringForNumberOfTasks[actualTasksIndex]];
-            step.image = [UIImage imageNamed:@"tremortest2" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+            step.image = [UIImage imageNamed:@"tremortest1" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
             if (firstIsLeft) {
                 step.image = [step.image ork_flippedImage:UIImageOrientationUpMirrored];
             }

@@ -14,7 +14,7 @@ class Participant: NSManagedObject {
     @NSManaged var user_id: NSNumber
     @NSManaged var firstName: String
     @NSManaged var lastName: String
-    @NSManaged var joinDate: NSDate
+    @NSManaged var joinDate: Date
     
     // Demographic
     @NSManaged var age: NSNumber?
@@ -23,18 +23,18 @@ class Participant: NSManagedObject {
     
     //PD Characteristics
     @NSManaged var dbsImplant: NSNumber?
-    @NSManaged var dbsLeftAnodes: NSNumber?
-    @NSManaged var dbsLeftCathodes: NSNumber?
-    @NSManaged var dbsRightAnodes: NSNumber?
-    @NSManaged var dbsRightCathodes: NSNumber?
+    @NSManaged var dbsLeftAnodes: String?
+    @NSManaged var dbsLeftCathodes: String?
+    @NSManaged var dbsRightAnodes: String?
+    @NSManaged var dbsRightCathodes: String?
     @NSManaged var medsLast24h: String?
-    @NSManaged var pdDiagnosis: NSDate?
+    @NSManaged var pdDiagnosis: Date?
     @NSManaged var isBacked: NSNumber
     @NSManaged var pk: NSNumber
 }
 class TaskResult: NSManagedObject {
     @NSManaged var user_id: NSNumber
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var id: NSNumber
     @NSManaged var type: String
     @NSManaged var isBacked: NSNumber
@@ -95,7 +95,7 @@ class WalkingSample: NSManagedObject {
 class QuestionnaireSample: NSManagedObject {
     @NSManaged var id: NSNumber
     @NSManaged var user_id: NSNumber
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var q1: NSNumber
     @NSManaged var q2: NSNumber
     @NSManaged var q3: NSNumber
@@ -106,7 +106,7 @@ class QuestionnaireSample: NSManagedObject {
 }
 
 class BradyAnalysis: NSManagedObject {
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var brady_intervalAvg: NSNumber
     @NSManaged var brady_cvDuration: NSNumber
     @NSManaged var updrs: NSNumber
@@ -115,7 +115,7 @@ class BradyAnalysis: NSManagedObject {
     @NSManaged var user_id: NSNumber
 }
 class TremorAnalysis: NSManagedObject {
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var tremor_r_RMS: NSNumber
     @NSManaged var tremor_r_K: NSNumber
     @NSManaged var tremor_p_RMS: NSNumber
@@ -128,7 +128,7 @@ class TremorAnalysis: NSManagedObject {
     @NSManaged var user_id: NSNumber
 }
 class GaitAnalysis: NSManagedObject {
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var gait_cycleTime: NSNumber
     @NSManaged var gait_strideLength: NSNumber
     @NSManaged var gait_walkingSpeed: NSNumber

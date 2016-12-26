@@ -14,7 +14,7 @@ class RowController: NSObject {
     @IBOutlet weak var textLabel: WKInterfaceLabel!
     @IBOutlet weak var detailLabel: WKInterfaceLabel!
     
-    func showItem(title: String, detail: String) {
+    func showItem(_ title: String, detail: String) {
         
         textLabel.setText(title)
         detailLabel.setText(detail)

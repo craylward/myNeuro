@@ -34,18 +34,18 @@ import ResearchKit
 class OnboardingViewController: UIViewController {
     // MARK: IB actions
     
-    @IBAction func joinButtonTapped(sender: UIButton) {
-        performSegueWithIdentifier("toEligibility", sender: nil)
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "toEligibility", sender: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
     }
     
 }

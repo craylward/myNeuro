@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95C2AEAD1DD3AF5F007F13D3 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C2AEAC1DD3AF5F007F13D3 /* HealthKit.framework */; };
 		DA0870E01CE3448400A28302 /* AccelerometerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */; };
 		DA0870E21CE345B400A28302 /* AccelerometerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870E11CE345B400A28302 /* AccelerometerStep.swift */; };
 		DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */; };
@@ -69,9 +70,6 @@
 		DAA5CEC61D2F70B100CF86C8 /* PedometerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */; };
 		DAA5CEC81D2F70C200CF86C8 /* HeartRateInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */; };
 		DAA6E0631D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */; };
-		DAB5C72E1D79626C00AA3BEB /* DynamoDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */; };
-		DAB5C7321D79F88900AA3BEB /* DynamoDBObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */; };
-		DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2111CB4F7580057BCF9 /* Math.swift */; };
 		DAD02C471D5E4D19006DF283 /* TremorConnectStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */; };
@@ -126,7 +124,6 @@
 		DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */; };
 		DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC91D26122200A707D6 /* GaitTask.swift */; };
 		DADBDFD21D26E81F00A707D6 /* ResultsToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */; };
-		DADC136F1D403A850057F5F4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE597FD1D3DA766005F064E /* HealthKit.framework */; };
 		DAE597FE1D3DA766005F064E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE597FD1D3DA766005F064E /* HealthKit.framework */; };
 		DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C511CD9FB4A000C164D /* WatchStep.swift */; };
 		DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C571CD9FB9D000C164D /* WatchTask.swift */; };
@@ -249,6 +246,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		95C2AEAC1DD3AF5F007F13D3 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerTask.swift; path = myNeuro/Developer/Accelerometer/AccelerometerTask.swift; sourceTree = "<group>"; };
 		DA0870E11CE345B400A28302 /* AccelerometerStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStep.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStep.swift; sourceTree = "<group>"; };
 		DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStepViewController.swift; path = myNeuro/Developer/Watch/WatchStepViewController.swift; sourceTree = "<group>"; };
@@ -319,9 +317,6 @@
 		DAA5CEC51D2F70B100CF86C8 /* PedometerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerInterfaceController.swift; sourceTree = "<group>"; };
 		DAA5CEC71D2F70C200CF86C8 /* HeartRateInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateInterfaceController.swift; sourceTree = "<group>"; };
 		DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TremorTaskInterfaceController.swift; sourceTree = "<group>"; };
-		DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamoDBManager.swift; path = CoreData/DynamoDBManager.swift; sourceTree = "<group>"; };
-		DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamoDBObjects.swift; path = CoreData/DynamoDBObjects.swift; sourceTree = "<group>"; };
-		DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = TabBarControllers/CustomTabBarController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD2111CB4F7580057BCF9 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Analysis/Math.swift; sourceTree = "<group>"; };
 		DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorConnectStepW.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorConnectStepW.swift; sourceTree = "<group>"; };
@@ -374,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C2AEAD1DD3AF5F007F13D3 /* HealthKit.framework in Frameworks */,
 				DAD02C711D63AC75006DF283 /* AWSCognito.framework in Frameworks */,
 				DAD02C871D63AC76006DF283 /* AWSS3.framework in Frameworks */,
 				DAD02C7F1D63AC76006DF283 /* AWSKinesis.framework in Frameworks */,
@@ -392,7 +388,6 @@
 				DAD02C6D1D63AC75006DF283 /* AWSAutoScaling.framework in Frameworks */,
 				DAD5276C1D40715A00B5C08B /* ResearchKit.framework in Frameworks */,
 				DAD02C891D63AC76006DF283 /* AWSSES.framework in Frameworks */,
-				DADC136F1D403A850057F5F4 /* HealthKit.framework in Frameworks */,
 				DAD02C831D63AC76006DF283 /* AWSMachineLearning.framework in Frameworks */,
 				DAD02C7D1D63AC75006DF283 /* AWSIoT.framework in Frameworks */,
 			);
@@ -490,20 +485,19 @@
 		DA7B9BBB1CA370160095794F /* myNeuro */ = {
 			isa = PBXGroup;
 			children = (
-				DAD527701D41144100B5C08B /* CoreData */,
-				DA7D01C91CF75E1A00BE6CEB /* UI */,
-				DABFD2061CABD3530057BCF9 /* Analysis */,
 				DA7B9BC31CA370160095794F /* Assets.xcassets */,
-				DA7B9C831CA3BB880095794F /* Dashboard */,
-				DAEE33FF1CEED0FF008A270C /* Developer */,
 				DA7B9C011CA3803A0095794F /* Images.xcassets */,
 				DA7B9BC81CA370160095794F /* Info.plist */,
 				DA6C51491CC75DBA007A37C5 /* myNeuro.entitlements */,
+				DAD527701D41144100B5C08B /* CoreData */,
+				DA7D01C91CF75E1A00BE6CEB /* UI */,
+				DABFD2061CABD3530057BCF9 /* Analysis */,
+				DA7B9C831CA3BB880095794F /* Dashboard */,
+				DAEE33FF1CEED0FF008A270C /* Developer */,
 				DA7B9C821CA3BB720095794F /* Onboarding */,
 				DA7B9C851CA3BBB00095794F /* Profile */,
 				DAEE34011CEED128008A270C /* Resources */,
 				DAEE33F41CEEC7D4008A270C /* Startup */,
-				DAEE34021CEED140008A270C /* TabBarControllers */,
 				DAEE33FE1CEED0AA008A270C /* TasksAndSteps */,
 				DA70C87B1CA4AF8D00A83969 /* Results */,
 			);
@@ -620,6 +614,7 @@
 		DAD02C911D63AC8E006DF283 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95C2AEAC1DD3AF5F007F13D3 /* HealthKit.framework */,
 				DAD02C581D63AC74006DF283 /* AWSAPIGateway.framework */,
 				DAD02C591D63AC74006DF283 /* AWSAutoScaling.framework */,
 				DAD02C5A1D63AC74006DF283 /* AWSCloudWatch.framework */,
@@ -659,8 +654,6 @@
 				DA9DBD0E1D80015300573BCE /* myNeuro.xcdatamodeld */,
 				DAD527711D41146000B5C08B /* CoreDataStack.swift */,
 				DAD527731D412B5600B5C08B /* CoreDataObjects.swift */,
-				DAB5C72D1D79626C00AA3BEB /* DynamoDBManager.swift */,
-				DAB5C7311D79F88900AA3BEB /* DynamoDBObjects.swift */,
 				DA9DBD111D87503700573BCE /* Reachability.swift */,
 				DA9DBD141D888FC700573BCE /* S3TransferUtility.swift */,
 			);
@@ -760,14 +753,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		DAEE34021CEED140008A270C /* TabBarControllers */ = {
-			isa = PBXGroup;
-			children = (
-				DABFD2001CABC25C0057BCF9 /* CustomTabBarController.swift */,
-			);
-			name = TabBarControllers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -853,12 +838,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = SJM;
 				TargetAttributes = {
 					DA7B9BB81CA370160095794F = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = P6G6N6X557;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -870,11 +856,14 @@
 					};
 					DA7B9BCC1CA370160095794F = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = SP5RAB2LK6;
+						LastSwiftMigration = 0810;
 						TestTargetID = DA7B9BB81CA370160095794F;
 					};
 					DAA5CE6E1D2F689400CF86C8 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = P6G6N6X557;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -884,6 +873,7 @@
 					DAA5CE7A1D2F689400CF86C8 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = P6G6N6X557;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1006,7 +996,6 @@
 				DADBDFD21D26E81F00A707D6 /* ResultsToCoreData.swift in Sources */,
 				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
 				DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */,
-				DABFD2011CABC25C0057BCF9 /* CustomTabBarController.swift in Sources */,
 				DA9DBD151D888FC700573BCE /* S3TransferUtility.swift in Sources */,
 				DAEC01591D34651500202C91 /* TremorStepW.swift in Sources */,
 				DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */,
@@ -1018,9 +1007,7 @@
 				DAD02C4B1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift in Sources */,
 				DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */,
 				DA6BE8691D7924A500D5674B /* BradyConnectStepWViewController.swift in Sources */,
-				DAB5C7321D79F88900AA3BEB /* DynamoDBObjects.swift in Sources */,
 				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
-				DAB5C72E1D79626C00AA3BEB /* DynamoDBManager.swift in Sources */,
 				DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */,
 				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
 				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
@@ -1159,8 +1146,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1203,8 +1192,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1223,6 +1214,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1230,12 +1222,13 @@
 		DA7B9BD71CA370160095794F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks",
@@ -1243,23 +1236,25 @@
 				INFOPLIST_FILE = myNeuro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DA7B9BD81CA370160095794F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks",
@@ -1267,10 +1262,11 @@
 				INFOPLIST_FILE = myNeuro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1278,11 +1274,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SP5RAB2LK6;
 				INFOPLIST_FILE = myNeuroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myNeuro.app/myNeuro";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myNeuro.temp_caseinsensitive_rename.app/myNeuro.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -1290,29 +1288,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SP5RAB2LK6;
 				INFOPLIST_FILE = myNeuroTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuroTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myNeuro.app/myNeuro";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myNeuro.temp_caseinsensitive_rename.app/myNeuro.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
 		DAA5CE8F1D2F689500CF86C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = "neuroWatch Extension/neuroWatch Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				INFOPLIST_FILE = "neuroWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -1321,18 +1323,20 @@
 		DAA5CE901D2F689500CF86C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = "neuroWatch Extension/neuroWatch Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				INFOPLIST_FILE = "neuroWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -1341,18 +1345,20 @@
 		DAA5CE931D2F689500CF86C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = neuroWatch/neuroWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				IBSC_MODULE = neuroWatch_Extension;
 				INFOPLIST_FILE = neuroWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -1361,18 +1367,20 @@
 		DAA5CE941D2F689500CF86C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = neuroWatch/neuroWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = P6G6N6X557;
 				IBSC_MODULE = neuroWatch_Extension;
 				INFOPLIST_FILE = neuroWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
