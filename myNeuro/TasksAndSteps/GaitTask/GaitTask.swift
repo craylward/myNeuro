@@ -12,5 +12,5 @@ import ResearchKit
 public var GaitTask: ORKOrderedTask = {
     let intendedUseDescription = "This task will evaluate your gait and balance."
     
-    return ORKOrderedTask.shortWalkTaskWithIdentifier("GaitTask", intendedUseDescription: intendedUseDescription, numberOfStepsPerLeg: 10, restDuration: NSTimeInterval(5), options: ORKPredefinedTaskOption.None)
+    return ORKOrderedTask.shortWalk(withIdentifier: "GaitTask", intendedUseDescription: intendedUseDescription, numberOfStepsPerLeg: 10, restDuration: TimeInterval(5), options: [])
 }()

@@ -29,11 +29,11 @@ public var SurveyTask: ORKOrderedTask {
     //TODO: add 'what is your quest' question
     let questQuestionStepTitle = "What is your quest?"
     let textChoices = [
-        ORKTextChoice(text: "Create a ResearchKit App", value: 0),
-        ORKTextChoice(text: "Seek the Holy Grail", value: 1),
-        ORKTextChoice(text: "Find a shrubbery", value: 2)
+        ORKTextChoice(text: "Create a ResearchKit App", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Seek the Holy Grail", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Find a shrubbery", value: 2 as NSCoding & NSCopying & NSObjectProtocol)
     ]
-    let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices)
+    let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: textChoices)
     let questQuestionStep = ORKQuestionStep(identifier: "TextChoiceQuestionStep", title: questQuestionStepTitle, answer: questAnswerFormat)
     steps += [questQuestionStep]
     
@@ -48,9 +48,9 @@ public var SurveyTask: ORKOrderedTask {
         (UIImage(named: "purple")!, "Purple")
     ]
     let imageChoices : [ORKImageChoice] = colorTuples.map {
-        return ORKImageChoice(normalImage: $0.0, selectedImage: nil, text: $0.1, value: $0.1)
+        return ORKImageChoice(normalImage: $0.0, selectedImage: nil, text: $0.1, value: $0.1 as NSCoding & NSCopying & NSObjectProtocol)
     }
-    let colorAnswerFormat: ORKImageChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithImageChoices(imageChoices)
+    let colorAnswerFormat: ORKImageChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: imageChoices)
     let colorQuestionStep = ORKQuestionStep(identifier: "ImageChoiceQuestionStep", title: colorQuestionStepTitle, answer: colorAnswerFormat)
     steps += [colorQuestionStep]
     

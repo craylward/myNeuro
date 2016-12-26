@@ -19,11 +19,11 @@ class BradykinesiaTaskInterfaceController: WKInterfaceController {
     @IBOutlet var leftButtonOutlet: WKInterfaceButton!
     @IBOutlet var rightButtonOutlet: WKInterfaceButton!
     
-    var myTimer : NSTimer?  //internal timer to keep track
+    var myTimer : Timer?  //internal timer to keep track
     var isPaused = true //flag to determine if timer has started or not
-    var startTime = NSTimeInterval()
-    var duration : NSTimeInterval = 10.0 //arbitrary start number.
-    var leftClickTime : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var startTime = TimeInterval()
+    var duration : TimeInterval = 10.0 //arbitrary start number.
+    var leftClickTime : UserDefaults = UserDefaults.standard
     var leftFirst = false
     var rightFirst = false
     var count : Double = 0
@@ -44,13 +44,13 @@ class BradykinesiaTaskInterfaceController: WKInterfaceController {
         didSet {
             if let session = session {
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
     }
     private func setupConnectivity() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             session!.sendMessage(["command": 1], replyHandler: nil, errorHandler: { error in print(error) })
         }
     }
@@ -78,20 +78,20 @@ class BradykinesiaTaskInterfaceController: WKInterfaceController {
     }
     
     func initTimer() {
-        myTimer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)
-        timer.setDate(NSDate(timeIntervalSinceNow: duration ))
+        myTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)
+        timer.setDate(Date(timeIntervalSinceNow: duration ))
         timer.start()
         isPaused = false
-        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = Date.timeIntervalSinceReferenceDate
     }
     
     func calculateTimeDifference() -> Double {
         if (count != 0) {
-            let currentTime = NSDate.timeIntervalSinceReferenceDate()
-            let elapsedTime: NSTimeInterval = currentTime - startTime
+            let currentTime = Date.timeIntervalSinceReferenceDate
+            let elapsedTime: TimeInterval = currentTime - startTime
             
             totalSeconds += Double(elapsedTime)
-            startTime = NSDate.timeIntervalSinceReferenceDate()
+            startTime = Date.timeIntervalSinceReferenceDate
         }
         count += 1
         return totalSeconds
@@ -106,8 +106,13 @@ class BradykinesiaTaskInterfaceController: WKInterfaceController {
 }
 
 extension BradykinesiaTaskInterfaceController: WCSessionDelegate {
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         let command = message["command"] as? Int
         if command == 11 {
             replyHandler(["response": 11])
@@ -118,7 +123,7 @@ extension BradykinesiaTaskInterfaceController: WCSessionDelegate {
     }
     
     // Use if replyHandler from sender is nil
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         let command = message["command"] as? Int
         if command == 12 {
             label.setText("Begin!")
@@ -130,14 +135,14 @@ extension BradykinesiaTaskInterfaceController: WCSessionDelegate {
         }
     }
     
-    func session(session: WCSession, didFinishUserInfoTransfer userInfoTransfer: WCSessionUserInfoTransfer, error: NSError?) {
+    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
         //print(userInfoTransfer.userInfo)
         if error != nil {
-            print("error: ", error)
+            print("error: ", error!)
         }
     }
     
-    func session(session: WCSession, didFinishFileTransfer fileTransfer: WCSessionFileTransfer, error: NSError?) {
-        print("error: ", error)
+    func session(_ session: WCSession, didFinish fileTransfer: WCSessionFileTransfer, error: Error?) {
+        print("error: ", error!)
     }
 }

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:myNeuro.xcodeproj">
+      location = "self:/Users/classroomtech/Desktop/myNeuro-master/myNeuro.xcodeproj">
    </FileRef>
 </Workspace>

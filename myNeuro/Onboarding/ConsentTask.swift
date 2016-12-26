@@ -20,7 +20,7 @@ public var ConsentTask: ORKNavigableOrderedTask {
     //TODO: Add ConsentReviewStep
     let signature = consentDocument.signatures!.first! // only one signature in consent document
     
-    let reviewConsentStep = ORKConsentReviewStep(identifier: "ConsentReviewStep", signature: signature, inDocument: consentDocument)
+    let reviewConsentStep = ORKConsentReviewStep(identifier: "ConsentReviewStep", signature: signature, in: consentDocument)
     
     reviewConsentStep.text = "Review the consent form."
     reviewConsentStep.reasonForConsent = "Consent to join study"
@@ -42,12 +42,12 @@ public var ConsentTask: ORKNavigableOrderedTask {
     let task = ORKNavigableOrderedTask(identifier: "ConsentTask", steps: steps)
     
     let reviewSelector = ORKResultSelector(stepIdentifier: "ConsentReviewStep", resultIdentifier: "ConsentDocumentParticipantSignature")
-    let reviewPredicate = ORKResultPredicate.predicateForConsentWithResultSelector(reviewSelector, didConsent: true)
+    let reviewPredicate = ORKResultPredicate.predicateForConsent(with: reviewSelector, didConsent: true)
     let reviewConsent = ORKPredicateStepNavigationRule(resultPredicates: [reviewPredicate], destinationStepIdentifiers: ["DemographicStep"], defaultStepIdentifier: nil, validateArrays: true)
     task.setNavigationRule(reviewConsent, forTriggerStepIdentifier: "ConsentReviewStep")
     
     let dbsSelector = ORKResultSelector(stepIdentifier: "PDCharacteristicsStep", resultIdentifier: "dbsImplant")
-    let dbsPredicate = ORKResultPredicate.predicateForBooleanQuestionResultWithResultSelector(dbsSelector, expectedAnswer: false)
+    let dbsPredicate = ORKResultPredicate.predicateForBooleanQuestionResult(with: dbsSelector, expectedAnswer: false)
     let dbsImplant = ORKPredicateStepNavigationRule(resultPredicates: [dbsPredicate], destinationStepIdentifiers: ["Health"], defaultStepIdentifier: nil, validateArrays: true)
     task.setNavigationRule(dbsImplant, forTriggerStepIdentifier: "PDCharacteristicsStep")
     
@@ -62,7 +62,7 @@ class ConsentFailedStep: ORKWaitStep {
     
     override init(identifier: String) {
         super.init(identifier: identifier)
-        indicatorType = ORKProgressIndicatorType.None
+        indicatorType = ORKProgressIndicatorType.none
     }
     
     required init(coder aDecoder: NSCoder) {

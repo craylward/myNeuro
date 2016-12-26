@@ -13,11 +13,11 @@ import CoreData
 
 class EligibleViewController: UIViewController {
     // MARK: IB actions
-    @IBAction func continuePressed(sender: UIButton) {
+    @IBAction func continuePressed(_ sender: UIButton) {
         let orderedTask = ConsentTask
-        let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
+        let taskViewController = ORKTaskViewController(task: orderedTask, taskRun: nil)
         taskViewController.delegate = self
-        presentViewController(taskViewController, animated: true, completion: nil)
+        present(taskViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -27,29 +27,46 @@ class EligibleViewController: UIViewController {
     
     lazy var privateContext: NSManagedObjectContext = {
         var coreDataStack = CoreDataStack()
-        let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = coreDataStack.persistentStoreCoordinator
         return context
     }()
 }
 
 extension EligibleViewController : ORKTaskViewControllerDelegate {
-    
-    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
+    /**
+     Tells the delegate that the task has finished.
+     
+     The task view controller calls this method when an unrecoverable error occurs,
+     when the user has canceled the task (with or without saving), or when the user
+     completes the last step in the task.
+     
+     In most circumstances, the receiver should dismiss the task view controller
+     in response to this method, and may also need to collect and process the results
+     of the task.
+     
+     @param taskViewController  The `ORKTaskViewController `instance that is returning the result.
+     @param reason              An `ORKTaskViewControllerFinishReason` value indicating how the user chose to complete the task.
+     @param error               If failure occurred, an `NSError` object indicating the reason for the failure. The value of this parameter is `nil` if `result` does not indicate failure.
+     
+     reachable = Reachability.isConnectedToNetwork()
+     
+     
+     */
+    public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
-        case .Completed:
-            reachable = Reachability.isConnectedToNetwork()
-            privateContext.performBlock { () -> Void in
+        case .completed:
+            privateContext.perform { () -> Void in
                 ResultProcessor().processResult(taskViewController.result)
             }
-            performSegueWithIdentifier("unwindToStudy", sender: nil)
+            performSegue(withIdentifier: "unwindToStudy", sender: nil)
             
-        case .Discarded, .Failed, .Saved:
-            dismissViewControllerAnimated(true, completion: nil)
+        case .discarded, .failed, .saved:
+            dismiss(animated: true, completion: nil)
         }
     }
     
-    func taskViewController(taskViewController: ORKTaskViewController, viewControllerForStep step: ORKStep) -> ORKStepViewController? {
+    func taskViewController(_ taskViewController: ORKTaskViewController, viewControllerFor step: ORKStep) -> ORKStepViewController? {
         if step is HealthDataStep {
             let healthStepViewController = HealthDataStepViewController(step: step)
             return healthStepViewController

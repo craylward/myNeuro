@@ -13,9 +13,23 @@ import WatchConnectivity
 
 class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
 {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
     
-    var fileURL: NSURL?
-    var outputDir: NSURL?
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
+        
+    }
+
+
+    var fileURL: URL?
+    var outputDir: URL?
     var _result: ORKStepResult?
     override var result: ORKStepResult? {
         get {
@@ -36,7 +50,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
         return BradyStepWViewController.self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.continueButtonTitle = nil
         outputDir = taskViewController!.outputDirectory
@@ -52,18 +66,19 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
         didSet {
             if let session = session {
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
     }
+    
     private func setupConnectivity() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             print("WCSession is supported")
-            if !(session!.paired) {
+            if !(session!.isPaired) {
                 print("Apple Watch is not paired")
             }
-            if !(session!.watchAppInstalled) {
+            if !(session!.isWatchAppInstalled) {
                 print("Apple Watch app is not installed")
             }
         } else {
@@ -71,11 +86,11 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
         }
     }
     
-    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any]) {
         do {
-            let filePath = outputDir!.URLByAppendingPathComponent("tapping.json")
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(userInfo, options: NSJSONWritingOptions.PrettyPrinted)
-            try jsonData.writeToURL(filePath, options: .DataWritingFileProtectionNone)
+            let filePath = outputDir!.appendingPathComponent("tapping.json")
+            let jsonData = try JSONSerialization.data(withJSONObject: userInfo, options: JSONSerialization.WritingOptions.prettyPrinted)
+            try jsonData.write(to: filePath, options: .noFileProtection)
             let json = JSON(data: jsonData)
             let tappingResult = ORKTappingIntervalResult(identifier: "tappingW")
             tappingResult.samples = []
@@ -85,9 +100,9 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
                 // IMPLEMENT DURATION CALCUATION ON THE WATCH: newSample.duration = Double(sample["duration"].stringValue)!
                 switch sample["button_id"].stringValue {
                 case "right":
-                    newSample.buttonIdentifier = ORKTappingButtonIdentifier.Right
+                    newSample.buttonIdentifier = ORKTappingButtonIdentifier.right
                 case "left":
-                    newSample.buttonIdentifier = ORKTappingButtonIdentifier.Left
+                    newSample.buttonIdentifier = ORKTappingButtonIdentifier.left
                 default:
                     print("button_id Not Recognized")
                 }
@@ -105,7 +120,7 @@ class BradyStepWViewController: ORKWaitStepViewController, WCSessionDelegate
         }
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print("Message received but no follow up action")
     }
 }

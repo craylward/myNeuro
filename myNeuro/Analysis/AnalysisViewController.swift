@@ -50,12 +50,12 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        let alert = UIAlertController(title: "Notice", message: "Analysis does not currently include accelerometer/device motion calculations.", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-        self.presentViewController(alert, animated: true){}
+        let alert = UIAlertController(title: "Notice", message: "Analysis does not currently include accelerometer/device motion calculations.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+        self.present(alert, animated: true){}
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let currentID = fetchLatestUserID(coreData.mainObjectContext)
         fetchResults(currentID)
@@ -63,28 +63,28 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
     
 
     
-    func fetchResults (currentID: Int){
+    func fetchResults (_ currentID: Int){
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
         // Brady
-        let bradyRequest = NSFetchRequest(entityName: "BradyAnalysis")
+        let bradyRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BradyAnalysis")
         bradyRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         bradyRequest.sortDescriptors = [dateSort]
         bradyRequest.fetchLimit = 1
         // Tremor
-        let tremorRequest = NSFetchRequest(entityName: "TremorAnalysis")
+        let tremorRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TremorAnalysis")
         tremorRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         tremorRequest.sortDescriptors = [dateSort]
         tremorRequest.fetchLimit = 1
         // Gait
-        let gaitRequest = NSFetchRequest(entityName: "GaitAnalysis")
+        let gaitRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GaitAnalysis")
         gaitRequest.predicate = NSPredicate(format: "user_id == \(currentID)")
         gaitRequest.sortDescriptors = [dateSort]
         gaitRequest.fetchLimit = 1
         
         do {
-            let bradyResult = try coreData.mainObjectContext.executeFetchRequest(bradyRequest)
-            let tremorResult = try coreData.mainObjectContext.executeFetchRequest(tremorRequest)
-            let gaitResult = try coreData.mainObjectContext.executeFetchRequest(gaitRequest)
+            let bradyResult = try coreData.mainObjectContext.fetch(bradyRequest)
+            let tremorResult = try coreData.mainObjectContext.fetch(tremorRequest)
+            let gaitResult = try coreData.mainObjectContext.fetch(gaitRequest)
             if (bradyResult.count > 0) {
                 
                 bradyFetchedResults = bradyResult[0] as? BradyAnalysis

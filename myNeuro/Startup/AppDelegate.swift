@@ -43,56 +43,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // Watch Connectivity
-    var session: WCSession? {
-        didSet {
-            if let session = session {
-                session.delegate = self
-                session.activateSession()
-            }
-        }
-    }
-    
     var containerViewController: ResearchContainerViewController? {
         return window?.rootViewController as? ResearchContainerViewController
     }
 
     
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        let standardDefaults = NSUserDefaults.standardUserDefaults()
-        if standardDefaults.objectForKey("ORKSampleFirstRun") == nil {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let standardDefaults = UserDefaults.standard
+        if standardDefaults.object(forKey: "ORKSampleFirstRun") == nil {
             ORKPasscodeViewController.removePasscodeFromKeychain()
             standardDefaults.setValue("ORKSampleFirstRun", forKey: "ORKSampleFirstRun")
         }
         
         // Appearance customization
         let pageControlAppearance = UIPageControl.appearance()
-        pageControlAppearance.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageControlAppearance.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageControlAppearance.pageIndicatorTintColor = UIColor.lightGray
+        pageControlAppearance.currentPageIndicatorTintColor = UIColor.black
         
         // Dependency injection.
         containerViewController?.injectHealthStore(healthStore)
         return true
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        
-        if WCSession.isSupported() {
-            session = WCSession.defaultSession()
-        }
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         lockApp()
         return true
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
             // Hide content so it doesn't appear in the app switcher.
             containerViewController?.contentHidden = true
         }
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         lockApp()
     }
     
@@ -105,50 +91,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to the myNeuro ResearchKit App", delegate: self) as! ORKPasscodeViewController
-        containerViewController?.presentViewController(passcodeViewController, animated: false, completion: nil)
+        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewController(withText: "Welcome back to the myNeuro ResearchKit App", delegate: self) as! ORKPasscodeViewController
+        containerViewController?.present(passcodeViewController, animated: false, completion: nil)
     }
     
-    func applicationShouldRequestHealthAuthorization(application: UIApplication) {
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
         let healthStore = HKHealthStore()
         guard HKHealthStore.isHealthDataAvailable() else {
             return
         }
         
-        let dataTypes = Set([HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!])
-        healthStore.requestAuthorizationToShareTypes(nil, readTypes: dataTypes, completion: { (result, error) -> Void in
+        let dataTypes = Set([HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!])
+        healthStore.requestAuthorization(toShare: nil, read: dataTypes, completion: { (result, error) -> Void in
         })
     }
 
 }
 
 extension AppDelegate: ORKPasscodeDelegate {
-    func passcodeViewControllerDidFinishWithSuccess(viewController: UIViewController) {
+    func passcodeViewControllerDidFinish(withSuccess viewController: UIViewController) {
         containerViewController?.contentHidden = false
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+        viewController.dismiss(animated: true, completion: nil)
     }
     
-    func passcodeViewControllerDidFailAuthentication(viewController: UIViewController) {
+    func passcodeViewControllerDidFailAuthentication(_ viewController: UIViewController) {
     }
 }
 
 extension AppDelegate: WCSessionDelegate {
-    func sessionWatchStateDidChange(session: WCSession) {
-        print(#function)
-        print(session)
-        print("reachable:\(session.reachable)")
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(iOS 9.3, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+
+
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        print(#function)
+        print(session)
+        print("reachable:\(session.isReachable)")
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         print(#function)
         guard message["request"] as? String == "fireLocalNotification" else {return}
         
         let localNotification = UILocalNotification()
         localNotification.alertBody = "Message Received!"
-        localNotification.fireDate = NSDate()
+        localNotification.fireDate = Date()
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        UIApplication.shared.scheduleLocalNotification(localNotification)
     }
 }
 

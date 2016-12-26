@@ -15,14 +15,19 @@ let kItemKeyDetail      = "detail"
 let kItemKeyClassPrefix = "prefix"
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+
 
     @IBOutlet weak var table: WKInterfaceTable!
     var items: [Dictionary<String, String>]!
     
 
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         
         // Configure interface objects here.
@@ -86,13 +91,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // =========================================================================
     // MARK: Private
     
-    private func loadTableData() {
+    fileprivate func loadTableData() {
         
         table.setNumberOfRows(items.count, withRowType: "Cell")
         
         var i=0
         for anItem in items {
-            let row = table.rowControllerAtIndex(i) as! RowController
+            let row = table.rowController(at: i) as! RowController
             row.showItem(anItem[kItemKeyTitle]!, detail: anItem[kItemKeyDetail]!)
             i += 1
         }
@@ -101,14 +106,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // =========================================================================
     // MARK: WKInterfaceTable
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         
         //print("didSelectRowAtIndex: \(rowIndex)")
         
         let item = items[rowIndex]
         let title = item[kItemKeyClassPrefix]
         
-        pushControllerWithName(title!, context: nil)
+        pushController(withName: title!, context: nil)
     }
 
 }

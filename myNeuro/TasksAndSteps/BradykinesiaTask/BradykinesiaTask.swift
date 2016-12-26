@@ -13,10 +13,10 @@ import ResearchKit
 public var BradykinesiaTask: ORKOrderedTask = {
     let intendedUseDescription = "Finger tapping is a useful method for evaluting Bradykinesia symptoms."
     
-    let tappingDuration = NSTimeInterval(10)
-    return ORKOrderedTask.twoFingerTappingIntervalTaskWithIdentifier("BradykinesiaTask",
+    let tappingDuration = TimeInterval(10)
+    return ORKOrderedTask.twoFingerTappingIntervalTask(withIdentifier: "BradykinesiaTask",
         intendedUseDescription: intendedUseDescription,
         duration: tappingDuration,
-        options: ORKPredefinedTaskOption.None
+        options: []
     ) // CHANGED: Duration: 10
 }()
