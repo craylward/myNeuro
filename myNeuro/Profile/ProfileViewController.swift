@@ -41,7 +41,7 @@ class ProfileViewController: UITableViewController, HealthClientType {
     var progressBlock: AWSS3TransferUtilityProgressBlock?
     
     let healthObjectTypes = [
-        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
+        HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
     ]
@@ -53,127 +53,105 @@ class ProfileViewController: UITableViewController, HealthClientType {
     // @IBOutlets
     @IBOutlet weak var participantNameLabel: UILabel!
     @IBOutlet var applicationNameLabel: UILabel!
-    @IBOutlet weak var ddbSwitch: UISwitch!
     @IBOutlet weak var uploadDataButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var jsonBackupSwitch: UISwitch!
     @IBOutlet weak var fileLabel: UILabel!
     
-    @IBAction func jsonBackupPressed(sender: AnyObject) {
-        if jsonBackupSwitch.on == true {
-            jsonBackupEnabled = true
-        }
-        else {
-            jsonBackupEnabled = false
-        }
-    }
     // @IBActions
-    @IBAction func pressedDDBSwitch(sender: AnyObject) {
-        if ddbSwitch.on == true {
-            ddbEnabled = true
-        }
-        else {
-            ddbEnabled = false
-        }
-    }
-    @IBAction func pressUploadData(sender: AnyObject) {
-        reachable = Reachability.isConnectedToNetwork()
+
+    @IBAction func pressUploadData(_ sender: Any) {
+        reachable = Reachability().isConnectedToNetwork()
         if reachable == true {
-            var tasks: [AWSTask] = []
-            if jsonBackupEnabled == true {
-                print("files: \(filesToUpload.count)")
-                for file in filesToUpload {
-                    print("S3: Uploading file: \(file.fileURL.path!)")
-                    tasks.append(
-                        S3TransferUtility.uploadFile(file.fileURL, fileName: "\(file.user_id)/\(file.id)/\(file.type)", progressBlock: { (task, progress) in
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.progressView.progress = Float(progress.fractionCompleted)
-                                self.fileLabel.text = file.type
-                            })}, completionBlock: {(task, error) -> Void in })
-                    )
-                }
-                filesToUpload = []
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy_h-mma"
+            let dateString = dateFormatter.string(from: Date())
+            if let dbFile = coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].url {
+                self.uploadDataButton.isEnabled = false
+                S3TransferUtility.uploadFile(file: dbFile as NSURL, fileName: "\(dateString)/\(dbFile.lastPathComponent)", progressBlock: {(task, progress) in
+                    DispatchQueue.main.async(execute: {
+                        self.progressView.progress = Float(progress.fractionCompleted)
+                        self.fileLabel.text = dbFile.lastPathComponent
+                    })}, completionBlock: self.completionHandler)
             }
-            AWSTask(forCompletionOfAllTasks: tasks) .continueWithSuccessBlock { (task) -> AnyObject! in
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "MM-dd-yyyy_h-mma"
-                let dateString = dateFormatter.stringFromDate(NSDate())
-                if let dbFile = coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].URL {
-                    self.uploadDataButton.enabled = false
-                    return S3TransferUtility.uploadFile(dbFile, fileName: "\(dateString)/\(dbFile.lastPathComponent!)", progressBlock: {(task, progress) in
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.progressView.progress = Float(progress.fractionCompleted)
-                            self.fileLabel.text = dbFile.lastPathComponent!
-                        })}, completionBlock: self.completionHandler)
-                }
-                else {
-                    print("Error: Could not locate the persisitent store db file.")
-                    let alert = UIAlertController(title: "Error", message: "Could not locate the persistent store db file.", preferredStyle: .Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-                    self.presentViewController(alert, animated: true){}
-                    return nil
-                }
-            }
-            if ddbEnabled == true{
-                DynamoDBManager.uploadSamples("Participant", ddbHashKey: "userID", ddbRangeKey: "LastName", ddbAttrS: [], ddbAttrN: [])
-                DynamoDBManager.uploadSamples("MotionSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
-                DynamoDBManager.uploadSamples("AccelSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
-                DynamoDBManager.uploadSamples("WalkingSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
-                DynamoDBManager.uploadSamples("QuestionnaireSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
-                DynamoDBManager.uploadSamples("TappingSample", ddbHashKey: "id", ddbRangeKey: "pk", ddbAttrS: [], ddbAttrN: [])
+            else {
+                print("Error: Could not locate the persisitent store db file.")
+                let alert = UIAlertController(title: "Error", message: "Could not locate the persistent store db file.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                self.present(alert, animated: true){}
             }
         }
         else {
             print("Internet connection FAILED")
-            let alert = UIAlertController(title: "No Internet Connection", message: "Data cannot be uploaded to database unless connected to the internet.", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-            self.presentViewController(alert, animated: true){}
+            let alert = UIAlertController(title: "No Internet Connection", message: "Data cannot be uploaded to database unless connected to the internet.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+            self.present(alert, animated: true){}
         }
+    }
+    
+
+    public func uploadButtonOn () {
+        uploadDataButton.isEnabled = true
+        self.fileLabel.text = ""
+    }
+    public func uploadButtonOff () {
+        uploadDataButton.isEnabled = false
+        self.fileLabel.text = "Waiting for results to finish processing..."
     }
     
     var participant: Participant?
     
     // MARK: UIViewController
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        uploadDataButton.enabled = uploadDataEnabled
-        self.fileLabel.text = uploadDataEnabled ? "" : "Waiting for results to finish processing..."
+        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.progressView.progress = 0.0;
         
+        // ready for receiving notification
+        let defaultCenter = NotificationCenter.default
+        defaultCenter.addObserver(self,
+                                  selector: #selector(ProfileViewController.uploadButtonOn),
+                                  name: NSNotification.Name("finishedProcessing"),
+                                  object: nil)
+        defaultCenter.addObserver(self,
+                                  selector: #selector(ProfileViewController.uploadButtonOff),
+                                  name: NSNotification.Name("processingResults"),
+                                  object: nil)
+        
         self.progressBlock = {(task, progress) in
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.progressView.progress = Float(progress.fractionCompleted)
             })
         }
         self.completionHandler = { (task, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.uploadDataButton.enabled = true
+            DispatchQueue.main.async(execute: {
+                self.uploadDataButton.isEnabled = true
                 self.fileLabel.text = ""                
                 if ((error) != nil){
                     print("Failed with error")
                     print("Error: %@",error!);
-                    dispatch_async(dispatch_get_main_queue()) {
-                        let alert = UIAlertController(title: "Upload Failed", message: "Data could not be uploaded: \(error!)", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-                        self.presentViewController(alert, animated: true){}
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Upload Failed", message: "Data could not be uploaded: \(error!)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                        self.present(alert, animated: true){}
                     }
                 }
                 else if(self.progressView.progress != 1.0) {
                     print("Error: Failed - Likely due to invalid region / filename")
-                    dispatch_async(dispatch_get_main_queue()) {
-                        let alert = UIAlertController(title: "Upload Failed", message: "Error: Failed - Likely due to invalid region / filename", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-                        self.presentViewController(alert, animated: true){}
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Upload Failed", message: "Error: Failed - Likely due to invalid region / filename", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                        self.present(alert, animated: true){}
                     }
                 }
                 else{
-                    dispatch_async(dispatch_get_main_queue()) {
-                        let alert = UIAlertController(title: "Upload Successful", message: "Data has been uploaded to a secure cloud storage", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-                        self.presentViewController(alert, animated: true){}
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Upload Successful", message: "Data has been uploaded to a secure cloud storage", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                        self.present(alert, animated: true){}
                     }
                 }
                 self.progressView.progress = 0.0;
@@ -181,11 +159,11 @@ class ProfileViewController: UITableViewController, HealthClientType {
         }
         
         guard let healthStore = healthStore else { fatalError("healthStore not set") }
-        let request = NSFetchRequest(entityName: "Participant")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Participant")
         do {
             // Show the most recently joined user in the profile page
-            var participants = try coreData.mainObjectContext.executeFetchRequest(request) as! [Participant]
-            participants = participants.sort({ $0.joinDate > $1.joinDate})
+            let participants = try coreData.mainObjectContext.fetch(request) as! [Participant]
+            //participants = participants.sorted(by: ($0.joinDate, $1.joinDate))
             participant = participants.first
             participantNameLabel.text = participant!.firstName + " " + participant!.lastName
         } catch {
@@ -199,25 +177,26 @@ class ProfileViewController: UITableViewController, HealthClientType {
 
         // Request authorization to query the health objects that need to be shown.
         let typesToRequest = Set<HKCharacteristicType>(healthObjectTypes) // UseSet<HKObjectType> if healthObjectTypes contains ANY object types
-        healthStore.requestAuthorizationToShareTypes(nil, readTypes: typesToRequest) { authorized, error in
+        healthStore.requestAuthorization(toShare: nil, read: typesToRequest) { authorized, error in
             guard authorized else { return }
             
             // Reload the table view cells on the main thread.
-            NSOperationQueue.mainQueue().addOperationWithBlock() {
-                let allRowIndexPaths = self.healthObjectTypes.enumerate().map { NSIndexPath(forRow: $0.index, inSection: 0) }
-                self.tableView.reloadRowsAtIndexPaths(allRowIndexPaths, withRowAnimation: .Automatic)
+            OperationQueue.main.addOperation() {
+                //let allRowIndexPaths = self.healthObjectTypes.enumerated().map { IndexPath(row: $0.index, section: 0) }
+                let allRowIndexPaths = self.healthObjectTypes.enumerated().map { _,_ in IndexPath(row: 0, section: 0) }
+                self.tableView.reloadRows(at: allRowIndexPaths, with: .automatic)
             }
         }
     }
     
     // MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return otherTypes.count // healthObjectTypes.count +
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ProfileStaticTableViewCell.reuseIdentifier, forIndexPath: indexPath) as? ProfileStaticTableViewCell else { fatalError("Unable to dequeue a ProfileStaticTableViewCell") }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileStaticTableViewCell.reuseIdentifier, for: indexPath) as? ProfileStaticTableViewCell else { fatalError("Unable to dequeue a ProfileStaticTableViewCell") }
         let type = otherTypes[indexPath.row]
         
         cell.titleLabel.text = type
@@ -232,10 +211,10 @@ class ProfileViewController: UITableViewController, HealthClientType {
         case "Ethnicity":
             cell.valueLabel.text = participant?.ethnicity
         case "PD Diagnosis Date":
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
-            dateFormatter.timeStyle = .NoStyle
-            cell.valueLabel.text = dateFormatter.stringFromDate((participant?.pdDiagnosis)!)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .none
+            cell.valueLabel.text = dateFormatter.string(from: (participant?.pdDiagnosis)! as Date)
         case "Medications":
             cell.valueLabel.text = participant?.medsLast24h
         case "DBS Implant":
@@ -265,13 +244,13 @@ class ProfileViewController: UITableViewController, HealthClientType {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Cell configuration
     
-    func configureCellWithDateOfBirth(cell: ProfileStaticTableViewCell) {
+    func configureCellWithDateOfBirth(_ cell: ProfileStaticTableViewCell) {
         // Set the default cell content.
         cell.titleLabel.text = NSLocalizedString("Date of Birth", comment: "")
         cell.valueLabel.text = NSLocalizedString("-", comment: "")
@@ -284,12 +263,12 @@ class ProfileViewController: UITableViewController, HealthClientType {
 //            let ageComponents = NSCalendar.currentCalendar().components(.Year, fromDate: dateOfBirth, toDate: now, options: .WrapComponents)
 //            let age = ageComponents.year
 //            cell.valueLabel.text = "\(age)"
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .MediumStyle
-            dateFormatter.timeStyle = .NoStyle
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
             // US English Locale (en_US)
-            dateFormatter.locale = NSLocale(localeIdentifier: "en_US")// Jan 2, 2001
-            cell.valueLabel.text = dateFormatter.stringFromDate(dateOfBirth)
+            dateFormatter.locale = Locale(identifier: "en_US")// Jan 2, 2001
+            cell.valueLabel.text = dateFormatter.string(from: dateOfBirth)
         }
         catch {
         }
@@ -323,9 +302,9 @@ class ProfileViewController: UITableViewController, HealthClientType {
     
     // MARK: Convenience
     
-    func indexPathForObjectTypeIdentifier(identifier: String) -> NSIndexPath? {
-        for (index, objectType) in healthObjectTypes.enumerate() where objectType.identifier == identifier {
-            return NSIndexPath(forRow: index, inSection: 0)
+    func indexPathForObjectTypeIdentifier(_ identifier: String) -> IndexPath? {
+        for (index, objectType) in healthObjectTypes.enumerated() where objectType.identifier == identifier {
+            return IndexPath(row: index, section: 0)
         }
         
         return nil

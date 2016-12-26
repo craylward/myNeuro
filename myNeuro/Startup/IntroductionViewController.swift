@@ -30,54 +30,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
-class IntroductionViewController: UIPageViewController, UIPageViewControllerDataSource {
+class IntroductionViewController: UIViewController {
     // MARK: Properties
     
     let pageViewControllers: [UIViewController] = {
-        let introOne = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("introOneViewController")
-        let introTwo = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("introTwoViewController")
+        let introOne = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "introOneViewController")
         
-        return [introOne, introTwo]
+        return [introOne]
     }()
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        // Do any additional setup after loading the view.
-        dataSource = self
-        
-        setViewControllers([pageViewControllers[0]], direction: .Forward, animated: false, completion: nil)
-    }
-    
-    // MARK: UIPageViewControllerDataSource
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let index = pageViewControllers.indexOf(viewController)!
-        
-        if index - 1 >= 0 {
-            return pageViewControllers[index - 1]
-        }
-        
-        return nil
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let index = pageViewControllers.indexOf(viewController)!
-        
-        if index + 1 < pageViewControllers.count {
-            return pageViewControllers[index + 1]
-        }
-        
-        return nil
-    }
-    
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return pageViewControllers.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
 }

@@ -51,11 +51,11 @@ class ResultViewController: UITableViewController {
 
     var currentResult: ORKResult?
 
-    var resultTableViewProvider: protocol<UITableViewDataSource, UITableViewDelegate>?
+    var resultTableViewProvider: (UITableViewDataSource & UITableViewDelegate)?
     
     // MARK: View Life Cycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         /*
@@ -83,20 +83,19 @@ class ResultViewController: UITableViewController {
     
     // MARK: UIStoryboardSegue Handling
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         /*
             Check to see if the segue identifier is meant for presenting a new
             result view controller.
         */
         if let identifier = segue.identifier,
-               segueIdentifier = SegueIdentifier(rawValue: identifier)
-               where segueIdentifier == .ShowTaskResult {
+               let segueIdentifier = SegueIdentifier(rawValue: identifier), segueIdentifier == .ShowTaskResult {
             
             let cell = sender as! UITableViewCell
             
-            let indexPath = tableView.indexPathForCell(cell)!
+            let indexPath = tableView.indexPath(for: cell)!
             
-            let destinationViewController = segue.destinationViewController as! ResultViewController
+            let destinationViewController = segue.destination as! ResultViewController
             
             let collectionResult = result as! ORKCollectionResult
             
@@ -104,14 +103,14 @@ class ResultViewController: UITableViewController {
         }
     }
 
-    override func shouldPerformSegueWithIdentifier(segueIdentifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier segueIdentifier: String?, sender: Any?) -> Bool {
         /*
             Only perform a segue if the cell that was tapped has a disclosure
             indicator. These are the only kinds of cells that we allow to perform
             segues in a `ResultViewController`.
         */
         if let cell = sender as? UITableViewCell {
-            return cell.accessoryType == .DisclosureIndicator
+            return cell.accessoryType == .disclosureIndicator
         }
         
         return false

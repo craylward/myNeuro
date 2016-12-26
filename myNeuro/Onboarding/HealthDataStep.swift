@@ -37,19 +37,19 @@ class HealthDataStep: ORKInstructionStep {
     // MARK: Properties
     
     let healthDataItemsToRead: Set<HKObjectType> = [
-        HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
+        HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!,
         //HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
         //HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
-        HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!,
+        HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!,
         //HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierAppleStandHour)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRespiratoryRate)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierAppleExerciseTime)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierFlightsClimbed)!,
         //HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
-        HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!
+        HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
+        HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
     ]
     
     // MARK: HealthKit Write items
@@ -74,39 +74,39 @@ class HealthDataStep: ORKInstructionStep {
     }
     
     // MARK: Convenience
-    func getHealthAuthorization(completion: (success: Bool, error: NSError?) -> Void) {
+    func getHealthAuthorization(_ completion: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
             let error = NSError(domain: "com.example.apple-samplecode.ORKSample", code: 2, userInfo: [NSLocalizedDescriptionKey: "Health data is not available on this device."])
             
-            completion(success: false, error:error)
+            completion(false, error)
             
             return
         }
         // Get authorization to access the data
-        HKHealthStore().requestAuthorizationToShareTypes(healthDataItemsToWrite, readTypes: healthDataItemsToRead) { (success, error) -> Void in
-            completion(success:success, error:error)
+        HKHealthStore().requestAuthorization(toShare: healthDataItemsToWrite, read: healthDataItemsToRead) { (success, error) -> Void in
+            completion(success, error as NSError?)
         }
     }
     
     
     // MARK: Mock Heart Rate Data for simulator
-    static var timer: NSTimer?
+    static var timer: Timer?
     static func saveMockHeartData() {
         // 1. Create a heart rate BPM Sample
-        let heartRateType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
-        let heartRateQuantity = HKQuantity(unit: HKUnit(fromString: "count/min"),
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+        let heartRateQuantity = HKQuantity(unit: HKUnit(from: "count/min"),
             doubleValue: Double(arc4random_uniform(80) + 100))
         let heartSample = HKQuantitySample(type: heartRateType,
-            quantity: heartRateQuantity, startDate: NSDate(), endDate: NSDate())
+            quantity: heartRateQuantity, start: Date(), end: Date())
         // 2. Save the sample in the store
-        HKHealthStore().saveObject(heartSample, withCompletion: { (success, error) -> Void in
+        HKHealthStore().save(heartSample, withCompletion: { (success, error) -> Void in
             if let error = error {
                 print("Error saving heart sample: \(error.localizedDescription)")
             }
         })
     }
     static func startMockHeartData() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
             target: self,
             selector: #selector(HealthDataStep.saveMockHeartData),
             userInfo: nil,

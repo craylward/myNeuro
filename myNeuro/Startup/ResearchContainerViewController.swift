@@ -42,8 +42,8 @@ class ResearchContainerViewController: UIViewController, HealthClientType {
     
     var contentHidden = false {
         didSet {
-            guard contentHidden != oldValue && isViewLoaded() else { return }
-            childViewControllers.first?.view.hidden = contentHidden
+            guard contentHidden != oldValue && isViewLoaded else { return }
+            childViewControllers.first?.view.isHidden = contentHidden
         }
     }
     
@@ -60,57 +60,72 @@ class ResearchContainerViewController: UIViewController, HealthClientType {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if let healthStore = healthStore {
-            segue.destinationViewController.injectHealthStore(healthStore)
+            segue.destination.injectHealthStore(healthStore)
         }
     }
     
     // MARK: Unwind segues
     
-    @IBAction func unwindToStudy(segue: UIStoryboardSegue) {
+    @IBAction func unwindToStudy(_ segue: UIStoryboardSegue) {
         toStudy()
     }
     
-    @IBAction func unwindToWithdrawl(segue: UIStoryboardSegue) {
+    @IBAction func unwindToWithdrawl(_ segue: UIStoryboardSegue) {
         toWithdrawl()
     }
     
     // MARK: Transitions
     
     func toOnboarding() {
-        performSegueWithIdentifier("toOnboarding", sender: self)
+        performSegue(withIdentifier: "toOnboarding", sender: self)
     }
     
     func toStudy() {
-        performSegueWithIdentifier("toStudy", sender: self)
+        performSegue(withIdentifier: "toStudy", sender: self)
     }
     
     func toWithdrawl() {
         let viewController = WithdrawViewController()
         viewController.delegate = self
         
-        presentViewController(viewController, animated: true, completion: nil)
+        present(viewController, animated: true, completion: nil)
     }
 }
 
 
 extension ResearchContainerViewController: ORKTaskViewControllerDelegate {
-    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
+    /**
+     Tells the delegate that the task has finished.
+     
+     The task view controller calls this method when an unrecoverable error occurs,
+     when the user has canceled the task (with or without saving), or when the user
+     completes the last step in the task.
+     
+     In most circumstances, the receiver should dismiss the task view controller
+     in response to this method, and may also need to collect and process the results
+     of the task.
+     
+     @param taskViewController  The `ORKTaskViewController `instance that is returning the result.
+     @param reason              An `ORKTaskViewControllerFinishReason` value indicating how the user chose to complete the task.
+     @param error               If failure occurred, an `NSError` object indicating the reason for the failure. The value of this parameter is `nil` if `result` does not indicate failure.
+     */
+    public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         // Check if the user has finished the `WithdrawViewController`.
         if taskViewController is WithdrawViewController {
             /*
                 If the user has completed the withdrawl steps, remove them from
                 the study and transition to the onboarding view.
             */
-            if reason == .Completed {
+            if reason == .completed {
                 ORKPasscodeViewController.removePasscodeFromKeychain()
                 toOnboarding()
             }
             
             // Dismiss the `WithdrawViewController`.
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

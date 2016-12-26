@@ -12,16 +12,16 @@ import WatchConnectivity
 
 
 public var TremorTask: ORKOrderedTask = {
-    let tremorDuration = NSTimeInterval(10)
+    let tremorDuration = TimeInterval(10)
     
-    let excludeTasks: ORKTremorActiveTaskOption = [.ExcludeQueenWave, .ExcludeHandAtShoulderHeightElbowBent]// .ExcludeHandToNose,  .ExcludeHandAtShoulderHeight,
+    let excludeTasks: ORKTremorActiveTaskOption = [.excludeQueenWave, .excludeHandAtShoulderHeightElbowBent]// .ExcludeHandToNose,  .ExcludeHandAtShoulderHeight,
     
-    return ORKOrderedTask.tremorTestTaskWithIdentifier("TremorTask",
+    return ORKOrderedTask.tremorTest(withIdentifier: "TremorTask",
                                                    intendedUseDescription: nil,
                                                    activeStepDuration: tremorDuration,
                                                    activeTaskOptions: excludeTasks,
-                                                   handOptions: ORKPredefinedTaskHandOption.Both,
-                                                   options: ORKPredefinedTaskOption.None
+                                                   handOptions: ORKPredefinedTaskHandOption.both,
+                                                   options: []
         
     )
 }()

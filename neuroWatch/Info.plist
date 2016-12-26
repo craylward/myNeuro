@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.SJM.myNeuro</string>
+	<string>com.SJM.myNeuro.CAylward</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

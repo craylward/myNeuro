@@ -15,24 +15,24 @@ class JoinStudyButton: UIButton {
     required init(coder aDecoder: (NSCoder!)) {
         super.init(coder: aDecoder)!
         self.layer.cornerRadius = 5.0;
-        self.layer.borderColor = self.tintColor.CGColor
+        self.layer.borderColor = self.tintColor.cgColor
         self.layer.borderWidth = 1
-        self.layer.backgroundColor = UIColor.whiteColor().CGColor
-        self.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
-        self.setBackgroundColor(self.tintColor, forState: .Highlighted)
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.setTitleColor(UIColor.white, for: .highlighted)
+        self.setBackgroundColor(self.tintColor, forState: .highlighted)
         self.clipsToBounds = true
         
     }
     
-    override var enabled: Bool {
+    override var isEnabled: Bool {
         didSet {
-            switch enabled {
+            switch isEnabled {
             case true:
-                self.layer.borderColor = self.tintColor.CGColor
-                self.setTitleColor(self.tintColor, forState: .Normal)
+                self.layer.borderColor = self.tintColor.cgColor
+                self.setTitleColor(self.tintColor, for: UIControlState())
             case false:
-                layer.borderColor = UIColor.lightGrayColor().CGColor
-                self.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+                layer.borderColor = UIColor.lightGray.cgColor
+                self.setTitleColor(UIColor.lightGray, for: .disabled)
             }
         }
     }
@@ -42,20 +42,20 @@ class JoinStudyButton: UIButton {
 class EligibilityButton: UIButton {
     required init(coder aDecoder: (NSCoder!)) {
         super.init(coder: aDecoder)!
-        self.setTitleColor(UIColor.whiteColor(), forState: .Selected)
-        self.setBackgroundColor(self.tintColor, forState: .Selected)
+        self.setTitleColor(UIColor.white, for: .selected)
+        self.setBackgroundColor(self.tintColor, forState: .selected)
         self.clipsToBounds = true
     }
 }
 
 extension UIButton {
-    func setBackgroundColor(color: UIColor, forState: UIControlState) {
+    func setBackgroundColor(_ color: UIColor, forState: UIControlState) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), color.CGColor)
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRect(x: 0, y: 0, width: 1, height: 1))
+        UIGraphicsGetCurrentContext()?.setFillColor(color.cgColor)
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
         let colorImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.setBackgroundImage(colorImage, forState: forState)
+        self.setBackgroundImage(colorImage, for: forState)
     }
 }

@@ -27,21 +27,21 @@ public var QuestionnaireTask: ORKOrderedTask {
     let questionStepTitle5 = "How often have you had impulsive behaviors during the last week?"
     
     let textChoices1 = [
-        ORKTextChoice(text: "Excellent", value: 0),
-        ORKTextChoice(text: "Very good", value: 1),
-        ORKTextChoice(text: "Good", value: 2),
-        ORKTextChoice(text: "Poor", value: 3),
-        ORKTextChoice(text: "Very poor", value: 4)
+        ORKTextChoice(text: "Excellent", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Very good", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Good", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Poor", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Very poor", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
     ]
     let textChoices2 = [
-        ORKTextChoice(text: "Never", value: 0),
-        ORKTextChoice(text: "Occasionally", value: 1),
-        ORKTextChoice(text: "Sometimes", value: 2),
-        ORKTextChoice(text: "Often", value: 3),
-        ORKTextChoice(text: "Always", value: 4)
+        ORKTextChoice(text: "Never", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Occasionally", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Sometimes", value: 2 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Often", value: 3 as NSCoding & NSCopying & NSObjectProtocol),
+        ORKTextChoice(text: "Always", value: 4 as NSCoding & NSCopying & NSObjectProtocol)
     ]
-    let textAnswerFormat1: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices1)
-    let textAnswerFormat2: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices2)
+    let textAnswerFormat1: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: textChoices1)
+    let textAnswerFormat2: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: textChoices2)
     let questionStep1 = ORKQuestionStep(identifier: "questionnaire.step1", title: questionStepTitle1, answer: textAnswerFormat1)
     let questionStep2 = ORKQuestionStep(identifier: "questionnaire.step2", title: questionStepTitle2, answer: textAnswerFormat2)
     let questionStep3 = ORKQuestionStep(identifier: "questionnaire.step3", title: questionStepTitle3, answer: textAnswerFormat2)

@@ -22,16 +22,18 @@ class EligibilityViewController: UITableViewController {
     @IBOutlet weak var question5Answer: UISegmentedControl!
     @IBOutlet weak var question6Answer: UISegmentedControl!
     @IBOutlet weak var question7Answer: UISegmentedControl!
-    @IBAction func next(sender: UIBarButtonItem) {
-        if (question1Answer.selectedSegmentIndex==0 && question2Answer.selectedSegmentIndex==0 && question3Answer.selectedSegmentIndex==0 &&
+    @IBAction func next(_ sender: UIBarButtonItem) {
+        if (question1Answer.selectedSegmentIndex==0 &&
+            question2Answer.selectedSegmentIndex==0 &&
+            question3Answer.selectedSegmentIndex==1 &&
             question4Answer.selectedSegmentIndex==0 &&
             question5Answer.selectedSegmentIndex==1 &&
             question6Answer.selectedSegmentIndex==0 &&
             question7Answer.selectedSegmentIndex==0) {
-            performSegueWithIdentifier("toEligible", sender: nil)
+            performSegue(withIdentifier: "toEligible", sender: nil)
         }
         else {
-            performSegueWithIdentifier("toIneligible", sender: nil)
+            performSegue(withIdentifier: "toIneligible", sender: nil)
         }
     }
     
@@ -43,7 +45,7 @@ class EligibilityViewController: UITableViewController {
     var question6Answered = false
     var question7Answered = false
     
-    @IBAction func answerChanged(sender: UISegmentedControl) {
+    @IBAction func answerChanged(_ sender: UISegmentedControl) {
         
         switch question1Answer.selectedSegmentIndex {
         case 0, 1:
@@ -94,12 +96,12 @@ class EligibilityViewController: UITableViewController {
             break
         }
         if (question1Answered && question2Answered && question3Answered && question4Answered && question5Answered && question6Answered && question7Answered) {
-            self.navigationItem.rightBarButtonItem?.enabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem?.enabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }

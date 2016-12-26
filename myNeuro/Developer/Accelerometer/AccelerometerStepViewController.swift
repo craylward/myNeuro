@@ -29,7 +29,7 @@ class AccelerometerStepViewController: ORKActiveStepViewController
         
         //Start Recording Data
         
-        movementManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!) { (accelerometerData: CMAccelerometerData?, NSError) -> Void in
+        movementManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerometerData: CMAccelerometerData?, NSError) -> Void in
             
             self.outputAccData(accelerometerData!.acceleration)
             self.count += 1
@@ -38,7 +38,7 @@ class AccelerometerStepViewController: ORKActiveStepViewController
             }
         }
         
-        movementManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: { (gyroData: CMGyroData?, NSError) -> Void in
+        movementManager.startGyroUpdates(to: OperationQueue.current!, withHandler: { (gyroData: CMGyroData?, NSError) -> Void in
             self.outputRotData(gyroData!.rotationRate)
             if (NSError != nil){
                 print("\(NSError)")
@@ -98,7 +98,7 @@ class AccelerometerStepViewController: ORKActiveStepViewController
     }
 
     
-    func outputAccData(acceleration: CMAcceleration){
+    func outputAccData(_ acceleration: CMAcceleration){
         
         // accX?.text = "\(acceleration.x)g"
         if fabs(acceleration.x) > fabs(currentMaxAccelX)
@@ -126,7 +126,7 @@ class AccelerometerStepViewController: ORKActiveStepViewController
         print(output)
     }
     
-    func outputRotData(rotation: CMRotationRate){
+    func outputRotData(_ rotation: CMRotationRate){
         
         
         rotX?.text = "\(rotation.x)r/s"

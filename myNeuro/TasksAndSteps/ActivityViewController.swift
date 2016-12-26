@@ -35,34 +35,32 @@ import CoreData
 
 // Used to simulate heart rate for simulator
 var simHeartRate = false;
-let tappingDuration = NSTimeInterval(5)
+let tappingDuration = TimeInterval(5)
 var reachable = false
 var tryInternet = true
-var ddbEnabled = false
-var jsonBackupEnabled = false
 var uploadDataEnabled = true
 
 enum Activity: Int {
-    case Questionnaire, Tremor, Bradykinesia, Gait, TremorWatch, BradykinesiaWatch  //, HeartRate
+    case questionnaire, tremor, bradykinesia, gait, tremorWatch, bradykinesiaWatch  //, HeartRate
     
     static var allValues: [Activity] {
         var idx = 0
-        return Array(AnyGenerator{ let temp = self.init(rawValue: idx); idx += 1; return temp})
+        return Array(AnyIterator{ let temp = self.init(rawValue: idx); idx += 1; return temp})
     }
     
     var title: String {
         switch self {
-            case .Questionnaire:
+            case .questionnaire:
                 return "Questionnaire"
-            case .Tremor:
+            case .tremor:
                 return "Tremor"
-            case .Bradykinesia:
+            case .bradykinesia:
                 return "Bradykinesia"
-            case .Gait:
+            case .gait:
                 return "Gait"
-            case .TremorWatch:
+            case .tremorWatch:
                 return "Tremor (Watch)"
-            case .BradykinesiaWatch:
+            case .bradykinesiaWatch:
                 return "Bradykinesia (Watch)"
 //            case .HeartRate:
 //                return "Heart Rate"
@@ -72,17 +70,17 @@ enum Activity: Int {
     
     var subtitle: String {
         switch self {
-            case .Questionnaire:
+            case .questionnaire:
                 return "Questionnaire"
-            case .Tremor:
+            case .tremor:
                 return "Test Tremor"
-            case .Bradykinesia:
+            case .bradykinesia:
                 return "Test Bradykinesia"
-            case .Gait:
+            case .gait:
                 return "Test gait and balance"
-            case .TremorWatch:
+            case .tremorWatch:
                 return "Test Tremor (Apple Watch)"
-            case .BradykinesiaWatch:
+            case .bradykinesiaWatch:
                 return "Test Bradykinesia (Apple Watch)"
             // Developing
 //            case .HeartRate:
@@ -93,16 +91,30 @@ enum Activity: Int {
 
 class ActivityViewController: UITableViewController, WCSessionDelegate {
     
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+
+    }
+    
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
+        
+    }
+    
     // MARK: Properties
     var result: ORKResult?
-    let defaultFileManager = NSFileManager.defaultManager()
+    let defaultFileManager = FileManager.default
 
     //Watch Connectivity
     var session: WCSession? {
         didSet {
             if let session = session {
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
     }
@@ -111,36 +123,24 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
      When a task is completed, the `TaskListViewController` calls this closure
      with the created task.
      */
-    var taskResultFinishedCompletionHandler: (ORKResult -> Void)?
+    var taskResultFinishedCompletionHandler: ((ORKResult) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        if tryInternet == true {
-//            reachable = Reachability.isConnectedToNetwork()
-//            if reachable == true {
-//                print("Internet connection OK")
-//            } else {
-//                print("Internet connection FAILED")
-//                let alert = UIAlertController(title: "No Internet Connection", message: "Data will not be uploaded to database unless connected to the internet.", preferredStyle: .Alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-//                alert.addAction(UIAlertAction(title: "Don't Backup", style: .Default) { _ in tryInternet = false })
-//                self.presentViewController(alert, animated: true){}
-//            }
-//        }
     }
     
     // MARK: UITableViewDataSource
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section == 0 else { return 0 }
         return Activity.allValues.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("activityCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath)
         
         if let activity = Activity(rawValue: indexPath.row) {
             cell.textLabel?.text = activity.title
@@ -152,24 +152,24 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let activity = Activity(rawValue: indexPath.row) else { return }
         
         let taskViewController: ORKTaskViewController
 
         switch activity {
-            case .Questionnaire:
-                taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRunUUID: NSUUID())
-            case .Bradykinesia:
-                taskViewController = ORKTaskViewController(task: BradykinesiaTask, taskRunUUID: NSUUID())
-            case .Tremor:
-                taskViewController = ORKTaskViewController(task: TremorTask, taskRunUUID: NSUUID())
-            case .Gait:
-                taskViewController = ORKTaskViewController(task: GaitTask, taskRunUUID: NSUUID())
-            case .BradykinesiaWatch:
-                taskViewController = ORKTaskViewController(task: BradyTaskW, taskRunUUID: NSUUID())
-            case .TremorWatch:
-                taskViewController = ORKTaskViewController(task: TremorTaskW, taskRunUUID: NSUUID())
+            case .questionnaire:
+                taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRun: UUID())
+            case .bradykinesia:
+                taskViewController = ORKTaskViewController(task: BradykinesiaTask, taskRun: UUID())
+            case .tremor:
+                taskViewController = ORKTaskViewController(task: TremorTask, taskRun: UUID())
+            case .gait:
+                taskViewController = ORKTaskViewController(task: GaitTask, taskRun: UUID())
+            case .bradykinesiaWatch:
+                taskViewController = ORKTaskViewController(task: BradyTaskW, taskRun: UUID())
+            case .tremorWatch:
+                taskViewController = ORKTaskViewController(task: TremorTaskW, taskRun: UUID())
             
 //            case .HeartRate:
 //                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
@@ -179,20 +179,20 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         
         do {
             // Identify the documents directory.
-            let documentsDirectory = try defaultFileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+            let documentsDirectory = try defaultFileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             
             // Create a directory based on the `taskRunUUID` to store output from the task.
-            let outputDirectory = documentsDirectory.URLByAppendingPathComponent(taskViewController.taskRunUUID.UUIDString)
-            try defaultFileManager.createDirectoryAtURL(outputDirectory, withIntermediateDirectories: true, attributes: nil)
+            let outputDirectory = documentsDirectory.appendingPathComponent(taskViewController.taskRunUUID.uuidString)
+            try defaultFileManager.createDirectory(at: outputDirectory, withIntermediateDirectories: true, attributes: nil)
             
-            NSLog("url = %@",outputDirectory)
+            print("url = %@",outputDirectory)
             taskViewController.outputDirectory = outputDirectory
         }
         catch let error as NSError {
-            fatalError("The output directory for the task with UUID: \(taskViewController.taskRunUUID.UUIDString) could not be created. Error: \(error.localizedDescription)")
+            fatalError("The output directory for the task with UUID: \(taskViewController.taskRunUUID.uuidString) could not be created. Error: \(error.localizedDescription)")
         }
         taskViewController.delegate = self
-        navigationController?.presentViewController(taskViewController, animated: true, completion: nil)
+        navigationController?.present(taskViewController, animated: true, completion: nil)
         if simHeartRate == true {
             HealthDataStep.startMockHeartData()
         }
@@ -200,11 +200,24 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
 }
 
 extension ActivityViewController : ORKTaskViewControllerDelegate {
-    
-    
-    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
+    /**
+     Tells the delegate that the task has finished.
+     
+     The task view controller calls this method when an unrecoverable error occurs,
+     when the user has canceled the task (with or without saving), or when the user
+     completes the last step in the task.
+     
+     In most circumstances, the receiver should dismiss the task view controller
+     in response to this method, and may also need to collect and process the results
+     of the task.
+     
+     @param taskViewController  The `ORKTaskViewController `instance that is returning the result.
+     @param reason              An `ORKTaskViewControllerFinishReason` value indicating how the user chose to complete the task.
+     @param error               If failure occurred, an `NSError` object indicating the reason for the failure. The value of this parameter is `nil` if `result` does not indicate failure.
+     */
+    public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         // Handle results using taskViewController.result
-        if reason == .Failed {
+        if reason == .failed {
             print(error!.localizedDescription)
         }
             // Developing: used to simulate a heart beat
@@ -214,11 +227,17 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
             //        }
             
             // MARK: Update results and analysis tabs
-        else if reason == .Completed {
-            coreData.privateObjectContext.performBlock { () -> Void in
-                uploadDataEnabled = false
+        else if reason == .completed {
+            coreData.privateObjectContext.perform { () -> Void in
+                coreData.mainObjectContext.perform {
+                    NotificationCenter.default.post(name: NSNotification.Name("processingResults"), object: nil)
+                }
                 ResultProcessor().processResult(taskViewController.result)
-                uploadDataEnabled = true
+                coreData.savePrivateContext()
+                coreData.mainObjectContext.perform {
+                    NotificationCenter.default.post(name: NSNotification.Name("finishedProcessing"), object: nil)
+                }
+
             }
             //print("Updating results tabs...")
             //let customTabBarController = self.tabBarController as! CustomTabBarController
@@ -227,7 +246,7 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
             //resultViewController.result = taskViewController.result
             
         }
-        taskViewController.dismissViewControllerAnimated(true, completion: nil)
+        taskViewController.dismiss(animated: true, completion: nil)
         
     }
 }

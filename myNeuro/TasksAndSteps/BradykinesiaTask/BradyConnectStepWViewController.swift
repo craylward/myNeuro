@@ -13,7 +13,24 @@ import WatchConnectivity
 
 class BradyConnectWStepViewController: ORKWaitStepViewController, WCSessionDelegate
 {
-    var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+    /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+    @available(iOS 9.3, *)
+    public func sessionDidDeactivate(_ session: WCSession) {
+    }
+
+    /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+    @available(iOS 9.3, *)
+    public func sessionDidBecomeInactive(_ session: WCSession) {
+
+    }
+
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(iOS 9.3, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    
+    }
+
+    var label = UILabel(frame: CGRect(x:0, y:0, width:200, height:21))
     
     // ORKWaitStepViewController Functions
     static func stepViewControllerClass() -> BradyConnectWStepViewController.Type {
@@ -31,7 +48,7 @@ class BradyConnectWStepViewController: ORKWaitStepViewController, WCSessionDeleg
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupConnectivity()
         firstMessage()
@@ -42,31 +59,31 @@ class BradyConnectWStepViewController: ORKWaitStepViewController, WCSessionDeleg
         didSet {
             if let session = session {
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
     }
-    private func setupConnectivity() {
+    fileprivate func setupConnectivity() {
         if WCSession.isSupported() {
-            session = WCSession.defaultSession()
+            session = WCSession.default()
             print("WCSession is supported")
-            if !(session!.paired) {
+            if !(session!.isPaired) {
                 print("Apple Watch is not paired")
             }
-            if !(session!.watchAppInstalled) {
+            if !(session!.isWatchAppInstalled) {
                 print("Apple Watch app is not installed")
             }
         } else {
             print("Apple Watch connectivity is not supported on this device")
-            let alert = UIAlertController(title: "Error", message: "Apple Watch connectivity is not supported on this device", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
-            self.presentViewController(alert, animated: true){}
+            let alert = UIAlertController(title: "Error", message: "Apple Watch connectivity is not supported on this device", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+            self.present(alert, animated: true){}
         }
     }
     
     func firstMessage() {
         guard session != nil else { print("Can't send message! No session!"); return }
-        if session!.reachable {
+        if session!.isReachable {
             session!.sendMessage(["command": 11], replyHandler: {reply in
                 if reply["response"] as? Int == 11 {
                     self.goForward()
@@ -80,7 +97,7 @@ class BradyConnectWStepViewController: ORKWaitStepViewController, WCSessionDeleg
         }
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         let command = message["command"] as? Int
         if command == 1 {
             firstMessage()
