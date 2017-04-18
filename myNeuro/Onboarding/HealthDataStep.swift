@@ -82,6 +82,7 @@ class HealthDataStep: ORKInstructionStep {
             
             return
         }
+        
         // Get authorization to access the data
         HKHealthStore().requestAuthorization(toShare: healthDataItemsToWrite, read: healthDataItemsToRead) { (success, error) -> Void in
             completion(success, error as NSError?)

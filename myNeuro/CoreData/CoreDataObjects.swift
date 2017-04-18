@@ -51,6 +51,7 @@ class TappingSample: NSManagedObject {
     @NSManaged var duration: NSNumber
     @NSManaged var isBacked: NSNumber
     @NSManaged var pk: NSNumber
+    @NSManaged var hand: String
 }
 
 class AccelSample: NSManagedObject {

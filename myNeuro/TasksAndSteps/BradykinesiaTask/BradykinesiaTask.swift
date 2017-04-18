@@ -14,9 +14,11 @@ public var BradykinesiaTask: ORKOrderedTask = {
     let intendedUseDescription = "Finger tapping is a useful method for evaluting Bradykinesia symptoms."
     
     let tappingDuration = TimeInterval(10)
+    
     return ORKOrderedTask.twoFingerTappingIntervalTask(withIdentifier: "BradykinesiaTask",
         intendedUseDescription: intendedUseDescription,
         duration: tappingDuration,
+        handOptions: .both,
         options: []
     ) // CHANGED: Duration: 10
 }()

@@ -24,13 +24,6 @@ class EligibleViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem?.title = "Back"
     }
-    
-    lazy var privateContext: NSManagedObjectContext = {
-        var coreDataStack = CoreDataStack()
-        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        context.persistentStoreCoordinator = coreDataStack.persistentStoreCoordinator
-        return context
-    }()
 }
 
 extension EligibleViewController : ORKTaskViewControllerDelegate {
@@ -56,9 +49,9 @@ extension EligibleViewController : ORKTaskViewControllerDelegate {
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         switch reason {
         case .completed:
-            privateContext.perform { () -> Void in
-                ResultProcessor().processResult(taskViewController.result)
-                coreData.savePrivateContext()
+            CoreDataStack.coreData.privateObjectContext.perform { () -> Void in
+                processConsent(taskViewController.result.results!)
+                CoreDataStack.coreData.savePrivateContext()
             }
             performSegue(withIdentifier: "unwindToStudy", sender: nil)
             

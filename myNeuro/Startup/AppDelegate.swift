@@ -59,14 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pageControlAppearance = UIPageControl.appearance()
         pageControlAppearance.pageIndicatorTintColor = UIColor.lightGray
         pageControlAppearance.currentPageIndicatorTintColor = UIColor.black
-        
         // Dependency injection.
         containerViewController?.injectHealthStore(healthStore)
         return true
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         lockApp()
         return true
     }
@@ -91,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewController(withText: "Welcome back to the myNeuro ResearchKit App", delegate: self) as! ORKPasscodeViewController
+        let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewController(withText: "Welcome back to the myNeuro ResearchKit App", delegate: self)
         containerViewController?.present(passcodeViewController, animated: false, completion: nil)
     }
     
@@ -117,38 +115,3 @@ extension AppDelegate: ORKPasscodeDelegate {
     func passcodeViewControllerDidFailAuthentication(_ viewController: UIViewController) {
     }
 }
-
-extension AppDelegate: WCSessionDelegate {
-    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
-    @available(iOS 9.3, *)
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-
-
-    func sessionWatchStateDidChange(_ session: WCSession) {
-        print(#function)
-        print(session)
-        print("reachable:\(session.isReachable)")
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        print(#function)
-        guard message["request"] as? String == "fireLocalNotification" else {return}
-        
-        let localNotification = UILocalNotification()
-        localNotification.alertBody = "Message Received!"
-        localNotification.fireDate = Date()
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        
-        UIApplication.shared.scheduleLocalNotification(localNotification)
-    }
-}
-

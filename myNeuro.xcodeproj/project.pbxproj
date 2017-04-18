@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351F8BF1513CB29A86F31A3D /* Pods_neuroWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AC7F6E729B2FE4F8D1B067 /* Pods_neuroWatch.framework */; };
+		3A43D4C86E3AC3FB9C0EB532 /* Pods_neuroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3EE7802D20545C9EBFD6F4 /* Pods_neuroWatch_Extension.framework */; };
 		95C2AEAD1DD3AF5F007F13D3 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C2AEAC1DD3AF5F007F13D3 /* HealthKit.framework */; };
+		A3D2C5C799EAA0C2B94E06D2 /* Pods_myNeuroTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39ABB6C097468AA0181B549 /* Pods_myNeuroTests.framework */; };
+		CA78A830E2CA8C62C2E10D44 /* Pods_myNeuro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20FAFFDD61A1AF5A7885F3A /* Pods_myNeuro.framework */; };
 		DA0870E01CE3448400A28302 /* AccelerometerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */; };
 		DA0870E21CE345B400A28302 /* AccelerometerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0870E11CE345B400A28302 /* AccelerometerStep.swift */; };
 		DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */; };
@@ -72,6 +76,12 @@
 		DAA6E0631D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */; };
 		DABFD2081CABD3640057BCF9 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */; };
 		DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFD2111CB4F7580057BCF9 /* Math.swift */; };
+		DAC1F46F1E7B31AB00ECB621 /* ProcessBradykinesia.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F46E1E7B31AB00ECB621 /* ProcessBradykinesia.swift */; };
+		DAC1F4731E7B329900ECB621 /* ProcessTremor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F4721E7B329900ECB621 /* ProcessTremor.swift */; };
+		DAC1F4751E7B333800ECB621 /* ProcessGait.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F4741E7B333800ECB621 /* ProcessGait.swift */; };
+		DAC1F4771E7B33A900ECB621 /* ProcessConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F4761E7B33A900ECB621 /* ProcessConsent.swift */; };
+		DAC1F4791E7B340E00ECB621 /* ProcessQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F4781E7B340E00ECB621 /* ProcessQuestionnaire.swift */; };
+		DAC1F47D1E7C773C00ECB621 /* AlertOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F47C1E7C773C00ECB621 /* AlertOverlay.swift */; };
 		DAD02C471D5E4D19006DF283 /* TremorConnectStepW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */; };
 		DAD02C4B1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02C4A1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift */; };
 		DAD02C4C1D5E836F006DF283 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CE641D2F21CB00CF86C8 /* SwiftyJSON.swift */; };
@@ -117,14 +127,10 @@
 		DAD02C8E1D63AC76006DF283 /* AWSSNS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C691D63AC75006DF283 /* AWSSNS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAD02C8F1D63AC76006DF283 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C6A1D63AC75006DF283 /* AWSSQS.framework */; };
 		DAD02C901D63AC76006DF283 /* AWSSQS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAD02C6A1D63AC75006DF283 /* AWSSQS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DAD5276C1D40715A00B5C08B /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD527691D404E4700B5C08B /* ResearchKit.framework */; };
-		DAD5276D1D40715A00B5C08B /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DAD527691D404E4700B5C08B /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DAD527721D41146000B5C08B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD527711D41146000B5C08B /* CoreDataStack.swift */; };
 		DAD527741D412B5600B5C08B /* CoreDataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD527731D412B5600B5C08B /* CoreDataObjects.swift */; };
 		DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */; };
 		DADBDFCA1D26122200A707D6 /* GaitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFC91D26122200A707D6 /* GaitTask.swift */; };
-		DADBDFD21D26E81F00A707D6 /* ResultsToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */; };
-		DAE597FE1D3DA766005F064E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE597FD1D3DA766005F064E /* HealthKit.framework */; };
 		DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C511CD9FB4A000C164D /* WatchStep.swift */; };
 		DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C571CD9FB9D000C164D /* WatchTask.swift */; };
 		DAEB9C5B1CD9FCB0000C164D /* AccelerometerStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB9C5A1CD9FCB0000C164D /* AccelerometerStepViewController.swift */; };
@@ -156,27 +162,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DAA5CE6E1D2F689400CF86C8;
 			remoteInfo = neuroWatch;
-		};
-		DAD527681D404E4700B5C08B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		DAD5276A1D404E4700B5C08B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
-		DAD5276E1D40715A00B5C08B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -211,7 +196,6 @@
 				DAD02C6C1D63AC75006DF283 /* AWSAPIGateway.framework in Embed Frameworks */,
 				DAD02C7C1D63AC75006DF283 /* AWSElasticLoadBalancing.framework in Embed Frameworks */,
 				DAD02C881D63AC76006DF283 /* AWSS3.framework in Embed Frameworks */,
-				DAD5276D1D40715A00B5C08B /* ResearchKit.framework in Embed Frameworks */,
 				DAD02C8E1D63AC76006DF283 /* AWSSNS.framework in Embed Frameworks */,
 				DAD02C721D63AC75006DF283 /* AWSCognito.framework in Embed Frameworks */,
 				DAD02C8A1D63AC76006DF283 /* AWSSES.framework in Embed Frameworks */,
@@ -246,7 +230,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		169F11E19A4DA7FA74F7CD87 /* Pods-myNeuroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myNeuroTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-myNeuroTests/Pods-myNeuroTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C3EE7802D20545C9EBFD6F4 /* Pods_neuroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neuroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D592C08714F81CF171503D7 /* Pods-neuroWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neuroWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neuroWatch/Pods-neuroWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		5A7CADF98E192BCCFB80AA42 /* Pods-myNeuro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myNeuro.release.xcconfig"; path = "Pods/Target Support Files/Pods-myNeuro/Pods-myNeuro.release.xcconfig"; sourceTree = "<group>"; };
+		926E8372610807FAFA56FCEB /* Pods-neuroWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neuroWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-neuroWatch Extension/Pods-neuroWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		94AC7F6E729B2FE4F8D1B067 /* Pods_neuroWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_neuroWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C2AEAC1DD3AF5F007F13D3 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		9D32D1649435075EA12AD674 /* Pods-neuroWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neuroWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-neuroWatch Extension/Pods-neuroWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		B39ABB6C097468AA0181B549 /* Pods_myNeuroTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myNeuroTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0870DF1CE3448400A28302 /* AccelerometerTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerTask.swift; path = myNeuro/Developer/Accelerometer/AccelerometerTask.swift; sourceTree = "<group>"; };
 		DA0870E11CE345B400A28302 /* AccelerometerStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccelerometerStep.swift; path = myNeuro/Developer/Accelerometer/AccelerometerStep.swift; sourceTree = "<group>"; };
 		DA19E5821CC7724D00E26A07 /* WatchStepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStepViewController.swift; path = myNeuro/Developer/Watch/WatchStepViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +311,12 @@
 		DAA6E0621D5DE2A900ABB4EE /* TremorTaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TremorTaskInterfaceController.swift; sourceTree = "<group>"; };
 		DABFD2071CABD3640057BCF9 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalysisViewController.swift; path = Analysis/AnalysisViewController.swift; sourceTree = "<group>"; };
 		DABFD2111CB4F7580057BCF9 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Analysis/Math.swift; sourceTree = "<group>"; };
+		DAC1F46E1E7B31AB00ECB621 /* ProcessBradykinesia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessBradykinesia.swift; path = CoreData/ProcessBradykinesia.swift; sourceTree = "<group>"; };
+		DAC1F4721E7B329900ECB621 /* ProcessTremor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessTremor.swift; path = CoreData/ProcessTremor.swift; sourceTree = "<group>"; };
+		DAC1F4741E7B333800ECB621 /* ProcessGait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessGait.swift; path = CoreData/ProcessGait.swift; sourceTree = "<group>"; };
+		DAC1F4761E7B33A900ECB621 /* ProcessConsent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessConsent.swift; path = CoreData/ProcessConsent.swift; sourceTree = "<group>"; };
+		DAC1F4781E7B340E00ECB621 /* ProcessQuestionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessQuestionnaire.swift; path = CoreData/ProcessQuestionnaire.swift; sourceTree = "<group>"; };
+		DAC1F47C1E7C773C00ECB621 /* AlertOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertOverlay.swift; path = UI/AlertOverlay.swift; sourceTree = "<group>"; };
 		DAD02C461D5E4D19006DF283 /* TremorConnectStepW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorConnectStepW.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorConnectStepW.swift; sourceTree = "<group>"; };
 		DAD02C4A1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorConnectStepWViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorConnectStepWViewController.swift; sourceTree = "<group>"; };
 		DAD02C4E1D62B7BE006DF283 /* BradykinesiaTaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BradykinesiaTaskInterfaceController.swift; sourceTree = "<group>"; };
@@ -345,14 +343,11 @@
 		DAD02C691D63AC75006DF283 /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSNS.framework; path = "myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks/AWSSNS.framework"; sourceTree = "<group>"; };
 		DAD02C6A1D63AC75006DF283 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSQS.framework; path = "myNeuro/Resources/aws-ios-sdk-2.4.7/frameworks/AWSSQS.framework"; sourceTree = "<group>"; };
 		DAD02C931D63B219006DF283 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BridgingHeader.h; path = Resources/BridgingHeader.h; sourceTree = "<group>"; };
-		DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		DAD527711D41146000B5C08B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreData/CoreDataStack.swift; sourceTree = "<group>"; };
 		DAD527731D412B5600B5C08B /* CoreDataObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataObjects.swift; path = CoreData/CoreDataObjects.swift; sourceTree = "<group>"; };
 		DADBDFC61D2445FE00A707D6 /* BradykinesiaTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BradykinesiaTask.swift; path = TasksAndSteps/BradykinesiaTask/BradykinesiaTask.swift; sourceTree = "<group>"; };
 		DADBDFC91D26122200A707D6 /* GaitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GaitTask.swift; path = TasksAndSteps/GaitTask/GaitTask.swift; sourceTree = "<group>"; };
-		DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsToCoreData.swift; path = Results/ResultsToCoreData.swift; sourceTree = "<group>"; };
 		DAE597FA1D3DA740005F064E /* neuroWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = neuroWatch.entitlements; sourceTree = "<group>"; };
-		DAE597FD1D3DA766005F064E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		DAE597FF1D3DA766005F064E /* neuroWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "neuroWatch Extension.entitlements"; sourceTree = "<group>"; };
 		DAEB9C511CD9FB4A000C164D /* WatchStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchStep.swift; path = myNeuro/Developer/Watch/WatchStep.swift; sourceTree = "<group>"; };
 		DAEB9C571CD9FB9D000C164D /* WatchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WatchTask.swift; path = myNeuro/Developer/Watch/WatchTask.swift; sourceTree = "<group>"; };
@@ -362,9 +357,21 @@
 		DAEC015A1D34652E00202C91 /* TremorStepWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorStepWViewController.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorStepWViewController.swift; sourceTree = "<group>"; };
 		DAEE33E51CEE5BBA008A270C /* TremorTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TremorTask.swift; path = myNeuro/TasksAndSteps/TremorTask/TremorTask.swift; sourceTree = "<group>"; };
 		DAF0C3881D11ECD600B8D8D8 /* EligibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EligibleViewController.swift; path = Onboarding/EligibleViewController.swift; sourceTree = "<group>"; };
+		E2D29D7FB94C2BD0FCE5A21A /* Pods-myNeuro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myNeuro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myNeuro/Pods-myNeuro.debug.xcconfig"; sourceTree = "<group>"; };
+		E37060DABAEEAB035F7314B6 /* Pods-neuroWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-neuroWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-neuroWatch/Pods-neuroWatch.release.xcconfig"; sourceTree = "<group>"; };
+		ED5E8C7AFCC0912E65733B65 /* Pods-myNeuroTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myNeuroTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myNeuroTests/Pods-myNeuroTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F20FAFFDD61A1AF5A7885F3A /* Pods_myNeuro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myNeuro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		178F6FB043FAF561EB2C0DFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				351F8BF1513CB29A86F31A3D /* Pods_neuroWatch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA7B9BB61CA370160095794F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,10 +393,10 @@
 				DAD02C8F1D63AC76006DF283 /* AWSSQS.framework in Frameworks */,
 				DAD02C7B1D63AC75006DF283 /* AWSElasticLoadBalancing.framework in Frameworks */,
 				DAD02C6D1D63AC75006DF283 /* AWSAutoScaling.framework in Frameworks */,
-				DAD5276C1D40715A00B5C08B /* ResearchKit.framework in Frameworks */,
 				DAD02C891D63AC76006DF283 /* AWSSES.framework in Frameworks */,
 				DAD02C831D63AC76006DF283 /* AWSMachineLearning.framework in Frameworks */,
 				DAD02C7D1D63AC75006DF283 /* AWSIoT.framework in Frameworks */,
+				CA78A830E2CA8C62C2E10D44 /* Pods_myNeuro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D2C5C799EAA0C2B94E06D2 /* Pods_myNeuroTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAE597FE1D3DA766005F064E /* HealthKit.framework in Frameworks */,
+				3A43D4C86E3AC3FB9C0EB532 /* Pods_neuroWatch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +461,6 @@
 				DA70C87D1CA4AF9900A83969 /* ResultTableViewProviders.swift */,
 				DA70C87F1CA4AF9900A83969 /* TextImageTableViewCell.swift */,
 				DA70C87E1CA4AF9900A83969 /* ResultViewController.swift */,
-				DADBDFD11D26E81F00A707D6 /* ResultsToCoreData.swift */,
 			);
 			name = Results;
 			sourceTree = "<group>";
@@ -467,7 +474,7 @@
 				DAA5CE701D2F689400CF86C8 /* neuroWatch */,
 				DAA5CE7F1D2F689400CF86C8 /* neuroWatch Extension */,
 				DA7B9BBA1CA370160095794F /* Products */,
-				DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */,
+				FC49AB672A156AC96AC32F17 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -556,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7D01CA1CF75E3700BE6CEB /* Skin.swift */,
+				DAC1F47C1E7C773C00ECB621 /* AlertOverlay.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -634,18 +642,12 @@
 				DAD02C681D63AC75006DF283 /* AWSSimpleDB.framework */,
 				DAD02C691D63AC75006DF283 /* AWSSNS.framework */,
 				DAD02C6A1D63AC75006DF283 /* AWSSQS.framework */,
-				DAE597FD1D3DA766005F064E /* HealthKit.framework */,
+				F20FAFFDD61A1AF5A7885F3A /* Pods_myNeuro.framework */,
+				B39ABB6C097468AA0181B549 /* Pods_myNeuroTests.framework */,
+				94AC7F6E729B2FE4F8D1B067 /* Pods_neuroWatch.framework */,
+				2C3EE7802D20545C9EBFD6F4 /* Pods_neuroWatch_Extension.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DAD527631D404E4700B5C08B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DAD527691D404E4700B5C08B /* ResearchKit.framework */,
-				DAD5276B1D404E4700B5C08B /* ResearchKitTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DAD527701D41144100B5C08B /* CoreData */ = {
@@ -656,6 +658,11 @@
 				DAD527731D412B5600B5C08B /* CoreDataObjects.swift */,
 				DA9DBD111D87503700573BCE /* Reachability.swift */,
 				DA9DBD141D888FC700573BCE /* S3TransferUtility.swift */,
+				DAC1F4781E7B340E00ECB621 /* ProcessQuestionnaire.swift */,
+				DAC1F4741E7B333800ECB621 /* ProcessGait.swift */,
+				DAC1F4761E7B33A900ECB621 /* ProcessConsent.swift */,
+				DAC1F46E1E7B31AB00ECB621 /* ProcessBradykinesia.swift */,
+				DAC1F4721E7B329900ECB621 /* ProcessTremor.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -753,6 +760,21 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		FC49AB672A156AC96AC32F17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2D29D7FB94C2BD0FCE5A21A /* Pods-myNeuro.debug.xcconfig */,
+				5A7CADF98E192BCCFB80AA42 /* Pods-myNeuro.release.xcconfig */,
+				ED5E8C7AFCC0912E65733B65 /* Pods-myNeuroTests.debug.xcconfig */,
+				169F11E19A4DA7FA74F7CD87 /* Pods-myNeuroTests.release.xcconfig */,
+				4D592C08714F81CF171503D7 /* Pods-neuroWatch.debug.xcconfig */,
+				E37060DABAEEAB035F7314B6 /* Pods-neuroWatch.release.xcconfig */,
+				926E8372610807FAFA56FCEB /* Pods-neuroWatch Extension.debug.xcconfig */,
+				9D32D1649435075EA12AD674 /* Pods-neuroWatch Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -760,18 +782,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA7B9BD61CA370160095794F /* Build configuration list for PBXNativeTarget "myNeuro" */;
 			buildPhases = (
+				A264C90E1AC3EB9717FAD278 /* [CP] Check Pods Manifest.lock */,
 				DA7B9BB51CA370160095794F /* Sources */,
 				DA7B9BB61CA370160095794F /* Frameworks */,
 				DA7B9BB71CA370160095794F /* Resources */,
 				DAA5CE951D2F689500CF86C8 /* Embed Watch Content */,
 				DA5B195B1D403F9D000406AC /* Embed Frameworks */,
 				DAD02C921D63ACC9006DF283 /* ShellScript */,
+				B7913EC17AB57F989315B912 /* [CP] Embed Pods Frameworks */,
+				710C5A7EC9CD2EE6DBCB7DD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DAA5CE8C1D2F689500CF86C8 /* PBXTargetDependency */,
-				DAD5276F1D40715A00B5C08B /* PBXTargetDependency */,
 			);
 			name = myNeuro;
 			productName = myNeuro;
@@ -782,9 +806,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA7B9BD91CA370160095794F /* Build configuration list for PBXNativeTarget "myNeuroTests" */;
 			buildPhases = (
+				DFBF3AE25EDF52AEAEFAAB15 /* [CP] Check Pods Manifest.lock */,
 				DA7B9BC91CA370160095794F /* Sources */,
 				DA7B9BCA1CA370160095794F /* Frameworks */,
 				DA7B9BCB1CA370160095794F /* Resources */,
+				2E7F5B45EE001D43AB0F1167 /* [CP] Embed Pods Frameworks */,
+				D5AEE6A3EA5F67D1E50B90DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -800,8 +827,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA5CE921D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch" */;
 			buildPhases = (
+				93C2847146AB01F8AAD5FF5D /* [CP] Check Pods Manifest.lock */,
 				DAA5CE6D1D2F689400CF86C8 /* Resources */,
 				DAA5CE911D2F689500CF86C8 /* Embed App Extensions */,
+				178F6FB043FAF561EB2C0DFF /* Frameworks */,
+				9F8D3ACAB8D3889BD204B3C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -817,10 +847,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAA5CE8E1D2F689500CF86C8 /* Build configuration list for PBXNativeTarget "neuroWatch Extension" */;
 			buildPhases = (
+				2FE5E9B67228AFAF348F6A96 /* [CP] Check Pods Manifest.lock */,
 				DAA5CE771D2F689400CF86C8 /* Sources */,
 				DAA5CE781D2F689400CF86C8 /* Frameworks */,
 				DAA5CE791D2F689400CF86C8 /* Resources */,
 				DA5B193D1D403B6F000406AC /* Embed Frameworks */,
+				EF72649AC56FA945BEB01D92 /* [CP] Embed Pods Frameworks */,
+				89AEFE64FA6BBC95A267E503 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -896,12 +929,6 @@
 			mainGroup = DA7B9BB01CA370160095794F;
 			productRefGroup = DA7B9BBA1CA370160095794F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DAD527631D404E4700B5C08B /* Products */;
-					ProjectRef = DAD527501D404E1500B5C08B /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				DA7B9BB81CA370160095794F /* myNeuro */,
@@ -911,23 +938,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DAD527691D404E4700B5C08B /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = DAD527681D404E4700B5C08B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DAD5276B1D404E4700B5C08B /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = DAD5276A1D404E4700B5C08B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DA7B9BB71CA370160095794F /* Resources */ = {
@@ -968,6 +978,141 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E7F5B45EE001D43AB0F1167 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myNeuroTests/Pods-myNeuroTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2FE5E9B67228AFAF348F6A96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		710C5A7EC9CD2EE6DBCB7DD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myNeuro/Pods-myNeuro-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89AEFE64FA6BBC95A267E503 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neuroWatch Extension/Pods-neuroWatch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93C2847146AB01F8AAD5FF5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9F8D3ACAB8D3889BD204B3C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neuroWatch/Pods-neuroWatch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A264C90E1AC3EB9717FAD278 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7913EC17AB57F989315B912 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myNeuro/Pods-myNeuro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5AEE6A3EA5F67D1E50B90DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-myNeuroTests/Pods-myNeuroTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DAD02C921D63ACC9006DF283 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -981,6 +1126,36 @@
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"\n";
 		};
+		DFBF3AE25EDF52AEAEFAAB15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF72649AC56FA945BEB01D92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-neuroWatch Extension/Pods-neuroWatch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -993,11 +1168,12 @@
 				DAEB9C581CD9FB9D000C164D /* WatchTask.swift in Sources */,
 				DABFD2121CB4F7580057BCF9 /* Math.swift in Sources */,
 				DADBDFC71D2445FE00A707D6 /* BradykinesiaTask.swift in Sources */,
-				DADBDFD21D26E81F00A707D6 /* ResultsToCoreData.swift in Sources */,
+				DAC1F4731E7B329900ECB621 /* ProcessTremor.swift in Sources */,
 				DA70C8831CA4AF9900A83969 /* TextImageTableViewCell.swift in Sources */,
 				DAEB9C521CD9FB4A000C164D /* WatchStep.swift in Sources */,
 				DA9DBD151D888FC700573BCE /* S3TransferUtility.swift in Sources */,
 				DAEC01591D34651500202C91 /* TremorStepW.swift in Sources */,
+				DAC1F46F1E7B31AB00ECB621 /* ProcessBradykinesia.swift in Sources */,
 				DA70C8821CA4AF9900A83969 /* ResultViewController.swift in Sources */,
 				DAEC01571D34627700202C91 /* TremorTaskW.swift in Sources */,
 				DA6D096F1D4B1B7100A16C2A /* AnalysisTableCell.swift in Sources */,
@@ -1006,9 +1182,11 @@
 				DA9DBD101D80015300573BCE /* myNeuro.xcdatamodeld in Sources */,
 				DAD02C4B1D5E4D5A006DF283 /* TremorConnectStepWViewController.swift in Sources */,
 				DAA5CE651D2F21CB00CF86C8 /* SwiftyJSON.swift in Sources */,
+				DAC1F4771E7B33A900ECB621 /* ProcessConsent.swift in Sources */,
 				DA6BE8691D7924A500D5674B /* BradyConnectStepWViewController.swift in Sources */,
 				DA70C8811CA4AF9900A83969 /* ResultTableViewProviders.swift in Sources */,
 				DA7D01CB1CF75E3700BE6CEB /* Skin.swift in Sources */,
+				DAC1F4791E7B340E00ECB621 /* ProcessQuestionnaire.swift in Sources */,
 				DA49F7DA1CF5922600FDD1E1 /* ConsentTask.swift in Sources */,
 				DA7B9C6E1CA3BB570095794F /* ConsentDocument.swift in Sources */,
 				DA19E5831CC7724D00E26A07 /* WatchStepViewController.swift in Sources */,
@@ -1016,6 +1194,8 @@
 				DA6D096D1D4A02C700A16C2A /* PDCharacteristicsTask.swift in Sources */,
 				DA7B9C771CA3BB570095794F /* OnboardingViewController.swift in Sources */,
 				DA7B9C7B1CA3BB570095794F /* ProfileStaticTableViewCell.swift in Sources */,
+				DAC1F4751E7B333800ECB621 /* ProcessGait.swift in Sources */,
+				DAC1F47D1E7C773C00ECB621 /* AlertOverlay.swift in Sources */,
 				DA7B9C741CA3BB570095794F /* HKHealthStore+Queries.swift in Sources */,
 				DA7B9C751CA3BB570095794F /* IntroductionViewController.swift in Sources */,
 				DAD527741D412B5600B5C08B /* CoreDataObjects.swift in Sources */,
@@ -1097,11 +1277,6 @@
 			isa = PBXTargetDependency;
 			target = DAA5CE6E1D2F689400CF86C8 /* neuroWatch */;
 			targetProxy = DAA5CE8B1D2F689500CF86C8 /* PBXContainerItemProxy */;
-		};
-		DAD5276F1D40715A00B5C08B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchKit;
-			targetProxy = DAD5276E1D40715A00B5C08B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1221,8 +1396,9 @@
 		};
 		DA7B9BD71CA370160095794F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2D29D7FB94C2BD0FCE5A21A /* Pods-myNeuro.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
@@ -1247,8 +1423,9 @@
 		};
 		DA7B9BD81CA370160095794F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A7CADF98E192BCCFB80AA42 /* Pods-myNeuro.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myNeuro/myNeuro.entitlements;
@@ -1272,6 +1449,7 @@
 		};
 		DA7B9BDA1CA370160095794F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED5E8C7AFCC0912E65733B65 /* Pods-myNeuroTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = SP5RAB2LK6;
@@ -1286,6 +1464,7 @@
 		};
 		DA7B9BDB1CA370160095794F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 169F11E19A4DA7FA74F7CD87 /* Pods-myNeuroTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = SP5RAB2LK6;
@@ -1300,6 +1479,7 @@
 		};
 		DAA5CE8F1D2F689500CF86C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 926E8372610807FAFA56FCEB /* Pods-neuroWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1322,6 +1502,7 @@
 		};
 		DAA5CE901D2F689500CF86C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D32D1649435075EA12AD674 /* Pods-neuroWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1344,6 +1525,7 @@
 		};
 		DAA5CE931D2F689500CF86C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D592C08714F81CF171503D7 /* Pods-neuroWatch.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1366,6 +1548,7 @@
 		};
 		DAA5CE941D2F689500CF86C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E37060DABAEEAB035F7314B6 /* Pods-neuroWatch.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

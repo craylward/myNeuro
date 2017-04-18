@@ -30,15 +30,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 import ResearchKit
-import WatchConnectivity
 import CoreData
 
 // Used to simulate heart rate for simulator
 var simHeartRate = false;
-let tappingDuration = TimeInterval(5)
 var reachable = false
 var tryInternet = true
-var uploadDataEnabled = true
 
 enum Activity: Int {
     case questionnaire, tremor, bradykinesia, gait, tremorWatch, bradykinesiaWatch  //, HeartRate
@@ -89,41 +86,9 @@ enum Activity: Int {
     }
 }
 
-class ActivityViewController: UITableViewController, WCSessionDelegate {
+class ActivityViewController: UITableViewController {
     
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-
-    }
-    
-    func session(_ session: WCSession,
-                 activationDidCompleteWith activationState: WCSessionActivationState,
-                 error: Error?) {
-        
-    }
-    
-    // MARK: Properties
-    var result: ORKResult?
-    let defaultFileManager = FileManager.default
-
-    //Watch Connectivity
-    var session: WCSession? {
-        didSet {
-            if let session = session {
-                session.delegate = self
-                session.activate()
-            }
-        }
-    }
-    
-    /**
-     When a task is completed, the `TaskListViewController` calls this closure
-     with the created task.
-     */
-    var taskResultFinishedCompletionHandler: ((ORKResult) -> Void)?
+    var lastActivity: Activity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +121,7 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         guard let activity = Activity(rawValue: indexPath.row) else { return }
         
         let taskViewController: ORKTaskViewController
-
+        lastActivity = activity
         switch activity {
             case .questionnaire:
                 taskViewController = ORKTaskViewController(task: QuestionnaireTask, taskRun: UUID())
@@ -170,7 +135,6 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
                 taskViewController = ORKTaskViewController(task: BradyTaskW, taskRun: UUID())
             case .tremorWatch:
                 taskViewController = ORKTaskViewController(task: TremorTaskW, taskRun: UUID())
-            
 //            case .HeartRate:
 //                taskViewController = ORKTaskViewController(task: StudyTasks.heartRateTask, taskRunUUID: NSUUID())
 //                simHeartRate = true;
@@ -178,6 +142,7 @@ class ActivityViewController: UITableViewController, WCSessionDelegate {
         }
         
         do {
+            let defaultFileManager = FileManager.default
             // Identify the documents directory.
             let documentsDirectory = try defaultFileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             
@@ -217,35 +182,41 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
      */
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         // Handle results using taskViewController.result
-        if reason == .failed {
+        switch reason {
+        case .failed:
             print(error!.localizedDescription)
-        }
-            // Developing: used to simulate a heart beat
-            //        if simHeartRate == true {
-            //            HealthDataStep.stopMockHeartData()
-            //            simHeartRate = false
-            //        }
-            
-            // MARK: Update results and analysis tabs
-        else if reason == .completed {
-            coreData.privateObjectContext.perform { () -> Void in
-                coreData.mainObjectContext.perform {
+        case .completed:
+            print("Task Completed")
+            CoreDataStack.coreData.privateObjectContext.perform { () -> Void in
+                CoreDataStack.coreData.mainObjectContext.perform {
                     NotificationCenter.default.post(name: NSNotification.Name("processingResults"), object: nil)
                 }
-                ResultProcessor().processResult(taskViewController.result)
-                coreData.savePrivateContext()
-                coreData.mainObjectContext.perform {
+                
+                switch self.lastActivity! {
+                case .bradykinesia, .bradykinesiaWatch:
+                    processBradykinesia(results: taskViewController.result.results! as! [ORKStepResult])
+                case .gait:
+                    processGait(results: taskViewController.result.results! as! [ORKStepResult])
+                case .questionnaire:
+                    processQuestionnaire(taskViewController.result.results!)
+                case .tremor, .tremorWatch:
+                    processTremor(results: taskViewController.result.results! as! [ORKStepResult])
+                }
+                CoreDataStack.coreData.savePrivateContext()
+                CoreDataStack.coreData.mainObjectContext.perform {
                     NotificationCenter.default.post(name: NSNotification.Name("finishedProcessing"), object: nil)
                 }
-
             }
-            //print("Updating results tabs...")
-            //let customTabBarController = self.tabBarController as! CustomTabBarController
-            //let navResult = customTabBarController.viewControllers![2] as! UINavigationController
-            //let resultViewController = navResult.topViewController as! ResultViewController
-            //resultViewController.result = taskViewController.result
-            
+        case .discarded:
+            print("Task Cancelled")
+        case .saved:
+            print("Task saved")
         }
+        //print("Updating results tabs...")
+        //let customTabBarController = self.tabBarController as! CustomTabBarController
+        //let navResult = customTabBarController.viewControllers![2] as! UINavigationController
+        //let resultViewController = navResult.topViewController as! ResultViewController
+        //resultViewController.result = taskViewController.result
         taskViewController.dismiss(animated: true, completion: nil)
         
     }

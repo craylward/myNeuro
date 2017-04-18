@@ -38,10 +38,6 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
     
     let emptyResult = "-"
     
-    var coreData = {
-        return CoreDataStack.sharedInstance()
-    }()
-    
     var bradyFetchedResults: BradyAnalysis?
     var tremorFetchedResults: TremorAnalysis?
     var gaitFetchedResults: GaitAnalysis?
@@ -57,8 +53,7 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let currentID = fetchLatestUserID(coreData.mainObjectContext)
-        fetchResults(currentID)
+        fetchResults(CoreDataStack.coreData.latestUserID)
     }
     
 
@@ -82,32 +77,32 @@ class AnalysisViewController: UITableViewController, NSFetchedResultsControllerD
         gaitRequest.fetchLimit = 1
         
         do {
-            let bradyResult = try coreData.mainObjectContext.fetch(bradyRequest)
-            let tremorResult = try coreData.mainObjectContext.fetch(tremorRequest)
-            let gaitResult = try coreData.mainObjectContext.fetch(gaitRequest)
+            let bradyResult = try CoreDataStack.coreData.mainObjectContext.fetch(bradyRequest)
+            let tremorResult = try CoreDataStack.coreData.mainObjectContext.fetch(tremorRequest)
+            let gaitResult = try CoreDataStack.coreData.mainObjectContext.fetch(gaitRequest)
             if (bradyResult.count > 0) {
                 
                 bradyFetchedResults = bradyResult[0] as? BradyAnalysis
-                bradyUpdrs.text = String(format: "%d", bradyFetchedResults!.updrs as Int)
-                brady_cvDuration.text = String(format: "%.4f", bradyFetchedResults!.brady_cvDuration as Double)
-                brady_intervalAvg.text = String(format: "%.4f", bradyFetchedResults!.brady_intervalAvg as Double)
+                bradyUpdrs.text = String(format: "%d", bradyFetchedResults!.updrs as! Int)
+                brady_cvDuration.text = String(format: "%.4f", bradyFetchedResults!.brady_cvDuration as! Double)
+                brady_intervalAvg.text = String(format: "%.4f", bradyFetchedResults!.brady_intervalAvg as! Double)
             }
             if (tremorResult.count > 0) {
                 tremorFetchedResults = tremorResult[0] as? TremorAnalysis
-                tremorUpdrs.text = String(format: "%d", tremorFetchedResults!.updrs as Int)
-                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_RMS as Double)
-                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_K as Double)
-                tremor_p_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_RMS as Double)
-                tremor_p_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_K as Double)
-                tremor_k_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as Double)
-                tremor_k_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as Double)
+                tremorUpdrs.text = String(format: "%d", tremorFetchedResults!.updrs as! Int)
+                tremor_r_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_RMS as! Double)
+                tremor_r_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_r_K as! Double)
+                tremor_p_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_RMS as! Double)
+                tremor_p_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_p_K as! Double)
+                tremor_k_RMS.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_RMS as! Double)
+                tremor_k_K.text = String(format: "%.4f", tremorFetchedResults!.tremor_k_K as! Double)
             }
             if (gaitResult.count > 0) {
                 gaitFetchedResults = gaitResult[0] as? GaitAnalysis
-                gaitUpdrs.text = String(format: "%d", gaitFetchedResults!.updrs as Int)
-                gait_cycleTime.text = String(format: "%.4f s", gaitFetchedResults!.gait_cycleTime as Double)
-                gait_strideLength.text = String(format: "%.4f m", gaitFetchedResults!.gait_strideLength as Double)
-                gait_walkingSpeed.text = String(format: "%.4f m/s", gaitFetchedResults!.gait_walkingSpeed as Double)
+                gaitUpdrs.text = String(format: "%d", gaitFetchedResults!.updrs as! Int)
+                gait_cycleTime.text = String(format: "%.4f s", gaitFetchedResults!.gait_cycleTime as! Double)
+                gait_strideLength.text = String(format: "%.4f m", gaitFetchedResults!.gait_strideLength as! Double)
+                gait_walkingSpeed.text = String(format: "%.4f m/s", gaitFetchedResults!.gait_walkingSpeed as! Double)
             }
         } catch {
             let fetchError = error as NSError
