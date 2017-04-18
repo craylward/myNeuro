@@ -35,7 +35,7 @@ func average(_ arr : [Double]) -> Double
 }
 
 func bradyAnalysis (_ resultId: Int){
-    let coreData = CoreDataStack.sharedInstance()
+    let coreData = CoreDataStack.coreData
     
     //fetch bradykinesia results
     let tappingSamplesRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TappingSample")
@@ -50,7 +50,7 @@ func bradyAnalysis (_ resultId: Int){
     
     guard tappingSamples!.count > 0 else { print("No results found"); return }
     
-    var tapIntervals = tappingSamples!.map{$0.timeStamp as TimeInterval}
+    var tapIntervals = tappingSamples!.map{$0.timeStamp as! TimeInterval}
     var index = tapIntervals.count - 1
     while index > 0 {                                   // start at the last timestamp entry and work toward 0 index
         tapIntervals[index] -= tapIntervals[index-1]  // subtract time from preceding timestamp from current timestamp
@@ -64,7 +64,7 @@ func bradyAnalysis (_ resultId: Int){
     //        let min = tapIntervals.minElement()!
     //        let max = tapIntervals.maxElement()!
     
-    let tapDurations = tappingSamples!.map{$0.duration as Double}
+    let tapDurations = tappingSamples!.map{$0.duration as! Double}
     
     let analysis = NSEntityDescription.insertNewObject(forEntityName: "BradyAnalysis", into: coreData.privateObjectContext) as! BradyAnalysis
     analysis.brady_cvDuration = NSNumber(value: standardDeviation(tapDurations)/average(tapDurations))
@@ -83,7 +83,7 @@ func bradyAnalysis (_ resultId: Int){
 }
 
 func tremorAnalysis (_ resultId: Int){
-    let coreData = CoreDataStack.sharedInstance()
+    let coreData = CoreDataStack.coreData
     
     //fetch bradykinesia results
     let tremorSamplesRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MotionSample")
@@ -117,7 +117,7 @@ func tremorAnalysis (_ resultId: Int){
 }
 
 func gaitAnalysis (_ resultId: Int){
-    let coreData = CoreDataStack.sharedInstance()
+    let coreData = CoreDataStack.coreData
     
     //fetch bradykinesia results
     //let gaitMotionSamplesRequest = NSFetchRequest(entityName: "MotionSample")

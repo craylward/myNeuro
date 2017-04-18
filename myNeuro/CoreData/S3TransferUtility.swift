@@ -12,9 +12,10 @@ import AWSS3
 import AWSCognito
 import AWSCognitoIdentityProvider
 
-let S3BucketName: String = "myneuro"
+let S3BucketName: String = "myneuro1"
 
-class S3TransferUtility {    
+class S3TransferUtility {
+    @discardableResult
     class func uploadFile(file: NSURL, fileName: String, progressBlock: AWSS3TransferUtilityProgressBlock?, completionBlock: AWSS3TransferUtilityUploadCompletionHandlerBlock?) -> AWSTask<AnyObject> {
         
         let expression = AWSS3TransferUtilityUploadExpression()
@@ -29,13 +30,13 @@ class S3TransferUtility {
             expression: expression,
             completionHander: completionBlock) .continue ({ (task) -> AnyObject! in
             if let error = task.error {
-                NSLog("Error: %@",error.localizedDescription);
+                print("Error: %@",error.localizedDescription);
             }
             if let exception = task.exception {
-                NSLog("Exception: %@",exception.description);
+                print("Exception: %@",exception.description);
             }
             if let _ = task.result {
-                NSLog("Upload Starting!")
+                print("Upload Starting!")
             // Do something with uploadTask.
             }
             return task;

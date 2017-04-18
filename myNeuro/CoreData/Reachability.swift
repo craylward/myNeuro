@@ -10,7 +10,7 @@ import Foundation
 import SystemConfiguration
 
 // Function for testing connectivity to the internet
-open class Reachability {
+open class Reachability{
     func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in()

@@ -151,7 +151,7 @@ extension TremorTaskInterfaceController: HKWorkoutSessionDelegate, WCSessionDele
     // Error workoutSession
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         // Do nothing for now
-        NSLog("Workout error: \(error._userInfo)")
+        NSLog("Workout error: \(String(describing: error._userInfo))")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {

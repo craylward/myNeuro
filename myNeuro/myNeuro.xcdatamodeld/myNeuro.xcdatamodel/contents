@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="AccelSample" representedClassName=".AccelSample" syncable="YES">
         <attribute name="aX" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="aY" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
@@ -78,6 +78,7 @@
     <entity name="TappingSample" representedClassName=".TappingSample" syncable="YES">
         <attribute name="button_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isBacked" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="loc_x" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
@@ -125,7 +126,7 @@
         <element name="MotionSample" positionX="-468" positionY="-54" width="128" height="225"/>
         <element name="Participant" positionX="-344" positionY="-414" width="128" height="285"/>
         <element name="QuestionnaireSample" positionX="-342" positionY="-54" width="128" height="195"/>
-        <element name="TappingSample" positionX="-216" positionY="-54" width="128" height="180"/>
+        <element name="TappingSample" positionX="-216" positionY="-54" width="128" height="195"/>
         <element name="TaskResult" positionX="-344" positionY="-189" width="128" height="135"/>
         <element name="TremorAnalysis" positionX="-542" positionY="171" width="128" height="208"/>
         <element name="WalkingSample" positionX="-90" positionY="-54" width="128" height="180"/>

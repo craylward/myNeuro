@@ -9,7 +9,7 @@
 import Foundation
 import ResearchKit
 
-public var ConsentTask: ORKNavigableOrderedTask {
+public var ConsentTask: ORKNavigableOrderedTask  {
     
     var steps = [ORKStep]()
     
@@ -62,7 +62,6 @@ class ConsentFailedStep: ORKWaitStep {
     
     override init(identifier: String) {
         super.init(identifier: identifier)
-        indicatorType = ORKProgressIndicatorType.none
     }
     
     required init(coder aDecoder: NSCoder) {

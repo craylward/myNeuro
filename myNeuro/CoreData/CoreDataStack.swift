@@ -31,18 +31,22 @@
 import CoreData
 import UIKit
 
-let coreData = CoreDataStack.sharedInstance()
+
 
 class CoreDataStack: NSObject {
     
+    static let dbFileName = "myNeuro.sqlite"
+    static let uploadFileName = "data.sqlite"
+    
     // Shared instance (singleton)
     // Used to create an instance of the CoreDataStack for use throughout the app
-    class func sharedInstance() -> CoreDataStack {
-        struct Static {
-            static let instance = CoreDataStack()
-        }
-        return Static.instance
-    }
+    static let coreData = CoreDataStack()
+    
+    // Properties
+    // Used to optimize task creation by eliminating the need for fetching after first fetch
+    var latestTaskID: Int { return CoreDataStack.fetchLatestTaskID() }
+    var latestUserID: Int { return CoreDataStack.fetchLatestUserID() }
+    var currentParticipant: Participant? { return CoreDataStack.fetchCurrentParticipant() }
     
     // MARK: - Core Data stack
     lazy var applicationDocumentsDirectory: URL = {
@@ -61,10 +65,11 @@ class CoreDataStack: NSObject {
         // The persistent store coordinator for the application. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("myNeuro.db")
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("myNeuro.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
+        let options = [NSSQLitePragmasOption : ["journal_mode" : "DELETE"]]
         do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch {
             // Report any error we got.
             var dict = [String: Any]()
@@ -125,35 +130,104 @@ class CoreDataStack: NSObject {
             }
         }
     }
-}
-
-// MARK: Core Data Fetching Support
-// Fetch any set of data from the Core Data persistent store
-func fetchData(_ entityName: String, predicate: String?, context: NSManagedObjectContext) -> [AnyObject]? {
-    let dataRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-    if predicate != nil {
-        dataRequest.predicate = NSPredicate(format: predicate!)
+    
+    
+    // MARK: Core Data Fetching Support
+    // Fetch any set of data from the Core Data persistent store
+    static func fetchData(_ entityName: String, predicate: String?, context: NSManagedObjectContext) -> [AnyObject]? {
+        let dataRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        if predicate != nil {
+            dataRequest.predicate = NSPredicate(format: predicate!)
+        }
+        let objects: [AnyObject]?
+        do {
+            objects = try context.fetch(dataRequest)
+            return objects
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        return nil
     }
-    let objects: [AnyObject]?
-    do {
-        objects = try context.fetch(dataRequest)
-        return objects
-    } catch {
-        let fetchError = error as NSError
-        print(fetchError)
+    
+    // Fetch the latest user ID
+    static func fetchLatestUserID() -> Int {
+        guard let participants = fetchData("Participant", predicate: nil, context: CoreDataStack.coreData.privateObjectContext) as! [Participant]? else { print("Could not fetch Participant from CoreData"); return -1}
+        let ids = participants.map{Int($0.user_id)}
+        if ids.isEmpty {
+            print("First Participant!")
+            return 0
+        }
+        return ids.max()!
     }
-    return nil
-}
-
-// Fetch the latest user ID
-func fetchLatestUserID(_ context: NSManagedObjectContext) -> Int {
-    guard let participants = fetchData("Participant", predicate: nil, context: context) as! [Participant]? else { print("Could not fetch Participant from CoreData"); return -1}
-    let ids = participants.map{Int($0.user_id)}
-    if ids.isEmpty {
-        print("First Participant!")
-        return 0
+    
+    static func fetchLatestTaskID() -> Int {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskResult")
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        request.fetchLimit = 1
+        do {
+            let result = try CoreDataStack.coreData.privateObjectContext.fetch(request)
+            if (result.count > 0) {
+                let latest_task = result[0] as! TaskResult
+                return latest_task.id.intValue // + 1 // 1 after the latest task id
+            }
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        return 1
     }
-    return ids.max()!
+    
+    static func fetchCurrentParticipant () -> Participant? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Participant")
+        do {
+            // Show the most recently joined user in the profile page
+            var participants = try CoreDataStack.coreData.privateObjectContext.fetch(request) as! [Participant]
+            // Sort Descending (later dates first)
+            participants = participants.sorted(by: { $0.joinDate.compare($1.joinDate) == ComparisonResult.orderedDescending })
+            
+            return participants.first
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        return nil
+    }
+    
+    static func createNewTaskResult(type: String) -> TaskResult {
+        let taskResult = NSEntityDescription.insertNewObject(forEntityName: "TaskResult", into: CoreDataStack.coreData.privateObjectContext) as! TaskResult
+        taskResult.id = NSNumber(value: CoreDataStack.coreData.latestTaskID + 1)
+        taskResult.date = Date()
+        taskResult.user_id = NSNumber(value: CoreDataStack.coreData.latestUserID)
+        taskResult.type = type
+        return taskResult
+    }
+    
+    static func createUploadFile() -> URL? {
+        let fileManager = FileManager.default
+        let sourcePath = CoreDataStack.coreData.privateObjectContext.persistentStoreCoordinator?.persistentStores[0].url
+        let destinationPath = CoreDataStack.coreData.applicationDocumentsDirectory.appendingPathComponent(uploadFileName)
+        do{
+            if fileManager.fileExists(atPath: destinationPath.path) {
+                try fileManager.removeItem(atPath: destinationPath.path)
+            }
+            try fileManager.copyItem(atPath: sourcePath!.path, toPath: destinationPath.path)
+        }catch let error as NSError {
+            print("error occurred, here are the details:\n \(error)")
+            return nil
+        }
+        return destinationPath
+    }
+    
+    static func removeUploadFile() {
+        let fileManager = FileManager.default
+        let destinationPath = CoreDataStack.coreData.applicationDocumentsDirectory.appendingPathComponent(uploadFileName)
+        do{
+            if fileManager.fileExists(atPath: destinationPath.path) {
+                try fileManager.removeItem(atPath: destinationPath.path)
+            }
+        }catch let error as NSError {
+            print("error occurred, here are the details:\n \(error)")
+        }
+    }
 }
-
-
