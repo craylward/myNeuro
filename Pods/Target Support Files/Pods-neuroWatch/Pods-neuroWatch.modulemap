@@ -1,0 +1,6 @@
+framework module Pods_neuroWatch {
+  umbrella header "Pods-neuroWatch-umbrella.h"
+
+  export *
+  module * { export * }
+}

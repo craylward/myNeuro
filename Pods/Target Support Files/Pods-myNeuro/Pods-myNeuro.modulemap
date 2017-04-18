@@ -1,0 +1,6 @@
+framework module Pods_myNeuro {
+  umbrella header "Pods-myNeuro-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-myNeuro.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-myNeuroTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-neuroWatch Extension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-neuroWatch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ResearchKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>51A2256608F863D38548609FB36C764C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>585A8A55E7644A8400616192FC64AE70</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>59AABBDDB196E20FF2A29BD64241931B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7CC0D2F034F2FC25D258CD54C1A40DE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D55637CAE530C61A71DA6530F8E0BD1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
