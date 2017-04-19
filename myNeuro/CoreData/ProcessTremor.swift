@@ -14,9 +14,12 @@ func processTremor(results: [ORKStepResult]) {
     let taskResult = CoreDataStack.createNewTaskResult(type: "Tremor")
     
     for stepResult in results { // Iterate through TaskResult child results (Cast as step results)
-        for fileResult in stepResult.results as! [ORKFileResult] { // Iterate through the child results of the tremor steps (file results)
-            let typeResult = stepResult.identifier + "." + fileResult.identifier  // i.e "tremor.handInLap.right" + "." + "ac1_acc"
-            processFileResult_Tremor(fileResult.fileURL!, typeResult, taskResult)
+        for childResult in stepResult.results! { // Iterate through the child results of the tremor steps (file results)
+            if let grandChildResult = childResult as? ORKFileResult {
+                print(childResult.identifier)
+                let typeResult = stepResult.identifier + "." + grandChildResult.identifier  // i.e "tremor.handInLap.right" + "." + "ac1_acc"
+                processFileResult_Tremor(grandChildResult.fileURL!, typeResult, taskResult)
+            }
         }
     }
 }

@@ -90,6 +90,8 @@ class ActivityViewController: UITableViewController {
     
     var lastActivity: Activity?
     
+    static var lastResult: ORKResult?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -181,6 +183,9 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
      @param error               If failure occurred, an `NSError` object indicating the reason for the failure. The value of this parameter is `nil` if `result` does not indicate failure.
      */
     public func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        
+        ActivityViewController.lastResult = taskViewController.result
+        
         // Handle results using taskViewController.result
         switch reason {
         case .failed:
@@ -201,6 +206,7 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
                     processQuestionnaire(taskViewController.result.results!)
                 case .tremor, .tremorWatch:
                     processTremor(results: taskViewController.result.results! as! [ORKStepResult])
+                    break
                 }
                 CoreDataStack.coreData.savePrivateContext()
                 CoreDataStack.coreData.mainObjectContext.perform {

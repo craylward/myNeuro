@@ -42,16 +42,16 @@ class ResultViewController: UITableViewController {
     // MARK: Types
     
     enum SegueIdentifier: String {
-        case ShowTaskResult = "ShowTaskResult"
+        case showTaskResult = "ShowTaskResult"
     }
     
     // MARK: Properties
 
-    var result: ORKResult?
+    var result: ORKResult? = ORKTaskResult()
 
-    var currentResult: ORKResult?
+    var currentResult: ORKResult? = ORKTaskResult()
 
-    var resultTableViewProvider: (UITableViewDataSource & UITableViewDelegate)?
+    var resultTableViewProvider: UITableViewDataSource & UITableViewDelegate = resultTableViewProviderForResult(ORKTaskResult())
     
     // MARK: View Life Cycle
     
@@ -63,10 +63,12 @@ class ResultViewController: UITableViewController {
             displayed result, and the result that has been most recently set on
             the `ResultViewController`.
         */
-
+        
+        // MARK: Custom
+        result = ActivityViewController.lastResult
         
         guard result != currentResult || currentResult == nil else { return }
-  
+        
         // Update the currently displayed result.
         currentResult = result
 
@@ -77,6 +79,7 @@ class ResultViewController: UITableViewController {
             while its the table view's delegate and data source.
         */
         resultTableViewProvider = resultTableViewProviderForResult(result)
+        
         tableView.dataSource = resultTableViewProvider
         tableView.delegate = resultTableViewProvider
     }
@@ -89,7 +92,8 @@ class ResultViewController: UITableViewController {
             result view controller.
         */
         if let identifier = segue.identifier,
-               let segueIdentifier = SegueIdentifier(rawValue: identifier), segueIdentifier == .ShowTaskResult {
+               let segueIdentifier = SegueIdentifier(rawValue: identifier)
+               , segueIdentifier == .showTaskResult {
             
             let cell = sender as! UITableViewCell
             
@@ -99,7 +103,7 @@ class ResultViewController: UITableViewController {
             
             let collectionResult = result as! ORKCollectionResult
             
-            destinationViewController.result = collectionResult.results![indexPath.row]
+            destinationViewController.result = collectionResult.results![(indexPath as NSIndexPath).row]
         }
     }
 

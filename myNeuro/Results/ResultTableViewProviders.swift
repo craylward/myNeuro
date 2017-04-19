@@ -119,7 +119,7 @@ func resultTableViewProviderForResult(_ result: ORKResult?) -> UITableViewDataSo
         
     case is ORKReactionTimeResult:
         providerType = ReactionTimeViewProvider.self
-        
+
     case is ORKTowerOfHanoiResult:
         providerType = TowerOfHanoiResultTableViewProvider.self
         
@@ -169,11 +169,11 @@ enum ResultRow {
         storyboard.
     */
     enum TableViewCellIdentifier: String {
-        case Default =          "Default"
-        case NoResultSet =      "NoResultSet"
-        case NoChildResults =   "NoChildResults"
-        case TextImage =        "TextImage"
-        case Image =            "Image"
+        case `default` =          "Default"
+        case noResultSet =      "NoResultSet"
+        case noChildResults =   "NoChildResults"
+        case textImage =        "TextImage"
+        case image =            "Image"
     }
     
     // MARK: Initialization
@@ -185,7 +185,7 @@ enum ResultRow {
             it's "nil". Use Optional's map method to map the value to a string
             if the detail is not `nil`.
         */
-        let detailText = detail.map { String(describing: $0) } ?? "nil"
+        let detailText = detail.map { String(describing:$0) } ?? "nil"
         
         self = .text(text, detail: detailText, selectable: selectable)
     }
@@ -203,7 +203,7 @@ class NoRecentResultTableViewProvider: NSObject, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.NoResultSet.rawValue, for: indexPath)
+        return tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.noResultSet.rawValue, for: indexPath)
     }
 }
 
@@ -243,19 +243,19 @@ class ResultTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resultRows = resultRowsForSection(indexPath.section)
+        let resultRows = resultRowsForSection((indexPath as NSIndexPath).section)
         
         // Show an empty row if there isn't any metadata in the rows for this section.
         if resultRows.isEmpty {
-            return tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.NoChildResults.rawValue, for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.noChildResults.rawValue, for: indexPath)
         }
 
         // Fetch the `ResultRow` that corresponds to `indexPath`.
-        let resultRow = resultRows[indexPath.row]
+        let resultRow = resultRows[(indexPath as NSIndexPath).row]
         
         switch resultRow {
             case let .text(text, detail: detailText, selectable):
-                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.Default.rawValue, for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.default.rawValue, for: indexPath)
 
                 cell.textLabel!.text = text
                 cell.detailTextLabel!.text = detailText
@@ -270,7 +270,7 @@ class ResultTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
                 return cell
 
             case let .textImage(text, image):
-                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.TextImage.rawValue, for: indexPath) as! TextImageTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.textImage.rawValue, for: indexPath) as! TextImageTableViewCell
 
                 cell.leftTextLabel.text = text
                 cell.rightImageView.image = image
@@ -278,7 +278,7 @@ class ResultTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
                 return cell
 
             case let .image(image):
-                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.Image.rawValue, for: indexPath) as! ImageTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: ResultRow.TableViewCellIdentifier.image.rawValue, for: indexPath) as! ImageTableViewCell
 
                 cell.fullImageView.image = image
 
@@ -376,7 +376,7 @@ class LocationQuestionResultTableViewProvider: ResultTableViewProvider {
     override func resultRowsForSection(_ section: Int) -> [ResultRow] {
         let questionResult = result as! ORKLocationQuestionResult
         let location = questionResult.locationAnswer
-        let address = (location?.addressDictionary["FormattedAddressLines"] as AnyObject).componentsJoined
+        let address = (location?.addressDictionary["FormattedAddressLines"] as AnyObject).componentsJoined(by: " ")
         let rows = super.resultRowsForSection(section) + [
             // The latitude of the location the user entered.
             ResultRow(text: "latitude", detail: location?.coordinate.latitude),
@@ -472,9 +472,8 @@ class ConsentSignatureResultTableViewProvider: ResultTableViewProvider {
     override func resultRowsForSection(_ section: Int) -> [ResultRow] {
         let signatureResult = result as! ORKConsentSignatureResult
         let signature = signatureResult.signature!
-        var rowResults = [] as [ResultRow]
         
-        rowResults = [
+        return super.resultRowsForSection(section) + [
             /*
             The identifier for the signature, identifying which one it is in
             the document.
@@ -499,14 +498,12 @@ class ConsentSignatureResultTableViewProvider: ResultTableViewProvider {
             // The captured image.
             .textImage("signature", image: signature.signatureImage)
         ]
-        
-        return super.resultRowsForSection(section) + rowResults
     }
     
     func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let lastRow = self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+        let lastRow = self.tableView(tableView, numberOfRowsInSection: (indexPath as NSIndexPath).section) - 1
         
-        if indexPath.row == lastRow {
+        if (indexPath as NSIndexPath).row == lastRow {
             return 200
         }
         
@@ -545,8 +542,9 @@ class FileResultTableViewProvider: ResultTableViewProvider {
             ResultRow(text: "fileURL", detail: questionResult.fileURL)
         ]
         
-        if let fileURL = questionResult.fileURL, let contentType = questionResult.contentType, contentType.hasPrefix("image/") {
-            if let data = NSData(contentsOf: fileURL), let image = UIImage(data: data as Data) {
+        if let fileURL = questionResult.fileURL, let contentType = questionResult.contentType , contentType.hasPrefix("image/") {
+            
+            if let image = UIImage.init(contentsOfFile: fileURL.path) {
                 return rows + [
                     // The image of the generated file on disk.
                     .image(image)
@@ -558,10 +556,10 @@ class FileResultTableViewProvider: ResultTableViewProvider {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let resultRows = resultRowsForSection(indexPath.section)
+        let resultRows = resultRowsForSection((indexPath as NSIndexPath).section)
         
         if !resultRows.isEmpty {
-            switch resultRows[indexPath.row] {
+            switch resultRows[(indexPath as NSIndexPath).row] {
             case .image(.some(let image)):
                 // Keep the aspect ratio the same.
                 let imageAspectRatio = image.size.width / image.size.height
@@ -996,7 +994,7 @@ class TaskResultTableViewProvider: CollectionResultTableViewProvider {
         
         let rows = super.resultRowsForSection(section)
         
-        if section == 0 {
+        if section == 0 && (taskResult.results?.count)! > 0 {
             return rows + [
                 ResultRow(text: "taskRunUUID", detail: taskResult.taskRunUUID.uuidString),
                 ResultRow(text: "outputDirectory", detail: taskResult.outputDirectory)
@@ -1026,7 +1024,7 @@ class CollectionResultTableViewProvider: ResultTableViewProvider {
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: IndexPath) -> Bool {
-        return indexPath.section == 1
+        return (indexPath as NSIndexPath).section == 1
     }
     
     // MARK: ResultTableViewProvider

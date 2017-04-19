@@ -7,11 +7,17 @@ target 'myNeuro' do
 
   # Pods for myNeuro
   pod 'ResearchKit', '~> 1.4.1'
+  pod 'AWSCognito', '~> 2.5.2'
+  pod 'AWSCognitoIdentityProvider', '~> 2.5.2'
+  pod 'AWSS3', '~> 2.5.2'
   
   target 'myNeuroTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'ResearchKit', '~> 1.4.1'
+    pod 'AWSCognito', '~> 2.5.2'
+    pod 'AWSCognitoIdentityProvider', '~> 2.5.2'
+    pod 'AWSS3', '~> 2.5.2'
   end
 
 end

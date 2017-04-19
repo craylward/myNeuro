@@ -28,12 +28,9 @@ class S3TransferUtility {
             key: fileName,
             contentType: "text/plain",
             expression: expression,
-            completionHander: completionBlock) .continue ({ (task) -> AnyObject! in
+            completionHandler: completionBlock) .continueWith (block: { (task) -> AnyObject! in
             if let error = task.error {
                 print("Error: %@",error.localizedDescription);
-            }
-            if let exception = task.exception {
-                print("Exception: %@",exception.description);
             }
             if let _ = task.result {
                 print("Upload Starting!")

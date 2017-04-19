@@ -34,14 +34,14 @@ class AccelerometerStepViewController: ORKActiveStepViewController
             self.outputAccData(accelerometerData!.acceleration)
             self.count += 1
             if(NSError != nil) {
-                print("\(NSError)")
+                print("\(String(describing: NSError))")
             }
         }
         
         movementManager.startGyroUpdates(to: OperationQueue.current!, withHandler: { (gyroData: CMGyroData?, NSError) -> Void in
             self.outputRotData(gyroData!.rotationRate)
             if (NSError != nil){
-                print("\(NSError)")
+                print("\(String(describing: NSError))")
             }
             
             
