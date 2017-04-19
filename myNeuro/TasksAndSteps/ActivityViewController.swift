@@ -91,6 +91,7 @@ class ActivityViewController: UITableViewController {
     var lastActivity: Activity?
     
     static var lastResult: ORKResult?
+    static var saving: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,6 +194,7 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
         case .completed:
             print("Task Completed")
             CoreDataStack.coreData.privateObjectContext.perform { () -> Void in
+                ActivityViewController.saving = true
                 CoreDataStack.coreData.mainObjectContext.perform {
                     NotificationCenter.default.post(name: NSNotification.Name("processingResults"), object: nil)
                 }
@@ -212,6 +214,7 @@ extension ActivityViewController : ORKTaskViewControllerDelegate {
                 CoreDataStack.coreData.mainObjectContext.perform {
                     NotificationCenter.default.post(name: NSNotification.Name("finishedProcessing"), object: nil)
                 }
+                ActivityViewController.saving = false
             }
         case .discarded:
             print("Task Cancelled")

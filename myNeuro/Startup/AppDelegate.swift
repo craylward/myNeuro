@@ -35,6 +35,7 @@ import HealthKit
 import CoreData
 import AWSCore
 import AWSCognito
+import AWSS3
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,6 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var containerViewController: ResearchContainerViewController? {
         return window?.rootViewController as? ResearchContainerViewController
+    }
+    
+    // FOR AWS
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        // Store the completion handler.
+        AWSS3TransferUtility.interceptApplication(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
     }
 
     
@@ -65,6 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:1ffb3870-9dec-4096-8dd8-6b662028d731")
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
         lockApp()
         return true
     }

@@ -101,6 +101,14 @@ class CoreDataStack: NSObject {
         return managedObjectContext
     }()
     
+    lazy var fetchObjectContext: NSManagedObjectContext = {
+        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+        let coordinator = self.persistentStoreCoordinator
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
+    
     // MARK: - Core Data Saving support
     // Function to save Core Data in the mainObjectContext (Used for UI dependent data)
     func saveContext () {
@@ -152,7 +160,7 @@ class CoreDataStack: NSObject {
     
     // Fetch the latest user ID
     static func fetchLatestUserID() -> Int {
-        guard let participants = fetchData("Participant", predicate: nil, context: CoreDataStack.coreData.privateObjectContext) as! [Participant]? else { print("Could not fetch Participant from CoreData"); return -1}
+        guard let participants = fetchData("Participant", predicate: nil, context: CoreDataStack.coreData.fetchObjectContext) as! [Participant]? else { print("Could not fetch Participant from CoreData"); return -1}
         let ids = participants.map{Int($0.user_id)}
         if ids.isEmpty {
             print("First Participant!")
@@ -182,7 +190,7 @@ class CoreDataStack: NSObject {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Participant")
         do {
             // Show the most recently joined user in the profile page
-            var participants = try CoreDataStack.coreData.privateObjectContext.fetch(request) as! [Participant]
+            var participants = try CoreDataStack.coreData.fetchObjectContext.fetch(request) as! [Participant]
             // Sort Descending (later dates first)
             participants = participants.sorted(by: { $0.joinDate.compare($1.joinDate) == ComparisonResult.orderedDescending })
             

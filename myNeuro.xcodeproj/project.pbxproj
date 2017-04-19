@@ -404,14 +404,13 @@
 				DAD527701D41144100B5C08B /* CoreData */,
 				DA7D01C91CF75E1A00BE6CEB /* UI */,
 				DABFD2061CABD3530057BCF9 /* Analysis */,
-				DA7B9C831CA3BB880095794F /* Dashboard */,
+				DA7B9C831CA3BB880095794F /* Dashboard (unused) */,
 				DAEE33FF1CEED0FF008A270C /* Developer */,
 				DA7B9C821CA3BB720095794F /* Onboarding */,
 				DA7B9C851CA3BBB00095794F /* Profile */,
 				DAEE34011CEED128008A270C /* Resources */,
 				DAEE33F41CEEC7D4008A270C /* Startup */,
 				DAEE33FE1CEED0AA008A270C /* TasksAndSteps */,
-				DA70C87B1CA4AF8D00A83969 /* Results */,
 			);
 			path = myNeuro;
 			sourceTree = "<group>";
@@ -442,7 +441,7 @@
 			name = Onboarding;
 			sourceTree = "<group>";
 		};
-		DA7B9C831CA3BB880095794F /* Dashboard */ = {
+		DA7B9C831CA3BB880095794F /* Dashboard (unused) */ = {
 			isa = PBXGroup;
 			children = (
 				DA7B9C561CA3BB570095794F /* AnimatableChart.swift */,
@@ -451,7 +450,7 @@
 				DA7B9C601CA3BB570095794F /* LineGraphDataSource.swift */,
 				DA7B9C631CA3BB570095794F /* PieChartDataSource.swift */,
 			);
-			name = Dashboard;
+			name = "Dashboard (unused)";
 			sourceTree = "<group>";
 		};
 		DA7B9C851CA3BBB00095794F /* Profile */ = {
@@ -630,6 +629,7 @@
 		DAEE33FF1CEED0FF008A270C /* Developer */ = {
 			isa = PBXGroup;
 			children = (
+				DA70C87B1CA4AF8D00A83969 /* Results */,
 				DAEB9C591CD9FC94000C164D /* Accelerometer */,
 				DA19E5841CC7883C00E26A07 /* Watch */,
 				DA7B9BFE1CA37F430095794F /* SurveyTask.swift */,

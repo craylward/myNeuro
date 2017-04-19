@@ -129,6 +129,7 @@ class ProfileViewController: UITableViewController, HealthClientType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        uploadDataButton.isEnabled = !ActivityViewController.saving
         self.progressView.progress = 0.0;
         
         // ready for receiving notification
