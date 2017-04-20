@@ -763,6 +763,7 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = P6G6N6X557;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -1287,6 +1288,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1314,6 +1316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.SJM.myNeuro.CAylward;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
