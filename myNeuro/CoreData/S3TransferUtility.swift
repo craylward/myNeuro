@@ -12,7 +12,7 @@ import AWSS3
 import AWSCognito
 import AWSCognitoIdentityProvider
 
-let S3BucketName: String = "myneuro"
+let S3BucketName: String = "myneuro1"
 
 class S3TransferUtility {
     @discardableResult
