@@ -72,9 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:1ffb3870-9dec-4096-8dd8-6b662028d731")
-        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialProvider)
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        /* AWS Configuration setup in the Info.plist */
+        //let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:1ffb3870-9dec-4096-8dd8-6b662028d731")
+        //let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialProvider)
+        //AWSServiceManager.default().defaultServiceConfiguration = configuration
         lockApp()
         return true
     }
