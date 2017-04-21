@@ -18,7 +18,7 @@ func processConsent(_ consentResults: [ORKResult]) {
     sample.joinDate = taskResult.date
     //CoreDataStack.coreData.latestUserID += 1
     sample.user_id = NSNumber(value: CoreDataStack.coreData.latestUserID + 1)
-    taskResult.user_id = NSNumber(value: CoreDataStack.coreData.latestUserID)
+    taskResult.user_id = NSNumber(value: CoreDataStack.coreData.latestUserID + 1)
     
     for stepResult in consentResults as! [ORKStepResult] {
         if stepResult.identifier.contains("ConsentReviewStep") {
